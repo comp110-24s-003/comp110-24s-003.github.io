@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> PlaneTicket Practice Problem from Class - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502729.770108">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>PlaneTicket Practice Problem from Class</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#instructions">Instructions</a>
+<ul>
+<li><a href="#writing-class-methods-and-functions">Writing class, methods, and functions</a></li>
+<li><a href="#writing-code-to-instantiate-class-and-test-methods-and-functions">Writing code to instantiate class and test methods and functions</a></li>
+</ul></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#memory-diagram">Memory Diagram</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="instructions">Instructions</h1>
+<h2 id="writing-class-methods-and-functions">Writing class, methods, and functions</h2>
+<ol type="1">
+<li>Write a <code>PlaneTicket</code> class with attributes: <code>departure_city: str</code>, <code>arrival_city: str</code>, <code>departure_time: int</code>, <code>ticket_cost: float</code>.</li>
+<li>Write an <code>__init__</code> magic method that takes <code>city_a: str</code>, <code>city_b: str</code>, <code>depart: int</code>, and <code>cost: float</code> as arguments as creates a new <code>PlaneTicket</code> with the attributes <code>departure_city = city_a</code>, <code>arrival_city = city_b</code>, <code>departure_time = depart</code>, and <code>ticket_cost = cost</code>.</li>
+<li>Write a <code>__str__</code> magic method to print out ticket info. (Format however you want.)</li>
+<li>Write a <code>delay</code> method that takes <code>delay_hours: int</code> as an argument and increases the <code>departure_time</code> by that much. (Think of time like military time… 1 am is <code>0100</code>, 1 pm is <code>1300</code>, etc.)</li>
+<li>Write a <code>discount</code> method that takes a <code>discount: float</code> as an argument and discounts <code>ticket_cost</code> by that percent. (E.g. if <code>discount = .15</code>, then discount <code>ticket_cost</code> by 15%)</li>
+<li>Write a <code>compare_prices</code> function that compares the cost of two tickets (takes <code>ticket1: PlaneTicket</code> and <code>ticket2: PlaneTicket</code> as arguments) and returns the cheaper ticket.</li>
+</ol>
+<h2 id="writing-code-to-instantiate-class-and-test-methods-and-functions">Writing code to instantiate class and test methods and functions</h2>
+<ol type="1">
+<li>Create a <code>PlaneTicket</code> object that starts in “Raleigh” and ends in “New Orleans”. It departs at 10 am (<code>1000</code>) and costs $85.25.</li>
+<li>Print out the ticket info.</li>
+<li>Delay the flight by 2 hours.</li>
+<li>Discount it by 10%.</li>
+<li>Create another <code>PlaneTicket</code> object that starts in “Orlando” and ends in “San Fransisco”. It departs at 11 am (1100) and costs $100.50.</li>
+<li>Print out the which ticket is cheaper using the <code>compare_prices</code> function.</li>
+</ol>
+<h1 id="solution">Solution</h1>
+<pre><code>from __future__ import annotations
+
+class PlaneTicket:
+    
+    departure_city: str
+    arrival_city: str
+    departure_time: int
+    ticket_cost: float
+    
+    def __init__(self, city_a: str, city_b: str, depart: int, cost: float):
+        &quot;&quot;&quot;Initialize PlaneTicket Class&quot;&quot;&quot;
+        self.departure_city = city_a
+        self.arrival_city = city_b
+        self.departure_time = depart
+        self.ticket_cost = cost
+        
+    def __str__(self) -&gt; str:
+        &quot;&quot;&quot;Visualize my ticket&quot;&quot;&quot;
+        my_ticket_str: str = f&quot;Depart from {self.departure_city} at {self.departure_time}. &quot;
+        my_ticket_str += f&quot;Arrive at {self.arrival_city}. It costs ${round(self.ticket_cost, 2)}.&quot;
+        return my_ticket_str 
+    
+    def delay(self, delay_hours: int) -&gt; None:
+        &quot;&quot;&quot;Delay departure_time by delay_hours&quot;&quot;&quot;
+        self.departure_time += (delay_hours * 100)
+        self.departure_time %= 2400
+    
+    def discount(self, discount: float) -&gt; None:
+        &quot;&quot;&quot;Discount ticket_cost by &#39;discount&#39;&quot;&quot;&quot;
+        #If discounting by .15, then multiply by (1-.15) 
+        self.ticket_cost = self.ticket_cost * (1 - discount)
+        
+def compare_prices(ticket1: PlaneTicket, ticket2: PlaneTicket) -&gt; PlaneTicket:
+    &quot;&quot;&quot;Return the cheaper ticket&quot;&quot;&quot;
+    if ticket1.ticket_cost &lt; ticket2.ticket_cost: 
+        return ticket1
+    else: #ticket1 cost &gt;= ticket2
+        return ticket2
+        
+
+my_ticket: PlaneTicket = PlaneTicket(&quot;Raleigh&quot;, &quot;New Orleans&quot;, 1000, 85.25)
+
+print(my_ticket)
+
+my_ticket.delay(2)
+my_ticket.discount(.10)
+
+other_ticket: PlaneTicket = PlaneTicket(&quot;Orlando&quot;, &quot;San Fransisco&quot;, 1100, 100.50)
+
+print(compare_prices(my_ticket, other_ticket))</code></pre>
+<h1 id="memory-diagram">Memory Diagram</h1>
+<p>Per request, I made a memory diagram of this code (skipping the second calls to <code>__init__</code> and <code>__str__</code>).</p>
+<ol type="1">
+<li><a href="/static/practice-mem-diagrams/planess1.png">Code Snippet 1</a> | <a href="/static/practice-mem-diagrams/planess2.png">Code Snippet 2</a> | <a href="/static/practice-mem-diagrams/planemd.pdf">Solution</a></li>
+</ol>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Unicode, Emoji, Escape Sequences, and f-Strings - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502718.3956957">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Unicode, Emoji, Escape Sequences, and f-Strings</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#characters">Characters</a>
+<ul>
+<li><a href="#use-the-ord-function-to-find-a-characters-int-code">Use the <code>ord</code> function to find a character’s <code>int</code> code</a></li>
+<li><a href="#use-the-chr-function-to-convert-an-int-to-a-character">Use the <code>chr</code> function to convert an <code>int</code> to a character</a></li>
+<li><a href="#what-about-foreign-languages-and-emoji">What about foreign languages and emoji?</a></li>
+<li><a href="#putting-a-hex-on-large-integers">Putting a <code>hex</code> on large integers</a></li>
+</ul></li>
+<li><a href="#string-escape-sequences">String Escape Sequences</a></li>
+<li><a href="#f-strings-format-strings">f-Strings “Format” Strings</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>As you now understand, strings are a data type for representing textual data.</p>
+<p>So far, you have learned how to:</p>
+<ol type="1">
+<li>Write <code>str</code> literals, such as <code>"hello, world"</code></li>
+<li>Convert other types of values <em>into</em> to <code>str</code> values, <code>str(110)</code> evaluates to <code>"110"</code></li>
+<li>Build strings through concatenation <code>"COMP" + str(110)</code>, which evaluates to <code>"COMP110"</code></li>
+</ol>
+<p>But what, <em>really</em>, are strings?</p>
+<p>In this lesson, we will deepen on our understanding of strings. We will zoom in on strings, narrowing in on <em>individual characters</em> and ask what <em>really</em> is a character?</p>
+<h2 id="characters">Characters</h2>
+<p>Textual data is made up of a sequence of <strong>characters</strong>. For example, the <code>str</code> <code>"hello"</code> comprises the characters <code>'h'</code>, <code>'e'</code>, <code>'l'</code>, <code>'l'</code>, <code>'o'</code>. For the computer to <em>represent</em> a string, it must also be able to work with <em>characters</em>.</p>
+<p>The distinction between <em>characters</em> and <em>letters</em> is noteworthy. Textual data is more than <em>letters</em>! There are numbers, spaces, tabs, new lines, many lettering sets 爱, and even emoji 🤠. Each is a <em>character</em>. Strings are <em>sequences</em> of <strong>characters</strong>. So, what are <em>characters</em>?</p>
+<p>Like an onion, every <em>abstraction</em> has <em>layers</em>. If you cut too many layers into this onion you will leave the realm of computer science and enter the fields of physics and philosophy. You might also cry. So let’s peel back only one more layer.</p>
+<p>What a <em>character</em> is depends on how it is represented. On your screen, most characters present visually as a shape or space, but some do not. A <em>single character of data</em> can be represented in many different visual forms by changing fonts and you can accept that it’s still the <em>same, single character of data</em> just viewed in a different way. <a href="https://en.wikipedia.org/wiki/Wingdings">Icon fonts such as wingdings</a> intentionally present characters, even letters, as icons very different from their traditional form. Changing the font back and forth between an icon font and a traditional one doesn’t change the underlying character data, only how we see it and interpret it.</p>
+<p>Inside a computer’s digital systems, chracters are represented as coded patterns of 0s and 1s, or binary. There is a generally agreed upon “encoding” of character data in computing systems called the <a href="https://en.wikipedia.org/wiki/ASCII">American Standard Code for Information Interchange abbreviated to ASCII</a> that was <em>designed</em> by humans, and agreed upon, in the 1960s. As you learned, the character <code>A</code> has the binary code <code>01000001</code>. Numerical data, such as <code>int</code> values, can also be represented in binary system. It so happens that the <em>same</em> binary pattern <code>01000001</code> can be interpretted as the <code>int</code> value <code>65</code>. Since binary is outside our concern, the main takeaway here is every character has a corresponding <code>int</code> value.</p>
+<h3 id="use-the-ord-function-to-find-a-characters-int-code">Use the <code>ord</code> function to find a character’s <code>int</code> code</h3>
+<p>Python’s built-in function <code>ord</code>, short for “ordinal” which is the order in which characters are defined, takes a single-character string as an input parameter and returns the <code>int</code> representation of the character’s binary code.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; ord(&quot;A&quot;)
+65
+&gt;&gt;&gt; ord(&quot;B&quot;)
+66
+&gt;&gt;&gt; ord(&quot;Z&quot;)
+90
+&gt;&gt;&gt; ord(&quot;a&quot;)
+97
+&gt;&gt;&gt; ord(&quot;b&quot;)
+98
+&gt;&gt;&gt; ord(&quot;z&quot;)
+122</code></pre>
+<p>There are a few important observations to make in the example above.</p>
+<p>First, notice that the codes for letters <em>relative to one another</em> is logical. In the English alphabet, A is followed directly by B, just as in integers 1 is followed by 2. Similarly, A’s integer ASCII code is 65 and B’s is 66. The specific numbers of either are not important, but their relationship to one another is.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;Duke&quot; &lt; &quot;UNC&quot;
+True
+&gt;&gt;&gt; &quot;unc&quot; &gt; &quot;duke&quot;
+True
+&gt;&gt;&gt; &quot;duke&quot; &gt; &quot;UNC&quot;
+True</code></pre>
+<p>The first two examples are reasonable, but the third comes as a surprise! How is “duke” greater than “UNC”? When <code>str</code> values are compared in Python, and most programming languages, the <code>ord</code> values are compared relative to one another. The <code>ord</code> of lowercase letters is higher than uppercase letters in ASCII. Just as when you order information alphabetically, the first letter is compared and, if the same, the following character, and so on. (This is an algorithm!) String comparisons are case-sensitive. (For case-insensitive comparisons, you would first use <code>str</code>’s <a href="https://docs.python.org/3/library/stdtypes.html#str.casefold"><code>casefold</code> method</a>.)</p>
+<h3 id="use-the-chr-function-to-convert-an-int-to-a-character">Use the <code>chr</code> function to convert an <code>int</code> to a character</h3>
+<p>Since characters and their integer codes are two sides of the same coin, you can freely go back and forth:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; chr(65)
+&#39;A&#39;
+&gt;&gt;&gt; chr(122)
+&#39;Z&#39;
+&gt;&gt;&gt; chr(ord(&#39;A&#39;))
+&#39;A&#39;
+&gt;&gt;&gt; ord(chr(65))
+65</code></pre>
+<p>The <code>chr</code> function is built-in to Python, takes an <code>int</code> parameter, and returns the single character representation as a string.</p>
+<h3 id="what-about-foreign-languages-and-emoji">What about foreign languages and emoji?</h3>
+<p>When ASCII was decided in the 60s, it was a technical achievement to include <em>both</em> lower and uppercase letters in the standard. Emoji, and much more importantly large alphabet languages such as Chinese, were not possible until later. As additional characters were added to international standards, the set of total characters possible expanded well beyond ASCII’s initial 127 character specification.</p>
+<p>For example, try the following in the REPL:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; chr(129312)</code></pre>
+<p>Hold on to your saddles, because we’re about to go on a little adventure. This is a bit outside of the scope of your concerns in COMP110, but to make use of Emoji in our programs (which is of utmost importance) there’s just a little more to the story to reveal.</p>
+<h3 id="putting-a-hex-on-large-integers">Putting a <code>hex</code> on large integers</h3>
+<p>The decimal system is base-10, meaning we have 10 digits ranging from 0 through 9. Notice you grew comfortable with a 0-indexing numbering scheme in elementary school! Consider the base-10 value <code>90</code>. It can be interpretted in a binary, a base-2 numeral system as <code>01011010</code>. Binary is <em>base 2</em> and has only 2 digits: 0 and 1. It can also be represented in a hexademical, a base-16 numeral system, with <code>5A</code>. Hexadecimal is <em>base 16</em> and has 16 digits, 0-9 followed by A-F which correspond to the decimal values of 10-15. Computer scientists love hexadecimal because each single digit corresponds to four binary digits. Notice that in the example: <code>01011010</code>, which is 8 binary digits, is equivalent to <code>5A</code>.</p>
+<p>Python has a built-in <code>hex</code> function for converting to its representation. The <code>0x</code> in front of the hexadecimal notation can be ignored and is case insensitive.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; hex(90)
+0x5a</code></pre>
+<p>When looking up the codes for emoji or characters in other languages, they will tend to be presented to you in a <em>hex</em> format, such as <a href="https://unicode.org/emoji/charts/full-emoji-list.html">on this web site</a>. You will notice in the <em>code</em> column, there is a format of <code>U+1F920</code>. The <code>U+</code> tells you this is Unicode, a more modern international character encoding standard than ASCII. The <code>1F920</code> is a hexadecimal representation of the code for the cowboy emoji. In Python, you can use such a Unicode character in your strings as follows:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; print(&quot;The \U0001F920 rides a \U0001F40E!&quot;)
+The 🤠 rides a 🐎!</code></pre>
+<p>The leading backslash begins an escape sequence, which will be discussed in depth shortly. The <code>U</code> is an indication that what will follow is an 8-digit hex representation of a unicode character. Then, to encode <code>1F920</code>, we must add three leading <code>0</code>s for padding because 8 hex digits are expected.</p>
+<p>It is worth taking a moment to appreciate that Python is doing a proper job of treating those emoji each as an individual item in our sequence of characters.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; emoji: str = &quot;\U0001F920\U0001F40E&quot;
+&gt;&gt;&gt; print(emoji)
+🤠🐎
+&gt;&gt;&gt; len(emoji)
+2
+&gt;&gt;&gt; emoji[0]
+🤠</code></pre>
+<h2 id="string-escape-sequences">String Escape Sequences</h2>
+<p>In the previous example, the backslashes in the string <code>"\U0001F920\U0001F40E"</code> are signalling something special is about to follow the backslash. In this case, what follows is a <code>U</code> which hints “8 hexidecimal digits encoding a single unicode character” will follow the <code>\U</code> “escape sequence”.</p>
+<p>There are other <em>escape sequences</em>, as well. Here are some common ones:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Escape Sequence</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\"</code></td>
+<td>Double quote (<code>"</code>)</td>
+</tr>
+<tr class="even">
+<td><code>\'</code></td>
+<td>Single quote (<code>'</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>\t</code></td>
+<td>Tab</td>
+</tr>
+<tr class="even">
+<td><code>\n</code></td>
+<td>New Line</td>
+</tr>
+<tr class="odd">
+<td><code>\Uxxxxxxxx</code></td>
+<td>32-bit unicode character</td>
+</tr>
+<tr class="even">
+<td><code>\\</code></td>
+<td>Backslash (<code>\</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Escape sequences in string literals begin with a backslash.</p>
+<p>How can you <em>use</em> a double quote character in a string surrounded in double quotes? With the first escape sequence above! For example, the string literal <code>"The computer said, \"Hello, world.\""</code> will evaluate to the characters <code>The computer said, "Hello, world."</code> The <code>\"</code> escape sequence, when evaluated, results in a single backslash character.</p>
+<p>The last entry in the table is also interesting. If backslashes are how we begin writing an escape sequence in a string literal in Python… <em>how do we write a single backslash?</em> By writing two backslashes back-to-back, of course! The first backslash begins an escape sequence, the second backslash causes the sequence to evaluate to a single backslash.</p>
+<h2 id="f-strings-format-strings">f-Strings “Format” Strings</h2>
+<p>Zooming back out to thinking of strings at a high-level, by now you have used concatenation enough to recognize that concatenating strings can be a lot of work! Especially if you are concatenating non-string values in the middle of a larger string. Modern Python has a special string literal called a <em>format string</em> or <em>f-string</em> for short, that makes this much easier. Consider the following examples:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; course: int = 110
+&gt;&gt;&gt; print(&quot;I am in COMP&quot; + str(course) + &quot; right now!&quot;)
+I am in COMP110 right now!
+&gt;&gt;&gt; print(f&quot;I am in COMP{ course } right now!&quot;)
+I am in COMP110 right now!</code></pre>
+<p>A key distinction between a regular string and an f-string is that it begins with the letter <code>f</code> preceeding its quotes. Notice the difference of <code>f"Hi"</code> and <code>"Hi"</code>, where the former is an <code>f</code> string.</p>
+<p>Inside of an f-string you can write an <em>expression</em> inside of curly braces and it will get substituted with the expression’s value when the string literal is evaluated. Spaces inside of the curly braces are ignored. This is especially handy if you are building a string with multiple variables being concatenated together. Consider the difference of:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; name: str = &quot;Lauren&quot;
+&gt;&gt;&gt; age_turning: int = 21
+&gt;&gt;&gt; print(&quot;Hello &quot; + name + &quot;, you&#39;re almost &quot; + str(age_turning) + &quot;!&quot;)
+Hello Lauren, you&#39;re almost 21!
+&gt;&gt;&gt; print(f&quot;Hello {name}, you&#39;re almost {age_turning}!&quot;)
+Hello Lauren, you&#39;re almost 21!</code></pre>
+<p>There are other powerful things format strings can do, too, but they are outside the scope of this course. If you’d like to learn more <a href="https://realpython.com/python-f-strings/">this guide</a> covers many useful cases. Other modern programming languages are adopting variations of this same concept which you may also hear referred to as <em>string interpolation</em>.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

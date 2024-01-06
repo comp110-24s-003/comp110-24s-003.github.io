@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Lists and Dictionaries - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502713.782682">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Lists and Dictionaries</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#lists">Lists</a>
+<ul>
+<li><a href="#what-is-an-index">What is an index?</a></li>
+<li><a href="#how-do-you-access-an-element">How do you access an element?</a></li>
+<li><a href="#adding-and-removing-elements-from-a-list">Adding and removing elements from a list</a></li>
+</ul></li>
+<li><a href="#dictionaries">Dictionaries</a>
+<ul>
+<li><a href="#keys">Keys</a></li>
+<li><a href="#values">Values</a></li>
+<li><a href="#inserting-items-into-a-dictionary">Inserting items into a dictionary</a></li>
+<li><a href="#remove-items-from-a-dictionary">Remove items from a dictionary</a></li>
+<li><a href="#accessing-and-modifying-items">Accessing and modifying items</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="lists">Lists</h2>
+<p>A <strong>list</strong> is a variable (with a name) that holds many elements of the same type addressed by indices.</p>
+<p>Here’s how you make a list:</p>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">&lt;</span>name<span class="op">&gt;</span>: <span class="bu">list</span>[<span class="op">&lt;</span><span class="bu">type</span><span class="op">&gt;</span>] <span class="op">=</span> [<span class="op">&lt;</span>element1<span class="op">&gt;</span>, <span class="op">&lt;</span>element2<span class="op">&gt;</span>, <span class="op">&lt;</span>element3<span class="op">&gt;</span>, ...]</span></code></pre></div>
+<p>The above syntax includes declaration <em>and</em> initialization. It also includes information about the type of the array. Here’s some examples:</p>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>friends: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;Jim&quot;</span>, <span class="st">&quot;Kevin&quot;</span>, <span class="st">&quot;Erin&quot;</span>]</span>
+<span id="cb2-2"><a href="#cb2-2"></a>ratings: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">3</span>]</span>
+<span id="cb2-3"><a href="#cb2-3"></a>answers: <span class="bu">list</span>[<span class="bu">bool</span>] <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>]</span></code></pre></div>
+<p>Let’s take a closer look at how lists work.</p>
+<h3 id="what-is-an-index">What is an index?</h3>
+<p>An index is the integer used to reference each element in a list.</p>
+<p>The first element of a list is located at index 0, the second is at index 1, and so on.</p>
+<p>NOTE: the length of an array does not equal the last index! Lists are “zero-indexed” meaning they start counting indices at 0. So the length of our list will always be the last index + 1.</p>
+<p>To show this, a two element list would have the first element at index 0 and the second at index 1. However, since there are 2 elements, the length of the list is 2.</p>
+<h3 id="how-do-you-access-an-element">How do you access an element?</h3>
+<p>When you access an element, you can assign it to a variable to more easily access it later.</p>
+<p>You can also change individual elements in a list without having to create an entirely new list!</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb3" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>myFriends: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;Jim&quot;</span>, <span class="st">&quot;Kevin&quot;</span>, <span class="st">&quot;Erin&quot;</span>]</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># accessing first element in the friends list</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>myBestFriend: <span class="bu">str</span> <span class="op">=</span> friends[<span class="dv">0</span>]</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># reassigning elements in a list</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>myFriends[<span class="dv">2</span>] <span class="op">=</span> <span class="st">&quot;Pam&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># myFriends is now: [&quot;Jim&quot;, &quot;Kevin&quot;, &quot;Pam&quot;]</span></span></code></pre></div>
+<p>A big thing to remember is that since lists are 0-indexed, meaning the index numbers start with the first one being 0, the last index of a list is the length of the list - 1, or len(<listName>) - 1.</p>
+<h3 id="adding-and-removing-elements-from-a-list">Adding and removing elements from a list</h3>
+<p>Adding an element onto the end of a list is called <strong>appending</strong> the element to the list. We do this by using the append() method and putting the elemnt you want to add inside append. For example:</p>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>myFriends: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;Jim&quot;</span>, <span class="st">&quot;Kevin&quot;</span>, <span class="st">&quot;Erin&quot;</span>]</span>
+<span id="cb4-2"><a href="#cb4-2"></a>myFriends.append(<span class="st">&quot;Pam&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># myFriends is now: [&quot;Jim&quot;, &quot;Kevin&quot;, &quot;Erin&quot;, &quot;Pam&quot;]</span></span></code></pre></div>
+<p>To remove the last element from a list, you can use the pop() method with no arguement. If you want to remove an element at a specific index, simply reference that index in the pop method. Here’s an example of both:</p>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>chores: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;sweep&quot;</span>, <span class="st">&quot;laundry&quot;</span>, <span class="st">&quot;mop&quot;</span>, <span class="st">&quot;dust&quot;</span>]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>chores.pop()</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># chores is now: [&quot;sweep&quot;, &quot;laundry&quot;, &quot;mop&quot;]</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>chores.pop(<span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># chores is now: [&quot;sweep&quot;, &quot;mop&quot;]</span></span></code></pre></div>
+<h2 id="dictionaries">Dictionaries</h2>
+<p>A <strong>dictionary</strong> is a data structure available in Python which lets you organize data into “key-value” pairs.</p>
+<p>The basic syntax of a dictionary is shown below:</p>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">&lt;</span>name<span class="op">&gt;</span>: <span class="bu">dict</span>[<span class="op">&lt;</span>keytype<span class="op">&gt;</span>, <span class="op">&lt;</span>valuetype<span class="op">&gt;</span>] <span class="op">=</span> {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="op">&lt;</span>key1<span class="op">&gt;</span>: <span class="op">&lt;</span>value1<span class="op">&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="op">&lt;</span>key2<span class="op">&gt;</span>: <span class="op">&lt;</span>value2<span class="op">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>    ...</span>
+<span id="cb6-5"><a href="#cb6-5"></a>}</span></code></pre></div>
+<p>But what are keys and values exactly? Lets dive in a little deeper.</p>
+<h3 id="keys">Keys</h3>
+<p>Put simply, a <strong>key</strong> is what you look up a value by. Keys can be any <em>immutable</em> type, such as <strong>str</strong>, <strong>int</strong>, <strong>float</strong>, <strong>bool</strong>, but not <strong>lists</strong> or other <strong>dicts</strong> for example. Each key is uniquely paired with their corresponding value, meaning you cannot have two identical keys in your dictionary.</p>
+<h3 id="values">Values</h3>
+<p>The <strong>value</strong> in a dictionary refers to the data being stored. Unlike keys, values can be of any type. It is possible for two values in a dictionary to be identical, provided their associated keys are different.</p>
+<h3 id="inserting-items-into-a-dictionary">Inserting items into a dictionary</h3>
+<p>To construct a dictionary, you can declare it and initalize it in one go as shown below:</p>
+<div class="sourceCode" id="cb7" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>favColor: <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>] <span class="op">=</span> {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="st">&quot;Ezri&quot;</span>: <span class="st">&quot;blue&quot;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="st">&quot;Claire&quot;</span>: <span class="st">&quot;yellow&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>    <span class="st">&quot;Tori&quot;</span>: <span class="st">&quot;green&quot;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>}</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co"># note: dictionaries can have different data types for their key-value pairs</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co"># this example happens to have keys and values that are both of type str</span></span></code></pre></div>
+<p>But it’s more useful to be able to add items after initializing your dictionary. To do so, reference the name of the dictionary followed by brackets surrounding whatever you want your key to be, then assign it to the corresponding value. For example,</p>
+<div class="sourceCode" id="cb8" data-startFrom="7"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 6;"><span id="cb8-7"><a href="#cb8-7"></a>favColor[<span class="st">&quot;Kaki&quot;</span>] <span class="op">=</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># in this example &quot;Kaki&quot; is the key and &quot;red&quot; is the value</span></span></code></pre></div>
+<h3 id="remove-items-from-a-dictionary">Remove items from a dictionary</h3>
+<p>Similar to <strong>lists</strong>, you can remove an item from a dictionary by using the <em>pop()</em> method. To indicate which item you want to remove, use the key as the arguement for pop inside the parenthesis. In addition, the pop method will return the corresponding value.</p>
+<div class="sourceCode" id="cb9" data-startFrom="9"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 8;"><span id="cb9-9"><a href="#cb9-9"></a>toriColor: <span class="bu">str</span> <span class="op">=</span> favColor.pop(<span class="st">&quot;Tori&quot;</span>)</span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co"># now the favColor contains {&quot;Ezri&quot;: &quot;blue&quot;, &quot;Claire&quot;: &quot;yellow&quot;, &quot;Kaki&quot;: &quot;red&quot;}</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># toriColor&#39;s value is &quot;green&quot;</span></span></code></pre></div>
+<h3 id="accessing-and-modifying-items">Accessing and modifying items</h3>
+<p>To access an item in a dictionary, write the name of your dictionary followed by brackets which enclose the key for the item you want to accesss. You can change the value of an item by reassigning the key to a new value:</p>
+<div class="sourceCode" id="cb10" data-startFrom="13"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python" style="counter-reset: source-line 12;"><span id="cb10-13"><a href="#cb10-13"></a>favColor[<span class="st">&quot;Ezri&quot;</span>] <span class="op">=</span> <span class="st">&quot;purple&quot;</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="co"># we changed the value associatetd with Ezri from &quot;blue&quot; to &quot;purple&quot;</span></span></code></pre></div>
+<p>Sometimes it can be useful to modify a value based on what is was previously, an example of this is shown below.</p>
+<div class="sourceCode" id="cb11" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2"></a>points: <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">int</span>] <span class="op">=</span> {</span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="st">&quot;player1&quot;</span>: <span class="dv">10</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="st">&quot;player2&quot;</span>: <span class="dv">11</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="st">&quot;player3&quot;</span>: <span class="dv">6</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>}</span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a>points[<span class="st">&quot;player3&quot;</span>] <span class="op">=</span> points[<span class="st">&quot;player3&quot;</span>] <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co"># now the value corresponding to player3 is 8</span></span></code></pre></div>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Aneka Happer</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

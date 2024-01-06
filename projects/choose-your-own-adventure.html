@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> PJ00 - Choose Your Own Adventure - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502752.2762218">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="projects-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>PJ00 - Choose Your Own Adventure</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#background-lessons">Background Lessons</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#specifications">Specifications</a>
+<ul>
+<li><a href="#required-global-variables-10-points-total">0. Required Global variables (10 points total):</a></li>
+<li><a href="#main-function-10-points-total">1. <code>main</code> function (10 points total):</a></li>
+<li><a href="#greet-procedure-and-welcome-message-15-points-total">2. <code>greet</code> procedure and welcome message (15 points total):</a></li>
+<li><a href="#at-least-one-custom-procedure-15-points-total">3. At least one custom procedure (15 points total):</a></li>
+<li><a href="#at-least-one-custom-function-15-points-total">4. At least one custom function (15 points total):</a></li>
+<li><a href="#game-loop-10-points-total">5. Game loop (10 points total):</a></li>
+<li><a href="#misc.-requirements-15-points-total">6. Misc. Requirements (15 points total):</a></li>
+</ul></li>
+<li><a href="#rubric">Rubric</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">3. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In the first open-ended programming project, you will create a text-driven, “Choose Your Own Adventure” experience.</p>
+<p>Your project will need to satisfy many specifications, so before you begin programming be sure to read this project’s write-up in full.</p>
+<p>You are free to use your imagination to design and implement any experience you would like, as long as it meets the requirements. For some inspiration, here are some example ideas the UTA team and I came up with, if you are not feeling the spark of creativity:</p>
+<ol type="1">
+<li>Taking care of a virtual pet like a <a href="https://en.wikipedia.org/wiki/Tamagotchi">tamagotchi</a>. You are free to introduce additional variables, global or otherwise, for keeping track of a pet’s health.</li>
+<li>Some kind of role playing game where you choose what kinds of attacks or defenses to use and the opposing creature randomly chooses theirs. Points could be health or damage inflicted.</li>
+<li>A number guessing game such as the generating a random number and asking the user to guess it and counting the number of attempts it takes them to guess it correctly.</li>
+<li>A “buzzfeed quiz” that determines which Disney Princess character are (or anything else).</li>
+<li>A coinflip guessing game where you have to choose heads or tails and see how many you can guess in a row correctly.</li>
+<li>Some kind of mystery that involves searching a sequence of rooms.</li>
+<li>Something heavily emoji based, perhaps as surprising as a <a href="https://en.wikipedia.org/wiki/Category:Japanese_game_shows">Japanese Game Show</a></li>
+<li>A parody of something that is poignant satire (a student once made a ConnectCarolina registration parody that was pure, comedic gold)</li>
+</ol>
+<p>Again, feel encouraged to come up with an idea that is uniquely your own!</p>
+<h2 id="background-lessons">Background Lessons</h2>
+<p>The conceptual purpose of the game is to help you practice the concepts you have learned up to this point and explore some additional, related topics, including:</p>
+<ol type="1">
+<li>String Escape Sequences (for Emoji!)</li>
+<li>String Interpolation (better than concatenation!)</li>
+<li>Named Constants</li>
+<li>Global Variables</li>
+</ol>
+<p>As background preparation for this project, you should first complete the following lessons linked below:</p>
+<ol type="1">
+<li><a href="/lessons/strings.html">Strings</a></li>
+<li><a href="/lessons/scopes-constants-globals.html">Scopes, Constants, Globals</a></li>
+</ol>
+<h2 id="getting-started">Getting Started</h2>
+<p>In your workspace’s <code>projects</code> directory, create a file named <code>cyoa.py</code> for this Choose Your Own Adventure experience.</p>
+<p>Begin by defining a <code>main</code> procedure that serves as the “entrypoint” to the program. The initial <em>call</em> to <code>main</code> should be found at the end of your program, following Python’s idiom:</p>
+<pre class="plaintext"><code>if __name__ == &quot;__main__&quot;:
+  main()</code></pre>
+<h2 id="specifications">Specifications</h2>
+<p>These are the requirements for your project. Please read them in full and have a rough plan for how you will satisfy them all, before you begin working on your project.</p>
+<h3 id="required-global-variables-10-points-total">0. Required Global variables (10 points total):</h3>
+<p>0.0 Establish a global variable named <code>points</code> to track “adventure points”. How you choose to use these adventure points is up to you. Initialize your global <code>points</code> variable from within your <code>main</code> function. (5 points – autograded)</p>
+<p>0.1 Establish a global variable named <code>player</code> to track the player’s name. (5 points – autograded)</p>
+<p>These variables must have an explicit type declaration.</p>
+<h3 id="main-function-10-points-total">1. <code>main</code> function (10 points total):</h3>
+<p>1.0 Define a <code>main</code> function, that returns <code>None</code>, and follows the Python idiom for calling <code>main</code> at the end of the program based on the dunderscore variable <code>__name__</code> being equal to <code>"__main__"</code>. (5 points – autograded)</p>
+<p>1.1 After greeting the player using a call to the <code>greet</code> procedure, your <code>main</code> function should enter your experience. You should present the player with at least three options of where to go next and ask them to choose one. One of the three options should be to end the experience and print a goodbye message that includes the number of “adventure points” they accumulated in the experience. The other options should result in function calls which set the user off in different directions on the adventure. You will need to define appropriate functions for these distinct paths. (5 points – hand graded)</p>
+<h3 id="greet-procedure-and-welcome-message-15-points-total">2. <code>greet</code> procedure and welcome message (15 points total):</h3>
+<p>2.0 Define a procedure, meaning a function that returns <code>None</code>, named <code>greet</code>. (5 points – autograded)</p>
+<p>2.1 The <code>greet</code> function must print a welcome message to give some context to your game and asks the player for their name. You should call this procedure at the beginning of your <code>main</code> procedure. (5 points – autograded)</p>
+<p>2.2 The <code>greet</code> function should assign the name input by the user to the global variable named <code>player</code>. (5 points – hand graded)</p>
+<h3 id="at-least-one-custom-procedure-15-points-total">3. At least one custom procedure (15 points total):</h3>
+<p>One of the possible directions the player is set off in from <code>main</code> must be a procedure call.</p>
+<p>3.1 The procedure should lead to textual interaction(s) that make use of players name and ask the player for additional <code>input</code>. (10 points – hand graded)</p>
+<p>3.2 The procedure should have logic to reassign the <code>points</code> global variable directly based on the user’s choices. At a minimum, increase the adventure’s points each time the player makes a choice. (5 points – hand graded)</p>
+<p>What happens within this procedure is up to you and you are free for this procedure call to lead to others, make use of loops, and so on. Get creative!</p>
+<h3 id="at-least-one-custom-function-15-points-total">4. At least one custom function (15 points total):</h3>
+<p>One of the other possible directions the player can choose to set off in from <code>main</code> should be a call to a function that takes an integer as a parameter and returns an integer.</p>
+<p>4.1 The function takes at least one <code>int</code> as a parameter and returns an <code>int</code>. The call to this function from <code>main</code> should <em>pass</em> the player’s <code>points</code> value as an argument to the function call. (5 points – hand graded)</p>
+<p>4.2 Like the previous procedure, you should make use of the <code>player</code> name in some output and have the user make at least one interaction choice that results in the points <em>parameter (local variable)</em> changing. Ultimately, this function should return the player’s total points after any interactions it leads to. (5 points – hand graded)</p>
+<p>4.3 The <code>main</code> function should use the returned value to update the global variable <code>points</code>. (5 points – hand graded)</p>
+<blockquote>
+<p>Note: Requirements 3 and 4 are intentionally asking you to implement the same kinds of behavior but using two very different strategies in code for achieving them. The strategy in #3 relies on global variables shared between the main procedure and the function(s) you write. The strategy in #4 avoids the function(s) from directly accessing or reassigning the <code>points</code> global variable. There are trade-offs to each strategy. It is valuable to think through the trade-offs of both!</p>
+</blockquote>
+<h3 id="game-loop-10-points-total">5. Game loop (10 points total):</h3>
+<p>5.0 Introduce a “game loop” in your <code>main</code> function. The game loop should allow the user to continue your experience and choose the same initial branch, or another branch, or to stop playing. Before looping, each time, you should update the user on their total number of points. (10 points – hand graded)</p>
+<h3 id="misc.-requirements-15-points-total">6. Misc. Requirements (15 points total):</h3>
+<p>6.0 You must make use of f-strings (formatted string literals) described in lecture 6 to produce any output that would otherwise require concatenation. (5 points – hand graded)</p>
+<p>6.1 You must define at least one global <code>NAMED_CONSTANT</code> and assign it the unicode escape sequence <code>"\U00000000"</code> for each Emoji you use. Strings such as these are considered “<em>magic numbers</em>”, too! You are encouraged to make liberal use of Emoji throughout your adventure, they are fun! (5 points – hand graded)</p>
+<p>6.2 At least one path in your adventure must incorporate some element of randomness from the <code>random</code> library. (5 points – hand graded)</p>
+<p>Note: Your program should not have any global calls to the <code>input</code> function. Any user prompting/interaction should be inside of a function.</p>
+<p>If you get an OSError from the grader, double check you have no global <code>input</code> calls and that your idiom is set up correctly per the “Getting Started” section above.</p>
+<h2 id="rubric">Rubric</h2>
+<ul>
+<li>5 Points - Static Type Checks</li>
+<li>5 Points - Linting</li>
+<li>10 Points - <code>player</code> and <code>points</code> global variables correctly declared</li>
+<li>10 points - <code>main</code> function allows user to choose one of three options</li>
+<li>15 Points - <code>greet</code> function meets specification #2 above</li>
+<li>15 Points - Procedure meeting specification #3 above</li>
+<li>15 Points - Function meeting specification #4 above</li>
+<li>10 Points - Game loop</li>
+<li>5 Points - Used at least one emoji and setup a named constant for it</li>
+<li>5 Points - Used f-strings for building string outputs rather than concatenation</li>
+<li>5 Points - Incorporated randomness</li>
+</ul>
+<h2 id="make-a-backup-checkpoint-commit">3. Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged. Note that you do not have to make a backup in order to submit your work, though you are encouraged to before each submission so that you can revert back to a previous point in your project if you accidentally change something you did not intend to.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise 2” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submission-instructions">Submission Instructions</h2>
+<p>To prepare your scene for submission, be sure to add a docstring to your module (at the top of the file) and a global <code>__author__</code> variable set to a string which contains your 9-digit PID. Linting will also look for docstrings in your function definitions, per usual. 35 points of this assignment will be autograded, and the remaining 65 hand-granded.</p>
+<p>Run <code>python -m tools.submission projects/cyoa.py</code> to build your submission zip for upload to Gradescope. Don’t forget to backup your work by creating a commit and pushing it to GitHub. For a reminder of this process, see the previous exercises.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

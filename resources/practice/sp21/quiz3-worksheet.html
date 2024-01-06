@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 03 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502738.9226313">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="quiz3-worksheet-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 03 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <div class="container">
+                <div class="content"><h1 id="questions">Questions</h1>
+<p>Below are optional practice problems for Quiz 03. These problems are intended to help you become more comfortable working with dictionaries and lists. This practice is intended to reinforce important concepts and does not necessarily reflect the format of the questions on the quiz. Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="dictionaries-tf">Dictionaries T/F</h2>
+<ol type="1">
+<li>To access a value in a dictionary, you use the format <code>&lt;dictionary_name&gt;{key}</code>. (T/F)</li>
+<li>One value can be associated with multiple keys. (T/F)</li>
+<li>Dictionaries are mutable. In other words, the values in a dictionary can be changed after they are constructed. (T/F)</li>
+<li>Dictionaries can have lists or other dictionaries as their <em>keys</em>. (T/F)</li>
+<li>The <code>not in</code> operator can be used to check whether a specific key exists in a dictionary or not. (T/F)</li>
+<li>For the purposes of this course, all values in a dictionary are of the same type. (T/F)</li>
+</ol>
+<h2 id="function-writing-1">Function Writing 1</h2>
+<ol start="7" type="1">
+<li>Write a function called dictTransform that takes in a dictionary of integer keys and values that are lists of integers (e.g. <code>dict[int, list[int]]</code>) and returns a transformed dictionary with every value in a list multiplied by its corresponding key. For example: <code>d: dict[int, list[int]] = { 2:[1, 2] , 5:[3, 4] }</code> <code>dictTransform(d) # returns { 2:[2, 4] , 5:[15, 20] }</code></li>
+</ol>
+<h2 id="function-writing-2">Function Writing 2</h2>
+<ol start="8" type="1">
+<li>Write a function called <code>listTransform</code> that takes in a list of dictionaries (e.g. <code>list[dict[int, str]]</code>) and returns a transformed list with changes to every even-indexed dictionary. The even-indexed dictionaries should have the odd key values reduced to their first letter and even key values reduced to their last letter. For example: <code>l: list[dict[int, str]] = [ { 3:‘roy’ , 2:‘unc’ } , { 1:‘kris’ } , { 9:‘hello’, 11:‘there’, 2:‘!!’ } ]</code> <code>listTransform(l) # returns [ { 3:‘r’ , 2:‘c’ } , { 1:‘kris’ } , { 9:‘h’, 11:‘t’, 2:‘!’} ]</code></li>
+</ol>
+<h2 id="diagramming-1">Diagramming 1</h2>
+<p>Given the following code listing, draw an environment diagram. <img src="/static/practice_worksheets/qz03-question9.PNG" /></p>
+<h2 id="diagramming-2">Diagramming 2</h2>
+<p>Given the following code listing, draw an environment diagram and answer the questions that follow. <img src="/static/practice_worksheets/qz03-codelisting1.PNG" /></p>
+<ol start="9" type="1">
+<li>When <code>item</code> is incremented by <code>1</code> on line 9, is <code>a_table["c"]</code> mutated?</li>
+<li>How many arrows come out of the <code>fill</code> frame?</li>
+</ol>
+<h1 id="solutions">Solutions</h1>
+<h2 id="dictionaries-tf-1">Dictionaries T/F</h2>
+<ol type="1">
+<li>F</li>
+<li>T</li>
+<li>T</li>
+<li>F</li>
+<li>T</li>
+<li>T</li>
+</ol>
+<h2 id="function-writing-1-1">Function Writing 1</h2>
+<ol start="7" type="1">
+<li><img src="/static/practice_worksheets/qz03-question7-answer.png" /></li>
+</ol>
+<h2 id="function-writing-2-1">Function Writing 2</h2>
+<ol start="8" type="1">
+<li><img src="/static/practice_worksheets/qz03-question8-answer.png" /></li>
+</ol>
+<h2 id="diagramming-1-1">Diagramming 1</h2>
+<p><img src="/static/practice_worksheets/qz03-question9-answer.png" /></p>
+<h2 id="diagramming-2-1">Diagramming 2</h2>
+<p><img src="/static/practice_worksheets/qz03-question10-answer.png" /></p>
+<ol start="9" type="1">
+<li>No. As the loop iterates over <code>a_table["c"]</code>, which is a list, <code>item</code> is assigned the same value as each value in the list. So for example, in the first iteration of the loop, <code>item</code> has the same value as <code>a_table["c"][0]</code>, but adding 1 to <code>item</code> doesn’t change <code>a_table["c"][0]</code>.</li>
+<li>2</li>
+</ol>
+<h2 id="lecture-diagrams">Lecture Diagrams</h2>
+<h2 id="diagram-3">Diagram 3</h2>
+<p><img src="/static/practice_worksheets/class07-review-for-quiz-d3.png" /></p>
+<h2 id="diagram-4">Diagram 4</h2>
+<p><img src="/static/practice_worksheets/class07-review-for-quiz-d4.png" /></p>
+</div>
+            </div>
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang, Jasper Christie</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Healthy Computing Habits - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502728.761349">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="logistics-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Healthy Computing Habits</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#vision">Vision</a>
+<ul>
+<li><a href="#blue-light">Blue light</a></li>
+<li><a href="#eye-strain">Eye strain</a></li>
+</ul></li>
+<li><a href="#posture">Posture</a>
+<ul>
+<li><a href="#causes">Causes</a></li>
+<li><a href="#solutions">Solutions</a></li>
+</ul></li>
+<li><a href="#the-gear">The gear</a>
+<ul>
+<li><a href="#monitors">Monitors</a></li>
+<li><a href="#keyboards">Keyboards</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><blockquote>
+<p>As students and aspiring computer scientists, we spend a good chunk of our days on our computers. My weekly screen time reports often send shivers down my poorly-aligned spine. However, there are many simple, practical steps we can take to improve our posture when computing, which will lead to a healthier lifestyle.</p>
+</blockquote>
+<h2 id="vision">Vision</h2>
+<p>We begin with our gaze. Symptoms such as blurred vision, double-vision, dry eyes, neck or back pain, and headaches can contribute to <a href="https://www.viewsonic.com/library/tech/computer-vision-syndrome/" target="_blank">Computer Vision Syndrome</a>. Many of these symptoms can be prevented with proper techniques and awareness.</p>
+<h3 id="blue-light">Blue light</h3>
+<p>Recently, people have become more aware of blue’s lights damage to eyes. Blue light can contribute to eye diseases such as dry eye, cataracts, and age-related macular degeneration. Blue light also disrupts a person’s natural sleep quality by stimulating the brain and inhibiting melatonin production and creating hormone imbalances <a href="http://www.ijo.cn.libproxy.lib.unc.edu/en_publish/2018/12/20181220.pdf" target="_blank">(Zhao, et al.)</a>. Some methods of decreasing blue light intake include <strong>avoiding using electronics at night</strong>, turning on <strong>“night mode”</strong> on electronics, and wearing <strong>blue-light filtering glasses</strong>.</p>
+<h3 id="eye-strain">Eye strain</h3>
+<p>Another cause of eye distress is looking at a near screen for too long. <a href="https://www.medicalnewstoday.com/articles/321536#supporting-evidence " target="_blank">Medical News Today</a> recommends the <strong>20-20-20 rule</strong>, which recommends that for every 20 minutes spent looking at a screen, a person should look at something 20 feet away for 20 seconds. This exercise helps to strengthen eye muscles and reminds your eyes to blink. Long moments spent staring at screens causes a person to blink less, leading to dry-eye. Some applications are built to help you build these habits, like <a href="http://www.protectyourvision.org/" target="_blank">ProtectYourVisision</a> and <a href="https://chrome.google.com/webstore/detail/eyecare-protect-your-visi/eeeningnfkaonkonalpcicgemnnijjhn?hl=en" target="_blank">eyeCare</a>.</p>
+<p>Furthermore, if you notice yourself squinting and straining your eyes when on your laptop, one way to decrease eye strain is to increase text size and brightness/contrast on the computer. You may also find it worthwhile to purchase a computer monitor to decrease eye strain, but using computer monitors improperly also carries a set of problems.</p>
+<h2 id="posture">Posture</h2>
+<p>While repeated poor posture can ultimately lead to musculoskeletal disorder (MSD), it can also contribute to more immediate pain, fatigue, discomfort, and lack of attention. Below, I examine some root causes of poor posture and recommend solutions.</p>
+<h3 id="causes">Causes</h3>
+<p>The first cause of poor posture is a poorly-designed workspace. The overwhelming use of laptop computers contributes to increased neck strain because laptops are designed for portability rather than ergonomics. Laptop use increases the bending of the neck and reduces head movement. However, both physical <em>and psychological</em> factors contribute to a person’s risk for neck disorder; these include age, sex, hours spent working, psycological and social factors associated with work, and workplace design. Studies show that a person’s sex influences how they sit, and females reported a higher prevalence of neck and back pain. Taller people also reported more discomfort than shorter people <a href="http://aoh.ssu.ac.ir.libproxy.lib.unc.edu/article-1-190-en.pdf" target="_blank">(Heidari, et al.)</a>. Being aware of the physical and psychological problems that cause you to sit tensely or awkwardly may help you break unhealthy sitting habits.</p>
+<h3 id="solutions">Solutions</h3>
+<p><a href="https://www.howtogeek.com/349796/six-tips-to-help-save-yourself-from-poor-computer-posture/" target="_blank">GeeksforGeeks</a> offers possible computer-related solutions, and I will comment with my beginner <a href="https://www.amsatonline.org/aws/AMSAT/pt/sp/what_is" target="_blank">Alexander Technique</a> knowledge. (The Alexander Technique is an approach to counteracting poor posture by understanding relationships between parts of the musculoskeletal system. It is commonly used by athletes, dancers, actors, and musicians.)</p>
+<ol type="1">
+<li><strong>Fix your computer position.</strong> You can be creative and stack books under your laptop, or you can buy a monitor. Looking at a screen set at eye-level is much better for posture than gazing down at a laptop. To find the best screen placement for you, place screen so the top line is slightly below eye level. Check <a href="https://ergo-plus.com/office-ergonomics-position-computer-monitor/" target="_blank">here</a> for more tips.</li>
+<li><strong>Check your angles.</strong> Your desk chair should recline at 100-110 degrees, and your legs should be at 90 degrees. If you’re short, consider buying a footstool to place under your desk. Check out this article by <a href="http://ergonomictrends.com/best-ways-to-sit-with-back-pain/ " target="_blank">Ergonomic Trends</a> for visuals.</li>
+<li><strong>Roll your shoulders back (but not too far back).</strong> You want to find a middle position that is not too far forward or far back, but a rested middle. It may help you to realize that your shoulders and your arms are dependent body parts. Here is <a href="https://www.youtube.com/watch?v=smFSSWeLE78" target="_blank">a video</a> of shoulder and arm release based on the Alexander Technique.</li>
+<li><strong>Do yoga, pilates, or desk exercises.</strong> Here is <a href="https://www.youtube.com/watch?v=JUP_YdYyfQw" target="_blank">a yoga video for “text neck”</a> (a commenter called her the “Bob Ross of Yoga”), <a href="https://www.healthline.com/health/chronic-pain/wrist-and-hand-stretches#simple-stretches" target="_blank">wrist and arm stretches</a>, <a href="https://www.webmd.com/fitness-exercise/features/exercise-at-your-desk#1" target="_blank">desk exercises from WebMD</a>, and <a href="https://www.youtube.com/watch?v=xlxo0rmDyyQ" target="_blank">balanced resting state video</a>.</li>
+<li><strong>Make a list of psycological factors that affect your sitting habits.</strong> For me, this can include the stress of my workday, complexity of an assignment, lack of sleep, or preoccupation with how others perceive me as I sit. Noticing these factors allows you to brainstorm solutions to counteract the unhealthy sitting habits they cause.</li>
+</ol>
+<h2 id="the-gear">The gear</h2>
+<p>Buying ergonomically-friendly computer gear may be a bit pricey, but your body might thank you later. Here is some info to help you gain familiarity for what to look for when investing in monitors and keyboards.</p>
+<h3 id="monitors">Monitors</h3>
+<p>While monitors can help with posture and eye strain, they also emit much more blue light than a laptop, and using a monitor that is too close can increase risk of myopia and carpal tunnel syndrome. All this to say you might consider these factors when purchasing a computer monitor:</p>
+<ul>
+<li><strong>Light emitted:</strong> the healthiest screen light technologies are LED and OLED, so opt for a monitor with these types of lights.</li>
+<li><strong>Size:</strong> Bigger isn’t necessarily better. Look for a monitor that is optimal size to help you read well while being as small as possible.</li>
+<li><strong>Resolution:</strong> higher resolution is easier on the eyes.</li>
+<li><strong>Adjustable monitor position:</strong> the capability to adjust the position of your monitor allows you to optimally set up your workspace to suit your physicality.</li>
+<li><strong>Brightness and blue-light controls:</strong> the ability to adjust brightness and control blue-light emissions help with eye strain and brain stimulation.</li>
+<li><strong>Other factors</strong> such as curved vs. flat monitors, matte vs. glossy monitors, and more can influence your decision as well. <a href="https://www.alexfergus.com/blog/the-best-monitor-for-biohackers" target="_blank">Read here</a> for more.</li>
+</ul>
+<h3 id="keyboards">Keyboards</h3>
+<p>I was today years old when I learned that there are three main types of keyboards: <em>split, curved, and straight</em>.</p>
+<ul>
+<li><strong>Split (and splayed) keyboards</strong> are designed for wrist-arm-shoulder alignment, and the keyboard is literally split in the middle to separate the sides of the keyboard relative to your hands. This decreases pressure on tendons and muscles in the arms, wrists, and fingers. There are many different designs as shown <a href="https://kinesis-ergo.com/split-keyboards/" target="_blank">in this article</a>.</li>
+<li><strong>Curved keyboards</strong> are a hybrid of ergonomic benefits of split keyboards and the familiarity of straight keyboards. These keyboards aim to follow the natural curvature of the arm and hand for a more <a href="https://unbreakyourself.com/benefits-of-an-ergonomic-keyboard/" target="_blank">ergonomic use</a>.</li>
+<li><strong>Straight keyboards</strong> are traditional keyboards with no ergonomic benefits but complete familiarity.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Ultimately, many factors contribute to the healthiest computing habits. The first step is to be mindful of your workspace and commit to taking care of your body and mind! **and don’t forget to drink water (recommended with a reusable straw) ;).</p>
+<p><strong>Academic references (can all be found through UNC libraries!):</strong></p>
+<ul>
+<li><p>Heidari, Hamidreza, et al. “Ergonomic Analysis of the Neck Posture in Computer Users and Identifying the Related Risk Factors.” Archives of Occupational Health, vol. 3, no. 4, 12 Oct. 2019, doi:10.18502/aoh.v3i4.1552.</p></li>
+<li><p>Zhao, Zhi-Chun, et al. “Research Progress about the Effect and Prevention of Blue Light on Eyes.” International Journal of Ophthalmology, vol. 11, no. 12, 18 Dec. 2018, doi:10.18240/ijo.2018.12.20.</p></li>
+</ul>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Claire Helms</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team Lead Guide to Grading - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502758.608746">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="team-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Team Lead Guide to Grading</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#key-objectives">Key Objectives</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#generating-spreadsheets-for-project-grading">Generating Spreadsheets for Project Grading</a></li>
+<li><a href="#building-and-deploying-autograders-to-gradescope">Building and Deploying Autograders to Gradescope</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="key-objectives">Key Objectives</h2>
+<ul>
+<li>Overview</li>
+<li>Generating Spreadsheets for Project Grading</li>
+<li>Building and Deploying Autograders to Gradescope</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>The grading team lead is mainly responsible for organizing weekly meetings for assignment/quiz grading, handling regrade requests, and allocating projects to TAs for them to grade. During quiz weeks, there may be a need to schedule multiple meetings in order to quickly grade and return quizzes back to students. It is important to check Gradescope often to keep up with regrade requests, especially in the weeks following the release of quiz or project grades as this is when the majority of regrades are requested. Occasionally, depending on the exercise/project, the grading team lead will also need to update the autograder.</p>
+<h2 id="generating-spreadsheets-for-project-grading">Generating Spreadsheets for Project Grading</h2>
+<p>Once a project deadline has passed, the submissions must be divvied up among all the TAs for them to grade. Generate the spreadsheet using the following steps:</p>
+<ol type="1">
+<li>If you have already cloned the team110 repo, skip to step 2. Otherwise, follow the instructions under the <code>Clone the team110 Repo</code> section in the <a href="/team/documentation/guides/course_site_setup.html">Course Site Setup guide</a>.</li>
+<li>Once you have cloned the repo, create and switch to a new branch using the following command: <code>git checkout -b &lt;name of branch&gt;</code></li>
+<li>Open the project assignment for section 1 on Gradescope and go to <code>Review Grades</code> (located on the left side of the page). At the bottom right of the screen, use the <code>Export Submissions</code> option and then download the zip that it produces. Locate the downloaded zip and extract the contents. You should see a folder with the name <code>assignment_&lt;number&gt;_export</code>. Inside the folder, you should see all the project submissions. Move the <code>assignment_&lt;number&gt;_export</code> folder into the <code>team110/code</code> folder (you can do this by simply dragging the folder directly from the file explorer to the <code>code</code> folder in VSCode).</li>
+<li>Repeat step 3 for the section 2 project submissions.</li>
+<li>Open the <code>team110/code/grading/grading_csv.py</code> file. The file has several named constants. Assign the <code>GS_ASSIGNMENT_EXPORT_1</code> named constant to a string containing the name of the section 1 submissions folder (<code>"assignment_&lt;number&gt;_export"</code>) and assign the <code>GS_ASSIGNMENT_EXPORT_2</code> named constant to a string containing the name of the section 2 submissions folder.</li>
+<li>Open the project assignment for section 1 on Gradescope again, but this time go to <code>Manage Submissions</code>. Copy the url and assign the <code>GS_SUBMISSIONS_1</code> named constant to a string containing the copied url. Repeat this process with section 2 and the <code>GS_SUBMISSIONS_2</code> named constant.</li>
+<li>The <code>utas</code> variable stores a list of all the names of the UTAs on the team. Check the list to make sure all the UTAs are included and appear only once in the list. If any UTAs are missing, add their names to the list.
+<ul>
+<li>TODO: Find a way to import the list of UTAs from Airtable</li>
+</ul></li>
+<li>Run the <code>grading_csv</code> file as a module. Make sure your terminal is in the right directory. If you type pwd in the terminal it should print <code>/Some/Path/.../team110/code</code>. If you do not see this, trash the terminal and create a new one. When you create a new one it should prompt you for the desired working directory – select the <code>code</code> option. Once you are sure that your terminal is in the code directory, run the following command: <code>python -m grading.grading_csv</code>. This should generate a file named <code>submissions.csv</code> in the <code>team110/code</code> folder. Locate the <code>submissions.csv</code> file by right-clicking on it and selecting <code>Reveal in File Explorer</code>.</li>
+<li>Create a google spreadsheet and go to File &gt; Import &gt; Upload and drag the <code>submissions.csv</code> file from the file explorer to the box to generate the spreadsheet. Modify the spreadsheet to look like <a href="https://docs.google.com/spreadsheets/d/1-VCluD-GqdE-zfbX5IuTJlXDLYau0ugSMejDRu82ejs/edit?usp=sharing">this</a>. Change the spreadsheet settings so that anyone with the link can edit.</li>
+<li>Contact Kris to decide on expectations for when all project grading should be complete. Create an announcement in Slack to notify the TAs of project grading allocations. Include the deadline and spreadsheet link in the announcement.</li>
+</ol>
+<p>Note: Some students will inevitably turn in their projects late (after the spreadsheet has been generated). In this case, the grading team should handle the late submissions at one of the meetings.</p>
+<h2 id="building-and-deploying-autograders-to-gradescope">Building and Deploying Autograders to Gradescope</h2>
+<p>Sometimes exercise or project autograders need to be updated. Follow these steps for building and configuring the updated autograder in Gradescope.</p>
+<ol type="1">
+<li>If you have already cloned the team110 repo, skip to step 2. Otherwise, follow the instructions under the <code>Clone the team110 Repo</code> section in the <a href="/team/documentation/guides/course_site_setup.html">Course Site Setup guide</a>.</li>
+<li>Once you have cloned the repo, create and switch to a new branch using the following command: <code>git checkout -b &lt;name of branch&gt;</code>.</li>
+<li>Locate the test file that needs to be updated. Test files for exercises should be found in <code>team110/code/graders/exercises</code> and test files for projects should be found in <code>team110/code/graders/projects</code>.</li>
+<li>Once the test files have been updated, create the grader zip: <code>python -m grading.build &lt;path to folder containing test files&gt;</code>. For example, to build the autograder for ex01, run the command <code>python -m grading.build graders.exercises.ex01</code>. In the <code>team110/code</code> folder, you should now see a file named <code>yy.mm.dd-hh.mm-graders.exercises.ex01.zip</code>. Right-click on this zip file and select <code>Reveal in File Explorer</code>.</li>
+<li>Go to the course Gradescope page and open the assignment. Select <code>Configure Autograder</code> on the left side of the screen. Replace and update the autograder with the zip that was just created. This kicks off the Docker Image build on Gradescope’s end. It typically takes a few minutes to install the latest Python and packages we depend upon. The very last step, once it has completed, is “Successfully tagged gradescope/autograders:University_of_North_Carolina_…”</li>
+<li>Once the autograder has finished updating, go to the <code>Manage Submissions</code> tab and select the <code>Regrade All Submissions</code> option to update the students’ grades.</li>
+<li>Stage (<code>git add &lt;path to file&gt;</code>), commit (<code>git commit -m "&lt;commit message&gt;"</code>), and push (<code>git push origin &lt;branch name&gt;</code>) the updated test files to the team110 repo.</li>
+</ol>
+<blockquote>
+<p>Contributors: Andrew Zheng</p>
+</blockquote>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Andrew Zheng</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502758.608746"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502758.608746"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502758.608746"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

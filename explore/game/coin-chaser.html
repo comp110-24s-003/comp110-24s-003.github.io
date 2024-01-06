@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Coin Chaser pygame demo - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502741.3755836">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="explore-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Coin Chaser pygame demo</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#here-is-a-quick-tutorial-for-tas-to-run-so-that-you-grasp-the-basic-concepts-of-the-pygame-library.">Here is a quick tutorial for TA’s to run, so that you grasp the basic concepts of the pygame library.</a></li>
+<li><a href="#lets-start-by-installing-the-pygame-library-in-your-vscode-terminal-python--m-pip-install-pygame">Lets start by installing the pygame library, in your vscode terminal : ‘python -m pip install pygame’</a>
+<ul>
+<li><a href="#here-is-what-a-boilerplate-pygame-environment-looks-like">Here is what a boilerplate pygame environment looks like:</a></li>
+<li><a href="#lets-try-creating-a-pygame-rect-object-and-draw-it-on-screen">Lets try creating a pygame rect object and draw it on screen:</a></li>
+</ul></li>
+<li><a href="#now-there-should-be-a-rectangle-on-the-screen-in-the-upper-left-corner.-this-is-the-bread-and-butter-for-creating-and-displaying-objects-most-students-will-be-using-rectangles-or-circles-to-display-on-screen.">Now there should be a rectangle on the screen in the upper left corner. This is the bread and butter for creating and displaying objects, most students will be using rectangles or circles to display on screen.</a>
+<ul>
+<li><a href="#next-lets-get-our-mouse-position-and-lock-the-rectangle-to-move-with-it.">Next, let’s get our mouse position and lock the rectangle to move with it.</a></li>
+<li><a href="#now-lets-add-a-coin-and-test-pygames-collisions">Now let’s add a coin and test pygames collisions</a></li>
+<li><a href="#pygame-collisions">Pygame Collisions</a></li>
+</ul></li>
+<li><a href="#extra">Extra:</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="here-is-a-quick-tutorial-for-tas-to-run-so-that-you-grasp-the-basic-concepts-of-the-pygame-library.">Here is a quick tutorial for TA’s to run, so that you grasp the basic concepts of the pygame library.</h2>
+<h2 id="lets-start-by-installing-the-pygame-library-in-your-vscode-terminal-python--m-pip-install-pygame">Lets start by installing the pygame library, in your vscode terminal : ‘python -m pip install pygame’</h2>
+<h3 id="here-is-what-a-boilerplate-pygame-environment-looks-like">Here is what a boilerplate pygame environment looks like:</h3>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Import and initialize the pygame library</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pygame</span>
+<span id="cb1-3"><a href="#cb1-3"></a> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>pygame.init()</span>
+<span id="cb1-5"><a href="#cb1-5"></a> </span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># Set up the drawing window</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>screen <span class="op">=</span> pygame.display.set_mode([<span class="dv">800</span>, <span class="dv">500</span>])</span>
+<span id="cb1-8"><a href="#cb1-8"></a>                               </span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co"># pygame clock object controls tick rate</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>clock <span class="op">=</span> pygame.time.Clock()</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Run until the user asks to quit</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>running <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a> </span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="cf">while</span> running:</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    clock.tick(<span class="dv">60</span>)</span>
+<span id="cb1-16"><a href="#cb1-16"></a> </span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="co"># Fill background</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    screen.fill((<span class="dv">120</span>, <span class="dv">200</span>, <span class="dv">255</span>))</span>
+<span id="cb1-19"><a href="#cb1-19"></a> </span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="co"># Checks every frame for any user input</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="cf">for</span> event <span class="kw">in</span> pygame.event.get():</span>
+<span id="cb1-22"><a href="#cb1-22"></a>        <span class="cf">if</span> event.<span class="bu">type</span> <span class="op">==</span> pygame.QUIT:</span>
+<span id="cb1-23"><a href="#cb1-23"></a>            running <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>   </span>
+<span id="cb1-25"><a href="#cb1-25"></a>    pygame.display.flip()</span>
+<span id="cb1-26"><a href="#cb1-26"></a> </span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="co"># Done! Time to quit.</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a>pygame.quit()</span></code></pre></div>
+<h3 id="lets-try-creating-a-pygame-rect-object-and-draw-it-on-screen">Lets try creating a pygame rect object and draw it on screen:</h3>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Run until the user asks to quit</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>clock <span class="op">=</span> pygame.time.Clock()</span>
+<span id="cb2-3"><a href="#cb2-3"></a>running <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a> </span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># (x, y, width, height)</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>rect: pygame.Rect <span class="op">=</span> pygame.Rect(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">50</span>, <span class="dv">50</span>)</span>
+<span id="cb2-7"><a href="#cb2-7"></a> </span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co"># Fill background</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>screen.fill((<span class="dv">120</span>, <span class="dv">200</span>, <span class="dv">255</span>))</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co"># Draw rect (window, color(rgb), rect object)</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>pygame.draw.rect(screen, (<span class="dv">150</span>, <span class="dv">10</span>, <span class="dv">245</span>), rect)</span></code></pre></div>
+<h2 id="now-there-should-be-a-rectangle-on-the-screen-in-the-upper-left-corner.-this-is-the-bread-and-butter-for-creating-and-displaying-objects-most-students-will-be-using-rectangles-or-circles-to-display-on-screen.">Now there should be a rectangle on the screen in the upper left corner. This is the bread and butter for creating and displaying objects, most students will be using rectangles or circles to display on screen.</h2>
+<h3 id="next-lets-get-our-mouse-position-and-lock-the-rectangle-to-move-with-it.">Next, let’s get our mouse position and lock the rectangle to move with it.</h3>
+<div class="sourceCode" id="cb3" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">while</span> running:</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    clock.tick(<span class="dv">60</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="co"># get_pos() gets the x,y position of the mouse and that is then offset by 25</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    rect.x <span class="op">=</span> pygame.mouse.get_pos()[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">25</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    rect.y <span class="op">=</span> pygame.mouse.get_pos()[<span class="dv">1</span>] <span class="op">-</span> <span class="dv">25</span></span></code></pre></div>
+<p>This is all we need! Since every frame we are drawing the rectangle using its location, changing its location we can easily move the object dynamically based on user input. At this point, your rectangle should appear locked onto the cursor. Students should approach moving objects during the game in this way.</p>
+<h3 id="now-lets-add-a-coin-and-test-pygames-collisions">Now let’s add a coin and test pygames collisions</h3>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>coin <span class="op">=</span> pygame.Rect(<span class="dv">200</span>, <span class="dv">300</span>, <span class="dv">25</span>, <span class="dv">25</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>(pygame has a lot of attributes <span class="cf">for</span> rect objects like centerx (location of middle of rect on x<span class="op">-</span>axis))</span>
+<span id="cb4-4"><a href="#cb4-4"></a> pygame.draw.rect(screen, (<span class="dv">150</span>, <span class="dv">10</span>, <span class="dv">245</span>), rect)</span>
+<span id="cb4-5"><a href="#cb4-5"></a> <span class="co"># draw circle (window, color(rgb), position (x,y), radius)</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a> pygame.draw.circle(screen, (<span class="dv">235</span>, <span class="dv">162</span>, <span class="dv">52</span>), (coin.centerx, coin.centery), <span class="dv">15</span>)</span></code></pre></div>
+<p>On screen should be a golden circle (coin), even though we created a rectangle object to represent the position. This rectangle can be viewed as a “hit box” or a rectangle around our coin that can be used to more easily calculate collisions using pygame.</p>
+<h3 id="pygame-collisions">Pygame Collisions</h3>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>pygame.draw.circle(screen, (<span class="dv">235</span>, <span class="dv">162</span>, <span class="dv">52</span>), (coin.centerx, coin.centery), <span class="dv">15</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>hit <span class="op">=</span> coin.colliderect(rect)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        <span class="cf">if</span>(hit):</span>
+<span id="cb5-4"><a href="#cb5-4"></a>            <span class="op">//</span> destroy coin <span class="kw">and</span> increment score</span></code></pre></div>
+<p>Pygame’s colliderect is a method of a rect, takes another rect, and returns a bool as to whether they overlap. This bool can be used to execute collision behavior which I have left out.</p>
+<h2 id="extra">Extra:</h2>
+<p>If you are feeling adventurous try adding a list of coins, and use for loops to draw, check collisions, and remove coins when the player hits them!</p>
+<p>Check out the pygame documentation for the rect object, it will be super helpful for students and for you</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Ben Hites</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

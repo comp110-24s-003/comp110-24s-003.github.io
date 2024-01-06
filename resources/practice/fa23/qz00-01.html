@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 01 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502737.2244434">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 01 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#quiz-concepts">Quiz Concepts</a></li>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#data-types">Data Types</a></li>
+<li><a href="#expressions">Expressions</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#while-loops-basic">While Loops Basic</a></li>
+<li><a href="#while-loops-functions">While Loops + Functions</a></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#data-types-solutions">Data Types Solutions</a></li>
+<li><a href="#expressions-solutions">Expressions Solutions</a></li>
+<li><a href="#conditionals-solutions">Conditionals Solutions</a></li>
+<li><a href="#while-loops-basics-solutions">While Loops Basics Solutions</a></li>
+<li><a href="#while-loops-and-functions-solutions">While Loops and Functions Solutions</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="quiz-concepts">Quiz Concepts</h1>
+<p>Quiz 01 will cover both the concepts that would’ve been on Quiz 00 and Quiz 01. (However, it won’t be any longer than a typical quiz.)</p>
+<p>You can find a full list of concepts <a href="/resources/qz01-concepts.html">here</a>.</p>
+<h1 id="questions">Questions</h1>
+<p>The quiz itself will be similar in difficulty to these practice questions. In addition to these questions, you should review all of your lesson responses on Gradescope. The kinds of questions you responded to on Gradescope will also be on the quiz.</p>
+<p>Solutions for each problem can be found at the bottom of this page. (But if you’re unsure, before looking up the solution, try figuring it out on your own or testing it out in Visual Studio!)</p>
+<h2 id="data-types">Data Types</h2>
+<ol type="1">
+<li><code>str</code> literals in Python can be surrounded in either single-quote characters (<code>'like this'</code>) or double-quote characters (<code>"like this"</code>), though in COMP110 we prefer the double-quotes. (T/F)</li>
+<li><code>TRUE</code> and <code>FALSE</code> are valid bool values in Python. (T/F)</li>
+<li>An <code>int</code> literal can begin with a zero, but cannot end with a zero. (T/F)</li>
+<li>What function can we use to identify the type classification of any object in Python?</li>
+</ol>
+<p><a href="#data-types-solutions">Solutions</a></p>
+<h2 id="expressions">Expressions</h2>
+<ol type="1">
+<li>What is the resulting <em>value</em> and <em>data type</em> of the following expression? <code>int("20")</code></li>
+<li>What is the resulting <em>value</em> and <em>data type</em> of the following expression? <code>str(2023) + str(2023)</code></li>
+<li>What is the resulting value of the following expression? <code>type(9 / len( str(110))</code></li>
+<li>What is the resulting value of the following expression? <code>"440" + "20"</code></li>
+<li>What value of x would cause the following expression to evaluate to <code>True</code>? <code>(3 + x) == (55 % 2 ** 4)</code></li>
+<li>What value does the following expression result in, and what is its type? <code>2 + 2 / 2 ** (2 * 0)</code></li>
+<li>Using subscription syntax and concatenation, write an expression that evaluates to <code>"tar"</code> using the following string: <code>“Saturday"</code>.</li>
+<li>What data type do expressions with <em>relational operators</em> typically evaluate to?</li>
+<li>What does the following expression evaluate to? <code>int("10" + "40") &gt; 100 * 2</code></li>
+</ol>
+<p><a href="#expressions-solutions">Solutions</a></p>
+<h2 id="conditionals">Conditionals</h2>
+<ol type="1">
+<li><p>Every <code>if</code> statement must be followed by a paired <code>else</code> branch. (T/F)</p></li>
+<li><p>Lines contained in an <code>else</code> branch in Python do not have to be indented. (T/F)</p></li>
+<li><p>You can name a variable <code>else</code> in your program without Python confusing your variable’s name and the <code>else</code> keyword. (If you are unsure, this is a good one to try yourself!) (T/F)</p></li>
+<li><p>All subquestions of this problem will refer to this code snippet:</p>
+<pre><code> x: str = int(input(&quot;Pick a number: &quot;))
+ y: int = 10
+ z: int = 2
+ x = x - 1
+ if x &lt; 10:
+     print(&quot;A&quot;)
+ elif (x % z) == 0:
+     print (&quot;B&quot;)
+ if x == (y + z):
+     print(&quot;C&quot;)
+ else: 
+     print(&quot;D&quot;)</code></pre></li>
+</ol>
+<p>For the following subquestions, answer with a valid input value for <code>x</code> that would cause the given letter to print. It is OK for your input to cause other letters to print as well. If there is no such value, write “Unreachable”.</p>
+<p>4.1 <code>A</code></p>
+<p>4.2 <code>B</code></p>
+<p>4.3 <code>C</code></p>
+<p>4.4 <code>D</code></p>
+<p>Now, answer with a valid input value for <code>x</code> that would cause the <em>exact</em> given letter(s) to print (no other letters). If there is no such value, write “Unreachable”.<br />
+4.5</p>
+<pre><code>A
+C</code></pre>
+<p>4.6</p>
+<pre><code>B
+C</code></pre>
+<p>4.7</p>
+<pre><code>C</code></pre>
+<p>4.8</p>
+<pre><code>D</code></pre>
+<p><a href="#conditionals-solutions">Solutions</a></p>
+<h2 id="while-loops-basic">While Loops Basic</h2>
+<ol type="1">
+<li><p>Given the following code snippet, what is the printed output once it completes?</p>
+<pre><code> &quot;&quot;&quot;Loops Practice!&quot;&quot;&quot;
+
+ x: int = 0
+ y: int = 3
+ z: str = &quot;1&quot;
+
+ while x &lt; y:
+     z = z + str(y) + str(x)
+     x = x + 1
+
+ print(x)
+ print(y)
+ print(z)</code></pre></li>
+<li><p>Given the following code snippet, what is the printed output once it completes?</p>
+<pre><code> &quot;&quot;&quot;Loops Practice!&quot;&quot;&quot;
+
+ x: int = 10
+ result: str = &quot;&quot;
+
+ while x &gt;= 0:
+     if x % 3 &gt; 0:
+         result = result + str(x)
+     else:
+         result = str(x) + result
+     x = x - 1
+
+ print(result)</code></pre></li>
+</ol>
+<p><a href="#while-loops-basics-solutions">Solutions</a></p>
+<h2 id="while-loops-functions">While Loops + Functions</h2>
+<ol type="1">
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</p>
+<pre><code> WORD: str = &quot;happy&quot;
+ l1_idx: int = 0
+ l2_idx: int = 0
+ t1: str = &quot;&quot;
+ t2: str = &quot;&quot;
+ n_appearances: int = 0
+
+ while l1_idx &lt; len(WORD):
+     t1 = WORD[l1_idx]
+     n_appearances = 1
+     l2_idx = 0
+
+     while l2_idx &lt; len(WORD):
+         t2 = WORD[l2_idx]
+
+         if (t1 == t2) and (l1_idx != l2_idx):
+             n_appearances = n_appearances + 1
+         l2_idx = l2_idx + 1
+     print(f&quot;{WORD[l1_idx]} appears {n_appearances} times.&quot;)
+     l1_idx = l1_idx + 1</code></pre></li>
+</ol>
+<p>1.1 What would happen if <code>while l1_idx &lt; len(WORD)</code> in line 8 was replaced with <code>while l1_idx &lt; len(WORD) - 1</code>? Why?</p>
+<p>1.2 What would happen if <code>l2_idx=0</code> was moved to inside the second while loop? In other words, what if lines 11-13 were changed to:</p>
+<pre><code>while l2_idx &lt; len(WORD):
+    l2_idx = 0</code></pre>
+<p>1.3 What would happen if, in line 16, <code>if (t1 == t2) and (l1_idx != l2_idx):</code> was replaced with <code>if (t1 == t2):</code>? Why?</p>
+<p>1.4 What would happen if line 18 (<code>l2_idx = l2_idx + 1</code>) was removed? Why?</p>
+<p>1.5. What would happen if the <code>&lt;</code> symbol in line 8 was replaced with <code>&lt;=</code>? (In other words, what if it was changed to <code>while l1_idx &lt;= len(WORD):</code>)? Why?</p>
+<ol start="2" type="1">
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</p>
+<pre><code> def main() -&gt; None:
+     &quot;&quot;&quot;Main Function&quot;&quot;&quot;
+     y: int = g(1)
+     f(y)
+     print(g(f(3)))
+
+ def f(x: int) -&gt; int:
+     &quot;&quot;&quot;Function 0&quot;&quot;&quot;
+     if x % 2 == 0:
+         print(f&quot;{x} is even&quot;)
+     else:
+         x += 1
+     return x
+
+ def g(x: int) -&gt; int:
+     &quot;&quot;&quot;Function 1&quot;&quot;&quot;
+     while x % 2 == 1:
+         x += 1
+     return x
+
+ main()</code></pre></li>
+</ol>
+<p>2.1 Why is it that <code>main()</code> is defined above <code>f()</code> and <code>g()</code>, but we are able to call <code>f()</code> and <code>g()</code> inside <code>main()</code> without errors?</p>
+<p>2.2 On line 5, when <code>print(g(f(3)))</code> is called, is the code block inside of the <code>while</code> loop ever entered? Why or why not?</p>
+<p>2.3 What would happen if a line was added to the end of the snipped that said <code>print(x)</code>. Why?</p>
+<p><a href="#while-loops-and-functions-solutions">Solutions</a></p>
+<h1 id="solutions">Solutions</h1>
+<h2 id="data-types-solutions">Data Types Solutions</h2>
+<ol type="1">
+<li>T</li>
+<li>F</li>
+<li>F</li>
+<li><code>type()</code></li>
+</ol>
+<h2 id="expressions-solutions">Expressions Solutions</h2>
+<ol type="1">
+<li><p><code>20</code>, <code>int</code></p></li>
+<li><p><code>"20232023"</code>, <code>str</code></p></li>
+<li><p><code>&lt;class 'float'&gt;</code> (Or just <code>float</code> is sufficient on a quiz.)</p></li>
+<li><p><code>"44020"</code></p></li>
+<li><p><code>4</code></p></li>
+<li><p><code>4.0</code></p></li>
+<li><p>There are two possible answers:</p>
+<p><code>"Saturday"[2] + "Saturday"[1] + "Saturday"[4]</code></p>
+<p>or</p>
+<p><code>"Saturday"[2] + "Saturday"[6] + "Saturday"[4]</code></p></li>
+<li><p><code>bool</code></p></li>
+<li><p><code>True</code></p></li>
+</ol>
+<h2 id="conditionals-solutions">Conditionals Solutions</h2>
+<ol type="1">
+<li>F</li>
+<li>F</li>
+<li>F</li>
+<li>4.1 Any value &lt; 11 4.2 Any value &gt;= 11 and odd. (Since <code>x % z == 0</code> must be True and <code>z</code> is 2, this means <code>x - 1</code> must be even.) 4.3 13 4.4 Any value != 13 4.5 Unreachable 4.6 13 4.7 Unreachable 4.8 Any value &gt;= 11 and even</li>
+</ol>
+<h2 id="while-loops-basics-solutions">While Loops Basics Solutions</h2>
+<ol type="1">
+<li>3<br />
+3<br />
+“1303132”</li>
+<li>“036910875421”</li>
+</ol>
+<h2 id="while-loops-and-functions-solutions">While Loops and Functions Solutions</h2>
+<ol type="1">
+<li><img class="img-fluid" src="/static/practice_worksheets/sp23/q1_sol1.png" alt ="The memory diagram includes a box on the top labeled Output and a box on the bottom labeled Stack, next to an empty area labeled Heap. 
+The Stack contains the variables WORD, l1 underscore idx, l2 underscore idx, t1, t2, and n underscore appearances. The WORD variable contains the value happy in quotes. 
+The variable l1 underscore idx has the value of 5, with previous values of 0, 1, 2, 3, and 4 all crossed out. L2 underscore idx has the final value of 5, with previous values of 0, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, and 4 all crossed out. T1 has the final value of y with previous values of an empty string, h, a, p, p, and y all in quotes and crossed out. T2 has the final value of y (in quotes) with previous values of an empty string, h, a, p, p, y, h, a, p, p, y, h, a, p, p, y, h, a, p, p, y, h, a, p, and p all in quote and crossed out. Finally, the variable n underscore appearances has the final value of 1 with previous values of 0, 1, 1, 1, 2, 1, and 2 all crossed out. 
+The output box contains the sentence h appears 1 times. Below that, on a separate line is the output a appears 1 times. Next, is the line p appears 2 times., p appears 2 times., and y appears 1 times. each on separate lines. 
+"/></li>
+</ol>
+<p>(We do not <em>require</em> that you write out all interim values as long as the initial and final values are correct like in the solution below. However, writing the interim values will help for practice purposes and to avoid mistakes!)</p>
+<p><img class="img-fluid" src="/static/practice_worksheets/sp23/q1_sol2.jpg" alt="The memory diagram has three columns, labeled from left to right Stack, Heap, and Output. Under the stack, there is a frame labeled Globals. 
+The globals frame contains the variables WORD, l1 underscore idx, l2 underscore idx, t1, t2, and n underscore appearances. The WORD variable contains the value happy in quotes. The variable l1 underscore idx has the value of 5 with the previous value of 0 crossed out. The variable l2 underscore idx has the value of 5 with the previous value of 0 crossed out. The variable t1 has the final value of y in quotes, with the previous value an empty string in quotes crossed out. The variable t2 has the final value of y in quotes, with the previous value of an empty string in quotes crossed out. Finally, the variable n underscore appearances has the value 1 with the previous value 0 crossed out.
+The heap column is empty.
+The output column contains the sentence h appears 1 times. Below that, on a separate line is the output a appears 1 times. Next is the line p appears 2 times., p appears 2 times., and y appears 1 times. each on separate lines. 
+"></p>
+<p><strong>Here’s a link to a <a href="https://www.youtube.com/watch?v=NqNuPjnq-UE">video of the solution</a>!</strong></p>
+<p>1.1 “y appears 1 times.” would not print. This is because <code>l1_idx</code> will not enter the while loop for <code>l1_idx = 4</code>. (For more practice, it’d be good to diagram this instance out to see how it would impact the final values of other variables.)</p>
+<p>1.2 An infinite loop would occur because <code>l2_idx</code> would always equal <code>1</code> when returning to the top of the loop, and therefore <code>l2_idx &lt; len(WORD)</code> will always be True.</p>
+<p>1.3 If <code>l1_idx != l2_idx</code> is no longer required, this means that each letter can count itself twice. For example, <code>WORD[0] == WORD[0]</code> is true, so <code>n_appearances</code> for <code>"h"</code> would increase to <code>2</code>.</p>
+<p>1.4 There would be an infinite loop because <code>l2_idx</code> will never increase, and therefore <code>l2_idx &lt; len(WORD)</code> will always be True.</p>
+<p>1.5 There would be an index error because there would be the case where <code>l1_idx = 5</code>, so on line 9 <code>WORD[5]</code> would be searching for the element at index 5 in <code>"happy"</code>, when the indexes only go up to 4.</p>
+<ol start="2" type="1">
+<li><img class="img-fluid" src="/static/practice_worksheets/sp23/q2_sol.jpg" alt="The memory diagram includes a box on the top labeled Output and a box on the bottom labeled Stack, next to an area labeled Heap.
+The first frame in the Stack is labeled Globals and contains the variables main, f, and g. The variable main points to a small box on the heap that says fn 1-5. The variable f points to a small box on the heap that says fn 7-13. The variable g points to a small box on the heap that says fn 15-19.
+The next frame on the stack is labeled main and contains a return address and a variable y. The return address is 21 and y has a value of 2. The next frame is labeled g and contains a return address, return value, and a variable x. The return address is 2, the variable x has a value of 2 with the previous value of 1 crossed out, and the return value is 3. The next frame is labeled f and contains a return address, return value, and a variable x. The return address is 4, the variable x has a value of 2, and the return value is 2. The next frame is labeled f and contains a return address, return value, and a variable x. The return address is 5, the variable x has a value of 4 with the previous value of 3 crossed out, and the return value is 4. The final frame is labeled g and contains a return address, return value, and the variable x. The return address is 5, the variable x has a value of 4, and the return value is 4.
+The output box contains a line that says (in quotes) 2 is even. Then, on the next line it says (in quotes) 4.
+"></li>
+</ol>
+<p>2.1 Even though <code>main</code> is defined before <code>f</code> and <code>g</code>, it isn’t <strong>called</strong> until after <code>f</code> and <code>g</code> are defined.</p>
+<p>2.2 No because <code>x = 4</code>, so <code>x % 2 == 1</code> is False, and therefore the code block inside is never run.</p>
+<p>2.3 There would be an error because <code>x</code> is a local variable inside both <code>f</code> and <code>g</code>. In other words, <code>x</code> is <em>NOT</em> a global variable. Therefore, the program does not recognize that <code>x</code> exists in this context.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang,        David Karash, Alyssa Lytle</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

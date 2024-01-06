@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 03 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502736.019594">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 03 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#concepts-on-quiz-3">Concepts on Quiz 3</a></li>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#conceptual-questions">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams">Memory Diagrams</a></li>
+<li><a href="#function-writing">Function Writing</a></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#conceptual-questions-1">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams-1">Memory Diagrams</a></li>
+<li><a href="#function-writing-1">Function Writing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="concepts-on-quiz-3">Concepts on Quiz 3</h1>
+<p>Before working through these practice questions, you should first carefully read this page on <a href="/resources/quiz-expectations.html">Quiz Expectations</a>.</p>
+<p>Quiz 3 will cover the following concepts:</p>
+<ul>
+<li>Lessons 18 through 21</li>
+</ul>
+<h1 id="questions">Questions</h1>
+<p>The quiz itself will be similar in difficulty but longer in length than this practice worksheet.</p>
+<p>Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>To access a value in a dictionary, you use the format <code>dictionary_name{key}</code>. (T/F)</li>
+<li>Multiple keys can have the same value. (T/F)</li>
+<li>The values in a dictionary cannot be changed after the dictionary is constructed. (T/F)</li>
+<li>The <code>not in</code> operator can be used to check whether a specific key exists in a dictionary. (T/F)</li>
+<li>For the purposes of this course, all values in a dictionary are of the same type. (T/F)</li>
+<li>Dictionaries can have lists or other dictionaries as their <em>keys</em>. (T/F)</li>
+<li>In a Jupyter Notebook, you may evaluate the cells in any order. (T/F)</li>
+<li>You should write comments in a Python cell to narrate your code in a Jupyter Notebook. (T/F)</li>
+<li>Cells will automatically print output below them if the final line of the code assigns a value to a variable. (T/F)</li>
+<li>Restarting the Jupyter notebook’s kernel erases all of its variables that were previously assigned by running cells. (T/F)</li>
+</ol>
+<h2 id="memory-diagrams">Memory Diagrams</h2>
+<ol start="11" type="1">
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output. <img src="/static/practice_worksheets/fa21/qz03-question11.png" /><br />
+11.1 Describe in words what the <code>scan</code> function does.</p></li>
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.<br />
+<img src="/static/practice_worksheets/fa21/qz03-question12.png" /></p></li>
+</ol>
+<h2 id="function-writing">Function Writing</h2>
+<ol start="13" type="1">
+<li><p>Write a function called <code>dict_transform</code>. Given a dictionary with <code>int</code> keys and <code>list[int]</code> values, <code>dict_transform</code> should return the dictionary with every value in a list multiplied by its corresponding key.<br />
+Example: <code>dict_transform({ 2:[1,2] , 5:[3,4] })</code> returns <code>{ 2:[2,4] , 5:[15,20] }</code>.</p></li>
+<li><p>Write a function called <code>average_grades</code>. Given a dictionary with <code>str</code> keys and <code>list[int]</code> values, <code>average_grades</code> should return a new dictionary of type <code>dict[str, float]</code> that maps each student to their average.<br />
+Example: <code>average_grades({ ‘Bill’:[75, 94, 97] , ‘Annie’:[88, 93, 99] })</code> returns <code>{ ‘Bill’:88.67 , ‘Annie’:93.33 }</code>.</p></li>
+</ol>
+<h1 id="solutions">Solutions</h1>
+<h2 id="conceptual-questions-1">Conceptual Questions</h2>
+<ol type="1">
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>False</li>
+<li>True</li>
+</ol>
+<h2 id="memory-diagrams-1">Memory Diagrams</h2>
+<ol start="11" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/qz03-solution11.png" /><br />
+11.1 The <code>scan</code> function takes in a dictionary and returns a list of the names of people that are 21 and older.</p></li>
+<li><p><img src="/static/practice_worksheets/fa21/qz03-solution12.png" /></p></li>
+</ol>
+<h2 id="function-writing-1">Function Writing</h2>
+<ol start="13" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/qz03-solution13.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/qz03-solution14.png" /></p></li>
+</ol>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang, David Karash</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> EX00 - Hello, world. - COMP110 - 22F</title>
+    <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=1704502719.9753482">
+</head>
+
+<body id="body" class="absolute-page">
+    <script>
+        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add(localStorage.getItem('mode'));
+    </script>
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <div class="wrapper">
+        <nav id="navbarStick" class="navbar navbar-expand">
+            <div class="container-fluid d-flex">
+                <div class = 'hide-during-scroll'>
+                    <div class="container nav-const">
+                        <a class="navbar-brand" href="/public"><img class="lightmode-element-only img-fluid logo" src="/static/lightbrand.png"
+                                alt="COMP110 - Spring - 2021"><img class="darkmode-element-only img-fluid logo" src="/static/darkbrand.png"
+                                alt="COMP110 - Spring - 2021"></a>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/public/course">course</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/public/topics">topics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/public/contact">contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-auto form-check form-switch mode">
+                    <div class="switches">
+                            <input type="checkbox" id="1" onclick="
+                            if (localStorage.getItem('mode') === null || localStorage.getItem('mode') === 'light-mode'){
+                                localStorage.setItem('mode', 'dark-mode');
+                            } else {
+                                localStorage.setItem('mode', 'light-mode');
+                            }
+                            location.reload();">
+                            <label for="1">
+                            <span id="mode-label">Dark Mode</span>
+                            <span></span>
+                            </label>
+                            <script>if(localStorage.getItem('mode') === 'dark-mode'){document.getElementById("1").checked = true}</script>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="exercises-page" class="container">
+            <div class="row pt-4">
+                <div class="col-12">
+                    <h1 class="display-5">EX00 - Hello, world.</h1>
+                    <hr class="title"/>
+                </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#complete-the-prerequisites">0. Complete the Prerequisites</a></li>
+<li><a href="#write-your-first-program">1. Write Your First Program!</a></li>
+<li><a href="#congratulations">2. Congratulations!</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Welcome to COMP110 - Introduction to Programming at UNC Chapel Hill!</p>
+<h2 id="complete-the-prerequisites">0. Complete the Prerequisites</h2>
+<p>Before continuing on, make sure you have set up your account on Repl!</p>
+<h2 id="write-your-first-program">1. Write Your First Program!</h2>
+<p>Now for the main attraction! Let’s write a classic “hello world” program.</p>
+<p>In your repl project, navigate to the menu on the left and select the “files” tab. Create a new folder called <code>exercises.</code></p>
+<p>Click the three dots on the right of <code>exercises</code> folder and select “Add File”. Name your file:</p>
+<ul>
+<li><code>ex00_hello_world.py</code></li>
+</ul>
+<p>An empty file opens. The <code>.py</code> file extension is standard for Python programs.</p>
+<p>For the past 50 or so years it’s a tradition in the programming world for your first program to print the words “Hello, world.” We won’t break it.</p>
+<p>Write the line of code below in your file:</p>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world.&quot;</span>)</span></code></pre></div>
+<p>Replit should automatically will save your work as long as you are connected to the internet.</p>
+<p>To run your program, navigate to the right of the page and click on the <code>shell</code> tab.</p>
+<p>Then, after the prompt “~/Comp110-Workspace$”, type out the following command and press enter:</p>
+<p><code>python -m exercises.ex00_hello_world</code></p>
+<p>If it works, you should see the text “Hello, world.” printed in the shell! If it doesn’t work, it’s likely a minor issue somewhere. Programming is very precise, go back through and try each instruction again checking for exact punctuation, capitalization, and spelling matches. Even a minor discrepency will cause it to go awry.</p>
+<p>Congratulations, you’ve written and run your first Python program! Try running it again by pressing the up arrow on your keyboard, noticing the same command you ran last is filled in, and pressing enter again.</p>
+<p>What is the command you wrote doing? The first word <code>python</code> is the program responsible for interpretting your code. The second symbol, <code>-m</code>, is what we call an “option” that is short for “run as <em><code>m</code>odule</em>”. You’ll learn all about modules soon. Lastly, <code>exercises.ex00_hello_world</code> is referring to the file you created! Notice you created the file <code>ex00_hello_world.py</code> in the <code>exercises</code> directory, or “folder”. This is the module you are asking <code>python</code> to interpret!</p>
+<p>Try changing the text inside of the double quotes (but be sure to keep the words <code>hello</code> and <code>world</code> somewhere), saving again, and rerunning your program.</p>
+<p>What is this line of code doing? You are <em>calling</em> a <em>function</em> named <code>print</code>. The <code>print</code> function is <a href="https://docs.python.org/3/library/functions.html#print">built-in to the Python programming language</a> and results in data being “printed” out <em>somewhere</em>. By default, that <em>somewhere</em> is on your screen in the Terminal. The parentheses following the word <code>print</code> indicate extra information being given to the <code>print</code> function. In this example, you are giving a piece of textual information to print which is called a “string” and denoted by the double quotes surrounding the textual data. Don’t worry, we will break down all of this into more tangible detail soon!</p>
+<h2 id="congratulations">2. Congratulations!</h2>
+<p>There were <em>a lot</em> of steps and new concepts thrown at you in this initial exercise. Gearing up is half the battle! The amount of setup involved in a modern development environment can be a little overwhelming to a first-time programmer. You are not expected to understand the intricacies of all the processes and software you just followed and setup. That will come with time. For now, focus on the big win that is having written a Python program in a professional code editor, run it, and backed it up using git! Programming gets way more fun, and way more creatively rewarding, as we make our way up the mountain from here.</p>
+</div>
+
+       
+
+    </div> 
+            
+            <div class='link-page wrapper'>
+            <footer>
+                    <p class="footer-content">&copy; 2021 <a href="https://krisjordan.com">Kris Jordan</a>
+                        - <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLScQMteEvnQpBfGsAYP5TpuqokQenhZUIf8CNvfAUUZEjMCWZQ/viewform?usp=sf_link">Feedback
+                            Form</a> - Made with 💛in <a href="https://cs.unc.edu/">Chapel Hill</a></p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"
+        integrity="sha256-5oApc/wMda1ntIEK4qoWJ4YItnV4fBHMwywunj8gPqc=" crossorigin="anonymous"></script>
+    <script src="/static/script.js"></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502719.9753482"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502719.9753482"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502719.9753482"></script>
+
+
+</body>
+
+</html>

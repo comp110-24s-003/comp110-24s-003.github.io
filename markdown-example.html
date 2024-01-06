@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Markdown Example - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502712.580888">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Markdown Example</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#heading-1">Heading 1</a>
+<ul>
+<li><a href="#heading-2">Heading 2</a>
+<ul>
+<li><a href="#heading-3">Heading 3</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#general-styling">General Styling</a></li>
+<li><a href="#bullets-and-numbering">Bullets and Numbering</a></li>
+<li><a href="#images-and-links">Images and Links</a>
+<ul>
+<li><a href="#links">Links</a>
+<ul>
+<li><a href="#linking-internally">Linking Internally</a></li>
+<li><a href="#linking-externally">Linking Externally</a></li>
+</ul></li>
+<li><a href="#image">Image</a></li>
+</ul></li>
+<li><a href="#code-blocks">Code Blocks</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="heading-1">Heading 1</h1>
+<p>These are the different heading sizes available.</p>
+<h2 id="heading-2">Heading 2</h2>
+<p>When the overview template is used, they also can appear in a table of contents like you see on the right.</p>
+<h3 id="heading-3">Heading 3</h3>
+<p>Notice that headings sizes are nested based on which size they are.</p>
+<h4 id="heading-4">Heading 4</h4>
+<p>Keep in mind that heading 4 will not show up in the table of contents.</p>
+<h1 id="general-styling">General Styling</h1>
+<blockquote>
+<p>To highlight blocks of text follow this format.</p>
+</blockquote>
+<p><strong>To bold text follow this format</strong></p>
+<p><em>To italicize text follow this format</em></p>
+<h1 id="bullets-and-numbering">Bullets and Numbering</h1>
+<p>You can create lists with the following formats:</p>
+<ul>
+<li>Exercises</li>
+<li>Projects</li>
+<li>Conceptual Questions</li>
+<li>Lecture Review</li>
+</ul>
+<ol type="1">
+<li>Exercises</li>
+<li>Projects</li>
+<li>Conceptual Questions</li>
+<li>Lecture Review</li>
+</ol>
+<h1 id="images-and-links">Images and Links</h1>
+<h2 id="links">Links</h2>
+<p>Sometimes we want links to reuse the same tab when redirecting the browser, but sometimes we want them to open a new tab and leave the course site up.</p>
+<h3 id="linking-internally">Linking Internally</h3>
+<p>When linking to another page on the course site, follow this format:</p>
+<p><a href="/resources/style-guide.html">Style, Linting and Reading the Autograder</a></p>
+<h3 id="linking-externally">Linking Externally</h3>
+<p>When linking to a page off the course site, follow this format:</p>
+<p><a href="https://www.alexandrato.com/papers/Critical_Race_Theory_for_HCI.pdf" target="_blank" rel="noopener noreferrer">Critical Race Theory for Human-Computer Interaction</a></p>
+<p>Note that in this case we can just use html to achieve our needs. This is a pattern you can make use of! While we want to avoid it, if you can not achieve your desired effect with simple markdown, you are able to also put html into the markdown files and our dev and prod scripts can parse it fine!</p>
+<h2 id="image">Image</h2>
+<p><img src="/static/assets/support/officehours.png" /></p>
+<h1 id="code-blocks">Code Blocks</h1>
+<p>Keep in mind that code blocks show up slightly off when viewing on the dev server. To see what code blocks will look like once they are published to the course site visit this page on the published site -&gt; https://21s.comp110.com/markdown-example.html</p>
+<p>For shorter code blocks, line numbers are not that helpful so use this formatting.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="cf">if</span> <span class="op">&lt;</span>conditional statement<span class="op">&gt;</span>:      </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>   <span class="co"># code to execute</span></span></code></pre></div>
+<p>For longer code blocks, line numbers are helpful for describing specific lines to students. Use the formatting below.</p>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">if</span> <span class="op">&lt;</span>conditional statement<span class="op">&gt;</span>:    </span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="co"># code to execute</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">else</span>:</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="co"># code that executes when conditional statement is false</span></span></code></pre></div>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

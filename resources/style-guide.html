@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Style, Linting and Autograder Guide - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502720.6580575">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Style, Linting and Autograder Guide</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#general-layout-guidelines">General Layout Guidelines</a></li>
+<li><a href="#how-to-read-the-autograder">How to Read the Autograder</a></li>
+<li><a href="#specific-autograder-errors">Specific Autograder Errors</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="general-layout-guidelines">General Layout Guidelines</h2>
+<ol type="1">
+<li>Make sure to include a file <strong>Docstring</strong> and <strong>author variable</strong>.
+<ul>
+<li>A <strong>Docstring</strong> should be surrounded by triple quotes, have no spaces on at the beginning and end, and end in punctuation.</li>
+<li>An <strong>author variable</strong> should have two underscores (a dunderscore) on either side of author and be equal to your PID in <strong>String</strong> format.</li>
+</ul></li>
+<li><strong>Named constants</strong> follow the Docstring and author variable. They should be all capitalized and already initialized.</li>
+<li>Every function and class should have it’s own <strong>Docstring</strong> as the first line. There should also be two newlines of space in between each function or class.
+<ul>
+<li>Every function must be declared with a unique name, it’s parameters and a return type.</li>
+<li>Note that <code>add_one</code> returns an <code>int</code> and therefore must have a return statment. However <code>print_word</code> returns <code>None</code> and therefore a return statement is not required.</li>
+</ul></li>
+</ol>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">&quot;&quot;&quot;This is a Docstring.&quot;&quot;&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>__author__ <span class="op">=</span> <span class="st">&quot;123456789&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>NAMED_CONSTANT: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">def</span> add_one(num: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="co">&quot;&quot;&quot;Adds one to a given number.&quot;&quot;&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">return</span> num <span class="op">+</span> NAMED_CONSTANT</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">def</span> print_word(word: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="co">&quot;&quot;&quot;Prints out a given word.&quot;&quot;&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="bu">print</span>(word)</span></code></pre></div>
+<h2 id="how-to-read-the-autograder">How to Read the Autograder</h2>
+<p>If you don’t recieve full credit when submitting to the autograder, there will likely be error messages outputted. Understanding how to read these messages can be key to figuring out what is wrong with your code.</p>
+<h4 id="basic-failed-test">Basic Failed Test</h4>
+<p>Below is an example of a possible autograder error message if your code did not pass a functionality test.</p>
+<p><img src="../../static/assets/autograder-fail.png" /></p>
+<ul>
+<li><code>graders/exercises/ex02/cipher_test.py:38</code> tells you which line of the grader found the missing functionality in your code. Since you cannot see the grader, you can ignore this part.</li>
+<li><code>AssertionError: assert 'n' == 'njml'</code> tells you that your code outputted <code>'n'</code> but the autograder was expecting <code>'njml'</code>.</li>
+<li>` - njml, + n<code>tells you the same thing,</code>njml<code>was missing from your output but</code>n` was present.</li>
+</ul>
+<h4 id="code-style-and-linting-errors">Code Style and Linting Errors</h4>
+<p>Below is an example of a possible autograder error message for a style issue.</p>
+<p><img src="../../static/assets/autograder-lintfail.png" /></p>
+<ul>
+<li><code>exercises/ex02/cipher.py</code> tells you that it was the <code>cipher.py</code> file that threw the error and that the file is located in <code>exercises/ex02</code>.</li>
+<li><code>10</code> tells you that this error originated from line 10 of the given file.</li>
+<li><code>43</code> tells you how far (how many characters) into the line the error occured.</li>
+<li><code>E225</code> is a <strong>flake8 linter</strong> error. Linting helps identify formatting issues in your code. You can view these error codes <a href="https://www.flake8rules.com/" target="_blank" rel="noopener noreferrer">here</a>.</li>
+<li><code>missing whitespace around operator</code> gives you a brief summary of your formatting issue.</li>
+</ul>
+<p>Most autograder errors will follow this general pattern. You should familiarize yourself with reading autograder errors to help you get full points on exercises, projects and quizzes.</p>
+<h2 id="specific-autograder-errors">Specific Autograder Errors</h2>
+<p>This section contains errors unrelated to linting and styling and some possible fixes to try.</p>
+<ul>
+<li>The file won’t upload, or when it uploads the autograder doesn’t seem to recognize the files.
+<ul>
+<li>Delete all your old submission zips, then create a new submission zip making sure to check for punctuation or spelling errors in the command.</li>
+</ul></li>
+<li>No tests or only <code>Lint - Code style, documentation, formatting</code> is showing up.
+<ul>
+<li>Check that your file is in the correct location.</li>
+<li>Make sure your folder and files are named correctly.</li>
+<li>Confirm all functions are properly named and declared.</li>
+<li>Check for any unclosed parenthesis, quotation marks or other small syntax errors.</li>
+</ul></li>
+<li><code>module &lt;_file_path_&gt; has no attribute '__author__'</code>
+<ul>
+<li>Make sure your <code>__author__</code> variable has <strong>TWO</strong> underscores on either side.</li>
+<li>Make sure your <code>__author__</code> variable is a string.</li>
+</ul></li>
+</ul>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Grade Calculator - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502721.3338397">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="logistics-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Grade Calculator</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#grade-calculator">Grade Calculator</a>
+<ul>
+<li><a href="#grades">Grades</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="grade-calculator">Grade Calculator</h1>
+<script type="text/javascript" src="../../static/grade_calc/grade_calc.js"></script>
+<script type="text/javascript">window.onload = set_abs</script>
+<p><link rel="stylesheet" href="../../static/grade_calc/grade_calc.css"></link></p>
+<p><strong><em>Disclaimer: This is a Beta version of the grade calculator. It is to help you estimate your grade, but it does not guarantee you a certain grade.</em></strong></p>
+<h2 id="grades">Grades</h2>
+<h4>
+Calculate grade as:
+</h4>
+<button onclick="set_rel()" id="relative" class="grade-type-unselected">
+Relative
+</button>
+<button onclick="set_abs()" id="absolute" class="grade-type-selected">
+Absolute
+</button>
+<p>
+*All grades out of 100
+</p>
+<p><br /></p>
+<div class="grades">
+<h4>
+Exercises (35%)
+</h4>
+<p><label>Average for Exercises</label> <input type="number" id="ex-avg" class="avg" /></p>
+</div>
+<div class="category">
+<div class="columns">
+<p><label>EX00</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex00" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX01</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex01" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX02</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex02" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX03</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex03" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX04</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex04" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX05</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex05" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX06</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex06" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX07</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex07" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX08</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex08" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX09</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex09" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX10</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex10" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>EX11</label> <input onchange="avg_1drop('ex0', 12)" type="number" id="ex11" class="input" /></p>
+</div>
+</div>
+<p><br /></p>
+<div class="grades">
+<h4>
+Readings (5%)
+</h4>
+<p><label>Average for Readings</label> <input type="number" id="rd-avg" class="avg"  /></p>
+</div>
+<div class="category">
+<div class="columns">
+<p><label>RD00</label> <input onchange="avg_1drop('rd0', 3)" type="number" id="rd00" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>RD01</label> <input onchange="avg_1drop('rd0', 3)" type="number" id="rd01" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>RD02</label> <input onchange="avg_1drop('rd0', 3)" type="number" id="rd02" class="input" /></p>
+</div>
+</div>
+<p><br /></p>
+<div class="grades">
+<h4>
+Async Lesson Responses on Gradescope (10%)
+</h4>
+<p><label>Average for Lesson Responses</label> <input type="number" id="ls-avg" class="avg" /></p>
+</div>
+<p><input onchange="ls_toggle()" id="ls-toggle" type="checkbox"> Show all Lesson Responses</button></p>
+<div id="ls-sec" class="category" style="display: none">
+<div class="columns">
+<p><label>LS00</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls00" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS01</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls01" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS02</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls02" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS03</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls03" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS04</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls04" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS05</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls05" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS06</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls06" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS07</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls07" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS08</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls08" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS09</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls09" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS10</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls10" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS11</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls11" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS12</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls12" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS13</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls13" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS14</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls14" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS15</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls15" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS16</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls16" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS17</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls17" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS18</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls18" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS19</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls19" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>LS20</label> <input onchange="avg_2drops('ls0', 21)" type="number" id="ls20" class="input" /></p>
+</div>
+</div>
+<p><br /></p>
+<h4>
+Challenge Questions (10%)
+</h4>
+<div class="grades">
+<p><label>Average for Challenge Questions</label> <input type="number" id="cq-avg" class="avg" /></p>
+</div>
+<div class="category">
+<div class="columns">
+<p><label>CQ00</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq00" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ01</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq01" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ02</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq02" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ03</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq03" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ04</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq04" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ05</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq05" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ06</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq06" class="input" /></p>
+</div>
+<div class="columns">
+<p><label>CQ07</label> <input onchange="avg_2drops('cq0', 8)" type="number" id="cq07" class="input" /></p>
+</div>
+</div>
+<p><br /></p>
+<h4>
+Quizzes and Final (40%)
+</h4>
+<div class="category">
+<div class="columns">
+<p><label>Quiz 01</label> <input id="qz01" type="number" class="input"  /> <input id="qz01cb" type="checkbox" checked> Completed</input></p>
+</div>
+<div class="columns">
+<p><label>Quiz 02</label> <input id="qz02" type="number" class="input"  /> <input id="qz02cb" type="checkbox" checked> Completed</input></p>
+</div>
+<div class="columns">
+<p><label>Quiz 03</label> <input id="qz03" type="number" class="input"  /> <input id="qz03cb" type="checkbox" checked> Completed</input></p>
+</div>
+<div class="columns">
+<p><label>Final</label> <input id="final" type="number" class="input"  /></p>
+</div>
+</div>
+<p><br /></p>
+<button class="calc-btn" onclick="calculate_grade()">
+Calculate
+</button>
+<p><br /></p>
+<h4>
+Final grade
+</h4>
+<div class="category">
+<p><input id="final-grade" class="final-grade" readonly></input></p>
+</div>
+</div>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Vitor Inserrra</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> How to Edit this Site - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502760.9500437">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >How to Edit this Site</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#setting-up-the-repo-locally">Setting up the Repo Locally</a></li>
+<li><a href="#pushing-to-github">Pushing to Github</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="setting-up-the-repo-locally">Setting up the Repo Locally</h2>
+<p>Clone the repository (https://github.com/comp110/team110) to VSCode.</p>
+<ul>
+<li><strong>Any errors?</strong> Try this: &gt; If you can’t open this link, you have not been added to the team org on Github. Send your github username to Kaki!</li>
+</ul>
+<ol type="1">
+<li><p>Run these 3 commands separately to enter the team site directory, install the site’s packages and to see your live changes at <strong>localhost:8000</strong> (Note: Make sure that you have installed node.js):</p>
+<blockquote>
+<p><code>cd team.comp110.com</code> &gt; <code>npm install</code> &gt; <code>npm run start</code></p>
+</blockquote></li>
+<li><p>Make your changes! Within the <code>src</code> folder there exist 4 important folders:</p>
+<p><img src="/static/team/repo-instructions/step_4.png" /></p></li>
+</ol>
+<blockquote>
+<p><code>components</code> - this folder contains React/Gatsby components that will be shared across multiple pages or the entire site. A great example is <code>footer.js</code>; each page on the site shares the same footer! The most important file here is <code>layout.js</code>. It is wrapped around every page and imports in a <code>Header</code> and <code>Footer</code> component. If you make a new component, be sure to <em>import</em> and <em>export</em> it into <code>index.js</code>. This will be helpful later.</p>
+</blockquote>
+<blockquote>
+<p><code>pages</code> - this folder contains two types of pages. The first are the markdown pages stored in <code>pages/markdown/</code>. This is where you’ll add new guides or proposals. Make sure to add a <code>slug</code>, <code>title</code>, <code>date</code>, and <code>author</code> at the top of your markdown files. Feel free to make new folders in <code>pages/markdown</code>, everything will be rendered recursively. If you want to change the location of the markdown, be sure to update the path in <code>gatsby-config.js</code> in the <code>gatsby-source-filesystem</code> plugin. The second type of page here are those that contain components in React/Gatsby. An example would be <code>guides.js</code> which renders the preview of every markdown file as a div with a title. This is where you’d go to make new pages that aren’t based in markdown. The name of the component will be the page on the website. For example <code>about.js</code> exports the <code>About</code> component and is found at the <code>/about</code> path of the website.</p>
+</blockquote>
+<blockquote>
+<p><code>styles</code> - this folder contains all the CSS/SASS the site uses. As a matter of good practice, create a new file for each page you create beginning with an <code>_</code> and ending in <code>.scss</code> (for example: <code>_gallery.scss</code>). Then, import this new file into <code>styles.scss</code> using an <code>@</code> symbol (for example: <code>import @gallery</code>). SASS is super cool because you can use global variables and use math to expand the capabilities of CSS. Please try to define a new color variable in <code>styles.scss</code> and reference it using a <code>$</code> symbol in subsequent <code>scss</code> files. Try to avoid inline styling when possible so that we know the best place to easily change the look of the site. A couple colors to be aware of are: <code>$base-color</code>, <code>$highlight</code>, <code>$purple</code>.</p>
+</blockquote>
+<blockquote>
+<p><code>templates</code> - this folder contains templates for specific types of Gatsby queries. Currently, it only has a template for <code>markdown</code> files. If you want to get rid of the date requirement for all <code>.md</code> files, you’d simply remove the line in this <code>markdown.js</code> file referencing <code>frontmatter.date</code>. It also contains some code to create the table of contents on each <code>markdown</code> page!</p>
+</blockquote>
+<p>Create a branch by writing:</p>
+<ul>
+<li><code>git checkout -b &lt;branch-name&gt;</code> &gt; example: <code>git checkout -b christine-profile</code></li>
+</ul>
+<h2 id="pushing-to-github">Pushing to Github</h2>
+<p>Prepare the branch locally by running the following lines of code:</p>
+<ul>
+<li><code>cd ..</code> (this moves you back to the team110 directory)</li>
+<li><code>git add .</code> (this will prepare all your changes to be uploaded to github)</li>
+<li><code>git commit -m "&lt;commit message here&gt;"</code> (a short statement describing what you did)</li>
+<li><code>git push origin &lt;branch-name&gt;</code> (this uploads your draft to github)</li>
+</ul>
+<p>Go to <strong>Pull Requests</strong> on the team repo and click the green button to make a Pull Request. On the side where it says <strong>Reviewers</strong> add someone to review your work (for now choose the documentation lead)!</p>
+<blockquote>
+<p>Contributors: Christine Mendoza, Chiazo Agina</p>
+</blockquote>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s):              Christine Mendoza, Chiazo Agina</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502760.9500437"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502760.9500437"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502760.9500437"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

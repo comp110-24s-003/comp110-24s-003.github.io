@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Contribute - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502756.2876184">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="home-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Contribute</h2>
+            <hr class="title"/>
+        </div>
+    <div class="container">
+                <div class="content"><div style="display: flex;">
+<div class="career-nav">
+<a href="/team/career/index.html">Career110 Home</a>
+</div>
+<div class="career-nav">
+<a href="/team/career/airtable">About</a>
+</div>
+<div class="career-nav">
+<a href="/team/career/airtable/all-experiences.html">All Experiences</a>
+</div>
+<div class="career-nav">
+<a href="/team/career/airtable/contactable-experiences.html">Contactable Experiences</a>
+</div>
+<div class="career-nav">
+<a href="/team/career/airtable/companies.html">Companies &amp; Institutions</a>
+</div>
+<div class="career-nav">
+<a href="/team/career/airtable/contribute.html">Contribute</a>
+</div>
+</div>
+<hr />
+<p>You can use the form below to add your own experiences to the database. If you’d rather, you can also open the same form in a separate window.</p>
+<p><strong>If you aren’t listed as a member, please fill out <a href="https://airtable.com/shrUnZ6oKbfs6wSzw">THIS FORM</a></strong></p>
+<iframe className="airtable-embed" src="https://airtable.com/embed/shrpbUUeNggkfFlYD?backgroundColor=purple" frameBorder="0" width="100%" height="600">
+</iframe>
+</div>
+            </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s):              Maddie Huber, Ezri White</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502756.2876184"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502756.2876184"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502756.2876184"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

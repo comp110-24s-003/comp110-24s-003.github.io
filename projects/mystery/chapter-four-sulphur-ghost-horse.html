@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Chapter 4 - The Artists - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502750.9803474">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="logistics-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Chapter 4 - The Artists</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#the-clue">The CLUE 🔎</a></li>
+<li><a href="#the-task">The TASK 🕵️</a>
+<ul>
+<li><a href="#d-lists">0. 2D Lists</a></li>
+<li><a href="#print_2d_list-procedure">1. <code>print_2d_list</code> procedure</a></li>
+<li><a href="#testing-your-program">2. Testing your program</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">3. Make a Backup Checkpoint “Commit”</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><script>
+    document.body.classList.add('halloween-mode'); 
+    document.getElementById("mode-switch").classList.add('hidden')
+</script>
+<p style="font-size: xx-large; color: rgba(255, 132, 32, 0.909);">
+🎃 Congratulations you have discoved a clue! 🎃
+</p>
+<blockquote>
+<p>Take a picture at this location with your fellow detectives and fill out <a href="https://airtable.com/shrzczOIak59I0cyx" target="blank">THIS FORM</a> to get onto the leaderboard! Make sure to do this immediately and for every new chapter you discover!</p>
+</blockquote>
+<p style="color: rgba(255, 132, 32, 0.909);">
+we need her back! everything is falling apart
+</p>
+<h2 id="the-clue">The CLUE 🔎</h2>
+<blockquote>
+<p>[[0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0], [0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0], [1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1], [0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]]</p>
+</blockquote>
+<h2 id="the-task">The TASK 🕵️</h2>
+<p>In honor of Hanes Art Center it is time to mix art and code together. ASCII art is a graphic technique where visuals are created using the characters you can see on your keyboard! A few examples are as follows:</p>
+<pre class="plaintext"><code>H   H EEEEE L     L      OOO       W   W  OOO  RRRR  L     DDDD  !!
+H   H E     L     L     O   O      W W W O   O R   R L     D   D !!
+HHHHH EEEEE L     L     O   O      W W W O   O RRRR  L     D   D !!
+H   H E     L     L     O   O  ,,   W W  O   O R   R L     D   D
+H   H EEEEE LLLLL LLLLL  OOO  ,,    W W   OOO  R   R LLLLL DDDD  !!</code></pre>
+<pre class="plaintext"><code>.--.     /\                  ____
+&#39;--&#39;    /__\    (^._.^)~   &lt;(o.o )&gt;</code></pre>
+<p>You have likely seen some example of this online before but if you would like to read more about it you can do so <a href="https://en.wikipedia.org/wiki/ASCII_art">here</a>.</p>
+<p>Notice how some characters fill up a lot of space whereas some barely fill any space. This is a common technique for adding depth in ASCII art. One of the characters that fills up the most space is the <code>@</code> character. We will make use of this to help make our art clear.</p>
+<h3 id="d-lists">0. 2D Lists</h3>
+<p>The series of 0’s and 1’s at the top of this page is actually a simple piece of ASCII art encoded in a 2D list!</p>
+<p>A 2d list is just a list of lists. the signature is actually quite simple:</p>
+<p><code>2d_list: list[list[int]] = [[1, 0], [2, 3]]</code></p>
+<p>notice that each index of the outer list is actually a list itself, with some number of elements inside it. If we change the formatting just a little bit, something interesting emerges:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>[[<span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a> [<span class="dv">2</span>, <span class="dv">3</span>]]</span></code></pre></div>
+<p>The contents haven’t changed, but looking at it this way, the 2d list looks a lot like a table, with rows and columns! This is the superpower of 2d lists, and most applications of 2d lists utilize their rectangular nature. In this list</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>big_2d_list <span class="op">=</span> [[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>               [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>],</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>               [<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>               [<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>]]</span></code></pre></div>
+<p>we have 4 rows and 4 columns. Now how do we index into a 2d list? The syntax is as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>big_2d_list[<span class="dv">0</span>][<span class="dv">0</span>] <span class="co"># this is the value 0</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>big_2d_list[<span class="dv">0</span>][<span class="dv">1</span>] <span class="co"># this is the value 1</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>big_2d_list[<span class="dv">1</span>][<span class="dv">0</span>] <span class="co"># this is the value 4</span></span></code></pre></div>
+<p>The first <code>[index]</code> tells us which index of the outer list to look at, and the second <code>[index]</code> tells us which index of that list to get the value of. So for</p>
+<p><code>big_2d_list[2][3]</code></p>
+<p>we want to get index 2 in the <code>big_2d_list</code>, which is the list <code>[8, 9, 10, 11]</code>, and then index 3 in that list, which gets us to the value <code>11</code>, so</p>
+<p><code>big_2d_list[2][3]</code> is equal to <code>11</code></p>
+<p>Here are some simple 2D lists using a few different data types:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># a list of lists of booleans</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>[[true, false, true], [false, false, true]]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="co"># a list of lists of integers, note that these lists don&#39;t have to have the same number of values</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>[[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], [<span class="dv">6</span>]]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a><span class="co"># a list of lists of strings</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>[[<span class="st">&quot;hi&quot;</span>, <span class="st">&quot;hello&quot;</span>, <span class="st">&quot;sup&quot;</span>],[<span class="st">&quot;bye&quot;</span>, <span class="st">&quot;see ya&quot;</span>]]</span></code></pre></div>
+<h3 id="print_2d_list-procedure">1. <code>print_2d_list</code> procedure</h3>
+<p>So how does all this relate to ASCII art? Your clue contains a massive rectangular 2d list of 1’s and 0’s. To draw our ASCII art, we’re going to iterate through this 2d list and print something different based on if we see a 0 or a 1 at that index. You can think of this as saying 0’s will be areas that are not filled, and 1’s are areas that are filled (we will “fill” these areas with the <code>'@'</code> character). Let’s look at an example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>ex_art <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>          [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>          [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]]</span></code></pre></div>
+<p>This is a smaller example of a 2d list. After running this <code>ex_art</code> list through your <code>print_2d_list</code> procedure, we expect this to print to the terminal:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="op">@</span> <span class="op">@</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="op">@</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="op">@@@</span></span></code></pre></div>
+<p>Good luck!</p>
+<h4 id="procedural-requirements-print_2d_list">Procedural Requirements – <code>print_2d_list</code></h4>
+<ol type="1">
+<li>Have a procedure with the following signature:
+<ol type="1">
+<li>Name: <code>print_2d_list</code></li>
+<li>Arguments: a <code>list[list[int]]</code> that represents the encoded ASCII art</li>
+<li>Returns: None</li>
+</ol></li>
+<li>The function should print one string of characters for each list of ints</li>
+<li>Every 0 should be represented as a space and every 1 should be represented as an <code>"@"</code></li>
+</ol>
+<h3 id="testing-your-program">2. Testing your program</h3>
+<p>To check that your procedure works as expected, you can load your <code>printer</code> file into a REPL by opening up a new <code>REPL</code>, and then running <code>from projects.mystery.printer import print_2D_list</code>. From here you can practice calling your procedure and seeing if the results match what you expected.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>print_2D_list([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>]])</span></code></pre></div>
+<p>should output:</p>
+<pre class="plaintext"><code>@ @
+ @
+@ @</code></pre>
+<h3 id="make-a-backup-checkpoint-commit">3. Make a Backup Checkpoint “Commit”</h3>
+<p>Follow the instructions on the project introduction page to make a backup commit.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Ezri White, Marc Lewis</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

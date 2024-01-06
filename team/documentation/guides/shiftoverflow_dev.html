@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ShiftOverflow Dev - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502759.020308">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >ShiftOverflow Dev</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#working-on-features-or-issues">Working on Features or Issues</a></li>
+<li><a href="#deployment-process">Deployment Process</a>
+<ul>
+<li><a href="#merging-to-master">Merging to Master</a></li>
+<li><a href="#preparation-on-the-server">Preparation on the Server</a></li>
+<li><a href="#transferring-files-to-the-server">Transferring Files to the Server</a></li>
+<li><a href="#verification-of-success-and-production-testing">Verification of Success and Production Testing</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="getting-started">Getting Started</h2>
+<p><a href="https://youtu.be/vOWy25FGr7I">This video</a> provides an overview of how ShiftOverflow development works and the steps to get started on the project.</p>
+<p>To work on ShiftOverflow you will need to be granted access to the repository by someone who currently has access to it (it is a private repository, separate from the team repository). You will also need to get the <code>credentials.json</code> file from someone who is currently working on or has in the past worked on ShiftOverflow. For secutiry purposes, we do not store certain credentials on GitHub, so once you have this file put it in the <code>server</code> directory within the overall <code>shiftoverflow.com</code> directory from when you cloned the repository.</p>
+<p>Once you have access to the repository, following the steps in <code>README</code> will take you through the process to set up and run the project locally.</p>
+<h2 id="working-on-features-or-issues">Working on Features or Issues</h2>
+<ol type="1">
+<li>When contributing to the codebase, make all your changes on a new git branch specific to the feature you are currently working on.</li>
+<li>Once you feel your changes are done, make a pull request describing what your changes were and why you made them.</li>
+</ol>
+<blockquote>
+<ul>
+<li>mentioning how you tested your changes (ex. what browsers and viewports you tested on)</li>
+<li>including screenshots of what your changes look like in desktop and mobile views if they were changes to the UI</li>
+</ul>
+</blockquote>
+<ol type="1">
+<li>Before merging and deploying your code, your pull request must be reviewed and approved by at least one other person.</li>
+</ol>
+<h2 id="deployment-process">Deployment Process</h2>
+<p>After your code has been approved, it is ready for deployment. The steps to deploy are described in the following subsections.</p>
+<h3 id="merging-to-master">Merging to Master</h3>
+<p>Once your pull request has an approving review, squash and merge it to master which can be nicely done using the pull request UI on GitHub.</p>
+<p>After merging to master:</p>
+<ol type="1">
+<li>go back to your local ShiftOverflow development directory &amp; open a terminal</li>
+<li>run <code>git checkout master</code> then <code>git pull</code> to get the changes you just merged with the most recent code on the master branch</li>
+<li>Run <code>npm run dev-local</code> and re-test all features of your changes to make sure they still work with the code from master (if you were not already working off the latest changes in the master branch)</li>
+</ol>
+<h3 id="preparation-on-the-server">Preparation on the Server</h3>
+<p>If all is well after re-testing, <code>ssh</code> into the ShiftOverflow AWS server to get it ready for deployment. If you don’t have this set up, check out the <a href="/scheduling">guide for scheduling</a> for more information, or talk to Kris for help getting set up.</p>
+<p>When deploying any code anywhere, there is a chance things will fail for whatever reason or unforeseen issues may arise. To avoid disaster and panic if this happens, make a backup of the app files and the database on the server before deploying.</p>
+<ol type="1">
+<li><p>From within the server, copying the app files can be done with <code>cp -r /var/apps/shiftoverflow/build/ ~/sobuildbu</code>. This copies the contents of the <code>build</code> directory to the directory <code>sobuildbu</code>. If your changes affect other directories or files, copy those too before bringing in your new changes.</p></li>
+<li><p>Copying the database can be done with a dump also from within the server: <code>sudo mysqldump -h comp110.clq5qdd6e8wc.us-east-1.rds.amazonaws.com -u shiftoverflow -p shiftoverflow &gt; bu02_01_21.sql</code></p></li>
+</ol>
+<p>The part after the <code>&gt;</code> is the name of the file you want to save this to. It is helpful to label with the date for quick future reference.</p>
+<h3 id="transferring-files-to-the-server">Transferring Files to the Server</h3>
+<p>After testing and backing things up, it’s time to transfer your changes to the server. To avoid the site going down during office hours, try to deploy during times office hours are not open.</p>
+<ol type="1">
+<li>First, run <code>npm run build</code> in your local ShiftOverflow development environment. The <code>build</code> directory and process of running or copying <code>build</code> handles all client-side code and changes.</li>
+<li>Next, still in your local ShiftOverflow development environment copy the contents of <code>build</code> to the server with <code>npm run copy-build</code>.</li>
+</ol>
+<p>If all your changes were client-side, this should be all you need to do and you should be able to see your changes on shiftoverflow.com.</p>
+<p>If you made server-side changes too, you will want to copy those other changed files over as well with the following command, run from your local ShiftOverflow development environment: <code>rsync -r server git@shiftoverflow.com:/var/apps/shiftoverflow</code>. The next thing to do is run <code>sudo reboot</code> from the server which you previously ssh’ed into. This will stop and start the service because syncing the server while it’s running isn’t always reliable and quick. This may take a few moments, and if you refresh or load shiftoverflow.com while it’s rebooting you may see a <code>502 bad gateway nginx error</code>. However, waiting anywhere from a few seconds to 5 minutes before reloading the page should display your changes.</p>
+<p>If you made changes in the <code>shared</code> directory, you’ll want to copy that directory over as well using the same <code>rsync</code> command from above like so: <code>rsync -r shared git@shiftoverflow.com:/var/apps/shiftoverflow</code>.</p>
+<h3 id="verification-of-success-and-production-testing">Verification of Success and Production Testing</h3>
+<p>Once you are at this point, test your changes in production on shiftoverflow.com to make sure they work as expected when run on the server and not in your local environment. If something is not right, you can investigate and if necessary go back to the previously working version of ShiftOverflow by either:</p>
+<ol type="1">
+<li>reverting via git and repeating the deployment steps</li>
+<li>utilizing the backups you made earlier on in this process</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you see messages on the AWS server about having run out of space, a good place to start freeing some up is in <code>/var/log/journal</code>. You can get some context around that by doing <code>sudo du -sh /var/log/* | sort -h</code> on the server (the rest of the commands in this section are also to be done on the server).</p>
+<ol type="1">
+<li>To free up that space, run <code>cd /var/log/journal</code> to change into the <code>/var/log/journal</code> directory.</li>
+<li>run <code>ls</code> to see the contents of this directory, which should output a hash-looking thing (ex. <code>198a6518d83c4c89b805fb52c91f0316</code>)</li>
+<li>Next, change into that directory by doing <code>cd 198a6518d83c4c89b805fb52c91f0316</code> (or whatever output you had)</li>
+<li>Here, run <code>sudo journalctl --disk-usage</code> to see usage information</li>
+<li>Then (being sure you are in this same directory) run <code>sudo rm *</code> to remove that log information and free up space.</li>
+</ol>
+<p>If you make server-side changes and restart the service but still see 502 bad gateway errors even after waiting several moments, you can try manually running <code>npm run start-server</code> from the <code>/var/apps/shiftoverflow</code> directory (<code>cd</code> there if needed) to go through the server starting process in a way that will display any errors that occur. If errors appear here, it may have to do with your code, so look closely and double check that everything that you have locally was copied over and is located on the server (if it is being referenced).</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Madison Huber</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502759.020308"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502759.020308"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502759.020308"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

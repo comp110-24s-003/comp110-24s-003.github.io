@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Loops - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502706.0940733">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Loops</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#while-loops">While Loops</a>
+<ul>
+<li><a href="#syntax">Syntax</a></li>
+<li><a href="#while-loop-checklist">While Loop Checklist</a></li>
+<li><a href="#examples-of-counters">Examples of Counters</a></li>
+<li><a href="#something-is-wrong">Something is Wrong!</a></li>
+<li><a href="#nested-while-loops">Nested While Loops!</a></li>
+</ul></li>
+<li><a href="#for-in-loops">For-in Loops</a>
+<ul>
+<li><a href="#the-syntax">The Syntax:</a></li>
+<li><a href="#how-does-this-work">How Does this Work?</a></li>
+<li><a href="#converting-a-while-loop">Converting a While Loop</a></li>
+<li><a href="#which-loop-to-use">Which Loop to Use?</a></li>
+<li><a href="#nested-for-loops">Nested For Loops!</a></li>
+</ul></li>
+<li><a href="#range-objects-in-loops">Range Objects in Loops</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="while-loops">While Loops</h2>
+<p>A <strong>while loop</strong> is a block of code that will continue ‘looping’ (repeating) until its boolean condition becomes false.</p>
+<h3 id="syntax">Syntax</h3>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">while</span> [boolean expression <span class="st">&quot;test&quot;</span>]:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="co"># useful code that executes as long as the boolean </span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="co"># expression is true (repeat block)</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="co"># Manipulation of boolean condition (i.e. changing boolean </span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="co"># expression &quot;test&quot; from True to False by manipulating </span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="co"># counter variable, i.e. i += 1)</span></span></code></pre></div>
+<p>After the last statement in the repeat block completes, the computer will <strong>jump backwards</strong> to the test and start anew. If the test evaluates to <strong>True</strong>, the computer will <em>move through the repeat block again</em>. If the test evaluates to <strong>False</strong>, the computer will ‘exit’ the loop, <em>skipping over the repeat block</em>.</p>
+<h3 id="while-loop-checklist">While Loop Checklist</h3>
+<ol type="1">
+<li>Boolean condition
+<ol type="1">
+<li>Located after ‘while’ and before ‘:’</li>
+<li>Can use any boolean operator (==, !=, &gt;, &lt;. &gt;=. &lt;=)</li>
+<li>Can also use a boolean variable (a_condition)</li>
+</ol></li>
+<li>Code inside the while block (repeat block) is useful</li>
+<li>A ‘counter’ variable or boolean expression that will eventually become False and exit the loop – this should be placed inside the body of the while loop.</li>
+</ol>
+<h3 id="examples-of-counters">Examples of Counters</h3>
+<p><strong>Numerical counter:</strong></p>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="co"># looping code</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<p>Common ways to increment a numerical counter include:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>i <span class="op">+=</span> <span class="dv">1</span>  <span class="co"># the same as i = i + 1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>i <span class="op">-=</span> <span class="dv">1</span>  <span class="co"># the same as i = i - 1</span></span></code></pre></div>
+<p>The counter variable can also be incremented by numerical amounts other than 1.</p>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>i <span class="op">=</span> i <span class="op">+</span> <span class="dv">3</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>i <span class="op">=</span> i <span class="op">-</span> <span class="dv">5</span></span></code></pre></div>
+<p><strong>Boolean expression:</strong></p>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>weekend: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>day_of_week: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="cf">while</span> weekend <span class="op">==</span> false:</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="co"># looping code</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="cf">if</span> day_of_week <span class="op">==</span> <span class="dv">6</span> <span class="kw">or</span> day_of_week <span class="op">==</span> <span class="dv">7</span>:</span>
+<span id="cb5-7"><a href="#cb5-7"></a>        weekend <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>        <span class="bu">print</span>(<span class="st">&quot;Yay, it&#39;s the weekend!&quot;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    day_of_week <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<h3 id="something-is-wrong">Something is Wrong!</h3>
+<p>If your loop just won’t end, you probably have implemented an <em>infinite loop</em>. Make sure that your condition can eventually become false! Example:</p>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># incorrect:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">110</span>:</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="bu">print</span>(<span class="st">&quot;I love COMP110!&quot;</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="bu">print</span>(<span class="st">&quot;Done&quot;</span>)</span></code></pre></div>
+<p>This is incorrect because the counter ‘i’ is <strong>never changed</strong> and thus will never be &gt;= 110. Therefore, the while loop will <strong>INFINITELY</strong> execute and the string “Done” will never print.</p>
+<div class="sourceCode" id="cb7" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># correct:</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">110</span>:</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="bu">print</span>(<span class="st">&quot;I love COMP110!)</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="st">    i += 1</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="st">print(&quot;</span>Done<span class="st">&quot;)</span></span></code></pre></div>
+<p>Now, the while loop will execute 110 times, printing “I love COMP110 <em>each time</em>. The string”Done" will be printed once i = 110.</p>
+<h3 id="nested-while-loops">Nested While Loops!</h3>
+<p>We can nest while loops, meaning we can place one while loop inside of another! Check out this example:</p>
+<div class="sourceCode" id="cb8" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>sound: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span>  </span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">20</span>: </span>
+<span id="cb8-4"><a href="#cb8-4"></a>    count: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span> <span class="co"># each time the outer loop runs, count is reassigned to 0</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="cf">while</span> count <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb8-6"><a href="#cb8-6"></a>        i <span class="op">*=</span> <span class="dv">2</span>  <span class="co"># increase the value in i, the counter variable for the outer loop</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>        count <span class="op">+=</span> <span class="dv">1</span>  <span class="co"># increment count, the counter variable for the inner loop</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>        sound <span class="op">+=</span> <span class="st">&quot;e&quot;</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>    sound <span class="op">+=</span> <span class="st">&quot;-iii-&quot;</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>sound <span class="op">+=</span> <span class="st">&quot;oh&quot;</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="bu">print</span>(sound)  <span class="co"># will print the string &quot;eeee-iii-eeee-iii-oh&quot;</span></span></code></pre></div>
+<p>These nested loops build up the string ‘sound’. The inner loop starts over and runs through again each time we reenter the outer loop.</p>
+<h2 id="for-in-loops">For-in Loops</h2>
+<p><strong>for-in loops</strong> are similar to <strong>while loops</strong>, but instead of looping through a statement until a boolean condition changes, a <strong>for-in loop</strong> iterates over a collection of items.</p>
+<h3 id="the-syntax">The Syntax:</h3>
+<div class="sourceCode" id="cb9" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">for</span> [identifier] <span class="kw">in</span> [sequence]:</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="co"># useful code that processes each identifier(item) in a sequence(collection). (repeat block)</span></span></code></pre></div>
+<p><strong>identifier</strong> is a variable name you choose for <em>each item</em> in the repeat block.</p>
+<h3 id="how-does-this-work">How Does this Work?</h3>
+<p>The assignment of the <strong>identifier</strong> to each item in the sequence is handled for you, and so is the progression from one item to the next. (Thank you, computers!)</p>
+<p>The loop ends after the repeat block evaluates the last item.</p>
+<p><strong>for-in loops</strong> are great for when you want to process <em>every item</em> in a collection. Collections can include <strong>Lists</strong>, <strong>Dictionaries</strong>, <strong>Sets</strong>, and even <strong>Strings</strong>! Anything <em>iterable</em> can be processed by a <strong>for-in loop</strong>.</p>
+<p>One advantage of <strong>for-in loops</strong> are since iteration is taken care of by the computer, we don’t have to worry about forgetting to increment/decrement our counter variable (<em>goodbye infinite loops!</em>).</p>
+<h3 id="converting-a-while-loop">Converting a While Loop</h3>
+<p>Any <strong>while loop</strong> can be turned into an equivalent <strong>for-in loop</strong>. Here’s an example of printing out elements of a List:</p>
+<div class="sourceCode" id="cb10" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>my_list: List[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(my_list):</span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="bu">print</span>(my_list[i])</span>
+<span id="cb10-8"><a href="#cb10-8"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># can be rewritten as:</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="cf">for</span> item <span class="kw">in</span> my_list:</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    <span class="bu">print</span>(item)</span></code></pre></div>
+<p>The output for both of these loops will be exactly the same: <em>1, 2, 3, 4, 5, 6</em>. These two types of loops are completely interchangeable; however, the syntax of a <strong>for-in loop</strong> often proves to be preferable as you get more comfortable with the process.</p>
+<h3 id="which-loop-to-use">Which Loop to Use?</h3>
+<p>Although <strong>for-in loops</strong> and <strong>while loops</strong> are interchangeable, there are some instances where you want to use one over the other.</p>
+<p><strong>While loops</strong> provide more control to the author because you must know how many times the loop should run – either by a specific numerical amount using a counter varible, or by telling the loop when to end based on a boolean condition.</p>
+<p><strong>for-in loops</strong> are fantastic for-in looping through an entire collection of data in a deceptively simple way.</p>
+<h3 id="nested-for-loops">Nested For Loops!</h3>
+<p>We can nest <strong>for-in loops</strong>, too!</p>
+<div class="sourceCode" id="cb11" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>list_1: List[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;spooky&quot;</span>, <span class="st">&quot;scary&quot;</span>]</span>
+<span id="cb11-4"><a href="#cb11-4"></a>list_2: List[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;skeletons&quot;</span>, <span class="st">&quot;shivers&quot;</span>]</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="cf">for</span> word <span class="kw">in</span> list_1:</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="cf">for</span> item <span class="kw">in</span> list_2:</span>
+<span id="cb11-8"><a href="#cb11-8"></a>        <span class="bu">print</span>(word, item)</span></code></pre></div>
+<p>The nested loops print out combinations of the two lists. The output of this will be ‘<em>spooky skeletons, spooky shivers, scary skeletons, scary shivers</em>’.</p>
+<h2 id="range-objects-in-loops">Range Objects in Loops</h2>
+<p>You can also loop through a defined range using Python’s <strong>range()</strong> function.</p>
+<p>Check out <a href="https://pynative.com/python-range-function/">this page</a> for more information about this function!</p>
+<p>While the syntax looks a bit different for using range within <strong>with loops</strong> and <strong>for-in loops</strong>, both can use the <strong>range()</strong> function in their implementation!</p>
+<div class="sourceCode" id="cb12" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">while</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="bu">print</span>(i <span class="op">+</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    <span class="bu">print</span>(i <span class="op">+</span> <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<p>Both loops’ outputs are ‘<em>0 1 2 3 4</em>’. This is another way to control the amount of times a loop repeats!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Claire Helms</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

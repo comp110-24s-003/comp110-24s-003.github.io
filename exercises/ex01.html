@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX01 - Chardle - Input, Variables, and Conditionals - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502767.4999447">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX01 - Chardle - Input, Variables, and Conditionals</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#part-0.-setting-up-the-python-program">Part 0. Setting up the Python Program</a></li>
+<li><a href="#part-1.-prompting-for-inputs-20-points">Part 1. Prompting for Inputs – 20 Points</a></li>
+<li><a href="#part-2.-checking-indices-for-matches-20-points">Part 2. Checking Indices for Matches – 20 Points</a></li>
+<li><a href="#part-3.-counting-matching-indices-30-points">Part 3. Counting Matching Indices – 30 Points</a></li>
+<li><a href="#part-4.-exiting-early-for-invalid-inputs---10-points">Part 4. Exiting Early for Invalid Inputs - 10 points</a></li>
+<li><a href="#part-5.-style-and-documentation-requirements-10-points-manually-graded">Part 5. Style and Documentation Requirements – 10 Points (Manually Graded)</a>
+<ul>
+<li><a href="#permitted-constructs">Permitted Constructs</a></li>
+</ul></li>
+<li><a href="#part-6.-type-safety-and-linting---9-points">Part 6. Type Safety and Linting - 9 Points</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submit-to-gradescope-for-grading">Submit to Gradescope for Grading</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In this exercise you will use the concepts learned in the Lessons 00 through 04.</p>
+<p>This semester we will take inspiration from the free, viral word puzzle game <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a>. If you haven’t played it, you should! We do not yet have all the conceptual tools we will need to recreate this game (yet!) so this first exercise is exploring some of the fundamentals that will help ultimately make it possible.</p>
+<p>Have you tried solving today’s <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a>? If not, do so first!</p>
+<p>In this exercise, you will prompt the user for a five-character word and a single letter. You will then test to see which indices of the word match the single letter.</p>
+<p>You should follow the steps below for implementing the program one step at a time. To get a sense of where you are going, though, consider what we expect the output to be given some example inputs:</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: hello
+    Enter a single character: h
+    Searching for h in hello
+    h found at index 0
+    1 instance of h found in hello
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: hello
+    Enter a single character: l
+    Searching for l in hello
+    l found at index 2
+    l found at index 3
+    2 instances of l found in hello
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: weeee
+    Enter a single character: e
+    Searching for e in weeee
+    e found at index 1
+    e found at index 2
+    e found at index 3
+    e found at index 4
+    4 instances of e found in weeee
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: hello
+    Enter a single character: z
+    Searching for z in hello
+    No instances of z found in hello
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: tarheels
+    Error: Word must contain 5 characters
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: hello
+    Enter a single character: hello
+    Error: Character must be a single character.</code></pre>
+<h2 id="part-0.-setting-up-the-python-program">Part 0. Setting up the Python Program</h2>
+<p>In Visual Studio Code, be sure your workspace is open. (Reminder: File &gt; Open Recent &gt; comp110-YYS-workspace is a quick way to reopen it! Where YY is the current year and S is the semeseter: S for Spring, F for Fall.)</p>
+<p>Open the Explorer pane (click the icon with two sheets of paper or to to <em>View</em> &gt; <em>Explorer</em>) and expand the <em>Workspace</em> directory.</p>
+<p>Right click on the <code>exercises</code> directory and select “New File”. Enter the following filename, being careful to match capitalization and punctuation:</p>
+<ul>
+<li><code>ex01_chardle.py</code></li>
+</ul>
+<p>Before beginning work on the program, you should add a <em>docstring</em> to the top of your Python <em>module</em> just as you did in EX00. Then, you should add a line with the special variable named <code>__author__</code> assigned to be a string with your 9-digit student PID. (Disclaimer: Out in the real world the <code>__author__</code> variable is typically your name and e-mail address, but since we will grade your programs we’d like to avoid potential bias in seeing your names as part of the programs as we’re grading.) Add the following lines above the line of code that calls the <code>print</code> function. Fill in <em>your</em> 9-digit UNC PID number, without any spaces or dashes, in the <code>__author__</code> string.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;EX01 - Chardle - A cute step toward Wordle.&quot;&quot;&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    __author__ <span class="op">=</span> <span class="st">&quot;1234567890&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a></span></code></pre></div>
+<h2 id="part-1.-prompting-for-inputs-20-points">Part 1. Prompting for Inputs – 20 Points</h2>
+<p>The first task of this program is to gather inputs from the user. Using the concepts you learned in <a href="https://youtu.be/GPpYSDNUtH8">LS04 - User Input and Variables</a>, you will want to ask the user to enter a 5-character word and a single character, storing both in <code>str</code> variables. You will then print out a diagnostic message, built-up using string concatenation, that confirms you have correctly stored each input in a variable. <strong>Please choose meaningful, descriptive names for your variables.</strong> Write your prompts and diagnostic message such that you can reproduce the following in the shell after saving and running your program:</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex01_chardle 
+    Enter a 5-character word: hello
+    Enter a single character: e
+    Searching for e in hello</code></pre>
+<p><strong>WARNING:</strong> Autograding will very specifically be looking for <em>exactly</em> the format of lines output shown above. You will not see the <code>$</code> at your command-line prompt in VSCode, you can ignore that part. Otherwise, when you run the program on your machine with the same inputs as above on the first two lines, your printed results should look exactly like the 3rd line.</p>
+<h2 id="part-2.-checking-indices-for-matches-20-points">Part 2. Checking Indices for Matches – 20 Points</h2>
+<p>Now that you have gathered your inputs from Part 1, and stored them in variables, your task is to check each index of the word string to see if it matches (hint: <em>is equal to</em>) the character input. These checks will involve combining concepts of:</p>
+<ul>
+<li><a href="/lessons/objects-data-types.html">LS02 - Objects and Data Types</a>
+<ul>
+<li>Strings - A <code>str</code> is a <em>Sequence</em> of Characters</li>
+</ul></li>
+<li><a href="/lessons/expressions.html">LS03 - Expressions</a>
+<ul>
+<li>Relational Operators - Equality</li>
+</ul></li>
+<li><a href="https://www.youtube.com/watch?v=395mlzouM00">LS05 - Conditional if-else Statements</a></li>
+</ul>
+<p>Soon you will learn a more efficient way of performing these checks using a concept called a <em>loop</em>. For now, you will need to check each of the five indices of the word string to see if it is equal to the character string. <em>If</em> so, <em>then</em> you should print out a message indicating the letter being searched for was found at a given index. Your goal in this part is to be able to do the following:</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex01_chardle             
+    Enter a 5-character word: hello
+    Enter a single character: e
+    Searching for e in hello
+    e found at index 1
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: heels
+    Enter a single character: e
+    Searching for e in heels
+    e found at index 1
+    e found at index 2
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: heels
+    Enter a single character: s
+    Searching for s in heels
+    s found at index 4</code></pre>
+<h2 id="part-3.-counting-matching-indices-30-points">Part 3. Counting Matching Indices – 30 Points</h2>
+<p>Be sure you have completed Part 2 before beginning Part 3!</p>
+<p>Now that you are finding the indices of the word that match the character being searched for, establish a variable to <em>count the number of matching characters</em>. Before you find any matching characters, what should you initialize this variable to? Each time you find a match, increase your counting variable’s value by 1. Finally, print out a message that indicates how many instances of the character you found in the input word.</p>
+<p>You will need to exactly match the output formatting of the examples below. Specifically, notice, there are different messages for when no matches are found, a singular match is found, or multiple matches are found (i.e.: No instances vs. 1 instance vs. 2 instances). You will need to use a nested <code>if-else</code> statement in order to output these messages correctly. <strong>Correction: you do not need to use a nested ‘if-else’ statement.</strong></p>
+<pre class="plaintext"><code>$ python3 -m exercises.ex01_chardle
+Enter a 5-character word: hello
+Enter a single character: e
+Searching for e in hello
+e found at index 1
+1 instance of e found in hello
+
+$ python3 -m exercises.ex01_chardle
+Enter a 5-character word: heels
+Enter a single character: e
+Searching for e in heels
+e found at index 1
+e found at index 2
+2 instances of e found in heels
+
+$ python3 -m exercises.ex01_chardle
+Enter a 5-character word: heels
+Enter a single character: d
+Searching for d in heels
+No instances of d found in heels</code></pre>
+<h2 id="part-4.-exiting-early-for-invalid-inputs---10-points">Part 4. Exiting Early for Invalid Inputs - 10 points</h2>
+<p>What happens if you input a word with fewer than 5 characters? Or you input a “char” that is more than one character, or none at all? It’s good practice to handle bad input from an end-user gracefully in your programs. Our strategy, for now, will be to simply print an error message and then exit the program early. There is a special built-in function called <code>exit()</code> that will send a signal to your system and tell the program to quit at that point, not continuing on further in the program. Before attempting to implement the following behavior in your program, think about where it logically <em>makes sense</em> to try adding these checks for correct input. You will need to use the <code>len</code> function, as described in <a href="/lessons/objects-data-types.html">Lesson 2 - Objects and Data Types</a>, in order to find the length of your input strings.</p>
+<p>Here is how your program should work after completing this part:</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex01_chardle             
+    Enter a 5-character word: help
+    Error: Word must contain 5 characters
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: tarheels
+    Error: Word must contain 5 characters
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: heels
+    Enter a single character: tar
+    Error: Character must be a single character.
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: heels
+    Enter a single character: 
+    Error: Character must be a single character.
+
+    $ python -m exercises.ex01_chardle
+    Enter a 5-character word: heels
+    Enter a single character: h
+    Searching for h in heels
+    h found at index 0
+    1 instance of h found in heels</code></pre>
+<h2 id="part-5.-style-and-documentation-requirements-10-points-manually-graded">Part 5. Style and Documentation Requirements – 10 Points (Manually Graded)</h2>
+<p>We will manually grade your code and are looking for good choices of meaningful variable names. Your variable names should be descriptive of their purposes. You should also use the Python <code>snake_case</code> convention where variable names are all lowercase and new words are separated by underscores. You should not make excessive use of variables where single variables will suffice (e.g. you only need one counting variable for counting the instances in Part 3).</p>
+<h3 id="permitted-constructs">Permitted Constructs</h3>
+<p>We expect you to implement this exercise using only the concepts covered in COMP110. If you have prior programming experience, restrict your implementation to only the concepts covered. While there are many ways to implement this program with additional concepts beyond those we have covered, you should not attempt to do so until after submitting this exercise for full credit once the autograder is posted. Gaining additional practice with the fundamentals may feel clunky, but will help ensure you have full command over the concepts we expect you to know. Additionally, it is good practice for working in other programming environments which are more constrained and require creativity to overcome restrictions.</p>
+<h2 id="part-6.-type-safety-and-linting---9-points">Part 6. Type Safety and Linting - 9 Points</h2>
+<p>The autograder uses industry standard tools for checking the type safety of your programs (e.g. being sure you’re using variables of the correct data types in valid ways) and linting style rules. If you have point deductions on Type Safety or Linting, read through the feedback the autograder gives and it should direct you to the line number in your program with the issue.</p>
+<h2 id="make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise 1” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submit-to-gradescope-for-grading">Submit to Gradescope for Grading</h2>
+<p>All that’s left now is to hand-in your work on Gradescope for grading!</p>
+<p>Login to Gradescope and select the assignment named “EX01 - Chardle”. You’ll see an area to upload a zip file. To produce a zip file for autograding, return back to Visual Studio Code.</p>
+<p>If you <em>do not</em> see a Terminal at the bottom of your screen, open the Command Palette and search for “View: Toggle Integrated Terminal”.</p>
+<p>Type the following command (all on a single line):</p>
+<p><code>python -m tools.submission exercises/ex01_chardle.py</code></p>
+<p>In the file explorer pane, look to find the zip file named “yy.mm.dd-hh.mm-exercises-ex01_chardle.py.zip”. The “yy”, “mm”, “dd”, and so on, are timestamps with the current year, month, day, hour, minute. If you right click on this file and select “Reveal in File Explorer” on Windows or “Reveal in Finder” on Mac, the zip file’s location on your computer will open. Upload this file to Gradescope to submit your work for this exercise.</p>
+<p>Autograding will take a few moments to complete. For this exercise there will be 10 “human graded” points. Thus, you should expect a maximum autograding score of 90 possible points on this assignment. If there are issues reported, you are encouraged to try and resolve them and resubmit. If for any reason you aren’t receiving full credit and aren’t sure what to try next, come give us a visit in office hours!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kris Jordan, Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

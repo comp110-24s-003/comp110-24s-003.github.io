@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Turtle Tutorial - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502745.8982177">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resources-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Turtle Tutorial</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <div class="container">
+                <div class="content"><p>Python’s turtle graphics library will allow us to use different coding concepts and algorithms we learn throughout the semester to create fun patterns and designs. The turtle is essentially an invisible pen that we can code to move around our screen and draw.</p>
+<p>This tutorial will run through some common commands used with the turtle and you will have a fun mini-project at the end!</p>
+<p>Begin by creating a Python program file in your <code>lessons</code> directory named <code>turtle_tutorial.py</code></p>
+<p>You can run this file either by clicking the green play button or from the command line using:</p>
+<p><code>python -m lessons.turtle_tutorial</code></p>
+<h2 id="importing-and-setting-up-the-turtle">Importing and Setting Up the Turtle</h2>
+<p>Before we can begin using the turtle we have to import the library and set up our turtle object.</p>
+<ul>
+<li>To import a specific function or class: <code>from turtle import [function_name]</code></li>
+<li>To set up a turtle object: <code>&lt;_turtlevariable_&gt; : Turtle = Turtle()</code></li>
+</ul>
+<p>Start by importing the following and then setting up our first turtle named <code>leo</code> (honoring the finest Ninja Turtle):</p>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> turtle <span class="im">import</span> Turtle, colormode, done</span>
+<span id="cb1-2"><a href="#cb1-2"></a>leo: Turtle <span class="op">=</span> Turtle()</span></code></pre></div>
+<p>The second line <em>constructs</em> a new <code>Turtle</code> object your program will control.</p>
+<h2 id="lines-and-turning">Lines and Turning</h2>
+<p>In order to make the turtle do anything we will always use the syntax:</p>
+<ul>
+<li><p><code>turtle_object_variable.method_name()</code></p></li>
+<li><p>For example, with a variable named <code>leo</code>, bound to a <code>Turtle</code> object, you could move it forward to draw a line with: <code>leo.forward(distance)</code></p></li>
+<li><p>To make the turtle move turn right: <code>leo.right(degrees)</code></p></li>
+<li><p>To make the turtle move turn left: <code>leo.left(degrees)</code></p></li>
+</ul>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>leo.forward(<span class="dv">50</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>leo.left(<span class="dv">30</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>leo.right(<span class="dv">40</span>)</span></code></pre></div>
+<p>If you try running these commands, you may notice that a window pops up and then almost immediately disappears. We have to add an extra command to prevent this from happening.</p>
+<ul>
+<li>To make sure the window does not close until this function: <code>done()</code></li>
+</ul>
+<div class="sourceCode" id="cb3" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>done()</span></code></pre></div>
+<p>The <em>done()</em> function must come <strong><em>after</em></strong> all of the turtle functions that you want to see on the window.</p>
+<h4 id="exercise-one">Exercise One:</h4>
+<p>At this point you have all the commands needed to draw a square! Try and attempt this before moving onto the next section.</p>
+<h2 id="simplifying-with-loops">Simplifying with Loops</h2>
+<p>After finishing exercise one you should have code that looks something like the following:</p>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>leo.forward(<span class="dv">300</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>leo.left(<span class="dv">90</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>leo.forward(<span class="dv">300</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>leo.left(<span class="dv">90</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>leo.forward(<span class="dv">300</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>leo.left(<span class="dv">90</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>leo.forward(<span class="dv">300</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>leo.left(<span class="dv">90</span>)</span></code></pre></div>
+<p>It should already be clear that this repetion is annoyingly tedious. Luckily, we can easily simplify this process.</p>
+<ul>
+<li>To repeat something a certain number of times: while (&lt;<em>counter_variable</em>&gt; &lt; &lt;<em>number_of_times</em>&gt;):</li>
+</ul>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">4</span>):</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    leo.forward(<span class="dv">300</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    leo.left(<span class="dv">90</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<h4 id="exercise-two">Exercise Two:</h4>
+<p>Using the loop that we just made, try converting it into a triangle before moving on to the next section.</p>
+<h2 id="goto-penup-and-pendown">GoTo, Penup and Pendown</h2>
+<p>After finishing exercise two you should have code that looks like the following:</p>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">3</span>):</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    leo.forward(<span class="dv">300</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    leo.left(<span class="dv">120</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>Now, what if we wanted to position our triangle in a different spot on the screen?</p>
+<ul>
+<li>To move the turtle to a new x, y position: &lt;<em>turtlevariable</em>&gt;.goto(&lt;<em>x_coordinate</em>&gt;,&lt;<em>y_coordinate</em>&gt;):</li>
+</ul>
+<div class="sourceCode" id="cb7" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>leo.goto(<span class="dv">45</span>, <span class="dv">60</span>)</span></code></pre></div>
+<p>If you try running the above code before drawing the triangle you will notice an unwanted line is drawn. We need to lift the turtle off the page before using the goto!</p>
+<ul>
+<li>To prevent the turtle from drawing: &lt;<em>turtlevariable</em>&gt;.penup() <strong>or</strong> &lt;<em>turtlevariable</em>&gt;.up()</li>
+<li>To allow the turtle to draw: &lt;<em>turtlevariable</em>&gt;.pendown() <strong>or</strong> &lt;<em>turtlevariable</em>&gt;.down()</li>
+</ul>
+<div class="sourceCode" id="cb8" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>leo.penup()</span>
+<span id="cb8-2"><a href="#cb8-2"></a>leo.goto(<span class="dv">45</span>, <span class="dv">60</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>leo.pendown()</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">3</span>):</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    leo.forward(<span class="dv">300</span>)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    leo.left(<span class="dv">120</span>)</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>Before moving onto the next section, reposition your triangle so that it looks centered and make sure the size of the triangle is relatively large.</p>
+<h3 id="pen-color">Pen Color</h3>
+<p>There are actually two common ways to change the color of the turtle! To complete this next section, open https://htmlcolorcodes.com/color-picker/ in a new tab.</p>
+<ul>
+<li>To change the color with a string value: &lt;<em>turtlevariable</em>&gt;.color(“&lt;<em>color</em>&gt;”)</li>
+</ul>
+<div class="sourceCode" id="cb9" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>leo.color(<span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p>While this is useful for the basic colors it doesn’t leave much room for creativity. In order to have more control over our colors we can use RGB (red, green, blue) values instead. Using the color picker, use the site to pick out your favorite color and copy the three numbers next to RGB.</p>
+<ul>
+<li>To enable RGB mode, add under the import statement: colormode(255)</li>
+</ul>
+<div class="sourceCode" id="cb10" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>colormode(<span class="dv">255</span>)</span></code></pre></div>
+<ul>
+<li>To change the color with RGB values: &lt;<em>turtlevariable</em>&gt;.color(&lt;<em>red</em>&gt;, &lt;<em>green</em>&gt;, &lt;<em>blue</em>&gt;)</li>
+</ul>
+<div class="sourceCode" id="cb11" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>leo.color(<span class="dv">99</span>, <span class="dv">204</span>, <span class="dv">250</span>)</span></code></pre></div>
+<p>Red, Green and Blue are the primary colors of the digital world! By choosing different amounts of each color you are essentially mixing together a new color like you would mix paint.</p>
+<h3 id="fill-color">Fill Color</h3>
+<p>To fill in a shape we just have to tell the turtle when to start filling and end filling. It will fill with whatever the current color is.</p>
+<ul>
+<li>To begin fill: &lt;<em>turtlevariable</em>&gt;.begin_fill()</li>
+<li>To end fill: &lt;<em>turtlevariable</em>&gt;.end_fill()</li>
+</ul>
+<div class="sourceCode" id="cb12" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>leo.begin_fill()</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># code for shape to be filled </span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>leo.end_fill()</span></code></pre></div>
+<h3 id="other-useful-color-commands">Other Useful Color Commands</h3>
+<p>Any of the color commands can either be used with a color string or with RGB values.</p>
+<ul>
+<li>To set only pen color: &lt;<em>turtlevariable</em>&gt;.pencolor(&lt;<em>color</em>&gt;)</li>
+<li>To set only fill color: &lt;<em>turtlevariable</em>&gt;.fillcolor(&lt;<em>color</em>&gt;)</li>
+<li>To set fill and pen color: &lt;<em>turtlevariable</em>&gt;.color(&lt;<em>pencolor</em>&gt;, &lt;<em>fillcolor</em>&gt;)</li>
+</ul>
+<div class="sourceCode" id="cb13" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>leo.pencolor(<span class="st">&quot;pink&quot;</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>leo.fillcolor(<span class="dv">32</span>, <span class="dv">67</span>, <span class="dv">93</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>leo.color(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;yellow&quot;</span>)</span></code></pre></div>
+<h4 id="exercise-three">Exercise Three:</h4>
+<p>See if you can use the color picker to determine the maximum and minimum values for red, green and blue. What values give a pure white and pure black? Pick a grey color. What do you notice about the three numbers?</p>
+<p>Fill in your triangle with your color of choice and make sure to end fill after the triangle is drawn!</p>
+<h2 id="speed-visibility-and-the-fun-part">Speed, Visibility and the Fun Part</h2>
+<p>Before finishing the rest of the tutorial we may want to speed up our drawing as well as hide the turtle.</p>
+<ul>
+<li>To change the speed: &lt;<em>turtlevariable</em>&gt;.speed(&lt;<em>speed</em>&gt;)</li>
+<li>To end fill: &lt;<em>turtlevariable</em>&gt;.hideturtle() <strong>or</strong> &lt;<em>turtlevariable</em>&gt;.ht()</li>
+</ul>
+<div class="sourceCode" id="cb14" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>leo.speed(<span class="dv">50</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>leo.hideturtle()</span></code></pre></div>
+<h3 id="mini-project">Mini-Project</h3>
+<p>Now we have all of the basic commands needed for creating interesting patterns:</p>
+<ol type="1">
+<li>After your first triangle is created, we will set up a new turtle to do the rest of the work. Name this one <code>bob</code>.</li>
+</ol>
+<div class="sourceCode" id="cb15" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>bob: Turtle <span class="op">=</span> Turtle()</span></code></pre></div>
+<ol start="2" type="1">
+<li>Practice some of the tutorial commands by:
+<ul>
+<li>changing bob’s color to black or a darker version of your triabgle color</li>
+<li>using the goto, penup and pendown commands to position <code>bob</code> in the same spot that <code>leo</code> started.</li>
+<li>set <code>bob</code>’s speed to a higher value</li>
+</ul></li>
+<li>Create an outline of <code>leo</code>’s filled in triangle by having <code>bob</code> add another triangle without filling it in with the same size specifications as the original.</li>
+<li>Duplicate the code you created to have <code>bob</code> create an outline. We will use this second loop to add some more exciting linework. Turn the side length of the triangle into a variable and use it for both triangles. For instance:</li>
+</ol>
+<div class="sourceCode" id="cb16" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>side_length: <span class="bu">int</span> <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="cf">while</span> (i <span class="op">&lt;</span> <span class="dv">3</span>):</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    bob.forward(side_length)</span>
+<span id="cb16-6"><a href="#cb16-6"></a>    bob.left(<span class="dv">120</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code></pre></div>
+<ol start="5" type="1">
+<li>Inside the second outline triangle loop, multiply the side length variable by a number from 0.95 to 0.98. This will decrease the length of the side each time it is drawn.</li>
+</ol>
+<div class="sourceCode" id="cb17" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>side_length <span class="op">=</span> side_length <span class="op">*</span> <span class="fl">0.97</span></span></code></pre></div>
+<ol start="6" type="1">
+<li>Right now this will look like it is not changing much. Try increasing the number of loops of the second outline triangle to a much higher number. Mess around with this until it seems to fully recede!</li>
+<li>For one last magic touch, try changing the degrees of the second outline loop to just over 120. Mess around with a range of 120.5 to 123 until you get a result you like!</li>
+<li>By slightly changing the different number values at each of these steps you will get a different design. Have some fun seeing what you can make!</li>
+</ol>
+<p>Note that these are examples of <em>magic numbers</em> and should be given a meaningfully named constant definition to describe their purpose in a well styled, final product!</p>
+</div>
+            </div>
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

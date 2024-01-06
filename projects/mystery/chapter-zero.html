@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Chapter 0 - The Note - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502751.7033103">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="logistics-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Chapter 0 - The Note</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-caesar-cipher">The Caesar Cipher</a>
+<ul>
+<li><a href="#ascii-encoding-and-the-ord-function">ASCII Encoding and the <code>ord</code> function</a></li>
+<li><a href="#encoding-a-character-and-the-chr-function.">Encoding a character and the <code>chr</code> function.</a></li>
+</ul></li>
+<li><a href="#pull-the-skeleton-code">0. Pull the Skeleton ☠️ Code</a></li>
+<li><a href="#decode_char-function">1. <code>decode_char</code> function</a>
+<ul>
+<li><a href="#functional-requirements-decode_char">Functional Requirements – <code>decode_char</code></a></li>
+</ul></li>
+<li><a href="#decode_str-function">2. <code>decode_str</code> function</a>
+<ul>
+<li><a href="#functional-requirements-decode_str">Functional Requirements – <code>decode_str</code></a></li>
+</ul></li>
+<li><a href="#testing-and-decoding-the-note">3. Testing and Decoding the Note</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submission-instructions">6. Submission Instructions</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><script>
+    document.body.classList.add('halloween-mode'); 
+    document.getElementById("mode-switch").classList.add('hidden')
+</script>
+<h2 id="introduction">Introduction</h2>
+<p>Last night a terrible crime was commited. Kaki was walking home from sitterson late at night and never made it home to her cat Lily. We know because Lily told us. She was last seen just outside of sitterson by her security class lab partner who found the following note when he left an hour later:</p>
+<blockquote>
+<p>CFMMU PXFSX JOEPX</p>
+</blockquote>
+<p>Having just learnt about caesar ciphers in security class, Kaki’s lab parter had a sneaking suspician there was an encoded message in this odd set of letters. He gave us the following instructions for cracking the code:</p>
+<h2 id="the-caesar-cipher">The Caesar Cipher</h2>
+<p>We just learned about <a href="https://en.wikipedia.org/wiki/Caesar_cipher#History_and_usage">Julius Caesar’s cipher</a> and we can use it to <em>decode</em> secret 5-letter strings. For example, the string <code>"HIPTU"</code> decodes to <code>"GHOST"</code>. The idea is each letter is replaced by a letter some offset away from it in the alphabet. For our purposes, we will assume an offset shift of 1.</p>
+<p>Thus, the mappings are:</p>
+<pre class="plaintext"><code>A -&gt; B
+B -&gt; C
+C -&gt; D
+....
+Y -&gt; Z
+Z -&gt; A</code></pre>
+<p>Notice when <code>Z</code> is encoded it “wraps around” to <code>A</code>.</p>
+<h3 id="ascii-encoding-and-the-ord-function">ASCII Encoding and the <code>ord</code> function</h3>
+<p>Under the hood our computer uses numeric codes to represent characters, or <code>str</code>s of length one. The standard encoding is ASCII (“American Standard Code for Information Exchange”) which uses 7 binary digits (0s and 1s) to reresent each character. You’ll learn about this more in later classes, so no worries about the details here. The table of codes can be found here: <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" class="uri">https://en.wikipedia.org/wiki/ASCII#Printable_characters</a>. In the table, the <code>Dec</code> column is the <code>int</code> value of each character and the <code>Glyph</code> column contains the character representation. Scroll down to <code>Dec</code> <code>65</code> to see the uppercase range.</p>
+<p>For this exercise, you will make use of the built-in <code>ord</code>. The <code>ord</code> function is short for “ordinal” and it gives the numerical <code>int</code> ordering of a single-character <code>str</code> in ASCII. For example, the character <code>n</code> has corresponds to the <code>int</code> value <code>110</code> in ASCII per the table linked above. You can confirm this with the following demo code:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; character: str = &quot;n&quot;
+&gt;&gt;&gt; ascii_code: int = ord(character)
+&gt;&gt;&gt; print(ascii_code)
+110</code></pre>
+<h3 id="encoding-a-character-and-the-chr-function.">Encoding a character and the <code>chr</code> function.</h3>
+<p>According to our cipher mapping, we want to encode each character with the letter following it in the alphabet. We can do this by performing integer arithmetic on the <code>ascii_code</code>.</p>
+<p>Building on the previous example, we will encode the <code>character</code> variable, whose value is <code>n</code>, and store the result in <code>encoded_character</code>, whose value we expect to be <code>o</code>.</p>
+<p>The built-in <code>chr</code> function can be given an <code>int</code> ASCII code and return a <code>str</code> made of its corresponding character.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; character: str = &quot;n&quot;
+&gt;&gt;&gt; ascii_code: int = ord(character)
+&gt;&gt;&gt; encoded_ascii_code: int = ascii_code + 1
+&gt;&gt;&gt; encoded_character: str = chr(encoded_ascii_code)
+&gt;&gt;&gt; print(encoded_character)
+o</code></pre>
+<p>Try running this code yourself in a REPL to make sure you are confident about what is going on!</p>
+<p>What about if we have to wrap around? In the case of encoding <code>Z</code>, we can’t just add 1 to get back to <code>A</code>. The character <code>Z</code>’s ASCII code is <code>90</code> while <code>A</code> is <code>65</code>.</p>
+<p>Some clever arithmetic, in conjunction with our good friend the <em>remainder operator</em> <code>%</code>, can help us achieve this! Since there are 26 uppercase letters, we can take the remainder of dividing <em>any number</em> by 26 and are guaranteed for it to result in a value of <code>0</code> through <code>25</code>. This would be great if <code>A</code> was <code>0</code> and <code>Z</code> was <code>25</code>, because then <code>(25 + 1) % 26</code> would be <code>0</code> which is <code>A</code>! The problem is, uppercase ASCII codes begin at <code>65</code> with <code>A</code> and end at <code>90</code> with <code>Z</code>. For a fun challenge, pause here and see if you can figure out how we’ll get around this conundrum.</p>
+<p>Are you ready for the spoiler? Ok, here goes! An oft-used trick in situations like this, (this comes up in 3D graphics, too!), is we’ll momentarily normalize our value so that <code>A</code> <em>is</em> <code>0</code> and <code>Z</code> <em>is</em> <code>25</code> by subtracting <code>A</code>’s ASCII value which is <code>65</code>. Then, we’ll encode by adding 1 and performing the remainder operation, finally we’ll denormalize by adding <code>A</code>’s ASCII value <em>back</em> so that we once again have a number in the correct range for upper case letters. This modification still works for all letters in the alphabet, not just <code>Z</code>.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; character: str = &quot;Z&quot;
+&gt;&gt;&gt; ascii_code: int = ord(character)
+&gt;&gt;&gt; normalized_code: int = ascii_code - 65
+&gt;&gt;&gt; encoded_code: int = (normalized_code + 1) % 26 + 65
+&gt;&gt;&gt; encoded_character: str = chr(encoded_code)
+&gt;&gt;&gt; print(encoded_character)
+&#39;A&#39;</code></pre>
+<p>Give it a try in a REPL to convice yourself these steps work for any uppercase <code>character</code>. No worries if this still seems a bit fuzzy or magical – we are more worried about the function writing in the next two sections.</p>
+<h2 id="pull-the-skeleton-code">0. Pull the Skeleton ☠️ Code</h2>
+<p>You will find the starter files needed by “pulling” from the course workspace repository. Before beginning, be sure to:</p>
+<ol start="0" type="1">
+<li>Be sure you are in your course workspace. Open the file explorer and you should see your work for the course. If you do not, open your course workspace through File &gt; Open Recent.</li>
+<li>Open the <em>Source Control View</em> by clicking the 3-node (circles) graph (connected by lines) icon in your sidebar or opening the command palatte and searching for <em>Source Control</em>.</li>
+<li>Click the Ellipses in the Source Control pane and select “Pull” from the drop-down menu. This will begin the pulling process from the course repository. It should silently succeed.</li>
+<li>Return to the File Explorer pane and open the <code>projects</code> directory. You should see it now contains another directory named <code>mystery</code>. If you expand that directory, you should see the starter files for the Python programs in this exercise.</li>
+</ol>
+<h2 id="decode_char-function">1. <code>decode_char</code> function</h2>
+<p>Now that we have learned how to encode a <code>str</code>, we want undo this operation and <code>decode</code> it. These next two functions will look <em>VERY</em> similar to the ones you wrote in Part 1. This is expected – the main goal of this exercise is to get comfortable with the function writing process.</p>
+<p>Define a function named <code>decode_char</code> that given a single-length <code>str</code> parameter returns the originial, unencoded version of that character.</p>
+<p>Example function call:</p>
+<pre><code>decode_char(&quot;C&quot;) --&gt; returns &quot;B&quot;</code></pre>
+<h3 id="functional-requirements-decode_char">Functional Requirements – <code>decode_char</code></h3>
+<ol type="1">
+<li>Define a function with the following signature:
+<ol type="1">
+<li>Name: <code>decode_char</code></li>
+<li>Arguments: a <code>str</code> that can be assumed to be single-length</li>
+<li>Returns: a single-length <code>str</code></li>
+</ol></li>
+<li>The new <code>str</code> should be the parameter given shifted one letter to the left in the alphabet, per the mapping shown above.</li>
+<li>Your function should make use of the <code>ord</code> and <code>chr</code> built-in functions.</li>
+</ol>
+<h2 id="decode_str-function">2. <code>decode_str</code> function</h2>
+<p>We can now use our <code>decode_char</code> function to help us decode <code>str</code>s of length 5. Define a new function called <code>decode_str</code> that takes in a <code>str</code> parameter and returns the original, unencoded version of that <code>str</code>.</p>
+<p>Example function call:</p>
+<pre><code>decode_str(&quot;BCDEF&quot;) --&gt; returns &quot;ABCDE&quot;</code></pre>
+<h3 id="functional-requirements-decode_str">Functional Requirements – <code>decode_str</code></h3>
+<ol type="1">
+<li>Define another function with the following signature:
+<ol type="1">
+<li>Name: <code>decode_str</code></li>
+<li>Arguments: a <code>str</code> that can be assumed to have a length of 5.</li>
+<li>Returns: a <code>str</code> of length 5.</li>
+</ol></li>
+<li>The result of this function should be the parameter <code>str</code> with each letter shifted one to the left.</li>
+<li>Call <code>decode_char</code> inside this function for each letter of the parameter.</li>
+<li>Use <code>str</code> indexing to get the individual characters without looping.</li>
+</ol>
+<h2 id="testing-and-decoding-the-note">3. Testing and Decoding the Note</h2>
+<p>To check that your functions work as expected, you can load your <code>caesar_cipher</code> file into a REPL by opening up a new <code>REPL</code>, and then running <code>from projects.mystery.caesar_cipher import decode_char, decode_str</code>. From here you can practice calling your functions and seeing if the results match what you expected. Below are some function calls and their correct answers.</p>
+<pre><code>decode_char(&quot;A&quot;) --&gt; returns &quot;Z&quot;
+decode_char(&quot;B&quot;) --&gt; returns &quot;A&quot;
+decode_char(&quot;O&quot;) --&gt; returns &quot;N&quot;</code></pre>
+<pre><code>decode_str(&quot;RVFFO&quot;) --&gt; returns &quot;QUEEN&quot;
+decode_str(&quot;UPQBA&quot;) --&gt; returns &quot;TOPAZ&quot;
+decode_str(&quot;XJUDI&quot;) --&gt; returns &quot;WITCH&quot;</code></pre>
+<p>If you are convinced that your decoding functions are working, try decoding the note Kaki’s Lab Partner has found. Perhaps it is a clue to where there may be more information.</p>
+<blockquote>
+<p>CFMMU PXFSX JOEPX</p>
+</blockquote>
+<h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this project, making backups is encouraged. Note that you do not have to make a backup in order to submit your work, though you are encouraged to before each submission so that you can revert back to a previous point in your project if you accidentally change something you did not intend to.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on mystery project” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submission-instructions">6. Submission Instructions</h2>
+<p>To prepare your code for submission, be sure to add a docstring to your module (at the top of the file) and a global <code>__author__</code> variable set to a string which contains your 9-digit PID.</p>
+<p>Run <code>python -m tools.submission projects/mystery</code> to build your submission zip for upload to Gradescope. Don’t forget to backup your work by creating a commit and pushing it to GitHub. For a reminder of this process, see the previous exercises.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Ezri White,        Marc Lewis, Kaki Ryan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

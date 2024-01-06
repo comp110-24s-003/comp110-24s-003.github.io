@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 02 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502730.5188715">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 02 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#conceptual-questions">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams">Memory Diagrams</a></li>
+<li><a href="#code-tracing">Code Tracing</a></li>
+<li><a href="#function-writing">Function Writing</a>
+<ul>
+<li><a href="#autograder-instructions">Autograder instructions:</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#conceptual-questions-1">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams-1">Memory Diagrams</a></li>
+<li><a href="#code-tracing-1">Code Tracing</a></li>
+<li><a href="#function-writing-1">Function Writing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><!--
+Note: this wkst pulls from the qz02 and qz03 worksheets from resources/practice/fa21 with some
+minor changes/additions
+-->
+<h1 id="questions">Questions</h1>
+<p>The quiz itself will be similar in difficulty to this practice worksheet.</p>
+<p>Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>Global variables are limited to the scope of the function they are declared in. (T/F)</li>
+<li>Variables can have the same name but store different values if they are defined in a different scope. (T/F)</li>
+<li>Named constants should be used to store values that may change throughout the program. (T/F)</li>
+<li>All pytest test function names must begin with <code>test</code>.</li>
+<li>A test will pass if it does not hit a <code>False</code> assertion or some other type of error.</li>
+<li>Test functions should be written in a file with a name matching the file that the functions are defined in, followed by <code>_test</code>.</li>
+<li>When using a <code>for...in</code> loop, on the first line of the loop you must specify the type of the variable (variable refers to <code>i</code> in <code>for i in nums</code>). (T/F)</li>
+<li>In Python dictionaries, each dictionary’s value type must match its key type. (T/F)</li>
+<li>Writing a <code>for...in</code> loop on a <code>dict</code> loops through the keys of a dictionary. (T/F)</li>
+<li>The values in a dictionary cannot be changed once they are assigned. (T/F)</li>
+<li>Explain the similarities and differences between Python’s <code>list</code> and <code>dict</code>.</li>
+</ol>
+<h2 id="memory-diagrams">Memory Diagrams</h2>
+<ol start="12" type="1">
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack, heap, and output.<br />
+<img src="/static/practice_worksheets/fa21/qz02-question11.png" /></p></li>
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack, heap, and output.<br />
+<img src="/static/practice_worksheets/fa21/qz02-question12new.png" /></p></li>
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack, heap, and output.<br />
+<img class="img-fluid" src="/static/practice_worksheets/sp23/cora1.png"/></p></li>
+</ol>
+<!-- 20. Produce a memory diagram for the following code snippet, being sure to include its stack and output.  
+![](/static/practice_worksheets/fa21/qz03-question12.png) -->
+<h2 id="code-tracing">Code Tracing</h2>
+<ol start="15" type="1">
+<li><p>Given the following code snippet, answer the questions below.<br />
+<img src="/static/practice_worksheets/fa21/qz02-question13.png" /><br />
+15.1. What is the printed output once the code snippet completes?<br />
+15.2. What are the values of the global variables <code>a</code>, <code>b</code>, and <code>c</code> once the code snippet completes?</p></li>
+<li><p>Given the following code snippet, answer the questions below.<br />
+<img src="/static/practice_worksheets/fa21/qz02-question14.png" /><br />
+16.1. What is the value of <code>list_1</code> once the code snippet completes?<br />
+16.2. What is the value of <code>i</code> on line 13 during the <em>last</em> call to <code>change_and_check</code>?<br />
+16.3. How many total frames are created on the stack throughout the run of this program (including the globals frame)?</p></li>
+</ol>
+<h2 id="function-writing">Function Writing</h2>
+<ol start="17" type="1">
+<li>Odd and Even: <a href="/static/practice_worksheets/sp23/qz02-pp1.pdf">instructions</a></li>
+<li>Value Exists: <a href="/static/practice_worksheets/sp23/qz02-pp2.pdf">instructions</a></li>
+<li>Short Words: <a href="/static/practice_worksheets/sp23/qz02-pp3.pdf">instructions</a></li>
+</ol>
+<h3 id="autograder-instructions">Autograder instructions:</h3>
+<p>Join the Gradescope class for practice problems with the code: 4V7PB5 (Do this by going to your <a href="https://www.gradescope.com/">Gradescope</a> homepage and clicking on “Enroll in Course”) <strong>Do not compress these files before submitting. Simply submit the <code>.py</code> files.</strong></p>
+<h1 id="solutions">Solutions</h1>
+<h2 id="conceptual-questions-1">Conceptual Questions</h2>
+<ol type="1">
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>True</li>
+<li>True</li>
+<li>False</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>Similarities:<br />
+Both are collections that can be looped through using a <code>for...in</code> loop, reference types that live on the heap, mutable, can duplicate values, subscription notation to access values, <code>.pop()</code> to remove items<br />
+Differences:<br />
+<code>list</code> – Index by increasing integers, add items with <code>.append()</code>, ordered, <code>for...in</code> loop gives items<br />
+<code>dict</code> – Matched Key-Value pairs, pair with assignment operator <code>=</code> (<code>dict_name[key] = value</code>), control over key type (not limited to <code>int</code>), <code>for...in</code> gives keys<br />
+Note: these are not all of the similarities and differences, just some important ones to remember</li>
+</ol>
+<h2 id="memory-diagrams-1">Memory Diagrams</h2>
+<ol start="12" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/qz02-solution11.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/qz02-solution12n.png" /></p></li>
+<li><p><img class="img-fluid" src="/static/practice_worksheets/sp23/cora1_sol.png" /></p></li>
+</ol>
+<h2 id="code-tracing-1">Code Tracing</h2>
+<ol start="15" type="1">
+<li><p>15.1. <code>[3, 7, 10, 13]</code><br />
+15.2. a = 3, b = 0, c = 13.5</p></li>
+<li><p>16.1. <code>[6, 7, 5, 3, 0]</code><br />
+16.2. 4<br />
+16.3. 4</p></li>
+</ol>
+<h2 id="function-writing-1">Function Writing</h2>
+<p>Note: Your solution does not need to be identical to these, these are just examples of one of many possible solutions.</p>
+<ol start="17" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/qz02-solution15.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/sp23/coding2_sol.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/sp23/coding3_sol.png" /></p></li>
+</ol>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang,        David Karash,        Coralee Vickers, Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

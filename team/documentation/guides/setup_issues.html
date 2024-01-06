@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Common Python Setup Issues - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502759.1909692">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Common Python Setup Issues</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#general">General</a>
+<ul>
+<li><a href="#installing-requirements-leads-to-version-error">Installing requirements leads to version error</a></li>
+<li><a href="#none-of-their-python-commands-are-working">None of their python commands are working</a></li>
+<li><a href="#python-only-shows-anaconda-version-base">Python only shows anaconda version “(base)”</a></li>
+<li><a href="#timeout-exception-error-when-installing-requirements">Timeout exception error when installing requirements</a></li>
+</ul></li>
+<li><a href="#mac">Mac</a>
+<ul>
+<li><a href="#password-not-working-with-sudo-step-2">Password not working with sudo (step 2)</a></li>
+<li><a href="#git-anything-results-in-xcrun-error">git <em>anything</em> results in xcrun error</a></li>
+<li><a href="#default-shell-is-bash-instead-of-zsh">Default shell is ‘bash’ instead of ‘zsh’</a></li>
+<li><a href="#vscode-still-says-its-running-python-2.7">VSCode still says its running Python 2.7</a></li>
+<li><a href="#need-for-split-screen">Need for Split screen</a></li>
+<li><a href="#git-broken-with-invalid-developer-directory">git broken with invalid developer directory</a></li>
+<li><a href="#no-module-tools-on-file-export-no-module-named-exercises">“No module ‘tools’” on file export / No module named exercises</a></li>
+<li><a href="#command-palette-lacking-git-commands">Command Palette lacking git commands</a></li>
+</ul></li>
+<li><a href="#windows">Windows</a>
+<ul>
+<li><a href="#vscode-cant-find-python">VSCode can’t find Python</a></li>
+<li><a href="#vscode-is-not-available-as-default-text-editor">VSCode is not available as default text editor</a></li>
+<li><a href="#checking-python-version-opens-app-store">Checking python version opens app store</a></li>
+<li><a href="#git-bash-permission-denied">git bash permission denied</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="general">General</h1>
+<h3 id="installing-requirements-leads-to-version-error">Installing requirements leads to version error</h3>
+<p>Detailed Issue: Installing pip requirements.txt leads to “Could not find a version that satisfies the requirement pytest.” (Or another package)</p>
+<p><strong>Solution</strong>: This seems to be an SSL error and some indication the user is behind a proxy / strong antivirus firewall or has malicious software running on their machine. The workaround is:</p>
+<p><code>python -m pip install --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org -r requirements.txt</code></p>
+<p><strong>Note</strong>: Before trying this command, make sure to confirm that just <code>python -m pip install pip -r requirements.txt</code> does not work.</p>
+<h3 id="none-of-their-python-commands-are-working">None of their python commands are working</h3>
+<p><strong>Solution</strong>: Make sure terminal is opened inside of the workspace folder</p>
+<p><strong>Note</strong>: There could be other causes for this so if that does not fix look at some of the other issues on here.</p>
+<h3 id="python-only-shows-anaconda-version-base">Python only shows anaconda version “(base)”</h3>
+<p>Detailed Issue: Python version and path only showing the version of python installed with anaconda and before the prompt string in the terminal you see something like “(base)” or the name of some other environment. This means they have a conda session activated.</p>
+<p><strong>Solution</strong>: run <code>conda deactivate</code></p>
+<h3 id="timeout-exception-error-when-installing-requirements">Timeout exception error when installing requirements</h3>
+<p>Detailed Issue: Timeout exception error when running <code>python -m pip install pip -r requirements.txt</code></p>
+<p><strong>Solution</strong>: increase timeout default by running <code>python -m pip install pip --default-timeout=100 -r requirements.txt</code></p>
+<h1 id="mac">Mac</h1>
+<h3 id="password-not-working-with-sudo-step-2">Password not working with sudo (step 2)</h3>
+<p>Detailed Issue: Password not working when using sudo for step 2</p>
+<p><strong>Solution</strong>: Try running the command without <code>sudo</code></p>
+<h3 id="git-anything-results-in-xcrun-error">git <em>anything</em> results in xcrun error</h3>
+<p>Detailed Issue: git <em>anything</em> results in xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools</p>
+<p><strong>Solution</strong>: run <code>xcode-select --install</code></p>
+<h3 id="default-shell-is-bash-instead-of-zsh">Default shell is ‘bash’ instead of ‘zsh’</h3>
+<p><strong>Solution</strong>: Cmd+Sht+P “Terminal: Select Default Shell”</p>
+<h3 id="vscode-still-says-its-running-python-2.7">VSCode still says its running Python 2.7</h3>
+<p>Detailed Issue: VSCode still says that it’s python version 2.7 even though running python –version or python3 –version in a terminal window says 3.10.1</p>
+<p><strong>Solution</strong>: Following these steps in your terminal:</p>
+<ol type="1">
+<li><code>sudo ln -s "$(which python3)" "$(dirname $(which python3))/python"</code></li>
+<li>trash the terminal, open a new one and it should work</li>
+</ol>
+<h3 id="need-for-split-screen">Need for Split screen</h3>
+<p>Detailed Issue: Student is struggling to code and simultaneously view instructions</p>
+<p><strong>Solution</strong>: Hold down the green button at the top of their window to go into split screen mode</p>
+<h3 id="git-broken-with-invalid-developer-directory">git broken with invalid developer directory</h3>
+<p>Detailed Issue: user unable to find git, the error message looks like: invalid developer directory</p>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li><code>xcode-select --install</code> ; verify you have xcode installed</li>
+<li><code>sudo xcode-select --switch \Library\Developer\CommandLineTools</code></li>
+</ul>
+<h3 id="no-module-tools-on-file-export-no-module-named-exercises">“No module ‘tools’” on file export / No module named exercises</h3>
+<p>Detailed Issue: Error message “No module ‘tools’” when trying to export file from VSCode on Mac</p>
+<p><strong>Solution</strong>: Make sure the student’s default shell is <code>zsh</code></p>
+<p><strong>Solution</strong>: Make sure the terminal is running from the top workspace directory (a.k.a cd into the outermost folder)</p>
+<h3 id="command-palette-lacking-git-commands">Command Palette lacking git commands</h3>
+<p>Detailed Issue: VSCode is not listing any of the git commands in the command palette</p>
+<p><strong>Solution</strong>: Move VSCode from Downloads folder into Applications folder</p>
+<h1 id="windows">Windows</h1>
+<h3 id="vscode-cant-find-python">VSCode can’t find Python</h3>
+<p><strong>Solution</strong>: Likely a PATH problem. If a student has not yet rebooted, they should do that now. If still fails, uninstall Python and reinstall being very careful to check the box on the first screen that asks if you want to add Python to PATH.</p>
+<h3 id="vscode-is-not-available-as-default-text-editor">VSCode is not available as default text editor</h3>
+<p>Detailed Issue: VSCode is not an option to use as default text editor after installing git.</p>
+<p><strong>Solution</strong>: Install VSCode first. The website instructions now recommend this route.</p>
+<h3 id="checking-python-version-opens-app-store">Checking python version opens app store</h3>
+<p>Detailed Issue: Running <code>python --version</code> pops open windows app store or displays an old version.</p>
+<p><strong>Solution</strong>: Uninstall and reinstall python via Start &gt; Add/Remove Programs and BE SURE “Add Python to PATH” is selected. Continue install. Try again from a <em>new terminal session</em> and, worst case, reboot if still an issue.</p>
+<h3 id="git-bash-permission-denied">git bash permission denied</h3>
+<p><strong>Solution</strong>: try using py instead of python So: py –version instead of python –version</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502759.1909692"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502759.1909692"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502759.1909692"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

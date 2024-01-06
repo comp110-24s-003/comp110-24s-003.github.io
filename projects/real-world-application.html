@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> PJ02 - DataBank Analysis - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502748.3125987">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="projects-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>PJ02 - DataBank Analysis</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#data-set">Data Set</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#requirements">Requirements</a>
+<ul>
+<li><a href="#read-the-csv-file-into-a-dataframe.-the-str-path-you-will-need-to-use-with-pandas-read_csv-function-is">0. Read the CSV file into a <code>DataFrame</code>. The <code>str</code> path you will need to use with Pandas’ <code>read_csv</code> function is:</a></li>
+<li><a href="#shape-and-head">1. Shape and Head</a></li>
+<li><a href="#selecting-column-subsets">2. Selecting Column Subsets</a></li>
+<li><a href="#selecting-rows-with-complete-data">3. Selecting Rows with Complete Data</a></li>
+<li><a href="#largest-values">4. 10-largest Values</a></li>
+<li><a href="#scatter-plot">5. Scatter Plot</a></li>
+<li><a href="#correlation">6. Correlation</a></li>
+</ul></li>
+<li><a href="#rubric">Rubric</a></li>
+<li><a href="#submission-instructions">Submission Instructions</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h3 id="overview">Overview</h3>
+<p>COMP110, like all things, must come to an end. We are sad, too. For you, though, your programming journey is just beginning! In this project, you will gain practice using Pandas, a real world, industrial grade data analysis library. You will be expected to peruse official tutorials and documentation to figure out how to perform data exploration and analysis.</p>
+<p>After COMP110, when you are on your own and would like to take on a new programming project, we hope you will think back to the experience you are about to have with this project and in Lesson 26. The process we are guiding you through here is applicable to learning most any other programming language, library, or software-driven technology. If you want to make a game, an app, a web site, and so on, the same strategies directly apply!</p>
+<p>Before beginning this project you must fully complete Exercise 13 - Guided Readings on NumPy and Pandas. While we could easily teach these same concepts in COMP110-specific videos, as with earlier topics, here we are intentionally setting you off in the direction of public, official, free documentation. Not only will this help you know what to expect from library and programming tool websites, but it will also give you confidence you can learn new skills and technologies <em>outside of formal instruction</em>!</p>
+<h3 id="data-set">Data Set</h3>
+<p>We will use a data set sourced from the <a href="https://data.worldbank.org/">World Bank</a>. It is a CSV file that contains many data points most related to education, referred to as indicators, for countries around the world in 2018. Not all all countries have data on all indicators, some are blank. The World Bank’s Data Bank has lots of data beyond this, at global and local scales, and across much wider time frames.</p>
+<ul>
+<li><code>SP.POP.1564.TO.ZS</code> - Population ages 15-64 (% of total population)</li>
+<li><code>SP.POP.0014.TO.ZS</code> - Population ages 0-14 (% of total population)</li>
+<li><code>SL.UEM.TOTL.ZS</code> - Unemployment, total (% of total labor force) (modeled ILO estimate)</li>
+<li><code>SL.UEM.TOTL.MA.ZS</code> - Unemployment, male (% of male labor force) (modeled ILO estimate)</li>
+<li><code>SL.UEM.TOTL.FE.ZS</code> - Unemployment, female (% of female labor force) (modeled ILO estimate)</li>
+<li><code>SL.TLF.TOTL.IN</code> - Labor force, total</li>
+<li><code>SL.TLF.TOTL.FE.ZS</code> - Labor force, female (% of total labor force)</li>
+<li><code>SH.DYN.2024</code> - Probability of dying among youth ages 20-24 years (per 1,000)</li>
+<li><code>SH.DYN.1519</code> - Probability of dying among adolescents ages 15-19 years (per 1,000)</li>
+<li><code>SH.DYN.1014</code> - Probability of dying among adolescents ages 10-14 years (per 1,000)</li>
+<li><code>SH.DYN.0509</code> - Probability of dying among children ages 5-9 years (per 1,000)</li>
+<li><code>SH.DTH.2024</code> - Number of deaths ages 20-24 years</li>
+<li><code>SH.DTH.1519</code> - Number of deaths ages 15-19 years</li>
+<li><code>SH.DTH.1014</code> - Number of deaths ages 10-14 years</li>
+<li><code>SH.DTH.0509</code> - Number of deaths ages 5-9 years</li>
+<li><code>SE.XPD.TOTL.GD.ZS</code> - Government expenditure on education, total (% of GDP)</li>
+<li><code>SE.XPD.TOTL.GB.ZS</code> - Government expenditure on education, total (% of government expenditure)</li>
+<li><code>SE.TER.ENRR.MA</code> - School enrollment, tertiary, male (% gross)</li>
+<li><code>SE.TER.ENRR.FE</code> - School enrollment, tertiary, female (% gross)</li>
+<li><code>SE.TER.ENRR</code> - School enrollment, tertiary (% gross)</li>
+<li><code>SE.SEC.TCHR.FE.ZS</code> - Secondary education, teachers (% female)</li>
+<li><code>SE.SEC.TCHR.FE</code> - Secondary education, teachers, female</li>
+<li><code>SE.SEC.TCHR</code> - Secondary education, teachers</li>
+<li><code>SE.SEC.PRIV.ZS</code> - School enrollment, secondary, private (% of total secondary)</li>
+<li><code>SE.SEC.NENR.MA</code> - School enrollment, secondary, male (% net)</li>
+<li><code>SE.SEC.NENR.FE</code> - School enrollment, secondary, female (% net)</li>
+<li><code>SE.SEC.NENR</code> - School enrollment, secondary (% net)</li>
+<li><code>SE.SEC.ENRR.MA</code> - School enrollment, secondary, male (% gross)</li>
+<li><code>SE.SEC.ENRR.FE</code> - School enrollment, secondary, female (% gross)</li>
+<li><code>SE.SEC.ENRR</code> - School enrollment, secondary (% gross)</li>
+<li><code>SE.SEC.ENRL.VO.FE.ZS</code> - Secondary education, vocational pupils (% female)</li>
+<li><code>SE.SEC.ENRL.VO</code> - Secondary education, vocational pupils</li>
+<li><code>SE.SEC.ENRL.TC.ZS</code> - Pupil-teacher ratio, secondary</li>
+<li><code>SE.SEC.ENRL.LO.TC.ZS</code> - Pupil-teacher ratio, lower secondary</li>
+<li><code>SE.SEC.ENRL.GC.FE.ZS</code> - Secondary education, general pupils (% female)</li>
+<li><code>SE.SEC.ENRL.GC</code> - Secondary education, general pupils</li>
+<li><code>SE.SEC.ENRL.FE.ZS</code> - Secondary education, pupils (% female)</li>
+<li><code>SE.SEC.ENRL</code> - Secondary education, pupils</li>
+<li><code>SE.SEC.DURS</code> - Secondary education, duration (years)</li>
+<li><code>SE.SEC.CMPT.LO.ZS</code> - Lower secondary completion rate, total (% of relevant age group)</li>
+<li><code>SE.SEC.CMPT.LO.MA.ZS</code> - Lower secondary completion rate, male (% of relevant age group)</li>
+<li><code>SE.SEC.CMPT.LO.FE.ZS</code> - Lower secondary completion rate, female (% of relevant age group)</li>
+<li><code>SE.SEC.AGES</code> - Lower secondary school starting age (years)</li>
+<li><code>SE.PRM.UNER.ZS</code> - Children out of school (% of primary school age)</li>
+<li><code>SE.PRM.UNER.MA.ZS</code> - Children out of school, male (% of male primary school age)</li>
+<li><code>SE.PRM.UNER.MA</code> - Children out of school, primary, male</li>
+<li><code>SE.PRM.UNER.FE.ZS</code> - Children out of school, female (% of female primary school age)</li>
+<li><code>SE.PRM.UNER.FE</code> - Children out of school, primary, female</li>
+<li><code>SE.PRM.UNER</code> - Children out of school, primary</li>
+<li><code>SE.PRM.TENR</code> - Adjusted net enrollment rate, primary (% of primary school age children)</li>
+<li><code>SE.PRM.TCHR.FE.ZS</code> - Primary education, teachers (% female)</li>
+<li><code>SE.PRM.TCHR</code> - Primary education, teachers</li>
+<li><code>SE.PRM.REPT.ZS</code> - Repeaters, primary, total (% of total enrollment)</li>
+<li><code>SE.PRM.REPT.MA.ZS</code> - Repeaters, primary, male (% of male enrollment)</li>
+<li><code>SE.PRM.REPT.FE.ZS</code> - Repeaters, primary, female (% of female enrollment)</li>
+<li><code>SE.PRM.PRSL.ZS</code> - Persistence to last grade of primary, total (% of cohort)</li>
+<li><code>SE.PRM.PRSL.MA.ZS</code> - Persistence to last grade of primary, male (% of cohort)</li>
+<li><code>SE.PRM.PRSL.FE.ZS</code> - Persistence to last grade of primary, female (% of cohort)</li>
+<li><code>SE.PRM.PRIV.ZS</code> - School enrollment, primary, private (% of total primary)</li>
+<li><code>SE.PRM.OENR.ZS</code> - Over-age students, primary (% of enrollment)</li>
+<li><code>SE.PRM.OENR.MA.ZS</code> - Over-age students, primary, male (% of male enrollment)</li>
+<li><code>SE.PRM.OENR.FE.ZS</code> - Over-age students, primary, female (% of female enrollment)</li>
+<li><code>SE.PRM.NENR</code> - School enrollment, primary (% net)</li>
+<li><code>SE.PRM.GINT.ZS</code> - Gross intake ratio in first grade of primary education, total (% of relevant age group)</li>
+<li><code>SE.PRM.GINT.MA.ZS</code> - Gross intake ratio in first grade of primary education, male (% of relevant age group)</li>
+<li><code>SE.PRM.GINT.FE.ZS</code> - Gross intake ratio in first grade of primary education, female (% of relevant age group)</li>
+<li><code>SE.PRM.ENRR.MA</code> - School enrollment, primary, male (% gross)</li>
+<li><code>SE.PRM.ENRR.FE</code> - School enrollment, primary, female (% gross)</li>
+<li><code>SE.PRM.ENRR</code> - School enrollment, primary (% gross)</li>
+<li><code>SE.PRM.ENRL.TC.ZS</code> - Pupil-teacher ratio, primary</li>
+<li><code>SE.PRM.ENRL.FE.ZS</code> - Primary education, pupils (% female)</li>
+<li><code>SE.PRM.ENRL</code> - Primary education, pupils</li>
+<li><code>SE.PRM.DURS</code> - Primary education, duration (years)</li>
+<li><code>SE.PRM.CMPT.ZS</code> - Primary completion rate, total (% of relevant age group)</li>
+<li><code>SE.PRM.CMPT.MA.ZS</code> - Primary completion rate, male (% of relevant age group)</li>
+<li><code>SE.PRM.CMPT.FE.ZS</code> - Primary completion rate, female (% of relevant age group)</li>
+<li><code>SE.PRM.AGES</code> - Primary school starting age (years)</li>
+<li><code>SE.PRE.ENRR.MA</code> - School enrollment, preprimary, male (% gross)</li>
+<li><code>SE.PRE.ENRR.FE</code> - School enrollment, preprimary, female (% gross)</li>
+<li><code>SE.PRE.ENRR</code> - School enrollment, preprimary (% gross)</li>
+<li><code>SE.PRE.ENRL.TC.ZS</code> - Pupil-teacher ratio, preprimary</li>
+<li><code>SE.PRE.DURS</code> - Preprimary education, duration (years)</li>
+<li><code>SE.ENR.TERT.FM.ZS</code> - School enrollment, tertiary (gross), gender parity index (GPI)</li>
+<li><code>SE.ENR.SECO.FM.ZS</code> - School enrollment, secondary (gross), gender parity index (GPI)</li>
+<li><code>SE.ENR.PRSC.FM.ZS</code> - School enrollment, primary and secondary (gross), gender parity index (GPI)</li>
+<li><code>SE.ENR.PRIM.FM.ZS</code> - School enrollment, primary (gross), gender parity index (GPI)</li>
+<li><code>SE.COM.DURS</code> - Compulsory education, duration (years)</li>
+</ul>
+<p>For a more thorough description of any indicator, use the <a href="https://databank.worldbank.org/metadataglossary/all/series">WorldBank’s Metadata Glossary</a> to search for the indicator.</p>
+<p>Your goal in this project is to choose two indicators from the above options, state a hypothesis as to whether there is a strong or weak correlation between the two factors, and perform various analysis as described below to investigate.</p>
+<h3 id="getting-started">Getting Started</h3>
+<p>To get the data for the project, <a href="/static/data/databank_education_2018.csv">right click this link</a> in Google Chrome and select “Save Link As…”. Download the file to your course workspace’s <code>data</code> directory in a file named <code>databank_education_2018.csv</code>.</p>
+<p>In your course workspace, create a new directory in projects called <code>pj02</code>.</p>
+<p>In your <code>projects/pj02</code> directory, create a new notebook titled <code>analysis.ipynb</code>.</p>
+<p>Begin your Jupyter Notebook with a markdown cell that describes your hypothesis about the two indicators you are investigating.</p>
+<p>Add a code cell that imports the <code>pandas</code> library in a conventional way, aliasing it as <code>pd</code>.</p>
+<p>In the same code cell as above, declare and initialize two named constants for each of the indicator code strings you will explore. Name these with more descriptive names than the codes themselves to help make your notebook more readable.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Each of these requirements can be completed in its own code cell. Above each code cell, you must have a markdown cell that describes in plain, well-written English what is about to follow.</p>
+<h3 id="read-the-csv-file-into-a-dataframe.-the-str-path-you-will-need-to-use-with-pandas-read_csv-function-is">0. Read the CSV file into a <code>DataFrame</code>. The <code>str</code> path you will need to use with Pandas’ <code>read_csv</code> function is:</h3>
+<pre class="plaintext"><code>&quot;../../data/databank_education_2018.csv&quot;</code></pre>
+<p>The two sets of <code>..</code> refer to “moving up” two directories (from <code>pj02</code> -&gt; <code>projects</code> -&gt; <code>workspace</code>) and then into the <code>data</code> directory where you downloaded the CSV.</p>
+<h3 id="shape-and-head">1. Shape and Head</h3>
+<p>After reading the CSV file into a <code>DataFrame</code>, print the <em>shape</em> of the DataFrame (rows, columns). Then, use the <code>head</code> method of <code>DataFrame</code> to display the first 10 rows.</p>
+<h3 id="selecting-column-subsets">2. Selecting Column Subsets</h3>
+<p>Use column-based selection to narrow in on a <code>DataFrame</code> with only the three columns your analysis is concerned with: <code>"Country"</code> and the two indicator columns you choose and assigned to named constants in <em>Getting Started</em>. Once again, use the <code>head</code> method to display the first 10 rows of your selection.</p>
+<h3 id="selecting-rows-with-complete-data">3. Selecting Rows with Complete Data</h3>
+<p>Use row-based filtering to select only rows where <em>neither</em> of your analysis columns have <code>N/A</code> or <code>NaN</code> (Not a Number) values. Print the <code>shape</code> of the resulting DataFrame and notice how many fewer rows there are than the complete dataset. Complete the cell with a method call expression to <code>head</code> to display the first 10 rows of your narrowed data set. You should see values for each row and column.</p>
+<p>Hint: Recall from the guided reading that a column/<code>Series</code> has a built-in <code>notna</code> method. Also recall the note that you can <em>combine by and’ing</em> two <code>bool</code> <code>Series</code>es with the <code>&amp;</code> operation.</p>
+<h3 id="largest-values">4. 10-largest Values</h3>
+<p>Choose either of your indicator columns and sort its values in <em>descending</em> order (hint: search for <code>DataFrame sort_values</code> and look for an examples – note that this method <em>does not</em> mutate the original DataFrame and returns a new DataFrame, instead). Use <code>head</code> to display the rows with the 10 largest values in the column you choose in descending order.</p>
+<h3 id="scatter-plot">5. Scatter Plot</h3>
+<p>Produce a Scatter Plot where one of your indicator columns serves as the X-axis and the other as the Y-axis. See the official Pandas getting started tutorial on plotting for help getting started.</p>
+<h3 id="correlation">6. Correlation</h3>
+<p>Every Pandas <code>Series</code> object (each column) has the ability to compute a linear correlation with another <code>Series</code> of the same length. Search around for documentation for how to use a <code>Series</code>’s method for correlating it with some <em>other</em> <code>Series</code> object. Print the correlation between your two indicator columns. The exact details of correlation are beyond the scope of COMP110, but the closer to 0 a correlation is, the less correlated two indicators are. Conversely, the closer to <code>1</code> or <code>-1</code> the stronger the correlation is between two indicators. A strong, positive correlation suggests as one indicator increases, so does the other. A strong, negative correlation suggests as one indicator increases, the other decreases. When thinking about correlation, know that correlation is not causation and a strong relationship between two variables does not imply one <em>causes</em> the other nor <em>vice-versa</em>.</p>
+<h2 id="rubric">Rubric</h2>
+<p>Reporting – 30 points</p>
+<ul>
+<li>10 points - First markdown cell in your notebook states your hypothesis or question of interest</li>
+<li>10 points - Each cell of code that you write must be preceeded by a markdown cell explaining what you are attempting to do. Walk us through your thought process.</li>
+<li>10 points - Final markdown cell is a conclusion paragraph summarizing your findings. Were you able to answer your question or prove your hypothesis? It is totally OK (and part of the process) to not get what you initially expected. You can still get full credit even if you end up contradicting your hypothesis :)</li>
+</ul>
+<p>Markdown tip! If you want to make something a big header, you can start the line with <code>#</code> for a big header, <code>##</code> for a medium header, <code>###</code> for a small one.</p>
+<p>Analysis – 60 points</p>
+<ul>
+<li>10 points - Establishing and using named constants rather than indicator codes</li>
+<li>10 points each - Requirements 2 through 6 above</li>
+</ul>
+<p>Above and Beyond Charting – 10 points (from A- to A)</p>
+<p>You are allowed to Google and use resources you find, but collaboration is still prohibited.</p>
+<ul>
+<li>5 points - Label the axes of your chart more meaningfully than the indicator codes and give it a title.</li>
+<li>5 points - <em>Challenging:</em> Compute and plot a regression line on your scatter plot using <code>numpy</code>. You may want to search around for functions including: <code>polyfit</code>, <code>poly1d</code>, <code>linspace</code>, and <code>polyval</code>. An example plot with a regression line is shown below:</li>
+</ul>
+<figure>
+<img src="../../../static/assets/pj02/regression.png" alt="" /><figcaption>Regression Line Example</figcaption>
+</figure>
+<h2 id="submission-instructions">Submission Instructions</h2>
+<p>Run <code>python -m tools.submission projects/pj02</code> to build your submission zip for upload to Gradescope. Don’t forget to backup your work by creating a commit and pushing it to GitHub. For a reminder of this process, see the previous exercises.</p>
+<p>All of the points for this project will be handgraded, so your autograder score should be 0/0. This blank screen is expected!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kris Jordan, Kush Patel</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

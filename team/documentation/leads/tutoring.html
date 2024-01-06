@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team Lead Guide to Tutoring - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502757.8978488">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="team-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Team Lead Guide to Tutoring</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#key-objectives">Key Objectives</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#ta-guidelines---spring-2021"><strong>TA Guidelines - Spring 2021</strong></a></li>
+</ul></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#tutoring-flow-in-person-zoom">Tutoring Flow (In-person &amp; Zoom)</a>
+<ul>
+<li><a href="#in-person-tutoring"><strong>In-person Tutoring</strong></a></li>
+<li><a href="#virtual-tutoring"><strong>Virtual Tutoring</strong></a></li>
+<li><a href="#practice-materials"><strong>Practice Materials</strong></a></li>
+</ul></li>
+<li><a href="#rescheduling-recurring-or-one-time">Rescheduling (Recurring or One-time)</a></li>
+<li><a href="#managing-slow-tutoring-queue">Managing Slow Tutoring Queue</a></li>
+<li><a href="#tutoring-slack-channel">#tutoring Slack Channel</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="key-objectives">Key Objectives</h2>
+<ul>
+<li>Overview</li>
+<li>Setup</li>
+<li>Tutoring Flow</li>
+<li>Rescheduling</li>
+<li>Managing Slow Tutoring Queue</li>
+<li>Tutoring Slack channel</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>Tutoring 110 is a resource for students to access conceptual help at a more personalized pace than Lecture &amp; Office Hours can provide.</p>
+<p>Students are encouraged to bring questions about course fundamentals, lecture examples, new concepts, or even old quiz questions to review with a TA without a time limit. <strong>No Exercise/Project specific questions are addressed through tutoring</strong>, students should be directed to Office Hours with such questions.</p>
+<p>Within a tutoring interaction, students can come individually or with a group of peers to work with a TA in a Zoom Breakout Room. Interactions are likely to be 1:1 (TA : Student), but this is not guaranteed and is dependent upon the demand of that specific day.</p>
+<p>Tutoring 110 usually occurs in 2-hour blocks on weekday evenings.</p>
+<blockquote>
+<p>The Spring 2021 hours are: Monday, Tuesday, Wednesday, Thursday 5-7pm via Zoom.</p>
+</blockquote>
+<hr />
+<h3 id="ta-guidelines---spring-2021"><strong>TA Guidelines - Spring 2021</strong></h3>
+<ul>
+<li>Work with assigned students in your breakout rooms.</li>
+<li>Keep Slack/chat notifications on in case you are called into another room for some reason.</li>
+<li>Come to tutoring familiar with what concepts are being currently reviewed in class.</li>
+<li>Ask the student if they have any specific questions, or would prefer to go over a general topic.</li>
+<li>Break down abstract concepts with metaphors and examples (steer away from using current problem sets/exercises as examples, if students have questions about these guide them to OH).</li>
+<li>Use examples from lectures.</li>
+<li>Review content in videos with students and help them thoroughly understand the lecture. Ask questions about the content and assess which pieces to go over more thoroughly.</li>
+<li>Ask your fellow TAs for examples they use/advice they have for explaining concepts.</li>
+</ul>
+<hr />
+<h2 id="setup">Setup</h2>
+<p><strong>1. Polling for TA Availability/Interest</strong></p>
+<p>At the beginning of the semester, a Google form is sent out to all returning TAs to poll for general availability (<a href="https://forms.gle/nFB2WMwdR4bJyzQX8">example</a>). The form also asks for TA interest in tutoring so we can allocate tutoring hours to those who want it most. From this Google form, we can establish weekly tutoring times that TAs are able to staff.</p>
+<p><strong>2. Choosing Tutoring Hours</strong></p>
+<p>Tutoring hours can be chosen largely based on TA availability. Tutoring generally occurs in 2-hour weeknight shifts, 2-4 days a week depending on enrollment numbers of 110 (/other Kris-taught courses). Coordinate with Kris and other special teams to try and avoid overlap between Review Sessions and Tutoring. It is also recommended that <strong>tutoring not be open at night when Office Hours is closed</strong>, as this tends to encourage students to ask assignment questions.</p>
+<p><strong>3. Generating a Schedule</strong></p>
+<p><a href="https://docs.google.com/spreadsheets/d/1p6mweLNW9uHxm3dpZBoVfW10m9op-Yi1MES2yoLh_30/edit?usp=sharing">Example schedule &amp; Hour allocations spreadsheet</a></p>
+<p>In the past, we have generated the schedule manually in Google Sheets based on the Availability Form during the first two weeks of FDOC. Schedules should stay the same throughout the semester, barring one-time or recurring swaps that may come up.</p>
+<p>Priority for tutoring shifts should be given to those who have prior tutoring experience, seniority, or those who expressed great interest. Priority is also given to 10-hour TAs, but it is not uncommon for 5-hour TAs to also staff tutoring.</p>
+<p>A good rule of thumb is that each TA should still have 2-3 hours per week dedicated to Office Hours after their allocations for special teams are taken into account.</p>
+<p><strong>4. Hour Allocations</strong></p>
+<p>As TAs are signed up for shifts, make sure to update hour allocations by messaging Kaki or whoever is in charge of allocations.</p>
+<p><strong>5. Designating Shift Leads</strong></p>
+<p>Shift Leads are in charge of filling out the shift lead form (<a href="https://docs.google.com/forms/d/e/1FAIpQLScaA92NX9OBnpUyqLa0PM3pm5D_8WxP7o8MNWqwCrynNgOeCw/viewform">example</a>) that asks if any TA was late/absent or if there were particular student concerns. This form helps collect data to better serve students in tutoring. Shift Leads should be those who have at least one semester of prior tutoring experience or be the Tutoring Team leads.</p>
+<hr />
+<h2 id="tutoring-flow-in-person-zoom">Tutoring Flow (In-person &amp; Zoom)</h2>
+<h3 id="in-person-tutoring"><strong>In-person Tutoring</strong></h3>
+<p>In person tutoring occurs in a classroom (usually FB 007) during the scheduled hours. The classroom must be reserved weekly on the UNC CS calendar; Kris can assist with reserving the room, but it should be reserved early in the semester to avoid conflicts with clubs/other classes. There are generally 1-2 tutors per table. Students can come and go as needed; they can attend as individuals or as groups, but ideally there will be one TA per individual/group until tutoring becomes busy enough to have larger groups. When a student arrives, one TA should greet them and offer assistance!</p>
+<p>If tutoring is busy, students can listen to the topics of existing groups and join the group most applicable to their questions. <em>Important note:</em> Sometimes, the Fred Brooks entrance is locked, so students should have directions provided on the website/course.care to the upper SN entrance across from Phillips Hall. If tutoring hours occur on weekends, coordinate with Kris to make sure facilities know to unlock the upper SN access.</p>
+<h3 id="virtual-tutoring"><strong>Virtual Tutoring</strong></h3>
+<p>A tutoring Zoom link should be generated at the beginning of the semester as a recurring meeting.</p>
+<ul>
+<li>The current <code>Security</code> setting is an enabled waiting room.</li>
+<li>Students should not be able to join the meeting before a host has started the meeting.</li>
+<li>All TAs who have a tutoring shift should be assigned the role of <code>Additional Hosts</code>. Make sure to use their UNC email when making additional hosts! (Usually format is <code>onyen@email.unc.edu</code>) Zoom will tell you if it is unable to add someone by the email you list.</li>
+<li>You can mute participants upon entry such that students joining the main room do not disturb any possible tutoring interactions occurring with the host of the meeting.</li>
+</ul>
+<p>Each TA will be assigned a breakout room by the host (ideally, host is the shift lead) at the beginning of each tutoring hour. The host will assign student(s) to a TA’s breakout room; the host’s “breakout room” will be the “lobby” of Zoom so that any new arrivals to tutoring can be placed into a breakout room without delay.</p>
+<p>The host of the Zoom should enable screen sharing at the beginning of each tutoring session under <code>Security</code> so TAs and students alike can screen share. We will try and keep the breakout rooms small, however if it gets busy, multiple students can be grouped together by topic into a breakout room with the TA leading the discussion.</p>
+<h3 id="practice-materials"><strong>Practice Materials</strong></h3>
+<p>Practice worksheets provided by the Worksheet team are a great resource for tutoring.</p>
+<ul>
+<li><strong>In person</strong>: &gt; Coordinate with the Worksheet team to acquire printed copies of the worksheets that can be given to students during tutoring. (Usually, the printed worksheets are stored in the Office Hours Room)</li>
+<li><strong>Virtual</strong>: &gt; Students can view and screen-share practice worksheets from the course site</li>
+</ul>
+<ol type="1">
+<li><strong>TA-generated materials</strong>:</li>
+</ol>
+<p>TAs are always welcome to come up with examples on the spot for students if students have completed all available resources or if they need a specific example</p>
+<p><code>Future TODO</code>:</p>
+<blockquote>
+<ul>
+<li>compile all TA-made resources for future tutoring sessions and make them public to students via the course site</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="rescheduling-recurring-or-one-time">Rescheduling (Recurring or One-time)</h2>
+<p><strong>How to Swap/Drop Hours for the TAs</strong></p>
+<p>As of now, tutoring hours are swapped in a similar manner to Office Hours (i.e. the TA who needs the swap coordinates with another TA in the #tutoring channel), but TAs are <strong>also required to let the tutoring leads and the shift lead know</strong> about the swap by denoting it on the scheduling spreadsheet.</p>
+<ol type="1">
+<li>If a TA needs to drop tutoring hours (either for one week or permanently) they should reach out to the Tutoring Lead to adjust the schedule.</li>
+<li>Current tutors may increase their tutoring hour allocations as long as they can still dedicate 2-3 hours to Office Hours weekly.</li>
+<li>If a new tutor is needed within the schedule, revisit the original availability poll and reach out to TAs who expressed interest and availability.</li>
+</ol>
+<hr />
+<h2 id="managing-slow-tutoring-queue">Managing Slow Tutoring Queue</h2>
+<p><strong>Contributing to Grading</strong></p>
+<p>If tutoring is slow or anticipated to be slow, reach out to the Grading Team to see if they need help with grading projects, quizzes, or exercises. The Grading Team should lay out the logistics and let you know what needs to be done!</p>
+<p><strong>Helping with Office Hours</strong></p>
+<p>Tutors can keep an eye out for the OH queue in Course Care if tutoring is slow. Tutors can jump in and take tickets in the OH queue is long, but there should always be at least 1-2 TAs still on the tutoring zoom/room for students who may come in for conceptual help.</p>
+<hr />
+<h2 id="tutoring-slack-channel">#tutoring Slack Channel</h2>
+<p>All tutors should join the #tutoring channel in Slack to stay updated on questions and possible shift swaps. Use the channel to communicate if you run into any issues with students or if you have other questions.</p>
+<p>TAs who are not tutors are welcome to join the #tutoring channel in case there are an influx of students on quiz prep days or any other busy days in the semester.</p>
+<blockquote>
+<p>Contributors: Iris Chien, Izzy Ford</p>
+</blockquote>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s):              Iris Chien, Izzy Ford</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502757.8978488"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502757.8978488"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502757.8978488"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

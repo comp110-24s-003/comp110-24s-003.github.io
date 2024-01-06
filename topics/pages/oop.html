@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Object Oriented Programming - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502706.9206607">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Object Oriented Programming</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#definition-syntax">Definition Syntax</a></li>
+<li><a href="#creation-syntax">Creation Syntax</a></li>
+<li><a href="#attributes">attributes</a>
+<ul>
+<li><a href="#attribute-access">attribute Access</a></li>
+<li><a href="#attribute-assignment">attribute Assignment</a></li>
+</ul></li>
+<li><a href="#constructors">Constructors</a>
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#choosing-what-goes-into-the-constructor">Choosing what goes into the constructor</a></li>
+<li><a href="#self">Self</a></li>
+</ul></li>
+<li><a href="#methods">Methods</a>
+<ul>
+<li><a href="#syntax">Syntax</a></li>
+<li><a href="#calling-a-method">Calling a method</a></li>
+<li><a href="#example-1">Example</a></li>
+</ul></li>
+<li><a href="#optional-parameters">Optional Parameters</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><blockquote>
+<p>A <strong>class</strong> is a blueprint for an object. An object’s class is what defines its attributes and capabilities. Classes are made up of 3 main parts; attributes, constructors and methods.</p>
+</blockquote>
+<h3 id="definition-syntax">Definition Syntax</h3>
+<p>Syntax overview for class declaration and definition:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>    <span class="kw">class</span> <span class="op">&lt;</span>class_name<span class="op">&gt;</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>        <span class="op">&lt;</span>attribute_name<span class="op">&gt;</span> : <span class="op">&lt;</span>attribute_type<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>        <span class="op">&lt;</span>attribute_name<span class="op">&gt;</span> : <span class="op">&lt;</span>attribute_type<span class="op">&gt;</span> <span class="op">=</span> <span class="op">&lt;</span>attribute_default_value<span class="op">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="op">&lt;</span>parameter_name<span class="op">&gt;</span> : <span class="op">&lt;</span>parameter_type<span class="op">&gt;</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>            <span class="va">self</span>.<span class="op">&lt;</span>attribute_name<span class="op">&gt;</span> <span class="op">=</span> <span class="op">&lt;</span>parameter_name<span class="op">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a>        </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>        <span class="kw">def</span> <span class="op">&lt;</span>method_name<span class="op">&gt;</span>(<span class="va">self</span>, <span class="op">&lt;</span>parameters...<span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="op">&lt;</span>return_type<span class="op">&gt;</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>            <span class="op">&lt;</span>method_body<span class="op">&gt;</span></span></code></pre></div>
+<p>Example of class declaration:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>    <span class="kw">class</span> Animal:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>        sound: <span class="bu">str</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, noise: <span class="bu">str</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>            <span class="va">self</span>.sound <span class="op">=</span> noise</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>        </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>        <span class="kw">def</span> make_noise(<span class="va">self</span>, times: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>            <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(times):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>                <span class="bu">print</span>(<span class="va">self</span>.sound)</span></code></pre></div>
+<h3 id="creation-syntax">Creation Syntax</h3>
+<p>Initializing a composite data type requires constructing a new object. The general syntax for this is as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>    <span class="op">&lt;</span>variable_name<span class="op">&gt;</span> : <span class="op">&lt;</span>class_name<span class="op">&gt;</span> <span class="op">=</span> <span class="op">&lt;</span>class_name<span class="op">&gt;</span>(<span class="op">&lt;</span>constructor parameters<span class="op">&gt;</span>)</span></code></pre></div>
+<p>Example of object creation:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>    pig: Animal <span class="op">=</span> Animal(<span class="st">&quot;oink&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>    dog: Animal <span class="op">=</span> Animal(<span class="st">&quot;woof&quot;</span>)</span></code></pre></div>
+<h2 id="attributes">attributes</h2>
+<p>Classes have attributes. Each object made from a class will have all the attributes established in that class. Additionally, each attribute in a class has a specific type. So, all objects we create from a certain class will contain all attributes defined in the class, and we can customize the values within these attributes for each individual object. For example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a>    <span class="kw">class</span> TarHeel:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>        name: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>        PID: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>        hatesDook: <span class="bu">bool</span> <span class="op">=</span> true</span></code></pre></div>
+<p>The attributes declared inside the body of the TarHeel class are name, PID, and hatesDook. Every TarHeel object we make will have these attributes.</p>
+<p>In this example, there are defualt values for each attribute of "", 0, true respectively. We can declare two new Tar Heels with all the default attributes as seen below:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>    student1: TarHeel <span class="op">=</span> TarHeel()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>    student2: TarHeel <span class="op">=</span> TarHeel()</span></code></pre></div>
+<h3 id="attribute-access">attribute Access</h3>
+<p>To access an object’s attribute, just use the name of the object followed by the dot operator (.) followed by the attribute name.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>    <span class="bu">print</span>(student1.PID)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    <span class="cf">if</span> student2.hatesDook:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="st">&quot;Go Heels!&quot;</span>)</span></code></pre></div>
+<p>For instance, the code above accesses first the <em>PID</em> attribute of student1 and then the <em>hatesDook</em> attribute of student2. We would expect this to print:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>    <span class="dv">0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    Go Heels<span class="op">!</span></span></code></pre></div>
+<h3 id="attribute-assignment">attribute Assignment</h3>
+<p>We can also use the dot operator (.) in order to reassign attributes of objects. Notice we have to specify which student we are referring to.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>    student1: TarHeel <span class="op">=</span> TarHeel()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    student1.name <span class="op">=</span> <span class="st">&quot;Claire&quot;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    student1.PID <span class="op">=</span> <span class="st">&quot;123456789&quot;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>    student1: TarHeel  <span class="op">=</span> TarHeel()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>    student1.name <span class="op">=</span> <span class="st">&quot;Aneka&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>    student1.PID <span class="op">=</span> <span class="st">&quot;987654321&quot;</span></span></code></pre></div>
+<p>Now if we were to run the following:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>    <span class="bu">print</span>(student1.name)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    <span class="bu">print</span>(student2.PID)</span></code></pre></div>
+<p>It would output:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>    Claire</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    <span class="dv">987654321</span></span></code></pre></div>
+<h2 id="constructors">Constructors</h2>
+<p>Every class has a constructor. A class constructor specifies initial attributes of the class from outside of the class to create an <strong>instance</strong> of the class (also called an <strong>object</strong> of the class).</p>
+<p>A constructor is a “magic” method because it is <em>automagically called</em> when the class is called.</p>
+<p>In Python, <strong>methods of classes</strong> look very similar to functions, but they are defined inside of the class. <strong>A constructor</strong> is a method that every class has, and it requires specific syntax.</p>
+<h3 id="example">Example</h3>
+<p>Let’s stick with the TarHeel example:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a>    <span class="kw">class</span> TarHeel:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>        name: <span class="bu">str</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>        PID: <span class="bu">int</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>        hatesDook: <span class="bu">bool</span> <span class="op">=</span> true</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span> (<span class="va">self</span>, student_name: <span class="bu">str</span>, student_PID: <span class="bu">int</span>):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>            <span class="va">self</span>.name <span class="op">=</span> student_name</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>            <span class="va">self</span>.PID <span class="op">=</span> student_PID</span></code></pre></div>
+<p>The constructor always begins with <code>def __init__ (self, parameters)</code> and has no return type. The body of the constructor reassigns the class’s attributes to the values passed by the parameters. Let’s look at how this works by construction two new TarHeel objects:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>    student3: TarHeel <span class="op">=</span> TarHeel(<span class="st">&quot;Tori&quot;</span>, <span class="dv">500500500</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>    student4: TarHeel <span class="op">=</span> TarHeel(<span class="st">&quot;Ezri&quot;</span>, <span class="dv">111222333</span>)</span></code></pre></div>
+<p>We can still access an object’s attribute in the same way as before:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>    <span class="bu">print</span>(student3.name)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>    <span class="cf">if</span> student4.hatesDook:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="st">&quot;Go Heels!&quot;</span>)</span></code></pre></div>
+<p>This will output:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>    Tori</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>    <span class="dv">111222333</span></span></code></pre></div>
+<p>We can still change attributes – now, student3’s name is “Baller”</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a>    student3.name <span class="op">=</span> <span class="st">&quot;Baller&quot;</span></span></code></pre></div>
+<p>But we cannot call an empty constructor.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>    student5: TarHeel <span class="op">=</span> TarHeel()  <span class="co"># Will FAIL!</span></span></code></pre></div>
+<h3 id="choosing-what-goes-into-the-constructor">Choosing what goes into the constructor</h3>
+<p>Notice that in the TarHeel constructor, we specifically initialized <code>name</code> and <code>PID</code>, but not <code>hatesDook</code>. Because all TarHeels hate dook, <code>hatesDook</code> can have a default value of <code>True</code> that does not need to be specified upon construction!</p>
+<p>On the other hand, we know each TarHeel has a unique name and PID, so we want to specify these values in the class constructor.</p>
+<h3 id="self">Self</h3>
+<p>What is up with this <code>self</code> keyword? Essentially, <code>self</code> is assigned to a reference of the object you are working with on the heap. If you call a method on <code>student3</code>, for example, <code>this</code> will refer to the <code>student3</code> object on the heap.</p>
+<p>In the constructor, <code>self.name</code> references the <code>name</code> attribute of the <code>self</code> object. If we were constructing a new TarHeel object called <code>student6</code>, this would be <code>student6</code>’s <code>name</code> attribute.</p>
+<h2 id="methods">Methods</h2>
+<p>Class methods are specific funtionality written for class instances within the classes themselves.</p>
+<h3 id="syntax">Syntax</h3>
+<p>Besides the first parameter of a method being <code>self</code>, a method’s syntax is the same as a function’s! Method syntax is as follows:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a>    <span class="kw">def</span> method_name(<span class="va">self</span>, [params...]) <span class="op">-&gt;</span> <span class="cf">return</span> <span class="bu">type</span>:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>        <span class="op">&lt;</span>method body<span class="op">&gt;</span></span></code></pre></div>
+<h3 id="calling-a-method">Calling a method</h3>
+<p>Once defined, a method can be called on any object of the class! To call a method, you use the <strong>dot operator</strong>, similar to how you access attributes of an object. Dissimilar, however, you end this call with double parentheses and any necessary arguments <em>besides</em> <code>self</code>!</p>
+<p>General syntax is: ~~~ {.python} object.method_name(arguments) ~~~</p>
+<p>Upon a method call, remember that <code>self</code> is automatically assigned to the object the method is being called on. While the method evaluates, self references the object on the heap!</p>
+<h3 id="example-1">Example</h3>
+<p>Let’s make a new class called Coffee:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a>    <span class="kw">class</span> Coffee:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>        <span class="co">&quot;&quot;&quot;A coffee implementation.&quot;&quot;&quot;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>        customer_name: <span class="bu">str</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>        size: <span class="bu">str</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>        whip: <span class="bu">bool</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>        espresso_shots: <span class="bu">int</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, size: <span class="bu">str</span>):</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a>            <span class="va">self</span>.customer_name <span class="op">=</span> name</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a>            <span class="va">self</span>.size <span class="op">=</span> size</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a>            <span class="va">self</span>.whip <span class="op">=</span> <span class="va">True</span>  <span class="co"># assume all people want whip :)</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a>            <span class="cf">if</span> <span class="va">self</span>.size <span class="op">==</span> <span class="st">&quot;small&quot;</span>:</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a>                <span class="va">self</span>.espresso_shots <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a>            <span class="cf">elif</span> <span class="va">self</span>.size <span class="op">==</span> <span class="st">&quot;large&quot;</span>:</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a>                <span class="va">self</span>.espresso_shots <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a>            </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a>        <span class="kw">def</span> make_decaf(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Makes the coffee decaf by taking away the espresso.&quot;&quot;&quot;</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a>            <span class="va">self</span>.espresso_shots <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true"></a>        <span class="kw">def</span> call_customer(<span class="va">self</span>, message: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Generates a call for the customer to grab their coffee!&quot;&quot;&quot;</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true"></a>            personal_message: <span class="bu">str</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true"></a>            <span class="cf">if</span> message <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true"></a>                personal_message <span class="op">=</span> <span class="st">&quot;Have a great day!&quot;</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true"></a>            <span class="cf">else</span>:</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true"></a>                personal_message <span class="op">=</span> <span class="st">&quot;Come back soon!&quot;</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true"></a></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;Your coffee is ready, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">! </span><span class="sc">{</span>personal_message<span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true"></a></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true"></a>        <span class="kw">def</span> remove_whip(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true"></a>            <span class="co">&quot;&quot;&quot;Removes whip from drink.&quot;&quot;&quot;</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true"></a>            whip <span class="op">=</span> <span class="va">False</span></span></code></pre></div>
+<p>In this class, we have 4 attributes, a constructor, and 3 methods! The methods <code>make_decaf</code> and <code>remove_whip</code> mutate attributes of the object they’re called upon, and the method <code>call_customer</code> returns a string unique to the object.</p>
+<p>Let’s create some <code>Coffee</code> objects and call its methods to see what happens:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a>    <span class="co"># creates a small coffee for Aneka with 1 cream, 1 sugar</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>    coffee1: Coffee <span class="op">=</span> Coffee(<span class="st">&quot;Aneka&quot;</span>, small, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>    <span class="co"># creates a large coffee for Tori with 2 cream, 0 sugar</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>    coffee2: Coffee <span class="op">=</span> Coffee(<span class="st">&quot;Tori&quot;</span>, large, <span class="dv">2</span>, <span class="dv">0</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>    <span class="co"># makes Aneka&#39;s coffee decaf (have 0 espresso shots)</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a>    coffee1.make_decaf()</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true"></a>    <span class="co"># removes whip from Tori&#39;s coffee</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true"></a>    coffee2.remove_whip()</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true"></a>    <span class="co"># Tori changes mind, adds back whip to Tori&#39;s coffee using direct attribute access</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true"></a>    coffee2.whip <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true"></a>    <span class="co"># generates and prints messages for the barista</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true"></a>    <span class="bu">print</span>(coffee1.call_customer(<span class="dv">1</span>))</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true"></a>    <span class="bu">print</span>(coffee2.call_customer(<span class="dv">2</span>))</span></code></pre></div>
+<p>These last two lines will output:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a>    <span class="co">&quot;Your coffee is ready, Aneka! Have a great day!&quot;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>    <span class="co">&quot;Your coffee is ready, Tori! Come back soon!&quot;</span></span></code></pre></div>
+<h2 id="optional-parameters">Optional Parameters</h2>
+<p>Imagine you want to modify your Coffee class. You notice 80% of your customers order large coffees, so you want to simply your implementation to make each Coffee <strong>default</strong> to large. How could you do this?</p>
+<p>The solution to your problem is making your parameters <em>optional</em> by assigning default values to specific parameters. Let’s look at our Coffee constructor.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a>    <span class="kw">class</span> Coffee</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>        <span class="co"># ...</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, size: <span class="bu">str</span>):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a>            <span class="co"># ...</span></span></code></pre></div>
+<p>If we want our coffee to default to large, we want to assign <code>size</code> a default value of <code>large</code>. A Coffee object can be specified to be small upon construction, but the size may also be left out to default the coffee size to large. Check out the <strong>init</strong> parameters:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a>    <span class="kw">class</span> Coffee</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>        <span class="co"># ...</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>        <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, size: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;large&quot;</span>):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a>            <span class="co"># ...</span></span></code></pre></div>
+<p>Let’s see how construction works now:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a>    <span class="co"># creates a large coffee for Ezri</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>    coffee_3: Coffee <span class="op">=</span> Coffee(<span class="st">&quot;Ezri&quot;</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a>    <span class="co"># creates a small coffee for Claire</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a>    coffee_4: Coffee <span class="op">=</span> Coffee(<span class="st">&quot;Claire&quot;</span>, small)</span></code></pre></div>
+<p>Notice that we left out the size of Ezri’s coffee upon construction… Since this argument is missing, the size variable is assigned to the default “large”. Claire’s coffee size is specified, so the default “large” is ignored.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

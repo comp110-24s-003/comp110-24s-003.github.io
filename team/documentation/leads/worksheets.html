@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team Lead Guide to Worksheets - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502758.41864">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Team Lead Guide to Worksheets</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#key-objectives">Key Objectives</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#preparation">Preparation</a></li>
+<li><a href="#writing-the-questions">Writing the Questions</a>
+<ul>
+<li><a href="#example-problems">Example Problems</a></li>
+<li><a href="#problem-solutions">Problem Solutions</a></li>
+</ul></li>
+<li><a href="#review">Review</a></li>
+<li><a href="#compiling">Compiling</a></li>
+<li><a href="#workspace-items">Workspace Items</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="key-objectives">Key Objectives</h2>
+<ul>
+<li>Preparation</li>
+<li>Writing the Questions</li>
+<li>Review</li>
+<li>Compiling</li>
+<li>Workspace Items</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>An optional practice worksheet is made available to students before every quiz and is intended to reinforce the topics that will be covered on the quiz. Practice worksheets in Spring 2021 have been in the form of pages on the course website, which has the benefit of always being in the same place and not overwhelming students with more Gradescope assignments. This and some of the other decisions we made about practice worksheets this semester may need to change in the future, especially when COMP 110 is taught in-person again. This guide will explain the process we used to make practice worksheets.</p>
+<h2 id="preparation">Preparation</h2>
+<p>Our goal is to write questions that will reinforce the main topics covered on quizzes. To do this, start by talking to Kris about upcoming content near the beginning of a unit. Write down the topics that will be covered in the next quiz and consider what types of questions could address those topics.</p>
+<h2 id="writing-the-questions">Writing the Questions</h2>
+<p>Begin by making a list of the types and number of questions you want to write. Try to include both <strong>conceptual</strong> and <strong>application-based</strong> questions.</p>
+<blockquote>
+<p><strong>Conceptual-based</strong> questions can include true/false and short-answer.</p>
+</blockquote>
+<blockquote>
+<p><strong>Application-based</strong> questions can include code/function-writing, code-tracing, and environment diagramming.</p>
+</blockquote>
+<p>For example, you may decide to write 5 true/false questions, 2 code-tracing questions, and 2 environment diagramming questions. If there is more than one person working on a worksheet, divide the questions evenly between team members.</p>
+<p>Once you have decided the number and types of questions you need to write, feel free to reference examples from lecure, review sessions, and previous semesters’ practice for inspiration. Make sure to communicate with other team members about question formatting, if applicable. <em>You may choose to draft these questions in a Google or Word Doc.</em></p>
+<blockquote>
+<p>For example, the Spring 2021 environment diagramming questions included a short sentence of instructions followed by a screenshot of the code from VSCode and a few sub-questions. (i.e. “What is the printed output?”, “How many frames are on the stack?”)</p>
+</blockquote>
+<h3 id="example-problems">Example Problems</h3>
+<p>Here are some examples of worksheet problems we created:</p>
+<blockquote>
+<p>List Diagramming 1: Given the code listing below, draw an environment diagram then answer the questions that follow.</p>
+</blockquote>
+<p><img src="/static/team/worksheets/exampleq.png" /></p>
+<p><strong>Solution</strong>:</p>
+<p><img src="/static/team/worksheets/exampleq-answer.png" /></p>
+<hr />
+<blockquote>
+<p>Function Writing: Write a definition for a function called reverse, which has one parameter of type str named string and returns a str that has all the characters of string in reverse order. Use a while loop. For example, a call to reverse with “hello” would return “olleh”.</p>
+</blockquote>
+<p><strong>Solution</strong>:</p>
+<p><img src="/static/team/worksheets/exampleq2-answer.png" /></p>
+<h3 id="problem-solutions">Problem Solutions</h3>
+<p><strong>Tip</strong>: As you complete the questions, make sure to write down the answers as well. True/False, short-answer, and code-tracing solutions can simply be typed.</p>
+<p>Code/function-writing solutions should be typed in VSCode and then screenshotted with the line numbers included. Environment diagramming solutions should be drawn using a digital tool (i.e. Google Drawings) and screenshotted.</p>
+<p>Place the solutions on a separate page below the questions in your document.</p>
+<h2 id="review">Review</h2>
+<p>After you finish writing the questions, make sure to review them for spelling mistakes or any other inconsistencies. Double-check your answers to avoid confusion from students who will be working through the worksheet later.</p>
+<p>If you are working with other team members, make sure to set aside time to meet and look over each other’s questions and answers. Make sure that there are no overlaps or strong similarities between them. Provide each other feedback and see if anything needs to be added or updated. If so, either go ahead and make the changes while you are together or meet again after the changes have been made.</p>
+<h2 id="compiling">Compiling</h2>
+<p>Once you have completely reviewed the questions and checked for mistakes, it is time to compile the worksheet. If you are working with other team-members, compile all of your questions in one place. This could be a single pdf, a page on the website, or another format. If you are unsure, ask Kris how he prefers the practice worksheets to be distributed to students. For Spring 2021, this meant putting the questions on the COMP 110 website. Make sure the questions are numbered correctly and organized by topic (i.e. place the true/false questions under one section, diagramming questions in another section, etc.)</p>
+<p>Depending on the format of the practice worksheets during your semester, you may need to make the answer key separate from the questions. In Spring 2021, however, the questions and answers were placed on the same page on the COMP 110 website. The questions were placed at the top of the page with subheadings for different sections. The answers were placed at the very bottom.</p>
+<p>Finally, double check with Kris before making the practice worksheet public. He may request changes or offer last-minute suggestions for the questions. Once the worksheet has been approved, push it out to students in whatever format you have chosen for the semester. In Spring 2021, this meant pushing the changes from the worksheet branch to the master branch of <a href="https://github.com/comp110/team110" class="uri">https://github.com/comp110/team110</a>, which added the practice worksheet page that we created to the COMP 110 website for student access.</p>
+<h2 id="workspace-items">Workspace Items</h2>
+<p>This section discusses how we create pages for the website on GitHub, which includes working in branches through VS Code.</p>
+<p>All of this happens in the team110 repository at <a href="https://github.com/comp110/team110" class="uri">https://github.com/comp110/team110</a> in the site directory. When we want to create a new worksheet page, we switch to the worksheet branch. To check what local branches you have and what branch you are on, type <code>git branch</code> into the terminal and press enter. This will print a list of the local branches you have and there will be a <code>*</code> next to the branch you have checked out.</p>
+<p><img src="/static/team/worksheets/branch.PNG" /></p>
+<p>To checkout the worksheet branch, type <code>git checkout worksheet</code> in terminal and press enter. If you don’t have the worksheet branch locally yet, enter <code>git checkout -b worksheet</code>.</p>
+<p><img src="/static/team/worksheets/checkout.PNG" /></p>
+<p>Whenever you begin making a worksheet make sure to pull the most recent changes from both the master branch AND the worksheet branch with <code>git pull origin master</code> and <code>git pull origin worksheet</code>. Our worksheet files are under <code>site &gt; resources &gt; practice</code> and named like so:</p>
+<blockquote>
+<p>quiz0-worksheet.md, quiz1-worksheet.md, etc.</p>
+</blockquote>
+<p>Create a new markdown file for the practice worksheet associated with the upcoming quiz and name it accordingly. At the top of this file, give it a title, author(s) and page, which will be the last subdirectory of the URL.</p>
+<p><img src="/static/team/worksheets/header.PNG" /></p>
+<p>Once the worksheet is done, we want the new markdown file to be merged to master, so it will appear on the website. First, stash your changes by adding them to the staging area and making a commit. Do this with two commands: <code>git add .</code> and <code>git commit -m “Your commit message here”</code>. Then, push with <code>git push origin worksheet</code>. Check <a href="https://github.com/comp110/team110/tree/worksheet" class="uri">https://github.com/comp110/team110/tree/worksheet</a> to make sure the last commit was pushed. Lastly, let Kris know that the worksheet is ready to be reviewed and merged with the master branch.</p>
+<blockquote>
+<p>Contributors: Megan Zhang, Jasper Christie</p>
+</blockquote>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s):              Megan Zhang, Jasper Christie</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502758.41864"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502758.41864"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502758.41864"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

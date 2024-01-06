@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Variables - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502714.6611862">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Variables</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#basic-data-types">Basic Data Types</a>
+<ul>
+<li><a href="#integers-and-floats">integers and floats</a></li>
+<li><a href="#strings">strings</a></li>
+<li><a href="#booleans">booleans</a></li>
+</ul></li>
+<li><a href="#setting-up-variables">Setting Up Variables</a>
+<ul>
+<li><a href="#declaration">Declaration</a></li>
+<li><a href="#initialization">Initialization</a></li>
+<li><a href="#assignment">Assignment</a></li>
+</ul></li>
+<li><a href="#scope">Scope</a>
+<ul>
+<li><a href="#blocks">Blocks</a></li>
+<li><a href="#variable-shadowing">Variable Shadowing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="basic-data-types">Basic Data Types</h2>
+<p>There are four simple data types in python that are important for this course:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">int</span>, <span class="bu">float</span>, <span class="bu">str</span>, <span class="bu">bool</span></span></code></pre></div>
+<p>These stand for integer, floating-point number, string, and boolean respectively. These data types are known as <strong>primitives</strong>. These store <em>single</em> pieces of data and are the building blocks of everything we will create in code. Primitive data types can be combined together to construct more complicated compound data types.</p>
+<h3 id="integers-and-floats">integers and floats</h3>
+<p>The <code>int</code> and <code>float</code> types are used for numerical data.</p>
+<p><code>int</code> values can only hold positive or negative whole numbers:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="dv">23</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="dv">0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="op">-</span><span class="dv">110</span></span></code></pre></div>
+<p><code>float</code> values can hold positive or negative whole numbers and decimal values:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fl">20.20</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="fl">0.123</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="fl">110.0</span></span></code></pre></div>
+<h3 id="strings">strings</h3>
+<p>The <code>str</code> type is used for textual data. All strings are enclosed in quotes. Anything inside of these quotes is part of the string.</p>
+<p>Two strings can also be concatenated to be one string!</p>
+<p>Examples of string literals:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co">&quot;Hello, World&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="co">&quot;COMP110&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co">&quot;42&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="co">&quot;I am &quot;</span> <span class="op">+</span> <span class="st">&quot;5&quot;</span> <span class="op">+</span> <span class="st">&quot; years old!&quot;</span></span></code></pre></div>
+<p>Note: “42” is treated as a string since it’s in double quotes. This is NOT the same as the <code>int</code> 42.</p>
+<h3 id="booleans">booleans</h3>
+<p>The <code>bool</code> or boolean type is used for true and false. A boolean can be either true or false - that’s all folks!</p>
+<p>Examples of boolean literals (Note the capital letters!):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="va">True</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="va">False</span> </span></code></pre></div>
+<h2 id="setting-up-variables">Setting Up Variables</h2>
+<p>Variables are used to store, change and access data which makes them one of our most powerful tools. Each variable has its own name and holds a specific type of data. Before you use a variable, you must declare it in your program!</p>
+<h3 id="declaration">Declaration</h3>
+<p>When you declare a variable, you’re stating that the identifier (the variable’s name) will refer to a value of a specific data type.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="op">&lt;</span>variableName<span class="op">&gt;</span>: <span class="op">&lt;</span><span class="bu">type</span><span class="op">&gt;</span></span></code></pre></div>
+<p>Variable names have no spaces and can only use letters, numbers, and underscores.</p>
+<p>If a variable name involves a phrase or multiple words, we often use something called snake case in which words are separated by underscores. This is not required but it can make your variable names easier to read.</p>
+<p>Example of camel case:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>mybestfriend: <span class="bu">str</span>      <span class="co"># without snake case, this is ok</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>my_best_friend: <span class="bu">str</span>    <span class="co"># with snake case, this is better...preferred in fact!</span></span></code></pre></div>
+<p>You cannot declare more than one variable with the same name within the same scope, and you cannot access a variable outside of its scope. Further, no variable can be used before it is declared.</p>
+<p>Example of declaration:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>my_favorite_number: <span class="bu">int</span></span></code></pre></div>
+<p>When you declare a variable without <strong>initializing</strong> it in the same statement, you must designate the variable’s type.</p>
+<h3 id="initialization">Initialization</h3>
+<p>When you assign a value to a variable for the first time, you are giving it an initial value. This is called <em>initializing</em> the variable. Here’s what this looks like:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="op">&lt;</span>variable_name<span class="op">&gt;</span> <span class="op">=</span> <span class="op">&lt;</span>value<span class="op">&gt;</span></span></code></pre></div>
+<p>The type of the value you assign to the variable must match the type you specified when you <em>declared</em> the variable.</p>
+<p>Example of initialization:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>my_favorite_number: <span class="bu">int</span>      <span class="co"># declaration</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>my_favorite_number <span class="op">=</span> <span class="dv">110</span>        <span class="co"># initialization</span></span></code></pre></div>
+<p>You may also declare and initialize a variable in the same statement:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>my_favorite_number: <span class="bu">int</span> <span class="op">=</span> <span class="dv">110</span>    <span class="co"># declaration &amp; initialization</span></span></code></pre></div>
+<h3 id="assignment">Assignment</h3>
+<p>After you <em>declare</em> and <em>initialize</em> a variable, you can still change its value. All you have to do is <em>assign</em> a new value to that variable. When you change a variable’s value, you are re<em>assigning</em> a new value to that variable. A variable’s value is the value most recently assigned to that variable.</p>
+<p>Example with my_favorite_number:</p>
+<div class="sourceCode" id="cb12" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>my_favorite_number: <span class="bu">int</span> <span class="op">=</span> <span class="dv">22</span>     <span class="co"># declaration &amp; initialization</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(my_favorite_number)           <span class="co"># prints out 22</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>my_favorite_number <span class="op">=</span> <span class="dv">110</span>            <span class="co"># assignment</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="bu">print</span>(my_favorite_number)           <span class="co"># prints out 110 </span></span></code></pre></div>
+<h2 id="scope">Scope</h2>
+<p><strong>Scope</strong> refers to the visibility of a variable in your code. In other words, which parts of a program can use a particular variable. The simple rule to remember is: <em>a variable can only be referenced from within the same code block in which it is defined.</em></p>
+<h3 id="blocks">Blocks</h3>
+<p>Each code block is grouped together by whatever is indented after a colon “:”. For example:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a>course: <span class="bu">int</span> <span class="op">=</span> <span class="dv">101</span>  </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="cf">if</span> (course <span class="op">==</span> <span class="dv">110</span>):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>    welcome: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Welcome to COMP 110!&quot;</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="cf">else</span>:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Should&#39;ve taken 110&quot;</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a><span class="bu">print</span>(welcome) <span class="co"># ERROR </span></span></code></pre></div>
+<p>In the code above, the <em>print(welcome)</em> call would cause an error, because the program is not able to access the welcome variable, as it was declared within the if statement block which we have not accessed.</p>
+<p>So how can we fix this? Let’s look at another example:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>course: <span class="bu">int</span> <span class="op">=</span> <span class="dv">101</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>welcome: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Let&#39;s get ready to rumbleeee!&quot;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="cf">if</span> (course <span class="op">==</span> <span class="dv">110</span>):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>    welcome <span class="op">=</span> <span class="st">&quot;Welcome to COMP 110!&quot;</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a><span class="cf">else</span>:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Should&#39;ve taken 110&quot;</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="bu">print</span>(welcome) <span class="co"># prints &quot;Let&#39;s get ready to rumbleeee!&quot; </span></span></code></pre></div>
+<p>This would now work! Because we have declared the <em>welcome</em> variable inside the same block as the print call, <em>as well as</em> updating its later in the if block. <em>Welcome</em> can be accessed from either point and the code will run!</p>
+<p>This rule of scope applies to function blocks, if-then-else blocks, for/while loop blocks, etc.</p>
+<h3 id="variable-shadowing">Variable Shadowing</h3>
+<p>In blocks of code like the one above, where there is a nested ‘inner block,’ it is possible to declare a variable with the same name as another variable in the outer block. This is known as variable shadowing.</p>
+<p>Although this will not cause an error, it makes it very tricky to remember which variable is storing which piece of data and what you want each one to do.</p>
+<p>Therefore, it is good practice to give your variables meaningful names, so you know exactly why you created them and what you want them to do.</p>
+<p>An example of variable shadowing is shown below:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a>test: <span class="bu">bool</span> <span class="op">=</span> true</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>b: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1485</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a><span class="bu">print</span>(b) <span class="co"># prints 1485</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a><span class="cf">if</span> (test):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>    b: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>    <span class="bu">print</span>(b) <span class="co"># prints 1200 </span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a><span class="bu">print</span>(b) <span class="co"># prints 1485, not 1200!! </span></span></code></pre></div>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> EX01 - Input and Variables - COMP110 - 22F</title>
+    <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css?v=1704502720.4600115">
+</head>
+
+<body id="body" class="absolute-page">
+    <script>
+        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add(localStorage.getItem('mode'));
+    </script>
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <div class="wrapper">
+        <nav id="navbarStick" class="navbar navbar-expand">
+            <div class="container-fluid d-flex">
+                <div class = 'hide-during-scroll'>
+                    <div class="container nav-const">
+                        <a class="navbar-brand" href="/public"><img class="lightmode-element-only img-fluid logo" src="/static/lightbrand.png"
+                                alt="COMP110 - Spring - 2021"><img class="darkmode-element-only img-fluid logo" src="/static/darkbrand.png"
+                                alt="COMP110 - Spring - 2021"></a>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/public/course">course</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/public/topics">topics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/public/contact">contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-auto form-check form-switch mode">
+                    <div class="switches">
+                            <input type="checkbox" id="1" onclick="
+                            if (localStorage.getItem('mode') === null || localStorage.getItem('mode') === 'light-mode'){
+                                localStorage.setItem('mode', 'dark-mode');
+                            } else {
+                                localStorage.setItem('mode', 'light-mode');
+                            }
+                            location.reload();">
+                            <label for="1">
+                            <span id="mode-label">Dark Mode</span>
+                            <span></span>
+                            </label>
+                            <script>if(localStorage.getItem('mode') === 'dark-mode'){document.getElementById("1").checked = true}</script>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="exercises-page" class="container">
+            <div class="row pt-4">
+                <div class="col-12">
+                    <h1 class="display-5">EX01 - Input and Variables</h1>
+                    <hr class="title"/>
+                </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#set-up-the-enivornment">0. Set up the enivornment</a></li>
+<li><a href="#hype_machine.py">1. hype_machine.py</a></li>
+<li><a href="#numeric_operators.py">2. numeric_operators.py</a></li>
+<li><a href="#relational_operators.py">3. relational_operators.py</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In this exercise you will use the concepts learned in the Lessons from Day 2 (data types, variables, and expressions) to produce three little programs.</p>
+<p>Assignment Outline</p>
+<ul>
+<li>Hype Machine (Level: Novice)</li>
+<li>Numeric Operators (Level: Advanced)</li>
+<li>Relational Operators (Level: Intermediate)</li>
+</ul>
+<h2 id="set-up-the-enivornment">0. Set up the enivornment</h2>
+<p>Here’s some code to start you off! First, we’ll make a folder inside the <code>exersises</code> folder we made for <code>ex00</code> called <code>ex01</code>. Inside <code>ex01</code> make three files named <code>hype_machine.py</code>, <code>numeric_operators.py</code>, and <code>relational_operators.py</code>.</p>
+<h2 id="hype_machine.py">1. hype_machine.py</h2>
+<p>Let’s write a program that will boost your spirits, gas you up, and get you hype for the road ahead.</p>
+<p>Open up the file in your ex01 directory titled <code>hype_machine.py</code></p>
+<p>A capability you will review in this exercise is the ability to ask for <code>input</code> from the person using your program. Try adding the following lines of code:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;A mad-libs style hype machine.&quot;&quot;&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    name: <span class="bu">str</span> <span class="op">=</span> <span class="bu">input</span>(<span class="st">&quot;What is your name? &quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;You entered: &quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="bu">print</span>(name)</span></code></pre></div>
+<p>Save the program and try running it with this command <code>python -m exercises.ex01.hype_machine</code>. You should be prompted to enter your name and then see the rest of the program continue as soon as you enter your name and press Enter.</p>
+<p>The functional requirements of this program are to print three lines and use <em>concatenation</em> to build up strings and print them out given the name entered.</p>
+<p>One line should start with the name, such as “Kaki is awesome!” if the name entered was the string “Kaki”.</p>
+<p>Another line should end with the name (optionally followed by exclamation points or periods), such as, “Keep slaying Marlee!”, if the name entered was the string “Marlee”.</p>
+<p>A final line should contain the name entered in the middle, such as “You know what Ezri… you can do it!”, if the name entered was the string “Ezri”.</p>
+<p>These three lines can be printed in any order.</p>
+<p>So here’s an example run of a completed program:</p>
+<pre><code>    $ python -m exercises.ex01.hype_machine
+    What is your name? Marc
+    Yes, that&#39;s right, Marc, you are a boss.
+    Marc did you know you are going to crush it?
+    Go forth and have a wonderful day Marc!</code></pre>
+<h2 id="numeric_operators.py">2. numeric_operators.py</h2>
+<p>The second program in today’s exercises involves practicing the numeric operators, type conversions, and string concatenation.</p>
+<p>Open up the file in your ex01 directory titled <code>numeric_operators.py</code>.</p>
+<p>Your goal in this program is to allow the user to input two number variables and then to print out messages with a specific format to demonstrate how the four interesting numerical operators work in Python.</p>
+<p>Here is an example of what your program should accomplish:</p>
+<pre><code>    $ python -m exercises.ex01.numeric_operators
+    Left-hand side: 7
+    Right-hand side: 5
+    7 ** 5 is 16807
+    7 / 5 is 1.4
+    7 // 5 is 1
+    7 % 5 is 2</code></pre>
+<p>Here’s another example run of the program:</p>
+<pre><code>    $ python -m exercises.ex01.numeric_operators
+    Left-hand side: 8
+    Right-hand side: 5
+    8 ** 5 is 32768
+    8 / 5 is 1.6
+    8 // 5 is 1
+    8 % 5 is 3</code></pre>
+<p>You can run your program to test it as you with the following command: <code>python -m exercises.ex01.numeric_operators</code> The first two lines are the result of using the <code>input</code> function as in the previous example to ask for the left- and right- hand side of expressions you’ll then compute. You’ll want to store <em>both</em> of those values in <em>separate</em> variables.</p>
+<p>The <code>input</code> function returns a <code>str</code> value of what the person using the program entered. To use it as a part of the computations which follow, you will need to make use of type conversion expressions so that they are converted to <code>int</code> values.</p>
+<p>The next four lines are printed strings. You will need to build these strings up using concatenation. Correctly building these strings up using concatenation and type conversions as appropriate will initially be trickier than you expect. Try and get just the first line of output, the exponentiation line, working before you continue on.</p>
+<p>Hint: Try creating additional variables to store the input numbers converted to <code>int</code>s.</p>
+<h2 id="relational_operators.py">3. relational_operators.py</h2>
+<p>Open up the file in your ex01 directory titled <code>relational_operators.py</code></p>
+<p>Your goal in this program is to allow the user to input two number variables and then to print out messages with a specific format to demonstrate how four relational operators work in Python.</p>
+<p>Here is an example of what your program should accomplish:</p>
+<pre><code>    $ python -m exercises.ex01.relational_operators
+    Left-hand side: 7
+    Right-hand side: 5
+    7 &lt; 5 is False
+    7 &gt;= 5 is True
+    7 == 5 is False
+    7 != 5 is True</code></pre>
+<p>Here’s another example run of the program:</p>
+<pre><code>    $ python -m exercises.ex01.relational_operators
+    Left-hand side: 5
+    Right-hand side: 5
+    5 &lt; 5 is False
+    5 &gt;= 5 is True
+    5 == 5 is True
+    5 != 5 is False</code></pre>
+<p>You can run your program to test it as you with the following command: <code>python -m exercises.ex01.relational_operators</code></p>
+</div>
+
+       
+
+    </div> 
+            
+            <div class='link-page wrapper'>
+            <footer>
+                    <p class="footer-content">&copy; 2021 <a href="https://krisjordan.com">Kris Jordan</a>
+                        - <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLScQMteEvnQpBfGsAYP5TpuqokQenhZUIf8CNvfAUUZEjMCWZQ/viewform?usp=sf_link">Feedback
+                            Form</a> - Made with 💛in <a href="https://cs.unc.edu/">Chapel Hill</a></p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"
+        integrity="sha256-5oApc/wMda1ntIEK4qoWJ4YItnV4fBHMwywunj8gPqc=" crossorigin="anonymous"></script>
+    <script src="/static/script.js"></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502720.4600115"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502720.4600115"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502720.4600115"></script>
+
+
+</body>
+
+</html>

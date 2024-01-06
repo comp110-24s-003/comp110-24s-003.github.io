@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 04 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502735.1673212">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 04 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#concepts-on-quiz-4">Concepts on Quiz 4</a></li>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#conceptual-questions">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams">Memory Diagrams</a></li>
+<li><a href="#class-writing">Class Writing</a></li>
+<li><a href="#function-writing">Function Writing</a></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#conceptual-questions-1">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams-1">Memory Diagrams</a></li>
+<li><a href="#class-writing-1">Class Writing</a></li>
+<li><a href="#function-writing-1">Function Writing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="concepts-on-quiz-4">Concepts on Quiz 4</h1>
+<p>Before working through these practice questions, you should first carefully read this page on <a href="/resources/quiz-expectations.html">Quiz Expectations</a>.</p>
+<p>Quiz 4 will cover the following concepts:</p>
+<ul>
+<li>Lessons 23 through 26</li>
+</ul>
+<h1 id="questions">Questions</h1>
+<p>The quiz itself will be similar in difficulty but longer in length than this practice worksheet.</p>
+<p>Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>A class definition provides a pattern for creating objects, but doesn’t make any objects itself. (T/F)</li>
+<li>By convention, Python class names start with a lowercase letter. (T/F)</li>
+<li>When you define a method in a class, all objects of that class have that method associated with it. (T/F)</li>
+<li>The first parameter of a method is a copy of the object the method is called on. (T/F)</li>
+<li>A class definition must come before an object of that class is instantiated. (T/F)</li>
+<li>You must have an instance of a class (an object) to call the class’s constructor. (T/F)</li>
+<li>Constructors must take at least one parameter of type <code>str</code>. (T/F)</li>
+<li>Constructors must have the <code>self</code> parameter in their signature. (T/F)</li>
+<li>Objects are passed into functions by reference. (T/F)</li>
+<li>The type of an object is the same as the name of the class it is an instance of. (T/F)</li>
+</ol>
+<h2 id="memory-diagrams">Memory Diagrams</h2>
+<ol start="11" type="1">
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.<br />
+<img src="/static/practice_worksheets/fa21/qz04-question11.png" /></p></li>
+<li><p>Produce a memory diagram for the following code snippet, being sure to include its stack and output.<br />
+<img src="/static/practice_worksheets/fa21/qz04-question12.png" /></p></li>
+</ol>
+<h2 id="class-writing">Class Writing</h2>
+<ol start="13" type="1">
+<li>This class is slightly challenging, but take it step by step! Create a <code>ChristmasTreeFarm</code> class with the following specifications:
+<ol type="a">
+<li>The <code>ChristmasTreeFarm</code> class should have one attribute: a <code>list[int]</code> named <code>plots</code>. This list will hold values that represent the size of the tree planted in that plot. If the value in a plot is 0, then the plot is empty (does not have a tree). Any number other than 0 indicates that a tree is growing in that plot!</li>
+<li>The constructor for the class should take two arguments, both of type int. The first parameter should be called <code>plots</code> and is an <code>int</code> representing the total number of plots in the farm. Notice that the attribute <code>plots</code> and the parameter <code>plots</code> for this constructor are different, and represent different things! The second parameter should be called <code>initial_planting</code> representing the amount of plots that should be planted initially. These initially planted plots will be trees of size 1. The constructor should initialize the <code>plots</code> attribute to an empty list, and then append `initial_planting’ trees of size 1. After that, the constructor should fill the rest of the plots with zeroes to indicate that they are empty!</li>
+<li>The class should define a method called <code>plant</code>. This method should take an argument of type <code>int</code>, representing the plot index at which a tree should be planted. The tree should be size 1 when planted.</li>
+<li>The class should define a method called <code>growth</code>. This method should increase the size of each planted tree by 1. Remember that unplanted plots are represented by a 0 in the <code>plots</code> list.</li>
+<li>The class should define a method called <code>harvest</code>. This method should take an argument called <code>replant</code> of type <code>bool</code> that will determine whether this method replants trees (sets them to size 1 after harvest) or leaves the plots empty (sets them to size 0 after harvest). For our method, trees that are at least size 5 will be harvested. The method will return the count of how many trees were successfully harvested (type <code>int</code>).</li>
+</ol></li>
+</ol>
+<h2 id="function-writing">Function Writing</h2>
+<p>14A. Write a function called <code>find_courses</code>. Given the following <code>Course</code> class definition, <code>find_courses</code> should take in a <code>list[Courses]</code> and a <code>str</code> prerequisite to search for. The function should return a list of the <code>names</code> of each Course whose <code>level</code> is 400+ and whose <code>prerequisites</code> list contains the given string.<br />
+<img src="/static/practice_worksheets/fa21/qz04-question14.png" /></p>
+<p>14B. Write a method called <code>is_valid_course</code> for the <code>Course</code> class. The method should take in a <code>str</code> prerequisite and return a <code>bool</code> that represents whether the course’s <code>level</code> is 400+ and if its <code>prerequisites</code> list contains the given string.</p>
+<h1 id="solutions">Solutions</h1>
+<h2 id="conceptual-questions-1">Conceptual Questions</h2>
+<ol type="1">
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>False</li>
+<li>True</li>
+<li>True</li>
+<li>True</li>
+</ol>
+<h2 id="memory-diagrams-1">Memory Diagrams</h2>
+<ol start="11" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/qz04-solution11.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/qz04-solution12.png" /></p></li>
+</ol>
+<h2 id="class-writing-1">Class Writing</h2>
+<ol start="13" type="1">
+<li><img src="/static/practice_worksheets/fa21/qz04-solution13.png" /></li>
+</ol>
+<h2 id="function-writing-1">Function Writing</h2>
+<p>14A. <img src="/static/practice_worksheets/fa21/qz04-solution14A.png" /></p>
+<p>14B. <img src="/static/practice_worksheets/fa21/qz04-solution14B.png" /></p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang, David Karash</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

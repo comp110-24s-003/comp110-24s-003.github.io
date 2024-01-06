@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Globals - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502706.6605875">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Globals</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#global-variables">Global Variables</a></li>
+<li><a href="#named-constants-and-magic-numbers">Named Constants and Magic Numbers</a></li>
+<li><a href="#reassigning-a-global-variable">Reassigning A Global Variable</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h3 id="global-variables">Global Variables</h3>
+<p><strong>Global variables</strong> are those defined in the globals frame, outside of any other context, such as a function definition.</p>
+<ul>
+<li>Reminder: In Python, you should name global variables with standard, lowercase snake_case_conventions.</li>
+</ul>
+<p>Looking for a variable but you don’t see it in the current scope? Check the globals frame! This is how the main function is able to call other functions whose identifiers are found in Globals and bound to their definitions.</p>
+<h3 id="named-constants-and-magic-numbers">Named Constants and Magic Numbers</h3>
+<p>The most valuable, and acceptable, use of globally scoped variables are to put names on constant values used throughout your program. Consider the following code listing:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>    <span class="kw">def</span> compound(current: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>        <span class="cf">return</span> current <span class="op">+</span> (current <span class="op">*</span> <span class="fl">0.009</span>)</span></code></pre></div>
+<p>The float-literal 0.009 is a constant value in the program. It will not change. It is also kind of “magical” isn’t it? Where did this number come from and what does it represent? Often the same constant like this is copied throughout a program. Programmers call literals like this a <strong>“magic number”</strong>.</p>
+<p>Magic numbers are a bad practice for two reasons:</p>
+<ol type="1">
+<li>Magic numbers make your program more difficult to understand. Someone else reading your code will not immediately know why that number is chosen. Further, you yourself will become a stranger to your own code and will often forget why you chose some specific number.</li>
+<li>Magic numbers used throughout a program are more work to change and maintain. At best, you remember you have multiple places you need to update the magic number or search/replace all. At worst, you forget to update a few places and are accidentally relying on different values for what should have been consistent!</li>
+</ol>
+<p><strong>Named constants</strong> are the preferred technique for avoiding magic numbers. A <strong>named constant</strong> is a global variable whose value is initialized and does not change at runtime.</p>
+<p>Named constants are conventionally named using all capital letters with underscores separating words. This convention makes it easy to distinguise a variable name from a globally named constant. Let’s rewrite the previous example to use a named constant:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>    INTEREST_RATE: <span class="bu">float</span> <span class="op">=</span> <span class="fl">0.009</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    <span class="kw">def</span> compound(current: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>        <span class="cf">return</span> current <span class="op">+</span> (current <span class="op">*</span> INTEREST_RATE)</span></code></pre></div>
+<p>Any time you use a “magic number” in your program you should catch yourself as quickly as possible and refactor your program to use a named constant instead.</p>
+<p>Remember: Named constants are intended to remain… constant! Thus, you should never attempt to reassign a named constant.</p>
+<h3 id="reassigning-a-global-variable">Reassigning A Global Variable</h3>
+<p>If you want to reassign a global variable in Python you must specifically declare your intent to do so. An example of what this may look like is shown below:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>    <span class="op">&gt;&gt;&gt;</span> lauren: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;a friend&quot;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    <span class="op">&gt;&gt;&gt;</span> <span class="kw">def</span> a_forceful_stranger() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>    ...   <span class="kw">global</span> lauren</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a>    ...   lauren <span class="op">=</span> <span class="st">&quot;MY HORSE&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a>    ...   <span class="bu">print</span>(lauren)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a>    ...</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a>    <span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(lauren)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a>    a friend</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a>    <span class="op">&gt;&gt;&gt;</span> a_forceful_stranger()</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a>    MY HORSE</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a>    <span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(lauren)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true"></a>    MY HORSE</span></code></pre></div>
+<p>Disclaimer: Global variables can be handy in small programs, but should generally be avoided as your programs grow in size and you learn techniques for avoiding their use. Global variables can make programs more difficult to reason about and more error prone. When in doubt, prefer local variables and named constants!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Tori Hoffmann</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

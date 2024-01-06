@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Web Development - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502743.4005911">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="explore-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Web Development</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#languages-and-tools">Languages and Tools</a>
+<ul>
+<li><a href="#task-developer-tools">Task: Developer Tools</a></li>
+</ul></li>
+<li><a href="#css-and-html">CSS and HTML</a>
+<ul>
+<li><a href="#task-index.html">Task: index.html</a></li>
+<li><a href="#html-tags">HTML Tags</a></li>
+<li><a href="#task-styles.css">Task: styles.css</a></li>
+</ul></li>
+<li><a href="#basic-flask">Basic Flask</a>
+<ul>
+<li><a href="#task-setting-up-flask">Task: Setting up Flask</a></li>
+<li><a href="#task-adding-a-new-page">Task: Adding a new page</a></li>
+</ul></li>
+<li><a href="#handling-methods">Handling Methods</a>
+<ul>
+<li><a href="#task-form-submission">Task: Form Submission</a></li>
+<li><a href="#task-returning-to-quiz">Task: Returning to Quiz</a></li>
+</ul></li>
+<li><a href="#working-with-data">Working With Data</a>
+<ul>
+<li><a href="#task-evaluating-the-result">Task: Evaluating the Result</a></li>
+<li><a href="#task-displaying-the-result">Task: Displaying the Result</a></li>
+</ul></li>
+<li><a href="#displaying-stored-data">Displaying Stored Data</a>
+<ul>
+<li><a href="#task-storing-the-data">Task: Storing the Data</a></li>
+<li><a href="#task-displaying-all-results">Task: Displaying All Results</a></li>
+<li><a href="#task-individual-results">Task: Individual Results</a></li>
+</ul></li>
+<li><a href="#bonus-hot-reload">Bonus: Hot Reload</a></li>
+<li><a href="#documentation-tools-and-resources">Documentation, Tools and Resources</a>
+<ul>
+<li><a href="#helpful-vscode-extensions">Helpful VSCode Extensions</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="getting-started">Getting started</h2>
+<blockquote>
+<p>In this tutorial you will create a website with the beginnings of a Harry Potter House quiz! We will learn some basic HTML, CSS and Flask and your website will be able to save data to render on different pages while it is running. Flask is a python library used for web development and is actually what we use while developing this course’s website!</p>
+</blockquote>
+<p>We will begin this tutorial from scratch! Start setting up the following to prepare:</p>
+<ol type="1">
+<li>On github.com, click the green New Repository button and name the repository <code>web-dev-tutorial</code>.
+<ul>
+<li>Leave it public</li>
+<li>Check the Add a README option</li>
+</ul></li>
+<li>Navigate to the repo you just created on github and click the green code button. Copy the HTTPS URL from the box that opens.</li>
+<li>Open VSCode and then at the top of your screen click View &gt; Command Palette.
+<ul>
+<li>In the command palette start to type <code>Git:Clone</code> and hit enter.</li>
+<li>Paste the URL in the box that pops up and hit enter.</li>
+<li>You can leave the location on your computer as default or select a location you prefer.</li>
+</ul></li>
+<li>Open your newly cloned repository in vscode!</li>
+</ol>
+<h2 id="languages-and-tools">Languages and Tools</h2>
+<p>HTML and CSS are the building blocks for the entire web. They are markup languages used for defining and styling content. The final tool needed for basic web development is a scripting language. Javascript or Typescript are the most commonly used scripting languages in web development, but in this tutorial we will use python.</p>
+<blockquote>
+<p>HTML stands for HyperText Markup Language and is the standard languge used for defining content on web pages! CSS stands for Cascading Style Sheets and is what we use to style the content defined with HTML.</p>
+</blockquote>
+<h3 id="task-developer-tools">Task: Developer Tools</h3>
+<ol type="1">
+<li>Navigate to an online news article or website that you visit frequently <strong>on google chrome</strong>. This page is made with HTML and CSS as core building blocks and we can actually inspect them!</li>
+<li>At the top of your screen select View &gt; Developer &gt; Developer Tools.
+<ul>
+<li>Mac shortcut: Option + ⌘ + J</li>
+<li>Windows shortcut: Shift + CTRL + J</li>
+</ul></li>
+<li>Select the arrow tool in the top left corner of the tool box. You can use this tool to inspect specific elements and edit them in browser!</li>
+<li>Using the tool, select the headline or title of the page you are on. You should see the HTML for that headline pop up in the Dev Tools Box. If you double click into the text you can go ahead and edit it!</li>
+</ol>
+<p>Developer Tools are one of the most important things to make use of when working on a web project so make sure to take note of how to access them!</p>
+<h2 id="css-and-html">CSS and HTML</h2>
+<p>A basic webpage can be created with a single file and styled with a second. From there you can continue to add new page and evolve your website!</p>
+<h3 id="task-index.html">Task: index.html</h3>
+<ol type="1">
+<li>Make a new file in your repository named <code>index.html</code>. This file name is a convention for the HTML file that represents your home page.</li>
+<li>Copy and paste the following HTML snippet into the file:</li>
+</ol>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>&lt;!DOCTYPE html&gt;</span>
+<span id="cb1-2"><a href="#cb1-2"></a>&lt;html lang=&quot;en&quot;&gt;</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    &lt;head&gt;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        &lt;title&gt;Intro to Web Dev!&lt;/title&gt;</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    &lt;/head&gt;</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    &lt;body&gt;</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        &lt;p&gt;Hello World!&lt;/p&gt;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    &lt;/body&gt;</span>
+<span id="cb1-10"><a href="#cb1-10"></a>&lt;/html&gt;</span></code></pre></div>
+<ol start="3" type="1">
+<li>Make sure the file is saved and then right click the file in the file explorer and click reveal in finder (Mac) or show in folder (Windows).</li>
+<li>In finder / file explorer, right click on the file and open it with google chrome. You should now see a basic webpage that says Hello World!</li>
+</ol>
+<h3 id="html-tags">HTML Tags</h3>
+<p>So what exactly did we add to the <code>index.html</code> file? HTML is made up of elements wrapped with <code>tags</code> that help label pieces of content. For instance, The <code>&lt;p&gt;&lt;/p&gt;</code> tag that surrounds <code>Hello World!</code> indicates that we are adding a <code>paragraph</code> element to our webpage.</p>
+<p>These <code>tags</code> can hold other <code>tags</code> as well! <!-- TODO: Talk more about basic html --></p>
+<h3 id="task-styles.css">Task: styles.css</h3>
+<ol type="1">
+<li>Make a new file in your repository named <code>styles.css</code>. This file name is a convention for the CSS file that holds the core styling.</li>
+<li>Copy and paste the following CSS snippet into the file:</li>
+</ol>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>p {</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    color: #75c3f7;</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  }</span></code></pre></div>
+<ol start="3" type="1">
+<li>Make sure the file is saved and then add the following <code>link</code> tag inside the <code>&lt;head&gt;&lt;/head&gt;</code> tag in your <code>index.html</code> file. This will link your CSS file to your HTML file so that the styles we add are applied to our webpage.</li>
+</ol>
+<div class="sourceCode" id="cb3" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>&lt;link rel=&#39;stylesheet&#39; href=&#39;styles.css&#39; /&gt;</span></code></pre></div>
+<ol start="4" type="1">
+<li>Once both files are saved, reload the chrome page with your webpage and you should see the color of the <code>Hello World!</code> text change!</li>
+</ol>
+<!-- ### CSS Selectors
+
+TODO: add content on CSS selectores -->
+<h2 id="basic-flask">Basic Flask</h2>
+<!-- TODO: blurb on code -->
+<h3 id="task-setting-up-flask">Task: Setting up Flask</h3>
+<ol type="1">
+<li>Create a new directory in your repo named <code>templates</code> and move your <code>index.html</code> file inside of it.</li>
+<li>Create a new directory in your repo named <code>static</code> and move your <code>styles.css</code> file inside of it.</li>
+<li>Create a new file called <code>app.py</code> in your repo and add the following code snippet.</li>
+</ol>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>app: Flask <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="at">@app.route</span>(<span class="st">&quot;/&quot;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">def</span> index():</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">return</span> render_template(<span class="st">&#39;index.html&#39;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<ol start="4" type="1">
+<li><p>Since we have moved the <code>styles.css</code> file we need to make sure to update our reference to it in <code>index.html</code>. Change <code>&lt;link rel='stylesheet' href='styles.css' /&gt;</code> to <code>&lt;link rel='stylesheet' href='/static/styles.css' /&gt;</code>.</p></li>
+<li><p>To run your app we need to run the <code>app.py</code> file as a python module: <code>python -m app</code> and then open your browser to the link it spits out in the terminal (http://127.0.0.1:5000/)</p></li>
+</ol>
+<!-- ### Routes and URLS
+
+TODO: Add content on routes / URLS -->
+<h3 id="task-adding-a-new-page">Task: Adding a new page</h3>
+<ol type="1">
+<li>Create a new file called <code>quiz.html</code> in your <code>templates</code> folder and paste the following HTML into it.</li>
+</ol>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>&lt;!DOCTYPE html&gt;</span>
+<span id="cb5-2"><a href="#cb5-2"></a>&lt;html lang=&quot;en&quot;&gt;</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    &lt;head&gt;</span>
+<span id="cb5-4"><a href="#cb5-4"></a>        &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        &lt;title&gt;Take the Quiz!&lt;/title&gt;</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    &lt;/head&gt;</span>
+<span id="cb5-7"><a href="#cb5-7"></a>    &lt;body&gt;</span>
+<span id="cb5-8"><a href="#cb5-8"></a>        &lt;form method=&quot;post&quot;&gt;</span>
+<span id="cb5-9"><a href="#cb5-9"></a>            &lt;label for=&quot;fname&quot;&gt;First name:&lt;/label&gt;</span>
+<span id="cb5-10"><a href="#cb5-10"></a>            &lt;br /&gt;</span>
+<span id="cb5-11"><a href="#cb5-11"></a>            &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;</span>
+<span id="cb5-12"><a href="#cb5-12"></a>            &lt;br /&gt;</span>
+<span id="cb5-13"><a href="#cb5-13"></a>            &lt;label for=&quot;lname&quot;&gt;Last name:&lt;/label&gt;</span>
+<span id="cb5-14"><a href="#cb5-14"></a>            &lt;br /&gt;</span>
+<span id="cb5-15"><a href="#cb5-15"></a>            &lt;input type=&quot;text&quot; name=&quot;lname&quot;&gt;</span>
+<span id="cb5-16"><a href="#cb5-16"></a>            &lt;br /&gt;</span>
+<span id="cb5-17"><a href="#cb5-17"></a>            &lt;label for=&quot;animal&quot;&gt;Favorite animal:&lt;/label&gt;</span>
+<span id="cb5-18"><a href="#cb5-18"></a>            &lt;select name=&quot;animal&quot;&gt;</span>
+<span id="cb5-19"><a href="#cb5-19"></a>                &lt;option value=&quot;lion&quot;&gt;lion&lt;/option&gt;</span>
+<span id="cb5-20"><a href="#cb5-20"></a>                &lt;option value=&quot;snake&quot;&gt;snake&lt;/option&gt;</span>
+<span id="cb5-21"><a href="#cb5-21"></a>                &lt;option value=&quot;eagle&quot;&gt;eagle&lt;/option&gt;</span>
+<span id="cb5-22"><a href="#cb5-22"></a>                &lt;option value=&quot;badger&quot;&gt;badger&lt;/option&gt;</span>
+<span id="cb5-23"><a href="#cb5-23"></a>            &lt;/select&gt;</span>
+<span id="cb5-24"><a href="#cb5-24"></a>            &lt;br /&gt;</span>
+<span id="cb5-25"><a href="#cb5-25"></a>            &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</span>
+<span id="cb5-26"><a href="#cb5-26"></a>        &lt;/form&gt;</span>
+<span id="cb5-27"><a href="#cb5-27"></a>    &lt;/body&gt;</span>
+<span id="cb5-28"><a href="#cb5-28"></a>&lt;/html&gt;</span></code></pre></div>
+<ol start="2" type="1">
+<li>Return to your <code>index.html</code> file and add the following HTML element in the body.</li>
+</ol>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>&lt;a href=&quot;/quiz&quot;&gt;take quiz&lt;/a&gt;</span></code></pre></div>
+<ol start="3" type="1">
+<li>If you attempt to click on take quiz while viewing your <code>index.html</code> file on chrome, you will get an error! This is because we need to define the route to the quiz URL in our <code>app.py</code> file. Add the following code snippet in <code>app.py</code>, save all the files, and attempt to click take quiz again.</li>
+</ol>
+<div class="sourceCode" id="cb7" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/quiz&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">def</span> quiz():</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span></code></pre></div>
+<h2 id="handling-methods">Handling Methods</h2>
+<p>In order to add interactivity to the quiz form on our site we need to learn about HTTP request methods. We won’t need to know a lot about HTTP, but a simple definition is HTTP is a defined set of rules or protocols for fetching resources such as our HTML or CSS files.</p>
+<p>Two of these rules are the <code>GET</code> and <code>POST</code> methods. The <code>GET</code> method is a basic protocol for viewing or <em>getting</em> some resource such as our <code>index.html</code> file. The <code>POST</code> method is a protocol for updating or inserting new data. You can imagine when you <em>post</em> something on social media the data is getting uploaded so that everyone can now see your post.</p>
+<h3 id="task-form-submission">Task: Form Submission</h3>
+<p>When we click the submit button that we defined in our <code>quiz.html</code> file, we want to show the user what result they got on the quiz. The easiest way to do this is by setting up a new HTML <code>template</code> that we will render instead of <code>quiz.html</code> when the user submits the form. For now we will hardcode the users result, but later we will actually evaluate the users answers.</p>
+<ol type="1">
+<li>Create a new file in your templates folder named <code>result.html</code> that will be used to show the result of the quiz. Add the following HTML to this file:</li>
+</ol>
+<div class="sourceCode" id="cb8" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>&lt;!DOCTYPE html&gt;</span>
+<span id="cb8-2"><a href="#cb8-2"></a>&lt;html lang=&quot;en&quot;&gt;</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    &lt;head&gt;</span>
+<span id="cb8-4"><a href="#cb8-4"></a>        &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span id="cb8-5"><a href="#cb8-5"></a>        &lt;title&gt;Take the Quiz!&lt;/title&gt;</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    &lt;/head&gt;</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    &lt;body&gt;</span>
+<span id="cb8-8"><a href="#cb8-8"></a>        &lt;p&gt;You were sorted into ravenclaw!&lt;/p&gt;</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    &lt;/body&gt;</span>
+<span id="cb8-10"><a href="#cb8-10"></a>&lt;/html&gt;</span></code></pre></div>
+<ol start="2" type="1">
+<li>Notice how the HTML for the form in <code>quiz.html</code> says <code>method="post"</code>. When you click the submit button inside the form element it will use the HTTP protocol <code>POST</code>. This makes sense since we are going to be saving or <em>posting</em> new data for the users answers when they click the submit button. We can use this fact to render our result template in our quiz function. First, we will need to import the <code>request</code> ability from Flask. Update the Flask import at the top of your <code>app.py</code> file:</li>
+</ol>
+<div class="sourceCode" id="cb9" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, render_template, request</span></code></pre></div>
+<ol start="3" type="1">
+<li>Now we are ready to handle different types of requests. Update your <code>quiz</code> function in <code>app.py</code> as seen below:</li>
+</ol>
+<div class="sourceCode" id="cb10" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/quiz&#39;</span>, methods<span class="op">=</span>[<span class="st">&quot;GET&quot;</span>, <span class="st">&quot;POST&quot;</span>])</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">def</span> quiz():</span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">&quot;POST&quot;</span>:</span>
+<span id="cb10-4"><a href="#cb10-4"></a>        <span class="cf">return</span> render_template(<span class="st">&quot;result.html&quot;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span></code></pre></div>
+<ol start="3" type="1">
+<li>Now, when you click the Submit button when viewing your <code>/quiz</code> page, our function will check if the request method was <code>POST</code> and render a result if so. Otherwise, we will see our normal quiz page. Keep in mind that the route or URL in your browser still shows <code>/quiz</code> since all we changed is what is rendered in our <code>quiz</code> function.</li>
+</ol>
+<h3 id="task-returning-to-quiz">Task: Returning to Quiz</h3>
+<p>We also want users to be able to take the quiz again so we will add a button that lets us return to the quiz view.</p>
+<ol type="1">
+<li>Add the following HTML snippet into your <code>result.html</code> template underneath <code>&lt;p&gt;You were sorted into ravenclaw!&lt;/p&gt;</code>:</li>
+</ol>
+<div class="sourceCode" id="cb11" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb11-1"><a href="#cb11-1"></a>&lt;form method=&quot;get&quot;&gt;</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    &lt;input type=&quot;submit&quot; value=&quot;Take the quiz again!&quot;&gt;</span>
+<span id="cb11-3"><a href="#cb11-3"></a>&lt;/form&gt;</span></code></pre></div>
+<ol start="2" type="1">
+<li>In this <code>form</code> we specified that <code>method="get"</code>. This makes sense since we are just requesting the <code>quiz.html</code> view instead of updating or posting any data. We could now update our <code>quiz</code> method to the code snippet below, but it is actually logically equivalent to what we have already written since any method that is not <code>POST</code> will render our <code>quiz.html</code> file as a default so there is no need.</li>
+</ol>
+<div class="sourceCode" id="cb12" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/quiz&#39;</span>, methods<span class="op">=</span>[<span class="st">&quot;GET&quot;</span>, <span class="st">&quot;POST&quot;</span>])</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">def</span> quiz():</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">&quot;POST&quot;</span>:</span>
+<span id="cb12-4"><a href="#cb12-4"></a>        <span class="cf">return</span> render_template(<span class="st">&quot;result.html&quot;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">&quot;GET&quot;</span>:</span>
+<span id="cb12-6"><a href="#cb12-6"></a>        <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span></code></pre></div>
+<ol start="3" type="1">
+<li>If you try clicking the <code>Take the quiz again!</code> button you should now see the quiz view. It should be easy to navigate between these two views now.</li>
+</ol>
+<h2 id="working-with-data">Working With Data</h2>
+<p>When a user submits their quiz we want to be able to evaluate their result! Let’s learn how to check what a user inputted into the quiz form.</p>
+<h3 id="task-evaluating-the-result">Task: Evaluating the Result</h3>
+<ol type="1">
+<li>Once a user submits the form we will need a function that can check which house they will be sorted into. We could write this function in our <code>app.py</code> file but for organization we will add a helper file instead. Create a new file named <code>helpers.py</code></li>
+<li>Paste in the following function:</li>
+</ol>
+<div class="sourceCode" id="cb13" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> find_house(animal: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="cf">if</span> animal <span class="op">==</span> <span class="st">&#39;eagle&#39;</span>:</span>
+<span id="cb13-3"><a href="#cb13-3"></a>        <span class="cf">return</span> <span class="st">&#39;Ravenclaw&#39;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="cf">elif</span> animal <span class="op">==</span> <span class="st">&#39;lion&#39;</span>:</span>
+<span id="cb13-5"><a href="#cb13-5"></a>        <span class="cf">return</span> <span class="st">&#39;Gryffindor&#39;</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="cf">elif</span> animal <span class="op">==</span> <span class="st">&#39;badger&#39;</span>:</span>
+<span id="cb13-7"><a href="#cb13-7"></a>        <span class="cf">return</span> <span class="st">&#39;Hufflepuff&#39;</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-9"><a href="#cb13-9"></a>        <span class="cf">return</span> <span class="st">&#39;Slytherin&#39;</span></span></code></pre></div>
+<ol start="3" type="1">
+<li>Currently the only question in our quiz is picking an animal, so our sorting function is pretty simple. Given the selected animal, this function can determine which house a user should be sorted into. In your own projects, this function could be more exciting! To use this function in our app, add the following import statement into your <code>app.py</code> file:</li>
+</ol>
+<div class="sourceCode" id="cb14" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> helpers <span class="im">import</span> find_house</span></code></pre></div>
+<h3 id="task-displaying-the-result">Task: Displaying the Result</h3>
+<p>Now that we have a function for sorting, all that is left is to grab the submitted data from the form and then display our result!</p>
+<ol type="1">
+<li>In order to show the result of the quiz we will need to add a variable into our <code>result.html</code> file. Change <code>&lt;p&gt;You were sorted into ravenclaw!&lt;/p&gt;</code> to the following:</li>
+</ol>
+<div class="sourceCode" id="cb15" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb15-1"><a href="#cb15-1"></a>&lt;p&gt;You were sorted into {{house}}!!!&lt;/p&gt;</span></code></pre></div>
+<blockquote>
+<p>The <code>{{house}}</code> syntax is similar to what you have already worked with while using <code>f-strings</code>. In our case we are telling our <code>result.html</code> template to expect a <code>str</code> variable called <code>house</code>.</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Now we need to make sure to pass the <code>house</code> variable to the <code>render_template</code> function. Update the <code>quiz</code> function to the following:</li>
+</ol>
+<div class="sourceCode" id="cb16" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/quiz&#39;</span>, methods<span class="op">=</span>[<span class="st">&quot;GET&quot;</span>, <span class="st">&quot;POST&quot;</span>])</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">def</span> quiz():</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">&quot;POST&quot;</span>:</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a>        fname: <span class="bu">str</span> <span class="op">=</span> request.form[<span class="st">&#39;fname&#39;</span>]</span>
+<span id="cb16-6"><a href="#cb16-6"></a>        lname: <span class="bu">str</span> <span class="op">=</span> request.form[<span class="st">&#39;lname&#39;</span>]</span>
+<span id="cb16-7"><a href="#cb16-7"></a>        animal: <span class="bu">str</span> <span class="op">=</span> request.form[<span class="st">&#39;animal&#39;</span>]</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a>        <span class="cf">if</span> fname <span class="op">==</span> <span class="st">&#39;&#39;</span> <span class="kw">or</span> lname <span class="op">==</span> <span class="st">&#39;&#39;</span>:</span>
+<span id="cb16-10"><a href="#cb16-10"></a>            <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a>        house: <span class="bu">str</span> <span class="op">=</span> find_house(animal)</span>
+<span id="cb16-13"><a href="#cb16-13"></a></span>
+<span id="cb16-14"><a href="#cb16-14"></a>        <span class="cf">return</span> render_template(<span class="st">&quot;result.html&quot;</span>, house<span class="op">=</span>house)</span>
+<span id="cb16-15"><a href="#cb16-15"></a>    <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>In this code snippet we first grab the date for the first name or <code>fname</code>, last name or <code>lname</code> and the chosen <code>animal</code> and store them into variables.</li>
+</ul>
+</blockquote>
+<ul>
+<li>Then we make sure that the user filled out both the first name and last name fields. If they didn’t, we go back to the <code>quiz.html</code> view.</li>
+<li>If all fields were filled out, we use our <code>find_house</code> function to check the house and store it in a variable.</li>
+<li>Finally we pass our <code>house</code> variable to the <code>render_template</code> function.</li>
+</ul>
+<ol start="3" type="1">
+<li>Navigate to your <code>/quiz</code> page and take the quiz. When you press submit your webpage should display the correct house you were sorted into!</li>
+</ol>
+<h2 id="displaying-stored-data">Displaying Stored Data</h2>
+<h3 id="task-storing-the-data">Task: Storing the Data</h3>
+<p>We also want to be able to keep track of the results of previous users and therefore need to be able to store our user data instead of just displaying it once. In modern web development, the handling, storing and fetching of data is what is usually called <code>backend</code> development. In our program we will do a simple version of this by storing our user data in global variables that our <code>app</code> file can access.</p>
+<ol type="1">
+<li>We want to use best practices while accomplishing this so we will now define a class for a <code>user</code> to keep our code organized and readable. In your <code>helpers.py</code> file add the following class:</li>
+</ol>
+<div class="sourceCode" id="cb17" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">class</span> user:</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    <span class="bu">id</span>: <span class="bu">int</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>    first_name: <span class="bu">str</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>    last_name: <span class="bu">str</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>    house: <span class="bu">str</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="bu">id</span>: <span class="bu">int</span>, fname: <span class="bu">str</span>, lname: <span class="bu">str</span>, house: <span class="bu">str</span>):</span>
+<span id="cb17-8"><a href="#cb17-8"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>        <span class="va">self</span>.first_name <span class="op">=</span> fname</span>
+<span id="cb17-10"><a href="#cb17-10"></a>        <span class="va">self</span>.last_name <span class="op">=</span> lname</span>
+<span id="cb17-11"><a href="#cb17-11"></a>        <span class="va">self</span>.house <span class="op">=</span> house</span></code></pre></div>
+<blockquote>
+<p>We need users to be uniquely identifiable. For instance, what if we had two users named John Smith who were both Hufflepuffs? There would be no way to tell them apart. For this reason, we make sure to store an <code>id</code> field along with the <code>first_name</code>, <code>last_name</code> and <code>house</code> fields.</p>
+</blockquote>
+<ol start="2" type="1">
+<li>To use this class in our app, update the <code>helpers</code> import statement into your <code>app.py</code> file:</li>
+</ol>
+<div class="sourceCode" id="cb18" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">from</span> helpers <span class="im">import</span> find_house, user</span></code></pre></div>
+<ol start="3" type="1">
+<li>We also need to define our global variables that we will use to store our data. Add the following underneath your global <code>app</code> variable in your <code>app.py</code> file:</li>
+</ol>
+<div class="sourceCode" id="cb19" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>users: <span class="bu">list</span>[user] <span class="op">=</span> []</span>
+<span id="cb19-2"><a href="#cb19-2"></a>user_number: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
+<blockquote>
+<p>We will use the <code>users</code> global variable to keep a list of all users who have taken the quiz so far. We will use the <code>user_number</code> to keep track of how many users we have so far and what the next user <code>id</code> should be. (Note: we could just use the length of the list, but for clarity purposes will use an extra variable here)</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Let’s incorporate the storing of data into our <code>quiz</code> function. Update the <code>quiz</code> functionality to the following code snippet:</li>
+</ol>
+<div class="sourceCode" id="cb20" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/quiz&#39;</span>, methods<span class="op">=</span>[<span class="st">&quot;GET&quot;</span>, <span class="st">&quot;POST&quot;</span>])</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="kw">def</span> quiz():</span>
+<span id="cb20-3"><a href="#cb20-3"></a>    <span class="cf">if</span> request.method <span class="op">==</span> <span class="st">&quot;POST&quot;</span>:</span>
+<span id="cb20-4"><a href="#cb20-4"></a>        <span class="kw">global</span> users</span>
+<span id="cb20-5"><a href="#cb20-5"></a>        <span class="kw">global</span> user_number</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a>        fname: <span class="bu">str</span> <span class="op">=</span> request.form[<span class="st">&#39;fname&#39;</span>]</span>
+<span id="cb20-8"><a href="#cb20-8"></a>        lname: <span class="bu">str</span> <span class="op">=</span> request.form[<span class="st">&#39;lname&#39;</span>]</span>
+<span id="cb20-9"><a href="#cb20-9"></a>        animal: <span class="bu">str</span> <span class="op">=</span> request.form[<span class="st">&#39;animal&#39;</span>]</span>
+<span id="cb20-10"><a href="#cb20-10"></a></span>
+<span id="cb20-11"><a href="#cb20-11"></a>        <span class="cf">if</span> fname <span class="op">==</span> <span class="st">&#39;&#39;</span> <span class="kw">or</span> lname <span class="op">==</span> <span class="st">&#39;&#39;</span>:</span>
+<span id="cb20-12"><a href="#cb20-12"></a>            <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span>
+<span id="cb20-13"><a href="#cb20-13"></a></span>
+<span id="cb20-14"><a href="#cb20-14"></a>        house: <span class="bu">str</span> <span class="op">=</span> find_house(animal)</span>
+<span id="cb20-15"><a href="#cb20-15"></a>        new_user: user <span class="op">=</span> user(user_number, fname, lname, house)</span>
+<span id="cb20-16"><a href="#cb20-16"></a>        users.append(new_user)</span>
+<span id="cb20-17"><a href="#cb20-17"></a></span>
+<span id="cb20-18"><a href="#cb20-18"></a>        user_number <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb20-19"><a href="#cb20-19"></a></span>
+<span id="cb20-20"><a href="#cb20-20"></a>        <span class="cf">return</span> render_template(<span class="st">&quot;result.html&quot;</span>, house<span class="op">=</span>house)</span>
+<span id="cb20-21"><a href="#cb20-21"></a>    <span class="cf">return</span> render_template(<span class="st">&quot;quiz.html&quot;</span>)</span></code></pre></div>
+<blockquote>
+<ul>
+<li>First, we label our <code>users</code> and <code>user_number</code> variables as global variables we plan to update.</li>
+</ul>
+</blockquote>
+<ul>
+<li>After finding the users house, we can create a new <code>user</code> object using the <code>user_number</code> as the <code>id</code> field and append it into our global <code>users</code> list.</li>
+<li>Finally we want to increment the <code>user_number</code> variable so that the next user will have a new <code>id</code>.</li>
+</ul>
+<h3 id="task-displaying-all-results">Task: Displaying All Results</h3>
+<p>With all of the data from each submission to our quiz being stored, we can render a page that shows every users results!</p>
+<ol type="1">
+<li>First lets add a new template we can use for displaying all results. Create a new file in the <code>templates</code> directory and name it <code>all-results.html</code>.</li>
+<li>Add the following HTML to the file and save it.</li>
+</ol>
+<div class="sourceCode" id="cb21" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb21-1"><a href="#cb21-1"></a>&lt;!DOCTYPE html&gt;</span>
+<span id="cb21-2"><a href="#cb21-2"></a>&lt;html lang=&quot;en&quot;&gt;</span>
+<span id="cb21-3"><a href="#cb21-3"></a>    &lt;head&gt;</span>
+<span id="cb21-4"><a href="#cb21-4"></a>        &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span id="cb21-5"><a href="#cb21-5"></a>        &lt;title&gt;Take the Quiz!&lt;/title&gt;</span>
+<span id="cb21-6"><a href="#cb21-6"></a>    &lt;/head&gt;</span>
+<span id="cb21-7"><a href="#cb21-7"></a>    &lt;body&gt;</span>
+<span id="cb21-8"><a href="#cb21-8"></a>        &lt;h2&gt;Welcome to results!&lt;/h2&gt;</span>
+<span id="cb21-9"><a href="#cb21-9"></a>        {% for user in users %}</span>
+<span id="cb21-10"><a href="#cb21-10"></a>        &lt;p&gt;{{user.first_name}} {{user.last_name}} is in {{user.house}}&lt;/p&gt;</span>
+<span id="cb21-11"><a href="#cb21-11"></a>        {% endfor %}</span>
+<span id="cb21-12"><a href="#cb21-12"></a>    &lt;/body&gt;</span>
+<span id="cb21-13"><a href="#cb21-13"></a>&lt;/html&gt;</span></code></pre></div>
+<blockquote>
+<p>You may notice some more odd looking syntax inside of the <code>&lt;body&gt;&lt;/body&gt;</code> tags in this snippet. This file expects a list of <code>user</code> objects in a variable <code>users</code>. It then uses a python <code>for</code> loop to iterate through each user in the list and add a <code>&lt;p&gt;&lt;/p&gt;</code> tag for each users data. For instance, if the first person who filled out the quiz was named <code>Harry Potter</code> and selected <code>lion</code> as their favorite animal, the first <code>&lt;p&gt;&lt;/p&gt;</code> tag added would look like <code>&lt;p&gt;Harry Potter is in Gryffindor&lt;/p&gt;</code>.</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Finally, we need to add a new route where we can display our template and pass it our <code>users</code> list. Add the following function snippet in your <code>app.py</code> file.</li>
+</ol>
+<div class="sourceCode" id="cb22" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/all-results&#39;</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="kw">def</span> all_results():</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    <span class="cf">return</span> render_template(<span class="st">&#39;all-results.html&#39;</span>, users<span class="op">=</span>users)</span></code></pre></div>
+<blockquote>
+<p>Here we are simply rendering our <code>all-results.html</code> template and passing it our users list as an argument.</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Take the quiz a few times and make sure to submit. Then try navigating to <code>/all-results</code> in your browser. You should see the data from every quiz submission!</li>
+</ol>
+<h3 id="task-individual-results">Task: Individual Results</h3>
+<p>Flask also allows us to use variables in our routes. We can make use of this feature in order to return to individual users and display their data. This particular functionality is useful for things like displaying a user page in web apps that have logins!</p>
+<ol type="1">
+<li>Lets define one more file in our <code>templates</code> directory for displaying all information about a particular user. Create a new file in <code>templates</code> named <code>user.html</code>.</li>
+<li>Paste the following HTML into the file:</li>
+</ol>
+<div class="sourceCode" id="cb23" data-startFrom="1"><pre class="sourceCode numberSource numberLines"><code class="sourceCode"><span id="cb23-1"><a href="#cb23-1"></a>&lt;!DOCTYPE html&gt;</span>
+<span id="cb23-2"><a href="#cb23-2"></a>&lt;html lang=&quot;en&quot;&gt;</span>
+<span id="cb23-3"><a href="#cb23-3"></a>    &lt;head&gt;</span>
+<span id="cb23-4"><a href="#cb23-4"></a>        &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span id="cb23-5"><a href="#cb23-5"></a>        &lt;title&gt;Take the Quiz!&lt;/title&gt;</span>
+<span id="cb23-6"><a href="#cb23-6"></a>    &lt;/head&gt;</span>
+<span id="cb23-7"><a href="#cb23-7"></a>    &lt;body&gt;</span>
+<span id="cb23-8"><a href="#cb23-8"></a>        &lt;p&gt;Hello {{user.first_name}} {{user.last_name}}&lt;/p&gt;</span>
+<span id="cb23-9"><a href="#cb23-9"></a>        &lt;p&gt;You are in {{user.house}} !!!&lt;/p&gt;</span>
+<span id="cb23-10"><a href="#cb23-10"></a>    &lt;/body&gt;</span>
+<span id="cb23-11"><a href="#cb23-11"></a>&lt;/html&gt;</span></code></pre></div>
+<blockquote>
+<p>This template expects a variable called <code>user</code> of the class type <code>user</code> that we defined earlier. It then renders the important information stored in the user object.</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Now we need to add a route for rendering this <code>user.html</code> template. Add the following code snippet in your <code>app.py</code> file:</li>
+</ol>
+<div class="sourceCode" id="cb24" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="at">@app.route</span>(<span class="st">&#39;/user&lt;usernumber&gt;&#39;</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="kw">def</span> display_user(usernumber: <span class="bu">str</span>):</span>
+<span id="cb24-3"><a href="#cb24-3"></a>    <span class="cf">return</span> render_template(<span class="st">&#39;user.html&#39;</span>, user<span class="op">=</span>users[<span class="bu">int</span>(usernumber)])</span></code></pre></div>
+<blockquote>
+<p>This route is slightly more complex than ones we have defined previously. The syntax <code>&lt;usernumber&gt;</code> defines an unknown in the URL with a variable name of <code>usernumber</code>. When this route is accessed, it will pass the given <code>usernumber</code> to the <code>display_user</code> function. Then the <code>usernumber</code> can be converted to an <code>int</code> and used to select the correct user our of our <code>users</code> list. For instance, if we navigate to the URL <code>/user2</code>, we could expect to be shown all the data about the third person who took the quiz. (Since we started at user0)</p>
+</blockquote>
+<ol start="4" type="1">
+<li>Take the quiz at least once and then try navigating to the URL <code>/user0</code> in your browser. You should see only the data for this user! Try taking the quiz again and then navigate to <code>/user1</code></li>
+</ol>
+<h2 id="bonus-hot-reload">Bonus: Hot Reload</h2>
+<p>As you develop a new project, it can get tedious to have to refresh your browser every time you make a small style change to see the update. Instead we can make the browser auto-refresh every time you save a file. This behavior is commonly called live refresh or hot reload.</p>
+<ol type="1">
+<li>Open a new terminal and run <code>pip install livereload</code></li>
+<li>Create a new file in your repo named <code>dev.py</code></li>
+<li>Paste in the following code snippet and save.</li>
+</ol>
+<div class="sourceCode" id="cb25" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">from</span> app <span class="im">import</span> app</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="im">from</span> livereload <span class="im">import</span> Server</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb25-5"><a href="#cb25-5"></a>   server <span class="op">=</span> Server(app.wsgi_app)</span>
+<span id="cb25-6"><a href="#cb25-6"></a>   server.serve()</span></code></pre></div>
+<ol start="4" type="1">
+<li>Whenever you would like to run your app with livereload run <code>python -m dev</code> in your terminal and open your browser to <code>http://127.0.0.1:5500/</code></li>
+</ol>
+<h2 id="documentation-tools-and-resources">Documentation, Tools and Resources</h2>
+<h4 id="finished-tutorial-code"><a href="https://github.com/ezriwhite/finished-web-tutorial">Finished Tutorial Code</a></h4>
+<p>This code should be identical to yours after completing the tutorial.</p>
+<h4 id="styled-starter-code"><a href="https://github.com/ezriwhite/flask_experiment_hack110">Styled Starter Code</a></h4>
+<p>This code is the same as the tutorial with some more exciting styling and navigation bar already built. Feel free to use this to kickstart your project!</p>
+<h4 id="flask-documentation"><a href="https://flask.palletsprojects.com/en/2.0.x/quickstart/#what-to-do-if-the-server-does-not-start">Flask Documentation</a></h4>
+<p>Check this documentation for any questions related to flask.</p>
+<h4 id="w3schools-introduction-to-html"><a href="https://www.w3schools.com/html/html_intro.asp">W3Schools Introduction to HTML</a></h4>
+<p>This is a great site for learning more about basic HTML.</p>
+<h4 id="w3schools-introduction-to-css"><a href="https://www.w3schools.com/html/html_css.asp">W3Schools Introduction to CSS</a></h4>
+<p>This is a great site for learning more about basic CSS.</p>
+<h3 id="helpful-vscode-extensions">Helpful VSCode Extensions</h3>
+<p>To add these extensions, click the Extensions tab on the sidebar in vscode. (Looks like three squares with a fourth square drifting away) Then you can search for and install the extensions you would like.</p>
+<ul>
+<li><code>Auto Close Tag</code>: automatically adds closing tags to your HTML code.</li>
+<li><code>Auto Rename Tag</code>: when you rename an opening HTML tag, automatically changes the closing tag to match.</li>
+<li><code>Paste and Indent</code>: automatically adds the appropriate indents to code pasted into your project.</li>
+<li><code>Color Highlight</code>: displays swatches of and highlights CSS colors in your code for easy identification.</li>
+<li><code>Beautify</code>: automatically formats HTML and CSS code.
+<ul>
+<li>To get this to work, click Settings (the cog in the bottom left corner)</li>
+<li>Click the { } curly braces in the top right corner</li>
+<li>Copy and paste this in the curly braces: “editor.formatOnSave”: true</li>
+</ul></li>
+<li><code>Better Jinja</code>: syntax highlighting for jinja</li>
+</ul>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

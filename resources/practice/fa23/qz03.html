@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 03 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502736.3297114">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 03 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#conceptual-questions">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams">Memory Diagrams</a></li>
+<li><a href="#class-writing">Class Writing</a></li>
+<li><a href="#function-writing">Function Writing</a>
+<ul>
+<li><a href="#autograder-instructions">Autograder Instructions</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#conceptual-questions-1">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams-1">Memory Diagrams</a></li>
+<li><a href="#class-writing-1">Class Writing</a></li>
+<li><a href="#function-writing-1">Function Writing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><!--
+Note: this wkst is a copy of the qz04 worksheet from resources/practice/fa21 with some
+minor changes/additions
+-->
+<h1 id="questions">Questions</h1>
+<p>Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>A class definition provides a pattern for creating objects, but doesn’t make any objects itself. (T/F)</li>
+<li>By convention, Python class names start with a lowercase letter. (T/F)</li>
+<li>When you define a method in a class, all objects of that class have that method associated with it. (T/F)</li>
+<li>The first parameter of a method is a copy of the object the method is called on. (T/F)</li>
+<li>A class definition must come before an object of that class is instantiated. (T/F)</li>
+<li>You must have an instance of a class (an object) to call the class’s constructor. (T/F)</li>
+<li>Constructors must have the <code>self</code> parameter in their signature. (T/F)</li>
+<li>Constructors must take at least one parameter other than the self parameter. (T/F)</li>
+<li>Objects are passed into functions by reference. (T/F)</li>
+<li>The type of an object is the same as the name of the class it is an instance of. (T/F)</li>
+</ol>
+<h2 id="memory-diagrams">Memory Diagrams</h2>
+<ol type="1">
+<li>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</li>
+</ol>
+<pre><code>    class Point:
+        &quot;&quot;&quot;Models the idea of a point at location (x, y).&quot;&quot;&quot;
+        x: int
+        y: int
+
+        def __init__(self, x: int, y: int):
+            &quot;&quot;&quot;Constructor definition!&quot;&quot;&quot;
+            self.x = x
+            self.y = y
+
+
+    class Path: 
+        &quot;&quot;&quot;Models the idea of a path from point a to point b.&quot;&quot;&quot;
+        a: Point
+        b: Point
+
+        def __init__(self, a: Point, b: Point):
+            &quot;&quot;&quot;Constructor definition!&quot;&quot;&quot;
+            self.a = a
+            self.b = b
+        
+        def scale(self, amount: int) -&gt; None:
+            &quot;&quot;&quot;Scales the points by a specified amount.&quot;&quot;&quot;
+            self.a.x *= amount
+            self.b.y *= amount
+
+        def translate(self) -&gt; None:
+            &quot;&quot;&quot;Moves the points up 2 units and right 5 units.&quot;&quot;&quot;
+            self.a.x += 5
+            self.a.y += 2
+            self.b.x += 5
+            self.b.y += 2
+
+
+    def main() -&gt; None:
+        &quot;&quot;&quot;Entrypoint of the program.&quot;&quot;&quot;
+        p1: Point = Point(2, 1)
+        p2: Point = Point(3, 6)
+
+        line1: Path = Path(p1, p2)
+        line2: Path = line1
+
+        line2.translate()
+        line2.scale(2)
+
+        print(f&quot;{line1.a.x} , {line1.a.y}&quot;)
+        print(f&quot;{line2.a.x} , {line2.a.y}&quot;)
+
+
+    if __name__ == &quot;__main__&quot;:
+        main()</code></pre>
+<ol start="2" type="1">
+<li>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</li>
+</ol>
+<pre><code>    &quot;&quot;&quot;Diagramming practice for Quiz 03.&quot;&quot;&quot;
+
+    from __future__ import annotations
+
+
+    class Phone:
+        &quot;&quot;&quot;Represents a phone as a class.&quot;&quot;&quot;
+
+        number: str
+        name: str
+        contacts: list[Phone]
+
+        def __init__(self, number: str, name: str):
+            &quot;&quot;&quot;Creates a phone object.&quot;&quot;&quot;
+            self.number = number
+            self.name = name
+            self.contacts = []
+
+        def add_contact(self, other: Phone) -&gt; None:
+            &quot;&quot;&quot;Making friends!&quot;&quot;&quot;
+            if not (other in self.contacts):
+                self.contacts.append(other)
+        
+        def add_contacts_friends(self, other: Phone) -&gt; None:
+            &quot;&quot;&quot;A friend introduces you to a new friend group :D.&quot;&quot;&quot;
+            if other in self.contacts:
+                print(&quot;Now that&#39;s quite a circle you&#39;re building!&quot;)
+                for contact in other.contacts:
+                    if not (contact in self.contacts):
+                        self.contacts.append(contact)
+            else:
+                print(f&quot;Gotta find a way into the group somehow, {self.name}.&quot;)
+
+
+    def main():
+        &quot;&quot;&quot;Entrypoint into the program.&quot;&quot;&quot;
+        main_character: Phone = Phone(&quot;919-999-9999&quot;, &quot;Johnny&quot;)
+        new_friend: Phone = Phone(&quot;704-999-9999&quot;, &quot;Bianca&quot;)
+        tv_ad: Phone = Phone(&quot;877CASHNOW&quot;, &quot;Wentworth&quot;)
+        new_friend.add_contact(tv_ad)
+
+        main_character.add_contacts_friends(new_friend)
+
+        main_character.add_contact(new_friend)
+        main_character.add_contacts_friends(new_friend)
+
+
+    if __name__ == &quot;__main__&quot;:
+        main()</code></pre>
+<ol start="3" type="1">
+<li>Produce a memory diagram for the following code snippet, being sure to include its stack and output.</li>
+</ol>
+<pre><code>    &quot;&quot;&quot;From number grades to letters.&quot;&quot;&quot;
+
+
+    def main() -&gt; None:
+        &quot;&quot;&quot;The entrypoint of the program.&quot;&quot;&quot;
+        student_grades: dict[str, int] = {&quot;Andre&quot;: 92, &quot;Jonny&quot;: 79, &quot;Ania&quot;: 86, &quot;Wendy&quot;: 55}
+        curve(student_grades)
+        letter_grades: dict[str, str] = grading_scale(student_grades)
+        print(letter_grades)
+
+
+    def curve(number_grades: dict[str, int]) -&gt; None:
+        &quot;&quot;&quot;Curves number grades.&quot;&quot;&quot;
+        max: int = 0
+        for student in number_grades:
+            if number_grades[student] &gt; max:
+                max = number_grades[student]
+        
+        curve_amount: int = 100 - max
+        for student in number_grades:
+            number_grades[student] += curve_amount
+
+
+    def grading_scale(number_grades: dict[str, int]) -&gt; dict[str, str]:
+        &quot;&quot;&quot;Converts grades formatted as numbered into letter grades.&quot;&quot;&quot;
+        gradebook: dict[str, str] = {}
+
+        for student in number_grades:
+            
+            if number_grades[student] &gt;= 90:
+                gradebook[student] = &quot;A&quot;
+
+            elif number_grades[student] &gt;= 80:
+                gradebook[student] = &quot;B&quot;
+
+            elif number_grades[student] &gt;= 70:
+                gradebook[student] = &quot;C&quot;
+
+            elif number_grades[student] &gt;= 60:
+                gradebook[student] = &quot;D&quot;
+
+            else: 
+                gradebook[student] = &quot;F&quot;
+        
+        return gradebook
+
+
+    if __name__ == &quot;__main__&quot;:
+        main()</code></pre>
+<p>Please check the <a href="/resources/practice/MemDiagrams.html">practice memory diagram page</a> for more practice!</p>
+<h2 id="class-writing">Class Writing</h2>
+<ol type="1">
+<li>This class is slightly challenging, but take it step by step! Create a <code>ChristmasTreeFarm</code> class with the following specifications:
+<ol type="a">
+<li>The <code>ChristmasTreeFarm</code> class should have one attribute: a <code>list[int]</code> named <code>plots</code>.
+<ul>
+<li>Basic behavior of <code>plots</code> (you will define this later):
+<ul>
+<li>This list will hold values that represent the size of the tree planted in each plot.</li>
+<li>If the value at an index of the list is 0, then the plot at that index is empty (does not have a tree).</li>
+<li>Any value other than 0 indicates that a tree is growing in that plot!</li>
+</ul></li>
+</ul></li>
+<li>The <em>constructor</em> for the class should take two arguments: <code>plots: int</code> and <code>initial_planting: int</code>, both of type int.
+<ul>
+<li>The first parameter, <code>plots</code>, represents the <em>total</em> number of plots in the farm. (Notice that the attribute <code>plots</code> and the parameter <code>plots</code> for this constructor are different, and represent different things!)</li>
+<li>The second parameter, <code>initial_planting</code>, represents the number of plots that that will have trees already planted in them. These initially planted plots will be trees of size 1.</li>
+<li>The constructor should initialize the <code>plots</code> <em>attribute</em> to an empty <code>list</code>, and then append <code>initial_planting</code> trees of size 1. After that, the constructor should fill the rest of the plots with zeroes to indicate that they are empty!</li>
+</ul></li>
+<li>The class should define a method called <code>plant</code>.
+<ul>
+<li>This method should have a parameter of type <code>int</code>, representing the plot index at which a tree should be planted.</li>
+<li>The tree should be size 1 when planted. If this method is called on a plot that already has a tree, the old tree will be uprooted and replaced with a new baby tree (size 1).</li>
+</ul></li>
+<li>The class should define a method called <code>growth</code>.
+<ul>
+<li>This method should increase the size of each planted tree by 1. (Remember that unplanted plots are represented by a 0 in the <code>plots</code> list.)</li>
+</ul></li>
+<li>The class should define a method called <code>harvest</code>.
+<ul>
+<li>This method should have a parameter <code>replant</code> of type <code>bool</code> that will determine whether this method replants trees (sets them to size 1 after harvest) or leaves the plots empty (sets them to size 0 after harvest).</li>
+<li>For this method, trees that are at least size 5 will be harvested. The method will <code>return</code> the count of how many trees were successfully harvested (type <code>int</code>).</li>
+</ul></li>
+<li>The class should <em>overload</em> the addition operator.
+<ul>
+<li>This method should work between two objects of type <code>ChristmasTreeFarm</code>.</li>
+<li>The method should return a new <code>ChristmasTreeFarm</code> object whose size is the sum of the given <code>ChristmasTreeFarm</code>’s, and whose initial plantings are the sum of the number of planted trees in the given <code>ChristmasTreeFarm</code>s.</li>
+</ul></li>
+<li><em>Check your code:</em> If you want to check and see if your code works, you can use the autograder. Check out the instructions below to join the autograder Gradescope if you haven’t yet. (It’s the same one used for QZ02 practice!) For the autograder to work, you need to save your file in your lessons folder, in a folder called “practice” and in a file called “tree_farm.py”. Create the zip folder by running the command: <code>python -m tools.submission lessons/practice</code></li>
+</ol></li>
+</ol>
+<h2 id="function-writing">Function Writing</h2>
+<ol type="1">
+<li>Write a function called <code>find_courses</code>. Given the following <code>Course</code> class definition, <code>find_courses</code> should take in a <code>list[Courses]</code> and a <code>str</code> prerequisite to search for. The function should return a list of the <code>names</code> of each Course whose <code>level</code> is 400+ and whose <code>prerequisites</code> list contains the given string.</li>
+</ol>
+<pre><code>    class Course:
+        &quot;&quot;&quot;Models the idea of a UNC course.&quot;&quot;&quot;
+        name: str
+        level: int
+        prerequisites: list[str]</code></pre>
+<ol start="2" type="1">
+<li><p>Write a method called <code>is_valid_course</code> for the <code>Course</code> class. The method should take in a <code>str</code> prerequisite and return a <code>bool</code> that represents whether the course’s <code>level</code> is 400+ and if its <code>prerequisites</code> list contains the given string.</p></li>
+<li><p><em>Check your code:</em> If you want to check and see if your code works, you can use the autograder. Check out the instructions below to join the autograder Gradescope if you haven’t yet. (It’s the same one used for QZ02 practice!) For the autograder to work, you need to save your file in your lessons folder, in a folder called “practice” and in a file called “courses.py”. Create the zip folder by running the command: `python -m tools.submission lessons/practice</p></li>
+</ol>
+<h3 id="autograder-instructions">Autograder Instructions</h3>
+<p>Join the Gradescope class for practice problems with the code: 4V7PB5 (Do this by going to your <a href="https://www.gradescope.com/">Gradescope</a> homepage and clicking on “Enroll in Course”) <strong>Do not compress these files before submitting. Simply submit the <code>.py</code> files.</strong></p>
+<h1 id="solutions">Solutions</h1>
+<h2 id="conceptual-questions-1">Conceptual Questions</h2>
+<ol type="1">
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>True</li>
+<li>True</li>
+</ol>
+<h2 id="memory-diagrams-1">Memory Diagrams</h2>
+<ol type="1">
+<li></li>
+</ol>
+<p><img class="img-fluid" src="/static/practice_worksheets/sp23/Qz04-solution11.png" alt='The memory diagram has two columns titled Stack and Heap and a column below titled Output. 
+The Stack includes 7 frames in the following order from top to bottom - Globals, main, Point # _ _ init _ _, Point # _ _ init _ _, Point # _ _ init _ _, Path # _ _ init _ _, Path # translate, and Path # scale.
+The Globals frame has 4 variables including Point, Path, and main, and _ _ name _ _. 
+Point points to a Class on the heap from lines 1 to 9.
+Path points to a Class on the heap from lines 12 to 32.
+main points to a function on the heap from lines 35 to 47.
+_ _ name _ _ is assigned the string "_ _ main _ _".
+The main frame has 5 items including the return address.
+The RA is 51.
+The variable p1 points to a Point object on the heap. The point object has two attributes, x and y. x has previous values of 2 and 7, and a final value of 14. y has an initial value of 1 and a final value of 3.
+The variable p2 points to a separate Point object on the heap. The Point object has two attributes, x and y. x has an initial value of 3 and a final value of 8. y has previous values of 6 and 8, and a final value of 16.
+The variable line 1 points to a path on the heap with attributes a and b. a points to the same point object on the heap that p1 points to. b points to the same point object on the heap that p2 points to.
+The variable line 2 points to the same path object on the heap that the variable line 1 points to.
+The Point # _ _ init _ _ frame has 5 items, including the return address and return value.
+The RA is 37.
+Self points to the first Point object on the  heap, the same point that p1 in main points to.
+The variable x is 2.
+The variable y is 1.
+The RV points to the same Point object on the heap that self points to. 
+The next Point # _ _ init _ _ frame has 5 items, including the return address and return value.
+The RA is 38. 
+self points to the second Point object on the heap, the same Point object that p2 in main points to.
+The variable x is 3.
+The variable y is 6.
+RV points to the same Point object on the heap that self points to.
+The Path # _ _ init _ _ frame has 5 items, including the return address and return value. 
+The RA is 40.
+self points the path object on the heap, which line 1 and line 2 in main point to.
+The variable a points to the space for the value of a in the Path object.
+The variable b points to the space for the value of b in the Path object.
+The RV points to the Path object on the heap, which self points to.
+The Path # translate frame has 2 items, including the RA.
+The RA is 43. 
+Self points to the path object on the heap, which is the same one that line 1 and line 2 in main point to.
+The Path # scale frame has 3 items, including the RA. 
+The RA is 44. 
+Self points to the Path object in the heap, which is the same one that line 1 and line 2 in main point to.
+The amount variable is assigned 2.
+The heap includes 2 class objects, 1 function object, 2 Point objects, and 1 Path object.
+The first line of the output is 14, 3. The second line is 14, 3.
+'/></p>
+<ol start="2" type="1">
+<li><img class="img-fluid" src="/static/practice_worksheets/sp23/15-solution.png" alt="The memory diagram has three columns, labeled stack, heap and output.
+The stack includes 9 frames including globals, main, Phone # _ _ init _ _, Phone # _ _ init _ _, Phone # _ _ init _ _, Phone # add _ contact, Phone # add _ contacts _ friends, Phone # add_ contact, and Phone # add _ contacts _ friends. 
+The globals frame has 2 items.
+Phone points to a Class on the heap from lines 6 to 32.
+main points to a function on the heap from lines 35 to 45. 
+The main frame has 5 items including the return address and return value.
+The RA is 49.
+The RV is None.
+The variable main _ character points to a Phone object on the heap. The Phone object has the following attributes: number with the value of 919-999-9999, name with the value of Johnny, and contacts which points to list of Phones on the heap. The contacts at index 0 points to another Phone object on the heap with the number 704-999-9999, the name Bianca, and contacts pointing to another list on the heap. Index 1 of the contacts for Johnny and index 0 of the contacts for Bianca point to the same Phone object on the heap with the number 877 CASH NOW, the name Wentworth, and an empty list of contacts. 
+Next in the main frame, the new_friend variable points at the phone object on the heap with the name attribute of Bianca.
+The tv_ad variable in the main frame points at the phone object on the heap with the name attribute of Wentworth.
+The Phone # _ _ init _ _ frame has 5 items including the return address and return value.
+The RA is 36.
+the RA and self points to the the phone on the heap with the name Johnny
+The variable number has the value of the string '919-999-9999'
+The variable name has the value of the string 'Johnny'
+The next Phone # _ _ init _ _ frame has 5 items including the return address and return value.
+The RA is 38.
+the RA and self points to the the phone on the heap with the name Bianca
+The variable number has the value of the string '704-999-9999'
+The variable name has the value of the string 'Bianca'
+The next Phone # _ _ init _ _ frame has 5 items including the return address and return value.
+The RA is 39.
+the RV and self points to the the phone on the heap with the name Wentworth
+The variable number has the value of the string '877CASHNOW'
+The variable name has the value of the string 'Wentworth'
+The Phone # add _ contact frame has 4 items, including the return address and return value.
+The return address is 40.
+The return value is None.
+self points to the Phone object on the heap with the name Bianca
+other points to the Phone object on the heap with the name Wentworth
+The Phone # add _ contacts _ friends frame has 5 items, including the return address and return value.
+The return address is 42.
+The return value is None.
+self points to the Phone object on the heap with the name Johnny
+Other points to the Phone object on the heap with the name Bianca
+the contact variable has no value.
+The Phone # add _ contact frame has 4 items, including the return address and return value.
+The return address is 44.
+The return value is None.
+self points to the Phone object in the heap with the name Johnny
+other points to the Phone object in the heap with the name Bianca
+The Phone # add _contacts _ friends frame has 5 items, including the return address and return value. 
+The return address is 45.
+The return value is None.
+self points to the Phone object on the heap with the name Johnny
+other points to the Phone object on the heap with the name Bianca.
+the contact variable points to the Phone object pointed to by index 0 of the contacts for Bianca, aka the Phone object with the name Wentworth.
+The output has two strings. The first is 'Gotta find a way into the group somehow, Johnny.', and the second is the string 'Now that's quite a circle you're building!.'"></li>
+</ol>
+<!-- [Link To Solution](/static/practice_worksheets/sp23/15-solution.pdf) -->
+<ol start="3" type="1">
+<li></li>
+</ol>
+<p><img class="img-fluid" src="/static/practice_worksheets/sp23/16-solution.png" alt="
+The memory diagram has three columns labeled Stack, Heap, and Output.
+The Stack frame has 4 frames, including globals, main, curve, and grading _ scale. 
+The globals frame has 3 items.
+Main points to a function on the heap on lines 4 to 9.
+curve points to a function on the heap on lines 12 to 21.
+grading _ scale points to a function on the heap from lines 24 to 25.
+The main frame has 4 items, including the return address and return value.
+The RA is 49.
+The RV is None.
+The variable student _ grades points to a dictionary on the heap with string keys and int values. The key 'Andre' has the crossed out initial value of 92, and the final value of 100. Key 'Jonny' has an initial value of 79 and a final value of 87. The key 'Ania' has the initial value of 86 and the final value of 94. The key 'Wendy' has the initial value of 55 and final value of 63. 
+The variable letter _ grades points to a dictionary on the heap with string keys and string values. The key 'Andre' has the value 'A', the key 'Jonny' has the value 'B', the key 'Ania' has the value 'A', and the key 'Wendy' has the value 'D'.
+The curve frame has 6 items, including the return address and return value.
+The RA is 7. 
+The RV is None.
+The variable number _ grades points to the same dictionary on the heap that student _ grades in main points to.
+The variable max has a previous value of 0 and a final value of 92.
+The variable curve _ amount has a value of 8
+The variable student has previous values of 'Andre', 'Jonny', 'Ania', 'Wendy', 'Andre', 'Jonny', 'Ania', and 'Wendy'.
+The grading _ scale frame has 5 items, including the return address and return value.
+The RA is 8.
+The variable number _ grades points to the same dictionary in the heap as student _ grades in main and number _ grades in curve points to.
+The RV and gradebook variable point to the same dictionary in the heap that letter _ grades in main points to.
+The variable student has previous values of 'Andre', 'Jonny', 'Ania', and 'Wendy'.
+The output is the dictionary with key-value pairs 'Andre': 'A', 'Jonny': 'B', 'Ania': 'A', and 'Wendy': 'D'.
+"/></p>
+<h2 id="class-writing-1">Class Writing</h2>
+<ol type="1">
+<li></li>
+</ol>
+<pre><code>    &quot;&quot;&quot;Diagraming practice for Quiz 03.&quot;&quot;&quot;
+
+    class ChristmasTreeFarm:
+        &quot;&quot;&quot;A christmas tree farm!&quot;&quot;&quot;
+
+        plots: list[int]
+
+        def __init__(self, plots: int, initial_planting: int) -&gt; None:
+            &quot;&quot;&quot;Sets up the farm.&quot;&quot;&quot;
+            self.plots = []
+            i: int = 0
+            while i&lt; initial_planting:
+                self.plots.append(1)
+                i += 1
+            while i &lt; plots:
+                self.plots.append(0)
+                i += 1
+        
+        def plant(self, plot_number: int) -&gt; None:
+            &quot;&quot;&quot;Plants a tree at the given plot number.&quot;&quot;&quot;
+            self.plots[plot_number] = 1
+        
+        def growth(self) -&gt; None:
+            &quot;&quot;&quot;Grows each planted tree.&quot;&quot;&quot;
+            i: int = 0
+            while i &lt; len(self.plots):
+                if self.plots[i] != 0:
+                    self.plots[i] += 1
+                i += 1
+
+        def harvest(self, replant: bool) -&gt; int:
+            &quot;&quot;&quot;Harvest trees that are fully grown!&quot;&quot;&quot;
+            total: int = 0
+            i: int = 0
+            while i &lt; len(self.plots):
+                if self.plots[i] &gt;= 5:
+                    total += 1
+                    if replant:
+                        self.plots[i] = 1
+                    else: 
+                        self.plots[i] = 0
+                i += 1
+            return total
+
+        def __add__(self, rhs: ChristmasTreeFarm) -&gt; ChristmasTreeFarm:
+            &quot;&quot;&quot;Overload addition to create new ChristmasTreeFarm.&quot;&quot;&quot;
+            trees: int = 0
+            for plot in self.plots:
+                if plot &gt; 0:
+                    trees += 1
+            for plot in rhs.plots:
+                if plot &gt; 0:
+                    trees += 1
+            return ChristmasTreeFarm(len(self.plots) + len(rhs.plots), trees)</code></pre>
+<p><!-- <img class="img-fluid" src="/static/practice_worksheets/fa21/qz04-solution13.png" width="600" /> 
+    <img class="img-fluid" src="/static/practice_worksheets/sp22/qz03-solution16-from-fa21-sol13.png" width="600"/> --></p>
+<h2 id="function-writing-1">Function Writing</h2>
+<ol type="1">
+<li></li>
+</ol>
+<pre><code>    def find_courses(courses: list[Course], prereq: str) -&gt; list[str]:
+        &quot;&quot;&quot;Finds 400+ level courses with the given prereq.&quot;&quot;&quot;
+        results: list[str] = []
+
+        for c in courses:
+            if c.level &gt;= 400:
+                for p in c.prerequisites:
+                    if p == prereq:
+                        results.append(c.name)
+        
+        return results</code></pre>
+<!-- <img class="img-fluid" src="/static/practice_worksheets/fa21/qz04-solution14A.png" /> -->
+<ol start="2" type="1">
+<li></li>
+</ol>
+<pre><code>    def is_valid_course(self, prereq: str) -&gt; bool:
+        &quot;&quot;&quot;Checks if this course is 400+ level and has the given prereq.&quot;&quot;&quot;
+        if self.level &lt; 400:
+            return False
+        else: 
+            for p in self.prerequisites:
+                if p == prereq:
+                    return True
+            return False</code></pre>
+<!-- <img class="img-fluid" src="/static/practice_worksheets/fa21/qz04-solution14B.png" />
+
+ -->
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang,        David Karash, Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

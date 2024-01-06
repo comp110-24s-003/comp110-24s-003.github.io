@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Course Site Setup - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502759.6941907">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Course Site Setup</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#clone-the-team110-repo">Clone the team110 Repo</a></li>
+<li><a href="#install-packages">Install Packages</a></li>
+<li><a href="#install-pandoc">Install Pandoc</a></li>
+<li><a href="#run-the-development-script">Run the Development Script</a></li>
+<li><a href="#hotdev-script">Hotdev script</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>If you have already cloned the team110 repo you can jump to <strong>Install Packages</strong>.</p>
+<h2 id="clone-the-team110-repo">Clone the team110 Repo</h2>
+<ul>
+<li><p>Go to <a href="https://github.com/comp110/team110" class="uri">https://github.com/comp110/team110</a> and clone the repo by pressing the green code button.</p>
+<p><img src="/static/team/repo-instructions/step_1.png" width="500" /></p>
+<blockquote>
+<p>If you can’t open this link, you have not been added to the team org on Github. Send your github username to Kris!</p>
+</blockquote></li>
+<li><p>Open the <code>Team 110.code-workspace</code> file in VSCODE as a Workspace (don’t just open the top-level directory)</p>
+<p><img src="/static/team/repo-instructions/step_2.png" width="500" /></p></li>
+<li><p>Make sure you’re in the <code>team110</code> folder in your terminal and the master branch.</p>
+<p><img src="/static/team/repo-instructions/step_3.png" width="500" /></p></li>
+</ul>
+<h2 id="install-packages">Install Packages</h2>
+<p>Note: You may have done this step before, but there are often new dependencies being added, so make sure to run the command again.</p>
+<ul>
+<li>Update pip by running: <code>python -m pip install -U pip</code>.</li>
+<li>Make sure your terminal is in the right directory. If you type <code>pwd</code> in the terminal it should print <code>/Some/Path/.../team110/code</code>. If you do not see this, trash the terminal and create a new one. When you create a new one it should prompt you for the desired working directory – select the <code>code</code> option.</li>
+<li>Install required PyPI packages in <code>requirements.txt</code> with the following command: <code>python -m pip install -r requirements.txt</code>.</li>
+</ul>
+<h2 id="install-pandoc">Install Pandoc</h2>
+<p>In order to run the dev server, pandoc is needed and can be downloaded <a href="https://pandoc.org/installing.html">here</a>. Follow the instructions to download. You may need to restart vscode in order to run the dev server.</p>
+<h2 id="run-the-development-script">Run the Development Script</h2>
+<ul>
+<li>Make sure your terminal is in the <code>site</code> directory. If you type <code>pwd</code> in the terminal it should print <code>/Some/Path/.../team110/site</code>. If you do not see this, trash the terminal and create a new one. When you create a new one it should prompt you for the desired working directory – select the <code>site</code> option.</li>
+<li>In your terminal run: <code>python -m dev</code>. If the script runs without any problems you should see “* Running on &lt;<em>a-server</em>&gt;”. Command or Control click on the server to open the site in your browser.</li>
+<li>To view any changes you are making, navigate to the file you have changed and reload the page if you do not see your updates.</li>
+</ul>
+<blockquote>
+<p>Note: When making CSS changes a “hard refresh” will often be needed to view any differences. To do this hold shift while reloading your browser.</p>
+</blockquote>
+<h2 id="hotdev-script">Hotdev script</h2>
+<ul>
+<li>An alternative to the normal dev script is <code>python -m hotdev</code>. You run this in the exact same directory as the normal script and it mostly works the same.</li>
+<li>The benefit of the <code>hotdev</code> script is it enables what is referred to as hot-reload or autoreload. When ever you make markdown or css changes, your browser will refresh on save of file instead of having to be manually reloaded.</li>
+<li>It is reccomended to use this script primarily when trying to finish up organizing and styling a page, or making many CSS changes.</li>
+</ul>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s):              Ezri White,              Kaki Ryan, Chiazo Agina</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502759.6941907"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502759.6941907"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502759.6941907"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

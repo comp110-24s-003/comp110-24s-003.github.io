@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Data cleaning - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502744.7419872">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="explore-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Data cleaning</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#task-0">Task 0:</a></li>
+<li><a href="#task-1">Task 1:</a></li>
+<li><a href="#task-2">Task 2:</a></li>
+<li><a href="#task-3">Task 3:</a></li>
+<li><a href="#sos---the-resident-with-ticket-id-22209583-has-reported-a-gas-leak-in-their-room.">SOS - the resident with ticket id 22209583 has reported a gas leak in their room.</a></li>
+<li><a href="#task-4">Task 4:</a></li>
+<li><a href="#task-5-regex">Task 5: regex</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="introduction">Introduction</h2>
+<p>This is an exercise about how to clean data using the Python library <code>pandas</code>! Data cleaning is vitally important - you can have great skill in manipulating data, but you won’t get any good results unless the data you’re working with is in a suitable form. You will <a href="https://github.com/comp110sidequest/downloads/blob/main/exds_01_tutorial.ipynb">NEED TO VISIT THIS LINK</a> to learn about data cleaning in <code>pandas</code>. This is a tutorial notebook file meant to show you function and syntax for data cleaning. If you’re uncomfortable with <code>pandas</code> itself, check out the <code>pandas</code> tutorial and exercise on the Explore tab of the course website.</p>
+<p>If you run into trouble, please email Jesse (jessew13@email.unc.edu) and Kyle (kjs20@email.unc.edu)!</p>
+<h3 id="task-0">Task 0:</h3>
+<p>Import <code>pandas</code> and <code>numpy</code>. Download this <a href="https://github.com/comp110sidequest/downloads/blob/main/AB_NYC_2019_shuffled.csv">file</a> and save it to the data directory. Save the path of the file as a named constant. Using <code>read_csv</code>, read the csv file into a pandas <code>DataFrame</code>. Use the <code>head</code> function to get an idea of the data (you can also open up the file with Excel).</p>
+<h3 id="task-1">Task 1:</h3>
+<p>Check that the “id” values are all unique first, and let those values index the <code>DataFrame</code>. Set the optional <code>inplace</code> parameter to <code>True</code> to cause the changes to be made directly to the <code>DataFrame</code>. Use <code>head</code> to check that the <code>DataFrame</code> is now indexed by “id”.</p>
+<h3 id="task-2">Task 2:</h3>
+<p>Assume there is no use for the <code>indices_to_drop</code>, <code>latitude</code>, and <code>longitude</code> columns - drop them (set the <code>inplace</code> optional parameter to True). How can you check that you succeeded?</p>
+<h3 id="task-3">Task 3:</h3>
+<p>Notice that we have now indexed the <code>DataFrame</code> by the numbers in the id column, but they’re out of order. Look up how to sort the rows of a pandas DataFrame by a column and do so (remember to apply changes inplace). Try to find a suitable website yourself, as it’s a VERY valuable skill to have, but if you need help finding a good website, you can <a href="https://pythonexamples.org/pandas-dataframe-sort-by-column/">click here</a></p>
+<h3 id="sos---the-resident-with-ticket-id-22209583-has-reported-a-gas-leak-in-their-room.">SOS - the resident with ticket id 22209583 has reported a gas leak in their room.</h3>
+<h3 id="task-4">Task 4:</h3>
+<p>Print all the information associated with ticket id <code>22209583</code>. Print out only the <code>host_name</code>. Use position-based indexing to find the same information.</p>
+<h3 id="task-5-regex">Task 5: regex</h3>
+<p>Extract the rows with <code>host_name</code> values starting only with the letter J. Use <a href="https://www.debuggex.com/cheatsheet/regex/python">this cheat sheet</a> for some useful regex expressions! You will probably also need to Google how to use regex in pandas and Python. Then apply <code>.dropna</code> (remember to set <code>inplace</code> to <code>True</code>) to the dataset. Check your work!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Jesse Wei, Kyle Sorensen</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

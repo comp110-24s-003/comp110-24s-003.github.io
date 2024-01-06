@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Functions - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502713.1926916">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Functions</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#function-syntax">Function Syntax</a>
+<ul>
+<li><a href="#name">Name</a></li>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#return-type">Return Type</a></li>
+<li><a href="#function-body">Function Body</a></li>
+<li><a href="#return-statement">Return Statement</a></li>
+</ul></li>
+<li><a href="#the-main-function">The Main Function</a></li>
+<li><a href="#arguments-vs-parameters">Arguments vs Parameters</a></li>
+<li><a href="#calling-functions">Calling Functions</a></li>
+<li><a href="#functions-with-non-none-return-types">Functions with non-None Return Types</a>
+<ul>
+<li><a href="#key-points-about-return">Key points about return</a></li>
+<li><a href="#how-it-works">How it Works</a></li>
+<li><a href="#usefulness">Usefulness</a></li>
+</ul></li>
+<li><a href="#procedures">Procedures</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="function-syntax">Function Syntax</h2>
+<p>Here’s the syntax for writing functions:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">def</span> <span class="op">&lt;</span>functionName<span class="op">&gt;</span>(<span class="op">&lt;</span>parameter<span class="op">&gt;</span>: <span class="op">&lt;</span><span class="bu">type</span><span class="op">&gt;</span>, <span class="op">&lt;</span>anotherparameter<span class="op">&gt;</span>: <span class="op">&lt;</span><span class="bu">type</span><span class="op">&gt;</span> ...) <span class="op">-&gt;</span> <span class="op">&lt;</span>returnType<span class="op">&gt;</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    <span class="op">&lt;</span>function body statements<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>    <span class="op">&lt;</span><span class="cf">return</span> statement<span class="op">&gt;</span></span></code></pre></div>
+<h3 id="name">Name</h3>
+<p>Just like all variables, functions have names. We establish a function’s name after the <strong>def</strong> keyword.</p>
+<h3 id="parameters">Parameters</h3>
+<p>Parameters are what the function takes in. They go inside the parentheses ( ) following the function name, and we must give them types. Parameters are local to the function definition, so they can only be used within the function.</p>
+<ul>
+<li>located within the () of a function definition</li>
+<li>refer to variables that the user passes in when the function is called</li>
+<li>are local to the function definition (can only be used after the : of the function definition)</li>
+<li>function can have multiple parameters seperated by commas</li>
+<li>if there are no parameters the parentheses are left empty</li>
+</ul>
+<h3 id="return-type">Return Type</h3>
+<p>The return type of a function indicates the type of data the function will return. The function must return a variable or expression that simplifies to the same type as the return type.</p>
+<ul>
+<li>can be <strong>int</strong>, <strong>float</strong>, <strong>bool</strong>, <strong>str</strong>, or <strong>None</strong></li>
+<li>function must return an object or expression that simplifies to the same type as the return type</li>
+<li>procedures do not contain a return statement</li>
+</ul>
+<h3 id="function-body">Function Body</h3>
+<p>Everything after the colon in the first line (:) makes up the function body. Statements in the body of the function will only be executed when the function is called.</p>
+<ul>
+<li>gives ‘functionality’ to the function</li>
+<li>code will only be executed when the function is called elsewhere in the code</li>
+<li>if not void, MUST contain a return statement</li>
+</ul>
+<h3 id="return-statement">Return Statement</h3>
+<p>The return statement is located inside the function body and indicates when the function call</p>
+<ul>
+<li>type must match the return type of its function</li>
+<li>every function that returns a value must have at least one return statement</li>
+<li>as soon as any return statement is reached the function call is complete, even if within an if-then-else block!</li>
+</ul>
+<p>Example function:</p>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> matchMaker(person1: <span class="bu">str</span>, person2: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    couple: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Congratulations&quot;</span> <span class="op">+</span> person1 <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> person2</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="cf">return</span> couple</span></code></pre></div>
+<p>We can see the parts of the function in the following way:</p>
+<p><em>Parameters</em>: Person1 and Person2 (both strings)</p>
+<p><em>Return type</em>: string</p>
+<p><em>Function body</em>: couple: str = “Congratulations” + person1 + " " + person2</p>
+<p><em>Return statement</em>: return couple;</p>
+<p>Although in the example above, we only have one type in our parameters, you can have multiple</p>
+<p>For example, we could modify the matchMaker function in the following way:</p>
+<div class="sourceCode" id="cb3" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">def</span> matchMaker(person1: <span class="bu">str</span>, person2: <span class="bu">str</span>, areCompatible: <span class="bu">bool</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    couple: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;I&#39;m not sure...&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="cf">if</span>(areCompatible):</span>
+<span id="cb3-6"><a href="#cb3-6"></a>        couple <span class="op">=</span> <span class="st">&quot;Congratulations&quot;</span> <span class="op">+</span> person1 <span class="op">+</span> <span class="st">&quot; and &quot;</span> <span class="op">+</span> person2</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="cf">return</span> couple</span></code></pre></div>
+<p>If we wanted to use the function, we would just call it using the function name followed by ( ) where we would include arguments to match the parameters the function requires.</p>
+<p>Arguments are what we pass into parameters. For example, calling matchMaker as it appears in the example above:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>result: <span class="bu">str</span> <span class="op">=</span> matchMaker(<span class="st">&quot;Jim&quot;</span>, <span class="st">&quot;Pam&quot;</span>, true)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co"># would return &quot;Congratulations Jim and Pam&quot; which would become result&#39;s value</span></span></code></pre></div>
+<p>Arguments don’t have to be literals though, we can also (and much more commonly) pass <em>variables</em> into functions.</p>
+<p>For example using the matchMaker function defined above:</p>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>name1: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Kevin&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>name2: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Angela&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>loveTest: <span class="bu">bool</span> <span class="op">=</span> false</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>result: <span class="bu">str</span> <span class="op">=</span> matchMater(name1, name2, loveTest)</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># would return &quot;I don&#39;t know...&quot; which would become results value</span></span></code></pre></div>
+<p>A helpful way to think of a function is to compare it to a recipe:</p>
+<ul>
+<li>parameters are the ingredients we need (can’t make the recipe without the correct quantity and type of ingredients!)</li>
+<li>the function body is the instructions</li>
+<li>the return type would be whatever we want to make!</li>
+</ul>
+<h2 id="the-main-function">The Main Function</h2>
+<p>The <strong>main</strong> function, by convention, is the function that starts your program! It is formatted similarly to any other function definition (see below), and is used to call the other functions in the program! You can think of calling <strong>main</strong> as being similar to turning your key in the ignition - it is what starts the engine of your program to get things running!</p>
+<p>The main function does look a little different than the functions we are used to writing, but don’t overthink it - it works essentially the same! We have a function definition and function body just as outlined above, however we are lacking parameters and a return statement. This is ok! When main() is called, the code in the function body executes, and then thats it! The only difference is that no value is returned.</p>
+<p>Below is an example of how the <strong>main</strong> function can be used:</p>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># function definition </span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="bu">print</span>(<span class="st">&quot;hello, world&quot;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="co"># function call</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>    main()</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co"># when main() is called, all of the code within the main function definition will execute</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># in this case, &quot;hello, world&quot; will print in the browser!</span></span></code></pre></div>
+<h2 id="arguments-vs-parameters">Arguments vs Parameters</h2>
+<p>Extra pieces of information required by the function definition are called <strong>parameters</strong>. These are like empty variables.</p>
+<p>The values provided in the function call are called <strong>arguments</strong>. These are like the variables’ values.</p>
+<p>Here is an example of how we could call an arbitrary function f.</p>
+<div class="sourceCode" id="cb7" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> f(a: <span class="bu">str</span>, b: <span class="bu">int</span>, c: <span class="bu">bool</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="co"># function implementation would go here!</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>f(<span class="st">&quot;aardvark&quot;</span>, <span class="dv">57</span>, false)</span></code></pre></div>
+<p>In the example above using function f - Parameters: a: str, b: int, c: bool - located in the function <strong>definition</strong>! - Arguments: “aardvark”, 57, false - located in the function <strong>call</strong>! - “aardvark” matches with a, 57 with b, false with c</p>
+<p>Arguments and parameters must line up via type and purpose 1:1…Remember, functions are like recipes that require specific ‘ingredients’ (aka arguments) in to produce a final result. If you don’t give it the correct ingredients (or not enough/too many ingredients) you will get an error!</p>
+<p>Examples of an <strong>incorrect</strong> call of f:</p>
+<div class="sourceCode" id="cb8" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>f(false, <span class="st">&quot;aardvark&quot;</span>, <span class="dv">57</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># these arguments don&#39;t match the order of the parameters!</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a>f(<span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co"># too few arguments! This function requires three parameters.</span></span></code></pre></div>
+<h2 id="calling-functions">Calling Functions</h2>
+<p>If a function is like a written recipe, a function call is like opening the recipe book to follow the recipe.</p>
+<ul>
+<li>Function calls in Python have parentheses () after the function’s name.</li>
+<li>Arguments are the values provided in the function call. They are found within the parentheses.</li>
+<li>Arguments get matched one-to-one with parameters. This means that each argument must be the same type as its corresponding parameter. Read more on the difference between arguments and parameters above.</li>
+</ul>
+<p>Here is an example function:</p>
+<div class="sourceCode" id="cb9" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Function definition:</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">def</span> myFunc(a: <span class="bu">str</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:  </span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="cf">return</span> b</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># Function call:</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>myFunc(<span class="st">&quot;Hola&quot;</span>, <span class="dv">1000</span>)</span></code></pre></div>
+<p>The parameters are required in the order they are specified, and all parameters must be given an argument. Examples of <strong>incorrect</strong> calls to myFunc:</p>
+<div class="sourceCode" id="cb10" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>myFunc(<span class="dv">1000</span>, <span class="st">&quot;Hola&quot;</span>) <span class="co"># Incorrect order of arguments</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>myFunc(<span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># Incorrect types of arguments</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>myFunc(<span class="dv">1000</span>) <span class="co"># Too few arguments</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>myFunc(<span class="dv">1</span>, <span class="st">&quot;Hi&quot;</span>, <span class="st">&quot;Hola&quot;</span>) <span class="co"># Too many arguments</span></span></code></pre></div>
+<p><strong>Important notes:</strong> - Function calls are expressions! They evaluate to a single value. - Just as (3+1) * 2 simplifies to 8 (PEMDAS), myFunc(“Hola”, 1000) simplifies to 1000! - Other actions may also be taken in the function body so watch out - but ultimately the original function call can be replaced/simplified to the lone return value. - Parameters are usually used within the function– but they aren’t required to be. (In the myFunc function, parameter b is used, but parameter a is not. Though this isn’t generally useful, it is allowed!)</p>
+<p><strong>Function call tracing example:</strong></p>
+<div class="sourceCode" id="cb11" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> addOne(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>: <span class="co"># (5)     </span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>    <span class="cf">return</span> n <span class="op">+</span> <span class="dv">1</span> <span class="co"># (6)</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>: <span class="co"># (2)    </span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    initial: <span class="bu">int</span> <span class="op">=</span> <span class="dv">5</span> <span class="co"># (3)    </span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>    increment: <span class="bu">int</span> <span class="op">=</span> addOne(initial) <span class="co"># (4), (7)    </span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="bu">print</span>(increment) <span class="co"># (8)</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a>main() <span class="co"># (1)</span></span></code></pre></div>
+<ol type="1">
+<li><p>The call to main starts the program and we jump into the <strong>main</strong> function.</p></li>
+<li><p>The code inside the main function definition begins executing.</p></li>
+<li><p><em>initial</em> is declared and assigned the value of 5.</p></li>
+<li><p><em>increment</em> is then assigned the value of the function call <em>addOne(initial)</em>. This is valid because function calls are also expressions and can evaluate to a single value. However, the return type of the function <strong>must</strong> match the type of the variable.</p></li>
+<li><p>We then jump into the <em>addOne</em> function. The parameter, <em>n</em>, takes the value of the argument passed to the function, <em>initial</em>.</p></li>
+<li><p>The value of the expression <em>n + 1</em> is returned. In this case, it’s 6.</p></li>
+<li><p>The result of the call <em>addOne(initial)</em> is stored in <em>increment</em>.</p></li>
+<li><p>The value of <em>increment</em> is printed out and the program is done executing!</p></li>
+</ol>
+<h2 id="functions-with-non-none-return-types">Functions with non-None Return Types</h2>
+<p>In <strong>functions</strong> that have <strong>non-None</strong> return types (dont worry, we’ll cover “None” later), a value is <strong>returned</strong> by the function when we call it. We know a function has a non-void return type by looking for a return type in the first line of the function definition or a return statement in the body of the function. Here’s an example:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="kw">def</span> fun() <span class="op">-&gt;</span> <span class="bu">int</span>: <span class="co"># &#39;int&#39; indicates the return type is number </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">110</span> <span class="co"># this is the return statement</span></span></code></pre></div>
+<p>In our function declaration after the parentheses and the arrow we see the word int, which is the return type.</p>
+<p>Another clue that this is a non-None function is that in the body, the statement return 110; means that this function will return the integer value 110. None functions will not include a return statement.</p>
+<h3 id="key-points-about-return">Key points about return</h3>
+<ul>
+<li>When a function is evaluated, once the computer hits a return statement, execution of the function ends and the specified value is returned. Any code within the function after the return statement will not be evaluated.</li>
+<li>Only <strong>one</strong> return statement is evaluated during any one function call.</li>
+<li>The return type declared in the first line of the function <strong>must be the same as</strong> the data type of what is actually being returned from within the body of the function.</li>
+</ul>
+<p>Examples of non-void functions and their return statements used <strong>incorrectly</strong>:</p>
+<div class="sourceCode" id="cb13" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Does not return an integer:</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">def</span> a() <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="cf">return</span> <span class="st">&quot;Hello!&quot;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co"># &quot;Hello!&quot; will not be printed</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co"># once a function &#39;returns,&#39; the function stops executing! </span></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co"># no other code in the function body will execute!</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">def</span> b() <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="cf">return</span> <span class="dv">2</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>    <span class="bu">print</span>(<span class="st">&quot;Hello!&quot;</span>)</span>
+<span id="cb13-11"><a href="#cb13-11"></a></span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="co"># The second return will never be reached, </span></span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="co"># because 1 was already returned:</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a><span class="kw">def</span> c() <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb13-15"><a href="#cb13-15"></a>    <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a>    <span class="cf">return</span> <span class="dv">2</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a></span>
+<span id="cb13-18"><a href="#cb13-18"></a><span class="co"># The non-None function does not have a return statement:</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a><span class="kw">def</span> d() <span class="op">-&gt;</span> <span class="bu">int</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>    <span class="bu">print</span>(<span class="dv">4</span>)</span></code></pre></div>
+<h3 id="how-it-works">How it Works</h3>
+<p>When we call a function, the computer drops a bookmark there and jumps into the definition of the function it called. It does whatever we tell it in the function body and reaches the return statement. Once the computer hits a <em>return</em> it takes the value from the return statement and goes back, or returns, to the place of the bookmark. Here, it substitutes the function call with the value it brought back! Seeing this in action with an example will help it make more sense:</p>
+<div class="sourceCode" id="cb14" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>main():</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    myFavCourse: <span class="bu">str</span> <span class="op">=</span> makeCourse(<span class="st">&quot;COMP&quot;</span>, <span class="dv">110</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    <span class="bu">print</span>(<span class="st">&quot;The best course at Carolina is: &quot;</span> <span class="op">+</span> myFavCourse)</span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="kw">def</span> makeCourse(name: <span class="bu">str</span>, level: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    course: st <span class="op">=</span> name <span class="op">+</span> level</span>
+<span id="cb14-7"><a href="#cb14-7"></a>    <span class="cf">return</span> course</span>
+<span id="cb14-8"><a href="#cb14-8"></a> </span>
+<span id="cb14-9"><a href="#cb14-9"></a>main()<span class="op">;</span></span></code></pre></div>
+<p>We’ve got a lot going on here! This little program starts out with the import statement and the main function.</p>
+<p>After that, we see the definition for the <em>makeCourse</em> function. In this function, we declare the return type to be <em>str</em>. Within the function body, we see the statement <em>return</em> course. The type of what we’re returning (the value stored in <em>course</em>) matches the return type we specified since <em>course</em> is the result of concatenating <em>name</em> and <em>level</em> so its type is also string.</p>
+<p><em>Note: until a function is called (even main()), we only need to acknowledge the function definitions…we dont really care about the function body until a function is called and that code is actually executed!</em></p>
+<p>When this program runs, the computer sees the definition of the main function first, and then it sees the definition of the <em>makeCourse</em> function.</p>
+<p>Next, the computer calls <em>main()</em>. This sends it into <em>main’s</em> function body, which includes a call to the <em>makeCourse</em> function using arguments “COMP” and 110. At this function call, the computer drops a bookmark and heads on to the <em>makeCourse</em> function.</p>
+<p>There, the computer uses the arguments to make the string for the <em>course</em> variable, which it then returns. The computer brings the value of <em>course</em>, which is “COMP110”, back with it into <em>main</em> where the bookmark was left, and drops this value there. So, <em>myFavCourse</em> is initialized with “COMP110”. The last step in the program is to use this string in the print statement, then we’re done!</p>
+<h3 id="usefulness">Usefulness</h3>
+<p>Functions that return are great for when we need to go through a lot of steps to get a value that we want to use in our code somewhere. Calling a non-void function tells the computer to head over to the function definition, do everything, and come back with the result once it’s done. This is nice if we’re doing complicated math or trying to combine a bunch of data in some way. We won’t have to worry about all the little steps each time we need the value. Instead, we can tell the computer to go do the hard work for us and come back with the result, which we can then use as we keep going in our program.</p>
+<h2 id="procedures">Procedures</h2>
+<p>Sometimes a function returns <strong>nothing</strong>, called procedures! Procedures are super helpful when we need to modify variables or objects in our program, especially when we may need to make these same changes over and over again. Procedures allow us to make use of code that may not produce a return value but is still nonetheless pivotal to our program’s execution.</p>
+<p>Let’s take a look at an example:</p>
+<div class="sourceCode" id="cb15" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> repeatPrint(line: <span class="bu">str</span>, repeats: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb15-2"><a href="#cb15-2"></a>    i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>    <span class="cf">while</span> i <span class="op">&lt;</span> repeats:</span>
+<span id="cb15-4"><a href="#cb15-4"></a>        <span class="bu">print</span>(line)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>        i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:  </span>
+<span id="cb15-8"><a href="#cb15-8"></a>    repeatPrint(<span class="st">&quot;hello &quot;</span>, <span class="dv">2</span>)</span>
+<span id="cb15-9"><a href="#cb15-9"></a>    repeatPrint(<span class="st">&quot;world &quot;</span>, <span class="dv">3</span>)</span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a>main()</span></code></pre></div>
+<p>The resulting output to the screen will be:</p>
+<p><em>hello hello</em></p>
+<p><em>world world world</em></p>
+<p>If we didn’t make use of this procedure, we would’ve had to rewrite the same print statement 2 or 3 times. This example highlights how void functions reduce redundancy in our code!</p>
+<p>Our <strong>main</strong> function is also a procedure, although unlike other procedure we only call main once.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Aneka Happer</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

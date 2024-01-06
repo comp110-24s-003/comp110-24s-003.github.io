@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX06 - Dictionary Functions - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502763.9028032">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX06 - Dictionary Functions</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#ex06---dictionary-functions">EX06 - Dictionary Functions</a>
+<ul>
+<li><a href="#setup">0. Setup</a></li>
+<li><a href="#invert">1. <code>invert</code></a></li>
+<li><a href="#favorite-colors">2. <code>favorite colors</code></a></li>
+<li><a href="#count">3. <code>count</code></a></li>
+<li><a href="#alphabetizer">4. <code>alphabetizer</code></a></li>
+<li><a href="#update_attendance">5. <code>update_attendance</code></a></li>
+<li><a href="#make-a-backup-checkpoint-commit">6. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submit-to-gradescope-for-grading">7. Submit to Gradescope for Grading</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="ex06---dictionary-functions">EX06 - Dictionary Functions</h1>
+<p>In this exercise you will get some practice with dictionary functions!</p>
+<p>Assignment Outline</p>
+<ul>
+<li><code>invert</code> – 10 Points Autograded</li>
+<li><code>count</code> – 10 Points Autograded</li>
+<li><code>favorite_colors</code> – 20 Points Autograded</li>
+<li><code>alphabetizer</code>– 20 Points Autograded</li>
+<li><code>update_attendance</code> – 20 Points Autograded</li>
+<li>Style, Linting, Typing – 20 Points Autograded</li>
+</ul>
+<h2 id="setup">0. Setup</h2>
+<p>Create a new <strong>directory</strong> in <code>exercises</code> named <code>ex06</code>.</p>
+<p>Inside the <code>exercises/ex06</code> directory, create a file named <code>dictionary.py</code>. Add a docstring and establish an <code>__author__</code> variable to be assigned a string with the digits of your PID. This is where you will implement your function skeletons and implementations below.</p>
+<h2 id="invert">1. <code>invert</code></h2>
+<p>This is the first function you will write in <code>dictionary.py</code>. The other two functions will also be defined in this file.</p>
+<p>Given a <code>dictionary</code> of <code>[str, str]</code>, <code>invert</code> should return a <code>dict[str, str]</code> that inverts the keys and the values. The keys of the input list becomes the values of the output list and vice versa.</p>
+<ul>
+<li>Function name: <code>invert</code></li>
+<li>Parameter: <code>dict[str, str]</code></li>
+<li>Return Type: <code>dict[str, str]</code></li>
+</ul>
+<p>Remember that <strong>keys in a dictionary are unique.</strong> If you encounter more than one of the same key when trying to invert your dictionary, raise a KeyError. Example usage:</p>
+<pre><div class="terminal">>>> invert({'a': 'z', 'b' : 'y', 'c': 'x'})
+{'z': 'a', 'y': 'b', 'x': 'c'}
+>>> invert({'apple': 'cat'})
+{'cat': 'apple'}
+>>> invert({'kris': 'jordan', 'michael': 'jordan'})
+KeyError
+</div>
+</pre>
+<p>Similar to how you raised a <code>ValueError</code> in the <code>max</code> function for <code>list</code> utils, the syntax for raising a <code>KeyError</code> is: <code>raise KeyError("error message of your choice here!")</code></p>
+<h2 id="favorite-colors">2. <code>favorite colors</code></h2>
+<p>Create a function in your <code>dictionary.py</code> file called <code>favorite_color</code>. It has the following specifications:</p>
+<ol type="1">
+<li>It takes as input a <code>dict[str, str]</code> of names and favorite colors.</li>
+<li>It returns a <code>str</code> which is the color that appears most frequently.
+<ol type="1">
+<li>If there is a tie for most popular color, return the color that appeared in the dictionary first.</li>
+</ol></li>
+</ol>
+<ul>
+<li>Function name: <code>favorite_colors</code></li>
+<li>Parameter: <code>dict[str, str]</code> - dictionary of names and favorite colors</li>
+<li>Return Type: <code>str</code> - the most popular color</li>
+</ul>
+<p>You can also check the correctness of your <code>favorite_color</code> function by calling it in <code>main</code>, printing the result, then running the program with the same command from above.</p>
+<p>An example:</p>
+<pre><code>print(favorite_color({&quot;Marc&quot;: &quot;yellow&quot;, &quot;Ezri&quot;: &quot;blue&quot;, &quot;Kris&quot;: &quot;blue&quot;}))</code></pre>
+<p>The results of which would look like:</p>
+<pre>
+<div class="terminal">$ python -m exercises.ex06.favorite_color
+blue
+</div></pre>
+<h2 id="count">3. <code>count</code></h2>
+<p>Given a <code>list[str]</code>, this function will produce a <code>dict[str, int]</code> where each key is a unique value in the given list and each value associated is the <em>count</em> of the number of times that value appeared in the input list.</p>
+<ul>
+<li>Function name: <code>count</code></li>
+<li>Parameter: <code>list[str]</code> - list of values to count the frequencies of</li>
+<li>Return Type: <code>dict[str, int]</code> - a dictionary of the counts of each of the items in the input list</li>
+</ul>
+<p>Implementation strategy:</p>
+<ol type="1">
+<li>Establish an empty dictionary to store your built-up result in</li>
+<li>Loop through each item in the input list
+<ol type="1">
+<li>Check to see if that item has already been established as a key in your dictionary. Try the following boolean conditional: <code>if &lt;item&gt; in &lt;dict&gt;:</code> – replacing <code>&lt;item&gt;</code> with the variable name of the current value and <code>&lt;dict&gt;</code> with the name of your result dictionary.</li>
+<li>If the item is found in the dict, that means there is already a key/value pair where the item is a key. Increase the value associated with that key by 1 (counting it!)</li>
+<li>If the item is not found in the dict, that means this is the first time you are encountering the value and should assign an initial count of <code>1</code> to that key in the result dictionary.</li>
+</ol></li>
+<li>Return the resulting dictionary.</li>
+</ol>
+<h2 id="alphabetizer">4. <code>alphabetizer</code></h2>
+<p>Given a <code>list[str]</code>, this function will produce a <code>dict[str, list[str]]</code> where each key is a unique letter in the alphabet and each value is a list of the words that begin with that letter.</p>
+<ul>
+<li>Function name: <code>alphabetizer</code></li>
+<li>Parameter: <code>list[str]</code> - list of words to categorize into different lists</li>
+<li>Return Type: <code>dict[str, list[str]]</code> - a dictionary of the letters and the lists of words that belong to that letter</li>
+</ul>
+<p>Example usage:</p>
+<pre>
+<div class="terminal">>>> alphabetizer(["cat", "apple", "boy", "angry", "bad", "car"])
+{'c': ['cat', 'car'], 'a': ['apple', 'angry'], 'b': ['boy', 'bad']}
+>>> alphabetizer(["Python", "sugar", "Turtle", "party", "table"])
+{'p': ['Python', 'party'], 's': ['sugar'], 't': ['Turtle', 'table']}
+</div>
+</pre>
+<p>Hint: The built-in Python method <code>.lower()</code> takes in no arguments and returns the lower cased string of a given string.</p>
+<h2 id="update_attendance">5. <code>update_attendance</code></h2>
+<p>Given a <code>dict[str, list[str]]</code>, this function will <em>mutate</em> and return that dictionary. It should meet the following specifications:</p>
+<ol type="1">
+<li>It has three parameters:
+<ul>
+<li><code>dict[str, list[str]]</code> - an existing dictionary that contains days of the week as keys and a list of students who were in <em>attendance</em> as the values</li>
+<li><code>str</code> - a day of the week</li>
+<li><code>str</code> - a student who attended class</li>
+</ul></li>
+<li>Update the <code>dict[str, list[str]]</code> that was passed in with the new attendance information, then return it.</li>
+</ol>
+<p>An example:</p>
+<pre><code> attendance_log: dict = {&quot;Monday&quot;: [&quot;Vrinda&quot;, &quot;Kaleb&quot;], &quot;Tuesday&quot;: [&quot;Alyssa&quot;]}
+ update_attendance(attendance_log, &quot;Tuesday&quot; , &quot;Vrinda&quot;)
+ update_attendance(attendance_log, &quot;Wednesday&quot; , &quot;Kaleb&quot;)
+ print(attendance_log)</code></pre>
+<p>The results of which would look like:</p>
+<pre>
+<div class="terminal">$ python -m exercises.ex06.update_attendance
+{'Monday': ['Vrinda', 'Kaleb'], 'Tuesday': ['Alyssa', 'Vrinda'], 'Wednesday': ['Kaleb']}
+</div>
+</pre>
+<h2 id="make-a-backup-checkpoint-commit">6. Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise 3” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submit-to-gradescope-for-grading">7. Submit to Gradescope for Grading</h2>
+<p>Login to Gradescope and select the assignment named “EX06 - Dictionaries.”. You’ll see an area to upload a zip file. To produce a zip file for autograding, return back to Visual Studio Code.</p>
+<p>If you <em>do not</em> see a Terminal at the bottom of your screen, open the Command Palette and search for “View: Toggle Integrated Terminal”.</p>
+<p>Type the following command (all on a single line):</p>
+<pre><code>python -m tools.submission exercises/ex06</code></pre>
+<p>In the file explorer pane, look to find the zip file named “yy.mm.dd-hh.mm-exercises-ex06.zip”. The “yy”, “mm”, “dd”, and so on, are timestamps with the current month, day, hour, minute. If you right click on this file and select “Reveal in File Explorer” on Windows or “Reveal in Finder” on Mac, the zip file’s location on your computer will open. Upload this file to Gradescope to submit your work for this exercise.</p>
+<p>Autograding will take a few moments to complete. If there are issues reported, you are encouraged to try and resolve them and resubmit. If for any reason you aren’t receiving full credit and aren’t sure what to try next, come give us a visit in office hours!</p>
+<p>NOTE: The autograder for this assignment will only test for correct function signatures and basic functionality. You are encouraged to think about edge cases and the robustness of your code on your own. In the next part of this assignment, you will write your own unit tests to ensure that your functions work under a variety of circumstances.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kaki Ryan,        Vrinda Desai, Alyssa Lytle</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

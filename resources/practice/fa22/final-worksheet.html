@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Final Exam Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502729.3808413">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Final Exam Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#function-writing">Function Writing</a></li>
+<li><a href="#class-writing">Class Writing</a></li>
+<li><a href="#recursion">Recursion</a></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#function-writing-1">Function Writing</a></li>
+<li><a href="#class-writing-1">Class Writing</a></li>
+<li><a href="#recursion-1">Recursion</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><!--
+Note: this is a copy of the final worksheet from resources/practice/fa21 with some added questions for this sp22's content.
+-->
+<h1 id="questions">Questions</h1>
+<p>This review is not comprehensive of all content that will be on the final exam, but rather provides a few extra practice questions and some questions on concepts after quiz 3. Previous quizzes/practice questions are also valuable in reviewing for the final exam. Lecture videos are another valuable resource.</p>
+<p>Solutions for each problem can be found at the bottom of this page. Keep in mind that there may be multiple solutions to each problem.</p>
+<h2 id="function-writing">Function Writing</h2>
+<ol type="1">
+<li><p>Write a function called <code>reverse_multiply</code>. Given a <code>list[int]</code>, <code>reverse_multiply</code> should return a <code>list[int]</code> with the values from the original list doubled and in reverse order.<br />
+Example: <code>reverse_multiply([1, 2, 3])</code> should return <code>[6, 4, 2]</code>.</p></li>
+<li><p>Write a function called <code>free_biscuits</code>. Given a dictionary with <code>str</code> keys (representing basketball games) and <code>list[int]</code> values (representing points scored by players), <code>free_biscuits</code> should return a new dictionary of type <code>dict[str, bool]</code> that maps each game to a boolean value for free biscuits. (<code>True</code> if the points add up to 100+, <code>False</code> if otherwise)<br />
+Example: <code>free_biscuits({ “UNCvsDuke”: [38, 20, 42] , “UNCvsState”: [9, 51, 16, 23] })</code> should return <code>{ “UNCvsDuke”: True, “UNCvsState”: False }</code>.</p></li>
+<li><p>Write a function called <code>multiples</code>. Given a <code>list[int]</code>, <code>multiples</code> should return a <code>list[bool]</code> that tells whether each <code>int</code> value is a multiple of the previous value. For the first number in the list, you should wrap around the list and compare this <code>int</code> to the last number in the list.<br />
+Example: <code>multiples([2, 3, 4, 8, 16, 2, 4, 2])</code> should return <code>[True, False, False, True, True, False, True, False]</code>.</p></li>
+<li><p>Write a function called <code>merge_lists</code>. Given a <code>list[str]</code> and a <code>list[int]</code>, <code>merge_lists</code> should return a <code>dict[str, int]</code> that maps each item in the first list to its corresponding item in the second (based on index). If the lists are not the same size, the function should return an empty dictionary.<br />
+Example: <code>merge_lists([“blue”, “yellow”, “red”], [5, 2, 4])</code> should return <code>{"blue": 5, "yellow": 2, "red": 4}</code>.</p></li>
+<li><p>Write a function named <code>reverse_string</code> that reverses the characters of a string without using the <code>reverse</code> built-in function.</p></li>
+</ol>
+<h2 id="class-writing">Class Writing</h2>
+<ol start="5" type="1">
+<li>Create a class called <code>HotCocoa</code> with the following specifications:
+<ol type="a">
+<li>Each <code>HotCocoa</code> object has a <code>bool</code> attribute called <code>has_whip</code>, a <code>str</code> attribute called <code>flavor</code>, and two <code>int</code> attributes called <code>marshmallow_count</code> and <code>sweetness</code>.</li>
+<li>The class should have a constructor that takes in and sets up each of its attribute’s values.</li>
+<li>Write a method called <code>mallow_adder</code> that takes in an <code>int</code> called <code>mallows</code>, increases the <code>marshmallow_count</code> by that amount, and increases the <code>sweetness</code> by that amount times 2.</li>
+<li>Write a method called <code>calorie_count</code> that returns a <code>float</code>. If the <code>flavor</code> of the <code>HotCocoa</code> is “vanilla” or “peppermint”, increase the calorie count by 30, otherwise increase it by 20. If the <code>HotCocoa</code> has whipped cream (<code>has_whip</code> is <code>True</code>), increase the calorie count by 100. Finally, increase the calorie count by half the number of marshmallows. The calorie count should be calculated and returned when this method is called.</li>
+</ol></li>
+<li>Create a class called <code>TimeSpent</code> with the following specifications:
+<ol type="a">
+<li>Each <code>TimeSpent</code> object has a <code>str</code> attribute called <code>name</code>, a <code>str</code> attribute called <code>purpose</code>, and an <code>int</code> attribute called <code>minutes</code>.</li>
+<li>The class should have a constructor that takes in and sets up each of its attribute’s values.</li>
+<li>Write a method called <code>add_time</code> that takes in an <code>int</code> and increases the <code>minutes</code> attribute by this amount. The method should return <code>None</code>.</li>
+<li>Write a method called <code>reset</code> that resets the amount of time that is stored in the <code>minutes</code> attribute. The method should return the amount that was stored in <code>minutes</code>.</li>
+<li>Write a method called <code>report</code> that prints a line reporting information about the current <code>TimeSpent</code> object. Suppose a <code>TimeSpent</code> object has <code>name</code> = <code>“Ariana”</code>, <code>purpose</code> = <code>“screen time”</code>, and <code>minutes</code> = <code>130</code>. The report method should print: <code>“Ariana has spent 2 hours and 10 minutes on screen time.”</code></li>
+</ol></li>
+</ol>
+<h2 id="recursion">Recursion</h2>
+<ol start="7" type="1">
+<li>What is it that makes a function/structure recursive?</li>
+<li>A recursive function must have a recursive case. (T/F)</li>
+<li>A recursive function may define multiple recursive cases. (T/F)</li>
+<li>What happens if a recursive function does not make progress toward a base case?</li>
+<li>Write a recursive factorial function. The factorial of a positive integer is the product of that integer with all of the positive integers less than it. <code>!n</code> is used to denote the factorial of a positive integer <code>n</code>. (<code>4! = 4*3*2*1 = 24</code>) Ex: <code>factorial(4)</code> should return <code>24</code>, <code>factorial(5)</code> should return <code>120</code>, <code>factorial(1)</code> should return <code>1</code>.</li>
+<li>Diagram the following call to <code>factorial</code> using the solution provided below.</li>
+<li>EXTRA PRACTICE: Diagram calls to functions from EX10: Linked List Utils. For obvious reasons, we cannot provide solutions to these, but having practice diagramming recursive structures as well as recursive functions such as <code>factorial</code> is great practice for the final! The examples in lecture videos can be helpful if this is difficult, and as always office hours is a great resource if you struggle with this.</li>
+</ol>
+<h1 id="solutions">Solutions</h1>
+<h2 id="function-writing-1">Function Writing</h2>
+<ol type="1">
+<li><p><img src="/static/practice_worksheets/fa21/final-solution1.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/final-solution2.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/final-solution3.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/final-solution4.png" /></p></li>
+<li></li>
+</ol>
+<pre><code>def reverse_string(input: str) -&gt; str:
+    &quot;&quot;&quot;Reverse the characters of a string without using reverse.&quot;&quot;&quot;
+    result: str = &quot;&quot;
+    i: int = len(input) - 1
+    while i &gt;= 0:
+        result += input[i]
+        i -= 1
+    return result</code></pre>
+<h2 id="class-writing-1">Class Writing</h2>
+<ol start="5" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/final-solution5.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/final-solution6.png" /></p></li>
+</ol>
+<h2 id="recursion-1">Recursion</h2>
+<ol start="7" type="1">
+<li>A recursive function is a function that calls itself, and recursive structures are defined in terms of themselves.</li>
+<li>T</li>
+<li>T</li>
+<li>If a recursive function does not make progress toward a base case, it will result in infinite recursion and python will stop its execution with a RecursionError.</li>
+<li><img src="/static/practice_worksheets/sp22/final-wkst-solution11.png" /></li>
+<li><img src="/static/practice_worksheets/sp22/final-wkst-solution12.png" /></li>
+</ol>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        David Karash, Megan Zhang</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

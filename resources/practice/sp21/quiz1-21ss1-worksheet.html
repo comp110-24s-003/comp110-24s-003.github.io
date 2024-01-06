@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 01 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502738.7870824">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="quiz2-worksheet-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 01 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <div class="container">
+                <div class="content"><h1 id="questions">Questions</h1>
+<p>Below are optional practice problems for Quiz 1. These problems are intended to help you become more familiar with loops, functions, lists and dictionaries. Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="lists-tf">Lists T/F</h2>
+<ol type="1">
+<li>The values in a list cannot be changed while your program is running. (T/F)</li>
+<li>You can add, change, and remove items in a list. (T/F)</li>
+<li>For the purposes of this class, all items in a list are of the same type. (T/F)</li>
+<li>The first index of a list is 1. (T/F)</li>
+<li>The last index of a list is the length of the list. (T/F)</li>
+<li>You can initialize an empty list with no items. (T/F)</li>
+<li>To remove an item, you input the value of the item that you want to remove into the pop() function. (T/F)</li>
+<li>While loops inside a function may continue looping after a return statement is reached. (T/F)</li>
+<li>A while loop statement can you used anywhere you can write a statement. (T/F)</li>
+<li>You can put any kind of statement in the body of a while loop. (T/F)</li>
+</ol>
+<h2 id="dictionaries-tf">Dictionaries T/F</h2>
+<ol type="1">
+<li>To access a value in a dictionary, you use the format <code>&lt;dictionary_name&gt;{key}</code>. (T/F)</li>
+<li>One value can be associated with multiple keys. (T/F)</li>
+<li>Dictionaries are mutable. In other words, the values in a dictionary can be changed after they are constructed. (T/F)</li>
+<li>Dictionaries can have lists or other dictionaries as their <em>keys</em>. (T/F)</li>
+<li>The <code>not in</code> operator can be used to check whether a specific key exists in a dictionary or not. (T/F)</li>
+<li>For the purposes of this course, all values in a dictionary are of the same type. (T/F)</li>
+</ol>
+<h2 id="list-diagramming-1">List Diagramming 1</h2>
+<p>Given the code listing below, draw an environment diagram then answer the questions that follow.</p>
+<p><img src="/static/practice_worksheets/qz02-question8.png" /></p>
+<ol type="1">
+<li>What is the final value of <code>x</code> in the <code>main</code> function frame?</li>
+<li>What is the length of <code>a_list</code> after the code has finished running?</li>
+<li>What are the final items in <code>a_list</code>?</li>
+</ol>
+<h2 id="list-diagramming-2">List Diagramming 2</h2>
+<p>Given the code listing below, draw an environment diagram then answer the questions that follow.</p>
+<p><img src="/static/practice_worksheets/qz02-question14.PNG" /></p>
+<ol type="1">
+<li>From the <code>main</code> frame is <code>b[2]</code> defined?</li>
+<li>From the <code>main</code> frame, what are the final items in <code>a</code>?</li>
+</ol>
+<h2 id="list-diagramming-3">List Diagramming 3</h2>
+<p>Given the code listing below, draw an environment diagram then answer the question that follows.</p>
+<p><img src="/static/practice_worksheets/qz02-question16.PNG" /></p>
+<ol type="1">
+<li>What is the final value of <code>i</code> in the make_word frame?</li>
+</ol>
+<h2 id="loops-diagramming-1">Loops Diagramming 1</h2>
+<p>Given the code listing below, draw an environment diagram then answer the questions that follow.</p>
+<p><img src="/static/practice_worksheets/qz02-question11.png" /></p>
+<ol type="1">
+<li>What is the printed output?</li>
+<li>Write a function call to <code>listFun</code> that would return the value “saanhaoaawha”.</li>
+</ol>
+<h2 id="dictionary-diagramming-1">Dictionary Diagramming 1</h2>
+<p>Given the following code listing, draw an environment diagram. <img src="/static/practice_worksheets/qz03-question9.PNG" /></p>
+<h2 id="dictionary-diagramming-2">Dictionary Diagramming 2</h2>
+<p>Given the following code listing, draw an environment diagram and answer the questions that follow. <img src="/static/practice_worksheets/qz03-codelisting1.PNG" /></p>
+<ol type="1">
+<li>When <code>item</code> is incremented by <code>1</code> on line 9, is <code>a_table["c"]</code> mutated?</li>
+<li>How many arrows come out of the <code>fill</code> frame?</li>
+</ol>
+<h2 id="function-writing-1">Function Writing 1</h2>
+<ol type="1">
+<li>Write a definition for a function called <code>reverse</code>, which has one parameter of type str named <code>string</code> and returns a str that has all the characters of <code>string</code> in reverse order. Use a while loop. For example, a call to <code>reverse</code> with “hello” would return “olleh”.</li>
+</ol>
+<h2 id="global-variables">Global Variables</h2>
+<p>Base your answers to the following questions on the code listing below.</p>
+<p><img src="/static/practice_worksheets/qz02-question20.PNG" /></p>
+<ol type="1">
+<li>What is the printed output of this code listing?</li>
+<li>On line 8, the value of <code>x</code> is changed. On what line is <code>x</code> declared?</li>
+<li>Two different variables named <code>y</code> are declared. What is the final value of the <em>global</em> variable <code>y</code>?</li>
+<li>On line 11, a variable <code>y</code> is changed. On what line is <em>this</em> <code>y</code> declared?</li>
+</ol>
+<h1 id="solutions">Solutions</h1>
+<h2 id="lists-tf-1">Lists T/F</h2>
+<ol type="1">
+<li>F</li>
+<li>T</li>
+<li>T</li>
+<li>F</li>
+<li>F</li>
+<li>T</li>
+<li>F</li>
+<li>F</li>
+<li>T</li>
+<li>T</li>
+</ol>
+<h2 id="dictionaries-tf-1">Dictionaries T/F</h2>
+<ol type="1">
+<li>F</li>
+<li>T</li>
+<li>T</li>
+<li>F</li>
+<li>T</li>
+<li>T</li>
+</ol>
+<h2 id="list-diagramming-1-1">List Diagramming 1</h2>
+<p><img src="/static/practice_worksheets/qz02-question8-answer.png" /></p>
+<ol type="1">
+<li>4</li>
+<li>7</li>
+<li>[0, 1, 10, 2, 12, 5, 8]</li>
+</ol>
+<h2 id="list-diagramming-2-1">List Diagramming 2</h2>
+<p><img src="/static/practice_worksheets/qz02-question14-answer.png" /></p>
+<ol type="1">
+<li>No</li>
+<li>[2, 2, 3]</li>
+</ol>
+<h2 id="list-diagramming-3-1">List Diagramming 3</h2>
+<p><img src="/static/practice_worksheets/qz02-question16-answer.png" /></p>
+<ol type="1">
+<li>3</li>
+</ol>
+<h2 id="loops-diagramming-1-1">Loops Diagramming 1</h2>
+<p><img src="/static/practice_worksheets/qz02-question11-answer.png" /></p>
+<ol type="1">
+<li>“yaaohadaaaha”</li>
+<li>listFun(“snow”)</li>
+</ol>
+<h2 id="dictionary-diagramming-1-1">Dictionary Diagramming 1</h2>
+<p><img src="/static/practice_worksheets/qz03-question9-answer.png" /></p>
+<h2 id="dictionary-diagramming-2-1">Dictionary Diagramming 2</h2>
+<p><img src="/static/practice_worksheets/qz03-question10-answer.png" /></p>
+<ol type="1">
+<li>No. As the loop iterates over <code>a_table["c"]</code>, which is a list, <code>item</code> is assigned the same value as each value in the list. So for example, in the first iteration of the loop, <code>item</code> has the same value as <code>a_table["c"][0]</code>, but adding 1 to <code>item</code> doesn’t change <code>a_table["c"][0]</code>.</li>
+<li>2</li>
+</ol>
+<h2 id="function-writing-1-1">Function Writing 1</h2>
+<p>One possible solution is shown below, but there are multiple solutions! <img src="/static/practice_worksheets/qz02-question19-answer.PNG" /></p>
+<h2 id="global-variables-1">Global Variables</h2>
+<ol type="1">
+<li>Output:</li>
+</ol>
+<pre class="plaintext"><code>5
+5</code></pre>
+<ol start="2" type="1">
+<li>Line 3</li>
+<li>1</li>
+<li>Line 10</li>
+</ol>
+</div>
+            </div>
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang, Jasper Christie</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX04 - `list` Utility Functions - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502764.8149483">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX04 - `list` Utility Functions</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#establish-the-python-module">0. Establish the Python Module</a></li>
+<li><a href="#all-30-points">1. <code>all</code> – 30 Points</a></li>
+<li><a href="#max-30-points">2. <code>max</code> – 30 Points</a></li>
+<li><a href="#is_equal-20-points">3. <code>is_equal</code> – 20 Points</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Art students intentionally reproduce great works of art to develop their own skills and techniques. The purpose isn’t to become an imitator, but to deepen an understanding of important work and styles that came before you.</p>
+<p>Reverse engineering algorithms and abstractions in computer science is of the same spirit! In this exercise you will implement algorithms to practice computational thinking. You will gain familiarity with the names and behaviors of commonly useful functions.</p>
+<p>Since the work you do is reproducing tried and true abstractions of the past, in the future you can and should use your language’s preferred functions and idioms instead. In this exercise we will show you how to achieve the same functionality using idiomatic Python in the future.</p>
+<p>Your function implementations may only make use of the built-in <code>len</code> function, and a <code>list</code> object’s methods <code>append</code> and <code>pop</code>.</p>
+<p>Specifically off-limits in this exercise are the following constructs. You are not expected to know what any of these are, so this only applies to people with outside Python experience. Making use of any of the following will result in no credit for the function you use them in:</p>
+<ul>
+<li>Cannot use other built-in function besides <code>len</code> - specifically not <code>max</code>, <code>min</code>, <code>slice</code></li>
+<li>Cannot use slice notation in conjunction with the subscription operator</li>
+<li>Cannot use the <code>in</code> operator of Python</li>
+<li>Cannot use the <code>list</code> class’s <code>+</code> or <code>==</code> operators nor built-in methods beyond <code>append</code> and <code>pop</code>
+<ul>
+<li>Note: You can use + and == for individual elements, just not entire <code>list</code>s.</li>
+</ul></li>
+</ul>
+<p>Assignment Outline</p>
+<ul>
+<li><code>all</code> – 30 Points Autograded</li>
+<li><code>max</code> – 30 Points Autograded</li>
+<li><code>is_equal</code> – 20 Points Autograded</li>
+<li>Style, Linting, Typing – 20 Points Autograded</li>
+</ul>
+<p>General Notes:</p>
+<ul>
+<li>You are not required to implement a <code>main</code> function for this exercise. However, it may be helpful to have one to make test function calls with lists you construct.</li>
+<li>The grader will evaluate your code by <strong>importing your functions</strong> and calling them with our own chosen list inputs. You do not need to worry about generating lists for each of your functions to work with. These will be passed in as parameters.</li>
+</ul>
+<h2 id="establish-the-python-module">0. Establish the Python Module</h2>
+<p>In Visual Studio Code, be sure your workspace is open.</p>
+<p>Open the Explorer pane (the icon with two sheets of paper or menu View &gt; Explorer) and expand the Workspace directory.</p>
+<p>Right click on the <code>exercises</code> directory and select “New File”. Enter the following filename, being careful to match punctuation:</p>
+<p><code>ex04_utils.py</code></p>
+<p>Before beginning work on the program, you should add a docstring to the top of your Python module just as you have previously. Then, you should add a line with the special variable named <strong>author</strong> assigned to be a string with your 9-digit student PID.</p>
+<h2 id="all-30-points">1. <code>all</code> – 30 Points</h2>
+<p>This is the first function you will write in <code>ex04_utils.py</code>. The other two functions will also be defined in this file.</p>
+<p>Given a <code>list</code> of <code>ints</code> and an <code>int</code>, <code>all</code> should return a bool indicating whether or not all the ints in the list are the same as the given <code>int</code>. Example usage:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; all([1, 2, 3], 1)
+False
+&gt;&gt;&gt; all([1, 1, 1], 2)
+False
+&gt;&gt;&gt; all([1, 1, 1], 1)
+True</code></pre>
+<p>Continue by defining a skeleton function with the following signature:</p>
+<ol type="1">
+<li>Name: <code>all</code></li>
+<li>Arguments: A list of integers and an int.</li>
+<li>Returns: A <code>bool</code>, <code>True</code> if all numbers match the indicated number, <code>False</code> otherwise or if the list is empty. This algorithm should work for a list of any length. Hint: remember you can return from inside of a loop to short-circuit its behavior and return immediately.</li>
+</ol>
+<h2 id="max-30-points">2. <code>max</code> – 30 Points</h2>
+<p>Next, you will write a function named <code>max</code>.</p>
+<p>The <code>max</code> function is given a <code>list</code> of <code>ints</code>, <code>max</code> should return the largest in the List.</p>
+<p>If the <code>list</code> is empty, <code>max</code> should result in a <code>ValueError</code>. We’ll show you how! Examples:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; max([1, 3, 2])
+3
+&gt;&gt;&gt; max([100, 99, 98])
+100
+&gt;&gt;&gt; max([])
+ValueError: max() arg is an empty List</code></pre>
+<p>Define a skeleton function with the following signature:</p>
+<ol type="1">
+<li>Name: <code>max</code></li>
+<li>Argument: A list of integers.</li>
+<li>Returns: An <code>int</code>, the largest number in the list. If the list is empty, raises a ValueError.</li>
+</ol>
+<p>The body of your skeleton function can begin as such, which demonstrates how to <code>raise</code> an error:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">def</span> <span class="bu">max</span>(<span class="bu">input</span>: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>    <span class="cf">if</span> <span class="bu">len</span>(<span class="bu">input</span>) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;max() arg is an empty List&quot;</span>)</span></code></pre></div>
+<h2 id="is_equal-20-points">3. <code>is_equal</code> – 20 Points</h2>
+<p>Given two <code>list</code>s of <code>int</code> values, return <code>True</code> if <em>every</em> element at <em>every</em> index is equal in both <code>list</code>s.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; is_equal([1, 0, 1], [1, 0, 1])
+True
+&gt;&gt;&gt; is_equal([1, 1, 0], [1, 0, 1])
+False</code></pre>
+<p>Your implementation should not assume the lengths of each List are equal.</p>
+<p>This concept is called <em>deep equality</em>. Two separate <code>list</code> objects on the <em>heap</em> may be distinct objects, such that if you changed one the other would remain the same. However, two distinct objects can be <em>deeply equal</em> to one another if what they are made of is equal to each other in essence.</p>
+<p>Define a function with the following signature:</p>
+<ol type="1">
+<li>Name: <code>is_equal</code></li>
+<li>Parameters: Two lists of integers.</li>
+<li>Returns: <code>True</code> if lists are equal, <code>False</code> otherwise.</li>
+</ol>
+<p>Implement the <code>is_equal</code> function as described above.</p>
+<h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</h2>
+<p>Login to Gradescope and select the assignment named “EX04 - Lists.”. You’ll see an area to upload a zip file. To produce a zip file for autograding, return back to Visual Studio Code.</p>
+<p>If you <em>do not</em> see a Terminal at the bottom of your screen, open the Command Palette and search for “View: Toggle Integrated Terminal”.</p>
+<p>Type the following command (all on a single line):</p>
+<p><code>python -m tools.submission exercises/ex04_utils.py</code></p>
+<p>In the file explorer pane, look to find the zip file named “yy.mm.dd-hh.mm-exercises-ex04-utils.py.zip”. The “yy”, “mm”, “dd”, and so on, are timestamps with the current year, month, day, hour, minute. If you right click on this file and select “Reveal in File Explorer” on Windows or “Reveal in Finder” on Mac, the zip file’s location on your computer will open. Upload this file to Gradescope to submit your work for this exercise.</p>
+<p>Autograding will take a few moments to complete. If there are issues reported, you are encouraged to try and resolve them and resubmit. If for any reason you aren’t receiving full credit and aren’t sure what to try next, come give us a visit in office hours!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kris Jordan, Marlee Walls</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

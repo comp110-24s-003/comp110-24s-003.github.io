@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Pandas Tutorial - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502744.2992637">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="explore-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Pandas Tutorial</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#exds_00-getting-started">exds_00: Getting Started</a>
+<ul>
+<li><a href="#introduction">Introduction:</a></li>
+<li><a href="#pandas-and-data-science-in-python"><code>pandas</code> and Data Science in Python:</a></li>
+</ul></li>
+<li><a href="#importing-pandas">Importing pandas</a>
+<ul>
+<li><a href="#the-end-all-be-all-of-pandas-the-dataframe">The End-all Be-all of <code>pandas</code>: the <code>DataFrame</code></a></li>
+<li><a href="#importing-data-with-pandas">Importing Data with <code>pandas</code></a></li>
+<li><a href="#summarizing-the-data-in-your-dataframe">Summarizing the data in your <code>DataFrame</code></a></li>
+<li><a href="#subsetting-by-variable-column-in-a-dataframe">Subsetting by variable (column) in a <code>DataFrame</code></a></li>
+<li><a href="#subsetting-by-observation-row-in-a-dataframe">Subsetting by observation (row) in a <code>DataFrame</code></a></li>
+<li><a href="#conclusion-of-tutorial">Conclusion of Tutorial:</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="exds_00-getting-started">exds_00: Getting Started</h2>
+<h3 id="introduction">Introduction:</h3>
+<p>Now more than ever, data has a unique ability to describe the many facets of our reality. Thanks to relatively recent (and accelerating) advances in computing,those with proper motivation can use data to affect change in any realm they so choose, from ones more directly related to computer science such as machine learning to others with not so obvious connections such as biology and economics!</p>
+<p>You have likely heard a lot of talk recently about <em>data science</em>, but what exactly is data science? A quick search gives this definition: “an inter-disciplinary field that uses scientific methods, processes, algorithms and systems to extract knowledge and insights from structured and unstructured data, and apply knowledge from data across a broad range of application domains”. Now, this is a mouthful, but essentially, data science pulls from the best of computer science, statistics, and mathematics to <strong>make data understandable and actionable</strong>. This is the key, because what worth does data have if we can not interpret it and make decisions based on it?</p>
+<h3 id="pandas-and-data-science-in-python"><code>pandas</code> and Data Science in Python:</h3>
+<p>Learning Python in this class has already given you a headstart in data science, since Python is incredibly well-equipped for handling large datasets with many specialized third-party libraries. The industry standard for this type of work is a library called <code>pandas</code>. There are other libraries that work well with data science in Python that we may explore later, but <code>pandas</code> is all you need for now! :)</p>
+<p>Below, you will see the usual convention for importing pandas:</p>
+<h2 id="importing-pandas">Importing pandas</h2>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+<p>Now, that was not so bad! :) but we have a ways to go…</p>
+<h3 id="the-end-all-be-all-of-pandas-the-dataframe">The End-all Be-all of <code>pandas</code>: the <code>DataFrame</code></h3>
+<p>In <code>pandas</code>, the primary data type that you will work is known as a <code>DataFrame</code>. Those who have worked in R may know this by the same name, and those who have in the SAS programming lanaguage may know this as a data set! Here, you will see a declaration of a <code>DataFrame</code> in <code>pandas</code>:</p>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Setting up the dictionary with str keys and list[int] values</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>d: <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">list</span>[<span class="bu">int</span>]] <span class="op">=</span> {<span class="st">&#39;col1&#39;</span>: [<span class="dv">1</span>, <span class="dv">2</span>], <span class="st">&#39;col2&#39;</span>: [<span class="dv">3</span>, <span class="dv">4</span>]}</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Creating the DataFrame from the above structure</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>df <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>d)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># We do not have to use df.head() (more info to come) here because the DataFrame is quite small (this will not be true going forward)</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="bu">print</span>(df)</span></code></pre></div>
+<pre class="plaintext"><code>   col1  col2
+0     1     3
+1     2     4</code></pre>
+<p>You might have noticed something very interesting, a marked similarity between this declaration and something you have worked with before, perhaps in EX04! Full disclosure, this is entirely purposeful. EX04 was meant to help you understand the underlying functionality of a <code>DataFrame</code> in <code>pandas</code>! Many things work similarly in pandas to how you implemented them in EX04. But, more on that later!</p>
+<h3 id="importing-data-with-pandas">Importing Data with <code>pandas</code></h3>
+<p>It stands to reason that, to work with data, we need data! In <code>pandas</code>, we can read in many kinds of files, but the most common for datasets is the csv or “comma-separated value” file. The dataset imported below contains information about some Pokemon! To view your data, you should use a command of the form <code>print(dataframe.head(n))</code>, where n is the number of top rows you wish to display. If left blank, this will default to 5.</p>
+<p>Additionally, if we choose to modify the <code>DataFrame</code>, we can actually <code>write</code> to a new csv that will include the modifications using a similar command to the one you will see below. Do NOT worry if the code for modification seems foreign, we will get to that in time, but the gist of it is that we are ordering or sorting the pokemon <code>DataFrame</code> by ascending values of HP! It is worth noting that we could write back to the original csv, but in some cases it may be worth preserving the original dataset.</p>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Reading in the CSV</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>pokemon <span class="op">=</span> pd.read_csv(<span class="st">&quot;pokemon.csv&quot;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Sorting the values rows and resetting their indices</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>pokemon_sorted <span class="op">=</span> pokemon.sort_values(<span class="st">&quot;HP&quot;</span>,ascending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>pokemon_sorted <span class="op">=</span> pokemon_sorted.reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co"># Writing the new DataFrame to the new csv</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>pokemon_sorted.to_csv(<span class="st">&quot;pokemon_new.csv&quot;</span>,index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<h3 id="summarizing-the-data-in-your-dataframe">Summarizing the data in your <code>DataFrame</code></h3>
+<p>After we load the data, the structure of our <code>DataFrame</code> may not be immediately obvious, and usually using a command such as <code>df.head()</code> works totally fine. But, sometimes we need a bit more information to understand our data before we attempt to analyze it. See the code below for some commands that may be useful in interpreting the structure of your <code>DataFrame</code>.</p>
+<div class="sourceCode" id="cb5" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Getting the number of rows in your DataFrame</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(<span class="bu">len</span>(pokemon))</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Getting the dimensions of your DataFrame (rows, columns)</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>pokemon.shape</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Getting a list of the column names in your DataFrame</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>pokemon.columns</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Provides the most comprehensive overview of the columns in your DataFrame</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co"># also provides the name, count of non-null values and datatype of each column</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co"># as well as some information about memory usage!</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>pokemon.info()</span></code></pre></div>
+<pre class="plaintext"><code>800
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 800 entries, 0 to 799
+Data columns (total 14 columns):
+ #   Column      Non-Null Count  Dtype 
+---  ------      --------------  ----- 
+ 0   Unnamed: 0  800 non-null    int64 
+ 1   #           800 non-null    int64 
+ 2   Name        800 non-null    object
+ 3   Type 1      800 non-null    object
+ 4   Type 2      414 non-null    object
+ 5   Total       800 non-null    int64 
+ 6   HP          800 non-null    int64 
+ 7   Attack      800 non-null    int64 
+ 8   Defense     800 non-null    int64 
+ 9   Sp. Atk     800 non-null    int64 
+ 10  Sp. Def     800 non-null    int64 
+ 11  Speed       800 non-null    int64 
+ 12  Generation  800 non-null    int64 
+ 13  Legendary   800 non-null    bool  
+dtypes: bool(1), int64(10), object(3)
+memory usage: 82.2+ KB</code></pre>
+<h3 id="subsetting-by-variable-column-in-a-dataframe">Subsetting by variable (column) in a <code>DataFrame</code></h3>
+<p>Of course, having the csv loaded is great, but there is not much use in a <code>DataFrame</code> if we can not actually get to the data and perform meaningful analyses. So, we will start by selecting columns! In <code>pandas</code>, there several ways to do this. See the code below and read the comments for insight into the action of each command and note the addition of another library called <code>numpy</code>, which will help us perform some basic analysis on the data we collect.</p>
+<p>Something of note is that the very last command uses something called a <em>regular expression</em>. We do not cover this topic in COMP 110, but they are quite useful and something you will learn more about in later COMP courses if you so choose to take them! :)</p>
+<div class="sourceCode" id="cb7" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Importing numpy</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># Selecting a column using . notation and find the mean HP of the pokemon in our dataset</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>hp <span class="op">=</span> pokemon.HP</span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="bu">print</span>(np.mean(hp))</span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># Selecting a column using subscription notation (should be more familiar), also finding the standard deviation using numpy</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>defense <span class="op">=</span> pokemon[<span class="st">&quot;Defense&quot;</span>]</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="bu">print</span>(np.std(defense))</span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co"># Selecting multiple columns, can be useful to &quot;declutter&quot; your data or more directly compare columns</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>narrowed_pokemon <span class="op">=</span> pokemon[[<span class="st">&quot;Name&quot;</span>,<span class="st">&quot;HP&quot;</span>,<span class="st">&quot;Attack&quot;</span>,<span class="st">&quot;Defense&quot;</span>]]</span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(narrowed_pokemon.head())</span>
+<span id="cb7-15"><a href="#cb7-15"></a></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co"># Selecting columns in a range using .loc() and columns at certian indices using .iloc()</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>names_and_types <span class="op">=</span> pokemon.loc[:,<span class="st">&#39;Name&#39;</span>:<span class="st">&#39;Type 2&#39;</span>]</span>
+<span id="cb7-18"><a href="#cb7-18"></a>narrowed_pokemon <span class="op">=</span> pokemon.iloc[:,[<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]] <span class="co"># note that this achieves the same thing as the subscription notation above!</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="bu">print</span>(names_and_types.head())</span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="bu">print</span>(narrowed_pokemon.head())</span>
+<span id="cb7-21"><a href="#cb7-21"></a></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co"># Filtering columns using .filter(), getting only the columns that start with T</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>types_and_total <span class="op">=</span> pokemon.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">&quot;^T&quot;</span>)</span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="bu">print</span>(types_and_total.head())</span>
+<span id="cb7-25"><a href="#cb7-25"></a></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="co"># Selecting columns based on data type, only columns of a numeric types</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a>numbers_only <span class="op">=</span> pokemon.select_dtypes(include<span class="op">=</span><span class="st">&#39;number&#39;</span>)</span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="bu">print</span>(numbers_only.head())</span></code></pre></div>
+<pre class="plaintext"><code>69.25875
+31.164004777146342
+                    Name  HP  Attack  Defense
+0              Bulbasaur  45      49       49
+1                Ivysaur  60      62       63
+2               Venusaur  80      82       83
+3  VenusaurMega Venusaur  80     100      123
+4             Charmander  39      52       43
+                    Name Type 1  Type 2
+0              Bulbasaur  Grass  Poison
+1                Ivysaur  Grass  Poison
+2               Venusaur  Grass  Poison
+3  VenusaurMega Venusaur  Grass  Poison
+4             Charmander   Fire     NaN
+                    Name  HP  Attack  Defense
+0              Bulbasaur  45      49       49
+1                Ivysaur  60      62       63
+2               Venusaur  80      82       83
+3  VenusaurMega Venusaur  80     100      123
+4             Charmander  39      52       43
+  Type 1  Type 2  Total
+0  Grass  Poison    318
+1  Grass  Poison    405
+2  Grass  Poison    525
+3  Grass  Poison    625
+4   Fire     NaN    309
+   Unnamed: 0  #  Total  HP  Attack  Defense  Sp. Atk  Sp. Def  Speed  \
+0           0  1    318  45      49       49       65       65     45   
+1           1  2    405  60      62       63       80       80     60   
+2           2  3    525  80      82       83      100      100     80   
+3           3  3    625  80     100      123      122      120     80   
+4           4  4    309  39      52       43       60       50     65   
+
+   Generation  
+0           1  
+1           1  
+2           1  
+3           1  
+4           1  </code></pre>
+<h3 id="subsetting-by-observation-row-in-a-dataframe">Subsetting by observation (row) in a <code>DataFrame</code></h3>
+<p>Next, we will focus on how to subset data by row. This is where Boolean expressions come into play since we typically want the rows we filter to meet a specific requirement such as one of its values falling within a range of numbers or being equal to some particular string. In this section, you will see how to generate a <em>sample</em> from larger dataset. However, pay particular attention to the use of Boolean conditions to filter rows of the <code>DataFrame</code>, as this is the most common and readable method in <code>pandas</code>.</p>
+<div class="sourceCode" id="cb9" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Using .head() and tail() to select the first and last &#39;n&#39; rows respectively (n defaults to 5)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>first_5 <span class="op">=</span> pokemon.head(<span class="dv">5</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>last_5 <span class="op">=</span> pokemon.tail(<span class="dv">5</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="bu">print</span>(first_5)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="bu">print</span>(last_5)</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># Filtering rows for a specific Boolean condition, all Pokemon with HP greater than 100</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>healthy_pokemon <span class="op">=</span> pokemon[pokemon.HP <span class="op">&gt;</span> <span class="dv">100</span>]</span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="bu">print</span>(healthy_pokemon.head())</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># Dropping duplicate observations from a DataFrame</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>no_repeats <span class="op">=</span> pokemon.drop_duplicates()</span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="bu">print</span>(no_repeats.head())</span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co"># Randomly sample (select) (1-frac)100% of the rows in the DataFrame</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>sample_frac <span class="op">=</span> pokemon.sample(frac<span class="op">=</span><span class="fl">0.25</span>)</span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="bu">print</span>(sample_frac.head())</span>
+<span id="cb9-18"><a href="#cb9-18"></a></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="co"># Randomly sample (select) n of the rows in the DataFrame</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>sample_n <span class="op">=</span> pokemon.sample(n<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="bu">print</span>(sample_n)</span></code></pre></div>
+<pre class="plaintext"><code>   Unnamed: 0  #                   Name Type 1  Type 2  Total  HP  Attack  \
+0           0  1              Bulbasaur  Grass  Poison    318  45      49   
+1           1  2                Ivysaur  Grass  Poison    405  60      62   
+2           2  3               Venusaur  Grass  Poison    525  80      82   
+3           3  3  VenusaurMega Venusaur  Grass  Poison    625  80     100   
+4           4  4             Charmander   Fire     NaN    309  39      52   
+
+   Defense  Sp. Atk  Sp. Def  Speed  Generation  Legendary  
+0       49       65       65     45           1      False  
+1       63       80       80     60           1      False  
+2       83      100      100     80           1      False  
+3      123      122      120     80           1      False  
+4       43       60       50     65           1      False  
+     Unnamed: 0    #                 Name   Type 1 Type 2  Total  HP  Attack  \
+795         795  719              Diancie     Rock  Fairy    600  50     100   
+796         796  719  DiancieMega Diancie     Rock  Fairy    700  50     160   
+797         797  720  HoopaHoopa Confined  Psychic  Ghost    600  80     110   
+798         798  720   HoopaHoopa Unbound  Psychic   Dark    680  80     160   
+799         799  721            Volcanion     Fire  Water    600  80     110   
+
+     Defense  Sp. Atk  Sp. Def  Speed  Generation  Legendary  
+795      150      100      150     50           6       True  
+796      110      160      110    110           6       True  
+797       60      150      130     70           6       True  
+798       60      170      130     80           6       True  
+799      120      130       90     70           6       True  
+     Unnamed: 0    #        Name  Type 1 Type 2  Total   HP  Attack  Defense  \
+44           44   39  Jigglypuff  Normal  Fairy    270  115      45       20   
+45           45   40  Wigglytuff  Normal  Fairy    435  140      70       45   
+96           96   89         Muk  Poison    NaN    500  105     105       75   
+120         120  112      Rhydon  Ground   Rock    485  105     130      120   
+121         121  113     Chansey  Normal    NaN    450  250       5        5   
+
+     Sp. Atk  Sp. Def  Speed  Generation  Legendary  
+44        45       25     20           1      False  
+45        85       50     45           1      False  
+96        65      100     50           1      False  
+120       45       45     40           1      False  
+121       35      105     50           1      False  
+   Unnamed: 0  #                   Name Type 1  Type 2  Total  HP  Attack  \
+0           0  1              Bulbasaur  Grass  Poison    318  45      49   
+1           1  2                Ivysaur  Grass  Poison    405  60      62   
+2           2  3               Venusaur  Grass  Poison    525  80      82   
+3           3  3  VenusaurMega Venusaur  Grass  Poison    625  80     100   
+4           4  4             Charmander   Fire     NaN    309  39      52   
+
+   Defense  Sp. Atk  Sp. Def  Speed  Generation  Legendary  
+0       49       65       65     45           1      False  
+1       63       80       80     60           1      False  
+2       83      100      100     80           1      False  
+3      123      122      120     80           1      False  
+4       43       60       50     65           1      False  
+     Unnamed: 0    #        Name  Type 1    Type 2  Total  HP  Attack  \
+720         720  652  Chesnaught   Grass  Fighting    530  88     107   
+249         249  230     Kingdra   Water    Dragon    540  75      95   
+160         160  148   Dragonair  Dragon       NaN    420  61      84   
+659         659  598  Ferrothorn   Grass     Steel    489  74      94   
+461         461  414      Mothim     Bug    Flying    424  70      94   
+
+     Defense  Sp. Atk  Sp. Def  Speed  Generation  Legendary  
+720      122       74       75     64           6      False  
+249       95       95       95     85           2      False  
+160       65       70       70     70           1      False  
+659      131       54      116     20           5      False  
+461       50       94       50     66           4      False  
+     Unnamed: 0    #                 Name  Type 1    Type 2  Total   HP  \
+529         529  477             Dusknoir   Ghost       NaN    525   45   
+585         585  526             Gigalith    Rock       NaN    515   85   
+787         787  711  GourgeistSuper Size   Ghost     Grass    494   85   
+777         777  707               Klefki   Steel     Fairy    470   57   
+363         363  332             Cacturne   Grass      Dark    475   70   
+398         398  363               Spheal     Ice     Water    290   70   
+313         313  289              Slaking  Normal       NaN    670  150   
+401         401  366             Clamperl   Water       NaN    345   35   
+277         277  256            Combusken    Fire  Fighting    405   60   
+254         254  235             Smeargle  Normal       NaN    250   55   
+
+     Attack  Defense  Sp. Atk  Sp. Def  Speed  Generation  Legendary  
+529     100      135       65      135     45           4      False  
+585     135      130       60       80     25           5      False  
+787     100      122       58       75     54           6      False  
+777      80       91       80       87     75           6      False  
+363     115       60      115       60     55           3      False  
+398      40       50       55       50     25           3      False  
+313     160      100       95       65    100           3      False  
+401      64       85       74       55     32           3      False  
+277      85       60       85       60     55           3      False  
+254      20       35       20       45     75           2      False  </code></pre>
+<h3 id="conclusion-of-tutorial">Conclusion of Tutorial:</h3>
+<p>To wrap things up, let’s recall what we have learned so far:</p>
+<ul>
+<li>importing <code>pandas</code></li>
+<li>creating a <code>DataFrame</code>, underlying structure</li>
+<li>reading from and writing to .csv files</li>
+<li>observing the structure of a specific <code>DataFrame</code></li>
+<li>selecting data by column and by row</li>
+<li>some basic analysis using <code>numpy</code></li>
+</ul>
+<p>Congratulations on taking the first step in your data science journey. If you so choose, you can try out the Data Science Challenge in this folder which will push you to apply the skills you learned in this tutorial and do some of your own analysis on a dataset! Great work and good luck to all of you future data scientists! :)</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kyle Sorensen</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

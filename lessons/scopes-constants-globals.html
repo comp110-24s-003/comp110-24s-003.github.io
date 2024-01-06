@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Scopes, Constants, and Global Variables - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502708.802301">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Scopes, Constants, and Global Variables</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#scopes">Scopes</a></li>
+<li><a href="#accessing-global-names">Accessing Global Names</a></li>
+<li><a href="#named-constants-and-magic-numbers">Named Constants and Magic Numbers</a></li>
+<li><a href="#reassigning-a-global-variable">Reassigning a Global Variable</a></li>
+<li><a href="#why-are-global-variables-generally-discouraged">Why are global variables generally discouraged?</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="scopes">Scopes</h2>
+<p>When there can be many <em>people</em>, or more broadly <em>things</em>, which share the same name, the meaning of the name depends on the <em>context</em> it is being referenced from. Let us consider a hypothetical, real-world scenario.</p>
+<p>Imagine you just heard some amazingly positive news about your friend Lauren winning the lottery while on a road trip. You’re so blown away you ask a gas station attendant, <em>“Wow, can you believe the news about Lauren?!”</em> They look at you puzzled, “sorry, I don’t know a Lauren.” Slightly annoyed, you walk back out to the gas pumps and ask a stranger pumping gas the same question. With a look of suspicion the stranger responds, “you know my horse?” Now <em>you</em> look puzzled and say, “neigh, sorry, different Laurens.”</p>
+<p>In <em>your</em> head, the name Lauren is your close friend. In the gas station attendant’s, the name Lauren is not associated with anyone. In the stranger’s head, Lauren is associated with their horse friend. While this ambiguity can lead to confusion, it makes complete sense, right? The world would be overwhelming if every <em>thing</em> had a unique name.</p>
+<p>In the evaluation of a single program, the same name can exist in <em>different contexts</em> and be bound to many different values, all at the same time. Each function call <em>has its own context for names</em>. This is why, when diagramming with an <em>environment diagram</em>, we setup a new <em>frame</em> for a function call. The rules of a language’s <em>name resolution</em> process decide what name you’re referring to in a given context.</p>
+<p>The <em>scope</em> of an <em>identifier</em>, which includes variable <em>names</em>, function <em>names</em>, and <em>names</em> of a few other concepts you’ll learn in time, refers to <em>where you can access a specific definition of the identifier from</em> in a program. Unpleasant surprises occur when you attempt to <em>access</em> an <em>identifier</em> outside its scope. For example, if an identifier is yet to be defined, or its definition is in a context <em>name resolution</em> will not check, then you will be faced with a <code>NameError</code>.</p>
+<p>Try the following example in your Python REPL:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; print(lauren)
+NameError: name &#39;lauren&#39; is not defined
+&gt;&gt;&gt; lauren: str = &quot;a friend&quot;
+&gt;&gt;&gt; def stranger() -&gt; None:
+...   lauren: str = &quot;a horse&quot;
+...   print(lauren)
+...
+&gt;&gt;&gt; print(lauren)
+a friend
+&gt;&gt;&gt; stranger()
+a horse
+&gt;&gt;&gt; print(lauren)
+a friend</code></pre>
+<p>Let us walk through each of the steps above. First, an error occurs when attempting to access an identifier, or “read a variable”, such as <code>lauren</code>, before it is defined.</p>
+<p>The name <code>lauren</code> was first defined outside of any function and bound to the string <code>"a friend"</code>. Note the identifier <code>lauren</code> would now be <em>bound</em> in the <code>Globals</code> frame of your diagram.</p>
+<p>Next, a function is defined and its definition would be bound to the name <code>stranger</code> in the globals frame.</p>
+<p>When <code>lauren</code> is printed, the current frame of execution is <code>Globals</code>, therefore the string <code>"a friend"</code> is bound to it.</p>
+<p>Next, a function call to the <code>stranger</code> function is evaluated. This function call establishes a new frame on the stack, which becomes the current frame of execution while the function is evaluating. Inside the function definition, notice that a new variable, coincidentally named <code>lauren</code>, is is established in this frame. Now there are two identifiers on the call stack with the <em>name</em> of <code>lauren</code>. One is in globals, the other is the one we just evaluated in <code>stranger</code>, and is bound to the string <code>"a horse"</code>. Thus, when <code>print(lauren)</code> is evaluated in the context of the call to <code>stranger</code>, it results in <code>a horse</code> being printed. The end of the <em>procedure</em> function body is reached, so <code>None</code> is implicitly returned. The current execution context returns to <code>Globals</code>.</p>
+<p>Finally, when we access <code>lauren</code> once last time from the <code>Globals</code> context, it is still bound to <code>"a friend"</code>, just the same as it was before calling <code>stranger</code>.</p>
+<h2 id="accessing-global-names">Accessing Global Names</h2>
+<p><em>Global names</em> are those defined in the globals frame, outside of any other context, such as a function definition.</p>
+<p>In the Python programming language, global variables are technically <em>module variables</em>. They are only “global” within a module, meaning within a single Python file. The concept of <em>global variables</em> and <em>global scope</em> is more widely applicable in other programming languages than <em>module variables</em>, though, so we will choose the more universal terminology. Notice the meta in this description. Sometimes you intentionally want to refer to names whose definitions are beyond your local concerns.</p>
+<p>In the preceding section’s REPL example, the name <code>lauren</code> was initially defined as a <em>global variable</em>. In the following example, we will define a function that accesses this global variable.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; lauren: str = &quot;a friend&quot;
+&gt;&gt;&gt; def global_access() -&gt; None:
+...   print(lauren)
+...
+&gt;&gt;&gt; global_access()
+&quot;a friend&quot;</code></pre>
+<p>Notice a key distinction between the <code>global_access</code> function and the <code>stranger</code> function: <code>lauren</code> was redefined and bound to have a different, local meaning in <code>stranger</code>.</p>
+<p><em>Name resolution</em> rules inform why the <code>global_access</code> function was able to read from <code>lauren</code> rather than result in a <code>NameError</code>. When a name is not found in the current scope, which in a function call is the current frame of execution, then the Globals frame is checked. This is how the <code>main</code> function is able to <em>call</em> other functions whose identifiers are found in <code>Globals</code> and bound to their definitions.</p>
+<h2 id="named-constants-and-magic-numbers">Named Constants and Magic Numbers</h2>
+<p>The most valuable, and acceptable, use of <em>globally scoped</em> variables are to put names on <em>constant values</em> used throughout your program. Consider the following code listing:</p>
+<pre class="plaintext"><code>def compound(current: float) -&gt; float:
+    return current + (current * 0.009)</code></pre>
+<p>The <code>float</code>-literal <code>0.009</code> is a <em>constant</em> value in the program. It will not change. It is also kind of “magical” isn’t it? Where did this number come from and what does it represent? Often the same constant like this is copied throughout a program. Programmers call literals like this a “magic number”.</p>
+<p>Magic numbers are a bad practice for two reasons:</p>
+<ol type="1">
+<li>Magic numbers make your program more difficult to understand. Someone else reading your code will not immediately know <em>why</em> that number is chosen. Further, you yourself will become a stranger to your own code and will often forget why <em>you</em> chose some specific number.</li>
+<li>Magic numbers used throughout a program are more work to change and maintain. At best, you remember you have multiple places you need to update the magic number or search/replace all. At worst, you forget to update a few places and are accidentally relying on different values for what should have been consistent!</li>
+</ol>
+<p><em>Named constants</em> are the preferred technique for avoiding magic numbers. A named constant is a global variable whose value is initialized and does not change at runtime.</p>
+<p><em>Named constants</em> are conventionally named using all capital letters with underscores separating words. This convention makes it easy to distinguise a variable name from a globally named constant. Let’s rewrite the previous example to use a named constant:</p>
+<pre class="plaintext"><code>INTEREST_RATE: float = 0.009
+
+def compound(current: float) -&gt; float:
+    return current + (current * INTEREST_RATE)</code></pre>
+<p>Convince yourself this change is both easier to understand to someone reading the code for the first time. If the same named constant were used in multiple places, notice how much easier this code is to update, as well: you only need to change the value of the named constant and all uses of it will be correct.</p>
+<p>Moving forward, any time you use a “magic number” in your program you should catch yourself as quickly as possible and <em>refactor</em>, meaning rewrite in such a way the program has the same meaning but is better structured, your program to use a named constant instead.</p>
+<p>Named constants are intended to remain… <em>constant</em>! Thus, you should never attempt to reassign a named constant. If you need a globally accessible value that changes as the program is running, the next section discusses how to go about it. Most programming languages will actively prevent you from accidentally reassigning a new value to a named constant because doing so can be a source of great confusion. Python does not enforce this rule, though, so be careful to avoid being bitten by this snake.</p>
+<h2 id="reassigning-a-global-variable">Reassigning a Global Variable</h2>
+<p>You now know two <em>primary use cases</em> for globally defined names:</p>
+<ol type="1">
+<li>Defining structural components of your programs such as <em>functions</em> and, you will soon learn, <em>classes</em>.</li>
+<li>Defining named constants.</li>
+</ol>
+<p>There’s another use of globally defined variables that is worth knowing, but with an important disclaimer. Global variables can be handy in small programs, but should generally be avoided as your programs grow in size and you learn techniques for avoiding their use. Global variables can make programs more difficult to reason about and more error prone.</p>
+<p>When you initialize a local variable in a function in Python, by default it binds the variable’s name <em>locally</em> within the context of the function. Subsequent references to the name from inside the context of the function will refer to its <em>local</em> value. You saw this in the <code>stranger</code> example above.</p>
+<p>But, what if you <strong>want</strong> to <em>reassign</em> to a global variable in Python? You must specifically declare your intent to do so. Let’s explore with an example:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; lauren: str = &quot;a friend&quot;
+&gt;&gt;&gt; def a_forceful_stranger() -&gt; None:
+...   global lauren
+...   lauren = &quot;MY HORSE&quot;
+...   print(lauren)
+...
+&gt;&gt;&gt; print(lauren)
+a friend
+&gt;&gt;&gt; a_forceful_stranger()
+MY HORSE
+&gt;&gt;&gt; print(lauren)
+MY HORSE</code></pre>
+<p>There are a few important points to notice. First, <code>lauren</code> is defined as a global variable, outside of any function.</p>
+<p>Second, notice the <code>global</code> keyword followed by the name <code>lauren</code> on the first line of <code>a_forceful_stranger</code>. The <code>global</code> statement indicates within the function call’s frame all references to <code>lauren</code> will resolve to the <em>global variable</em> <code>lauren</code>. Importantly, all <em>assignment statements</em> will assign to the global variable <code>lauren</code>. Notice, unlike in the original example, after the function call evaluates, the global variable’s value is changed!</p>
+<p>When it comes to diagramming the call stack, when you evaluate the function <code>a_forceful_stranger</code>, you would not introduce the name <code>lauren</code> in its frame because of the <code>global</code> keyword. The <code>global</code> declaration prevents a new entry from being added locally.</p>
+<p>These specific kinds of rules around name resolution, scope, variable access, and variable assignment are where different programming languages make different choices. Python’s rules make it easy for you to access global variables but make you go out of your way to <em>reassign</em> them. This is helpful! When you find yourself learning or writing other programming languages, comparing and contrasting these rules in Python to the other languages’ rules will help you get up to speed quickly.</p>
+<p>In Python, you should name global variables with standard, lowercase <code>snake_case_conventions</code>.</p>
+<p>Where is it appropriate to use a global variable? Suppose you’re writing a program in a single file and there’s a variable many different functions in your program need to make use of. For example, maybe you’re writing a little interactive game and ask the user for their <code>name</code> as the program begins. Rather than having to pass around their <code>name</code> as an argument to every function call, storing it in a global variable may make sense. Another example might be a single player game that keeps track of a <code>score</code>. Being able to access and modify the <code>score</code> from various functions is handy.</p>
+<p>When in doubt, though, prefer local variables and named constants!</p>
+<h2 id="why-are-global-variables-generally-discouraged">Why are global variables generally discouraged?</h2>
+<p>These concerns are a bit outside yours at this point, but foreshadowing can help prepare you for later ideas.</p>
+<p>Reading from and writing to <em>global variables</em> are examples of <em>side-effects</em> in our <em>fundamental pattern</em>. The formal inputs to a function are its parameters and its formal result is its return value. Yet, a function can also read from and write to global variables it has access to through its <em>environment</em>.</p>
+<p>Using <em>global variables</em> makes your programs more difficult to debug. Since <em>any function</em> is able to modify a global variable, if your bug is impacted by the <em>global variable</em> then you must check all of the possible places it is reassigned from. Not only that, but you must begin to consider <em>how</em> they change the <em>global variable</em> and reason through <em>what order</em> those functions might be called in, and so on. This is <em>much, much</em> more challenging than working with local variables whose scopes are confined within the context of a function call’s frame.</p>
+<p>Functions which do not have any side-effects, including not accessing or reassigning global variables, are called <em>pure</em> functions and are the easiest kind of functions to work with because they come with no surprises. When in doubt, write <em>pure</em> functions!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

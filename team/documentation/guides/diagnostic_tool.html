@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Diagnostic Tool and Codes Library - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502761.5430112">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Diagnostic Tool and Codes Library</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#s101---python-is-not-installed">S101 - Python is not installed</a>
+<ul>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#macos">macOS</a></li>
+</ul></li>
+<li><a href="#s102---python-command-runs-a-version-less-than-3.10.1">S102 - <strong>python</strong> command runs a version less than 3.10.1</a>
+<ul>
+<li><a href="#windows-1">Windows</a></li>
+<li><a href="#macos-1">macOS</a></li>
+</ul></li>
+<li><a href="#s103---python-version-being-run-in-vscode-is-lower-than-3.10">S103 - Python version being run in vscode is lower than 3.10</a></li>
+<li><a href="#s201---git-is-not-installed.">S201 - Git is not installed.</a>
+<ul>
+<li><a href="#windows-2">Windows</a></li>
+<li><a href="#macos-2">macOS</a></li>
+</ul></li>
+<li><a href="#s202---git-email-and-username-are-not-configured">S202 - Git email and username are not configured</a></li>
+<li><a href="#s203---no-upstream-exists">S203 - No upstream exists</a></li>
+<li><a href="#s204---upstream-does-not-match-course-upstream">S204 - Upstream does not match course upstream</a></li>
+<li><a href="#s301---missing-vscode-packages">S301 - Missing VScode Packages</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In order to run the diagnostic tool run:</p>
+<p><code>python -m tools.diagnostic</code></p>
+<blockquote>
+<p>When running the script you may see ‘codes’ that should correspond to the solutions below:</p>
+</blockquote>
+<h2 id="s101---python-is-not-installed">S101 - Python is not installed</h2>
+<h3 id="windows">Windows</h3>
+<ol type="1">
+<li>Open the Python Website: https://www.python.org</li>
+<li>Select Downloads</li>
+<li>Look for “Download the latest version for Windows”</li>
+<li>Select the button that is “Download Python 3.10.1” (totally ok if the number is <em>greater than</em> 3.10.1! But if you already have a version of Python that is less than 3.10.1 please update to 3.10.1 or higher)</li>
+<li>Open the download once it completes and carefully follow the instructions below
+<ol type="1">
+<li><strong>IMPORTANT</strong> Check the box on the first screen labelled “Add Python 3.8 to PATH”
+<ul>
+<li>Knowing <em>exactly</em> what this does is beyond your concern, but the short story is it makes it easier for other programs (such as your text editor Visual Studio Code) to make use of Python.</li>
+</ul></li>
+<li><strong>AFTER</strong> ensuring the box of step #1 is checked, click Install Now</li>
+<li>Allow the installer to make changes if further prompted</li>
+<li><strong>IMPORTANT</strong> On the “Setup was Successful” screen, click on “Disable path length limit”. Allow this change when prompted.
+<ul>
+<li>This is also outside your concern, but it removes a silly, old limitation on how long your project’s directory names and file names could be.</li>
+</ul></li>
+<li>Click the Close button to complete the Install.</li>
+</ol></li>
+</ol>
+<h3 id="macos">macOS</h3>
+<ol type="1">
+<li>Open the Python Website: https://www.python.org</li>
+<li>Select Downloads</li>
+<li>Look for the “Download latest version for Mac OS X”</li>
+<li>Select the button that is “Download Python 3.10.1” (totally ok if the number is <em>greater than</em> 3.10.1! But if you already have a version of Python that is less than 3.10.1 please update to 3.10.1 or higher)</li>
+<li>Open the downloaded package to begin the installer
+<ol type="1">
+<li>At Introduction screen: Continue</li>
+<li>At the Read Me screen: Continue</li>
+<li>At the License: Continue (Agree)</li>
+<li>At Installation Type: Install</li>
+<li>After Install completes, select Close</li>
+<li>If asked, move the installer to Trash</li>
+</ol></li>
+</ol>
+<p>Alias the <code>python</code> command to refer to the version of Python you just installed:</p>
+<ol type="1">
+<li>Use <em>Finder</em>’s Spotlight Search feature (<code>Command+Space</code>) to open the <em>Terminal</em> application</li>
+<li>Try typing <code>python3 --version</code> and pressing <code>Enter</code> to complete the line. You should see <code>Python 3.10.1</code> printed out. If you don’t after installing Python as above, try rebooting your machine.</li>
+<li>Next you’ll <em>alias</em> the command <code>python</code> to mean the same as <code>python3</code>. By default on a Mac the command <code>python</code> means version 2 rather than 3. For professional programmers supporting old applications it can be useful to have both version 2 and 3 available. For your purposes, though, you can avoid a lot of frustration by ensuring you’re always working with the latest version which is what the next steps will achieve.
+<ol type="1">
+<li>Look in the title bar of your Terminal window, you should see your computer user name followed by an emdash and then either <code>-zsh</code> or <code>-bash</code>
+<ol type="1">
+<li>If you see <code>-zsh</code> write the following command in Terminal, being careful to match punctuation <em>exactly</em>:</li>
+</ol>
+<ul>
+<li><code>echo "alias python=python3" &gt;&gt; ~/.zprofile</code></li>
+<li>After pressing enter this command adds an alias to your <code>.zprofile</code> file which contains settings for how your terminal works. The details of this command are outside the scope of our concerns for the time being.</li>
+</ul>
+<ol start="2" type="1">
+<li>If you see <code>-bash</code> write the following command in Terminal, being careful to match punctuation <em>exactly</em>:</li>
+</ol>
+<ul>
+<li><code>echo "alias python=python3" &gt;&gt; ~/.bash_profile</code></li>
+<li>After pressing enter this command adds an alias to your <code>.bash_profile</code> file which contains settings for how your terminal works. The details of this command are outside the scope of our concerns for the time being.</li>
+</ul></li>
+<li>Close your Terminal window and open a new one for this change to take effect and then try typing:
+<ul>
+<li><code>python --version</code></li>
+<li>You <em>should</em> see <code>Python 3.10.1</code> print and <em>not</em> <code>Python 2.7.x</code>. If you are still seeing version 2.0, try the first instruction again and restart your terminal once more.</li>
+<li>Once this is working, you can close the Terminal.</li>
+</ul></li>
+</ol></li>
+</ol>
+<h2 id="s102---python-command-runs-a-version-less-than-3.10.1">S102 - <strong>python</strong> command runs a version less than 3.10.1</h2>
+<h3 id="windows-1">Windows</h3>
+<ol type="1">
+<li>Open the Python Website: https://www.python.org</li>
+<li>Select Downloads</li>
+<li>Look for “Download the latest version for Windows”</li>
+<li>Select the button that is “Download Python 3.10.1” (totally ok if the number is <em>greater than</em> 3.10.1! But if you already have a version of Python that is less than 3.10.1 please update to 3.10.1 or higher)</li>
+<li>Open the download once it completes and carefully follow the instructions below
+<ol type="1">
+<li><strong>IMPORTANT</strong> Check the box on the first screen labelled “Add Python 3.10 to PATH”
+<ul>
+<li>Knowing <em>exactly</em> what this does is beyond your concern, but the short story is it makes it easier for other programs (such as your text editor Visual Studio Code) to make use of Python.</li>
+</ul></li>
+<li><strong>AFTER</strong> ensuring the box of step #1 is checked, click Install Now</li>
+<li>Allow the installer to make changes if further prompted</li>
+<li><strong>IMPORTANT</strong> On the “Setup was Successful” screen, click on “Disable path length limit”. Allow this change when prompted.
+<ul>
+<li>This is also outside your concern, but it removes a silly, old limitation on how long your project’s directory names and file names could be.</li>
+</ul></li>
+<li>Click the Close button to complete the Install.</li>
+</ol></li>
+</ol>
+<h3 id="macos-1">macOS</h3>
+<ul>
+<li>Navigate to https://www.python.org</li>
+<li>Follow the set up instuctions here: [/resources/setup/software.html] to make sure Python greater than or equal to 3.10 is installed.</li>
+</ul>
+<h2 id="s103---python-version-being-run-in-vscode-is-lower-than-3.10">S103 - Python version being run in vscode is lower than 3.10</h2>
+<ul>
+<li>Open the <em>View</em> menu and <em>Command Palette</em>. Type “Python: Select Interpretter” (without the quotes) and press Enter. From the list that pops up choose Python 3.10.1 or greater.</li>
+<li>If you do not see Python 3.10 as an option follow the steps in <strong>S103</strong></li>
+</ul>
+<hr />
+<h2 id="s201---git-is-not-installed.">S201 - Git is not installed.</h2>
+<h3 id="windows-2">Windows</h3>
+<ol type="1">
+<li>Open the Git website: https://git-scm.com</li>
+<li>Look for the button to “Download for Windows” (it is embedded in a monitor graphic)</li>
+<li>After the download begins open the installer</li>
+<li>Allow the app to make changes and install</li>
+<li>Press Next on the Information page</li>
+<li>Press Next on the Destination Location page (default is fine)</li>
+<li>Press Next on the Components page (defaults are fine)</li>
+<li>Press Next on the Start Menu Folder page</li>
+<li>Choose Visual Studio Code as Git’s default editor and press Next</li>
+<li>Press Next/Install on the remaining pages and accept the defaults</li>
+<li>Follow instructions in <strong>S202</strong> and <strong>S203</strong> to finish configuring git.</li>
+</ol>
+<h3 id="macos-2">macOS</h3>
+<ol type="1">
+<li>Open Finder’s Spotlight Search (the magnifying glass in your menu bar or press Command+Space)</li>
+<li>Search for <em>Terminal</em> and open it</li>
+<li>Type <code>git --version</code> and press Enter.</li>
+<li>If you see text displayed such as “git version 2.21.0)” then you already have <code>git</code> installed and can close the terminal and continue on</li>
+<li>If <code>git</code> was not already installed, you should see a pop-up window asking you to install Git / Developer Tools. Accept that install and follow its instructions through completion.</li>
+<li>Follow instructions in <strong>S202</strong> and <strong>S203</strong> to finish configuring git.</li>
+</ol>
+<h2 id="s202---git-email-and-username-are-not-configured">S202 - Git email and username are not configured</h2>
+<ol type="1">
+<li>Open up a new terminal in vscode</li>
+<li>Type <code>git config --global user.email "onyen@live.unc.edu"</code>, using your onyen and email.</li>
+<li>Type <code>git config --global user.name "Your Name"</code>, replacing “Your Name” with your first and last name.</li>
+</ol>
+<h2 id="s203---no-upstream-exists">S203 - No upstream exists</h2>
+<ol type="1">
+<li>Open the <em>View</em> menu and select <em>Command Palette</em></li>
+<li>Type in <em>Git: Add Remote</em> and press enter with the option selected.</li>
+<li>Copy and paste the URL below into the text box that says “Provide repository URL” and press enter:
+<ul>
+<li>https://github.com/comp110-20f/course-material.git</li>
+</ul></li>
+<li>When asked for “Remote name” type in:
+<ul>
+<li>upstream</li>
+</ul></li>
+<li>Press enter.</li>
+<li>Open the <em>View</em> menu and select <em>Command Palette</em> once more</li>
+<li>Type in <em>Git: Fetch From All Remotes</em> and press enter</li>
+<li>The <em>upstream</em> remote repository is now registered! In an upcoming lesson you will learn how to download new material from this repository.</li>
+</ol>
+<h2 id="s204---upstream-does-not-match-course-upstream">S204 - Upstream does not match course upstream</h2>
+<ol type="1">
+<li>Open up a new terminal in vscode</li>
+<li>Type <code>git remote rm upstream</code> and press enter.</li>
+<li>Follow instructions in <strong>S203</strong> to configure the correct remote.</li>
+</ol>
+<hr />
+<h2 id="s301---missing-vscode-packages">S301 - Missing VScode Packages</h2>
+<ol type="1">
+<li>Open up the course workspace</li>
+<li>Open up a new terminal</li>
+<li>Type <code>python -m pip install pip -r requirements.txt</code> and hit enter.</li>
+</ol>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502761.5430112"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502761.5430112"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502761.5430112"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Challenge Question - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502746.5471056">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Challenge Question</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#magic-methods-operator-overloads-and-union-types">Magic Methods, Operator Overloads, and Union Types</a>
+<ul>
+<li><a href="#str__">0: <code>__str__()</code></a>
+<ul>
+<li><a href="#example-usage">Example Usage</a></li>
+</ul></li>
+<li><a href="#mul__">1: <code>__mul__()</code></a>
+<ul>
+<li><a href="#example-usage-1">Example Usage:</a></li>
+</ul></li>
+<li><a href="#union-types">1.1: Union Types</a>
+<ul>
+<li><a href="#example-usage-2">Example Usage:</a></li>
+</ul></li>
+<li><a href="#add__">2: <code>__add__()</code></a></li>
+<li><a href="#union-types-1">2.1: Union Types</a></li>
+<li><a href="#default-parameters">3: Default Parameters</a>
+<ul>
+<li><a href="#example-usage-3">Example Usage</a></li>
+</ul></li>
+<li><a href="#submission">4: Submission</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="magic-methods-operator-overloads-and-union-types">Magic Methods, Operator Overloads, and Union Types</h1>
+<p>For this challenge question, you’re going to modify the <code>Point</code> class you previously wrote to add more functionality! (This will mean modifying the <code>point.py</code> file inside <code>lessons/CQ07</code>. If you weren’t able to get full points for CQ07, you can use <a href="/challenge_questions/point.html">this file</a> as a baseline.)</p>
+<h2 id="str__">0: <code>__str__()</code></h2>
+<p>First, you are going to write a <code>__str__</code> magic method to print out points in a readable way! It should print</p>
+<p><code>x: &lt;x value&gt;; y: &lt;y value&gt;</code></p>
+<p>where <code>&lt;x value&gt;</code> and <code>&lt;y value&gt;</code> are the <code>x</code> and <code>y</code> attributes of the <code>Point</code>, respectively.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre>
+<div class="terminal">$ python 
+>>> from lessons.CQ07.point import Point
+>>> my_point: Point = Point(1.0, 2.0)
+>>> print(str(my_point))
+x: 1.0; y: 2.0
+</div>
+</pre>
+<h2 id="mul__">1: <code>__mul__()</code></h2>
+<p>Now, you are going to add a <code>__mul__()</code> method to overload the multiplication <code>*</code> operator!</p>
+<p>The goal is that when multiplying a <code>Point</code> object with a <code>factor: int</code>, it should create a new <code>Point</code> where both the <code>x</code> and <code>y</code> attributes should be the previous points attributes multiplied by <code>factor</code>. (Hint: This is the same functionality as a method you’ve already written in <code>Point</code>!)</p>
+<h3 id="example-usage-1">Example Usage:</h3>
+<pre>
+<div class="terminal">$ python 
+>>> from lessons.CQ07.point import Point
+>>> my_point: Point = Point(1.0, 2.0)
+>>> new_point: Point = my_point * 3
+>>> print(new_point)
+x: 3.0; y: 6.0
+</div>
+</pre>
+<h2 id="union-types">1.1: Union Types</h2>
+<p>Now, modify <code>__mul__</code> so that the <code>factor</code> parameter can be either a <code>float</code> or an <code>int</code>!</p>
+<h3 id="example-usage-2">Example Usage:</h3>
+<pre>
+<div class="terminal">$ python 
+>>> from lessons.CQ07.point import Point
+>>> my_point: Point = Point(1.0, 2.0)
+>>> new_point: Point = my_point * 3.0
+>>> print(new_point)
+x: 3.0; y: 6.0
+</div>
+</pre>
+<h2 id="add__">2: <code>__add__()</code></h2>
+<p>Now, you are going to add an <code>__add__()</code> method to overload the addition <code>+</code> operator!</p>
+<p>It should behave similarly to multiplication, where it creates a new <code>Point</code>, but now <em>adds</em> to the <code>x</code> and <code>y</code> attributes.</p>
+<pre>
+<div class="terminal">$ python 
+>>> from lessons.CQ07.point import Point
+>>> my_point: Point = Point(1.0, 2.0)
+>>> new_point: Point = my_point + 3.0
+>>> print(new_point)
+x: 4.0; y: 5.0
+</div>
+</pre>
+<h2 id="union-types-1">2.1: Union Types</h2>
+<p>Now, modify <code>__add__</code> so that the <code>factor</code> parameter can be either a <code>float</code> or an <code>int</code>!</p>
+<h2 id="default-parameters">3: Default Parameters</h2>
+<p>Now, you are going to set default parameters for <code>Point()</code> so that when no arguments are given to the constructor, the default values of the <code>x</code> and <code>y</code> attributes are <code>0.0</code>.</p>
+<h3 id="example-usage-3">Example Usage</h3>
+<pre>
+<div class="terminal">$ python 
+>>> from lessons.CQ07.point import Point
+>>> my_point: Point = Point()
+>>> print(my_point)
+x: 0.0; y: 0.0
+>>> my_other_point: Point = Point(2.0, 1.0)
+>>> print(my_other_point)
+x: 2.0; y: 1.0
+</div>
+</pre>
+<h2 id="submission">4: Submission</h2>
+<p>Create your submission with the following command:</p>
+<pre><code>python -m tools.submission lessons/CQ07</code></pre>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

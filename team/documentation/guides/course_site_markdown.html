@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Writing Markdown for the Course site - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502759.3629525">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="logistics-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Writing Markdown for the Course site</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#preparing-to-work">Preparing to work</a></li>
+<li><a href="#creating-a-new-file">Creating a new file</a></li>
+<li><a href="#setting-up-your-file">Setting up your file</a></li>
+<li><a href="#last-steps">Last Steps</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Most content on the course site is just written in markdown(md). This guide walks through the associated styles for different markdown. If you are not starting a new file from scratch and are instead contributing to a file, I would still reccomend viewing the example markdown in <a href="/course-site-markdown#setting-up-your-file">this step</a> if it is your first time contributing.</p>
+<h2 id="preparing-to-work">Preparing to work</h2>
+<p>Make sure you have the dev script running so that you are able to view your work! Run in the <code>site</code> directory:</p>
+<p><code>python -m dev</code></p>
+<p>or</p>
+<p><code>python -m hotdev</code></p>
+<p>The normal <code>dev</code> script will run a dev server where you will need to reload to see any changes. For small changes, mostly written work or editing scripts/ code this is the better dev script to use.</p>
+<p>The <code>hotdev</code> script will run a dev server that will hot-reload a page when you edit the markdown or css files it is built from. This script is particulary useful for styling a page and making css changes.</p>
+<h2 id="creating-a-new-file">Creating a new file</h2>
+<p>Generally we want to keep the site organized so try to put your files in an appropriate place. For instance if your file will live under the resources tab, make sure to put it under resources.</p>
+<ul>
+<li>When creating your md file, name it something that makes sense for your work and then end the file name with .md so that the dev and prod scripts know how to parse it. If the file name has multiple words, we generally use the convention of separating them with dashes.</li>
+</ul>
+<h2 id="setting-up-your-file">Setting up your file</h2>
+<ul>
+<li>Find the file <code>markdown-example.md</code> directly in the site directory and open it.</li>
+<li>In your local version of the course site (the one opened by the development script) add <code>/markdown-example.html</code> to the end of the URL. (There is nothing on the course site that links to this page, so you will have to manually navigate to it.)</li>
+</ul>
+<p>This markdown sheet should give you a good reference point for how all different kinds of markdown will show up as you write it.</p>
+<blockquote>
+<p>You are absolutely welcome to edit this file for learning and experimentation BUT make sure to not commit or push any changes to it.</p>
+</blockquote>
+<ul>
+<li>Go ahead and copy the contents of this file into your new file.</li>
+<li>Once you have filled in your file with the starter content you should be able to view your file. The file paths of the course site are determined by which directories they reside in. If you placed your new file named <code>function-examples.md</code> inside the <code>practice</code> directory inside the <code>resources</code> directory, then you could navigate to this file by adding <code>/resources/practice/function-examples.html</code>.</li>
+</ul>
+<h2 id="last-steps">Last Steps</h2>
+<p>Once you have successfully navigated to your new file there are a few more things to take note of before you are ready to add your own content!</p>
+<ul>
+<li>Note that the title shown on your page corresponds with the <code>title</code> variable at the top of the md file. Edit this to change your page title.</li>
+<li>Make sure to add your own name under the <code>author</code> variable. If you are adding on to a page, you still deserve credit so make sure to add your name to <code>author</code>!</li>
+</ul>
+<p>For more information on how to make use of the other <code>global variables</code> at the top of your page check out <a href="/team/documentation/guides/course_site_features">this guide</a>.</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Ezri White</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502759.3629525"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502759.3629525"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502759.3629525"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

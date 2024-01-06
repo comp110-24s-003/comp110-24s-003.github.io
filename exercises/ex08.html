@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX08 - Linked List Utils - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502763.462825">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX08 - Linked List Utils</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <div class="container">
+                <div class="content"><h2 id="overview">Overview</h2>
+<p>In these exercises you will implement a few algorithms to process a singly-linked list data structure. Just like in the <code>list</code> utility functions, these functions will be <em>pure</em> and are well suited for writing test cases. As such, you will also write test cases demonstrating their usage and verifying their correctness.</p>
+<h2 id="setup">Setup</h2>
+<p>In the <code>exercises</code> directory, create a directory named <code>ex08</code>.</p>
+<h3 id="linked_list.py"><code>linked_list.py</code></h3>
+<p>In the <code>ex08</code> directory, create a file named <code>linked_list.py</code> and establish the following starting contents:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;Utility functions for working with Linked Lists.&quot;&quot;&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="im">from</span> typing <span class="im">import</span> Optional</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a>__author__ <span class="op">=</span> <span class="st">&quot;Your PID&quot;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a><span class="kw">class</span> Node:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;An item in a singly-linked list.&quot;&quot;&quot;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>    data: <span class="bu">int</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a>    <span class="bu">next</span>: Optional[Node]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data: <span class="bu">int</span>, <span class="bu">next</span>: Optional[Node]):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true"></a>        <span class="co">&quot;&quot;&quot;Construct a singly linked list. Use None for 2nd argument if tail.&quot;&quot;&quot;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true"></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true"></a>        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="bu">next</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true"></a>        <span class="co">&quot;&quot;&quot;Produce a string visualization of the linked list.&quot;&quot;&quot;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true"></a>        <span class="cf">if</span> <span class="va">self</span>.<span class="bu">next</span> <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>data<span class="sc">}</span><span class="ss"> -&gt; None&quot;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true"></a>            <span class="cf">return</span> <span class="ss">f&quot;</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>data<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">next</span><span class="sc">}</span><span class="ss">&quot;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true"></a><span class="kw">def</span> is_equal(lhs: Optional[Node], rhs: Optional[Node]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Test if two linked lists are deeply (values and order) equal to one another.&quot;&quot;&quot;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true"></a>    <span class="cf">if</span> lhs <span class="kw">is</span> <span class="va">None</span> <span class="kw">and</span> rhs <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true"></a>    <span class="cf">elif</span> lhs <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> rhs <span class="kw">is</span> <span class="va">None</span> <span class="kw">or</span> lhs.data <span class="op">!=</span> rhs.data:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true"></a>        <span class="cf">return</span> is_equal(lhs.<span class="bu">next</span>, rhs.<span class="bu">next</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true"></a><span class="kw">def</span> last(head: Optional[Node]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Returns the last value of a Linked List, or raises a ValueError if the list is empty.&quot;&quot;&quot;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true"></a>    <span class="cf">if</span> head <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;last cannot be called with None&quot;</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div>
+<p>There is some <strong>magic</strong> happening in the above code listing. The <code>__str__</code> magic method is used to produce string representations of objects. So if you create a Node object and print it, python will <strong>automagically</strong> call the <code>__str__</code> method and print out your custom string message. This will be super helpful when you are creating your own linked lists for testing.</p>
+<p>For example, without a <code>__str__</code> method defined on our Node class, we would expect to see something like this:</p>
+<pre><code>&gt;&gt;&gt; example_node = Node(3, Node(2, None))
+&lt;Node object at 0x7f959129e130&gt;</code></pre>
+<p>But if we have the <code>__str__</code> method defined as above, we should get:</p>
+<pre><code>&gt;&gt;&gt; example_node = Node(3, Node(2, None))
+3 -&gt; 2 -&gt; None</code></pre>
+<p>Additionally, we have provided the <code>is_equal</code> function for testing if two linked lists are equivalent to each other. We will go over this function in class on Thursday, and you should make use of it when writing tests cases for all functions after max.</p>
+<h3 id="linked_list_test.py"><code>linked_list_test.py</code></h3>
+<p>Establish a file for your test definitions named <code>linked_list_test.py</code> with the following contents:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;Tests for linked list utils.&quot;&quot;&quot;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="im">import</span> pytest</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a><span class="im">from</span> exercises.ex08.linked_list <span class="im">import</span> Node, last</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>__author__ <span class="op">=</span> <span class="st">&quot;Your PID&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a><span class="kw">def</span> test_last_empty() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Last of an empty Linked List should raise a ValueError.&quot;&quot;&quot;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a>    <span class="cf">with</span> pytest.raises(<span class="pp">ValueError</span>):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true"></a>        last(<span class="va">None</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true"></a><span class="kw">def</span> test_last_non_empty() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Last of a non-empty list should return its last data value.&quot;&quot;&quot;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true"></a>    linked_list <span class="op">=</span> Node(<span class="dv">1</span>, Node(<span class="dv">2</span>, Node(<span class="dv">3</span>, <span class="va">None</span>)))</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true"></a>    <span class="cf">assert</span> last(linked_list) <span class="op">==</span> <span class="dv">3</span></span></code></pre></div>
+<p>As you can see, a skeleton definition of <code>last</code> and some simple tests for <code>last</code> are provided to help get you started. You will responsible for defining the other functions and writing their tests.</p>
+<p><strong>In order to ask questions about a function in office hours, you must demonstrate example test(s) for it first. If you do not have tests for a function yet, we will only help you setup an example test or two and will ask you to come back for your original question after you have had time to try again.</strong></p>
+<p>To run your tests, run <code>python -m pytest exercises/ex08/linked_list_test.py</code> in the terminal. This will be a more reliable way to test your functions than the testing/beaker tab in VSCode.</p>
+<h2 id="requirements">Requirements</h2>
+<p>You must use recursive function calls to implement the functions below. If you use loops your work for that function will be disqualified.</p>
+<h2 id="last-15-points"><code>last</code> – 15 points</h2>
+<p>Given an <code>Optional[Node]</code> representing the <code>head</code> Node of a Linked List of any length, including empty, return the <code>data</code> of the last node in the list. If the list is empty, raise a <code>ValueError</code> as shown below. A skeleton definitition is provided with the correct function signature above and example of how to raise a <code>ValueError</code>.</p>
+<h2 id="value_at-15-points"><code>value_at</code> – 15 points</h2>
+<p>Given a <code>head</code> <code>Optional[Node]</code> and an <code>index</code> <code>int</code> as inputs, return the <em>data</em> of the Node stored at the given index, or raise an <code>IndexError</code> if the <code>index</code> does not exist.</p>
+<p>Hint #0: In the recursive case, you will need to modify both arguments to bring your recursive call closer to the base case of hint #2. Start by diagramming on paper what this means for a call to <code>value_at</code> with a list of two or more nodes and an initial index of 1.</p>
+<p>Hint #1: An edge case occurs when the list is empty. Raise an <code>IndexError</code>, e.g.: <code>raise IndexError("Index is out of bounds on the list.")</code></p>
+<p>Hint #2: A second base case occurs when the index is 0. Here you should return the data of the current <code>Node</code> being processed on the list.</p>
+<p>Example usage:</p>
+<pre><code>&gt;&gt;&gt; value_at(Node(10, Node(20, Node(30, None))), 0)
+10
+&gt;&gt;&gt; value_at(Node(10, Node(20, Node(30, None))), 1)
+20
+&gt;&gt;&gt; value_at(Node(10, Node(20, Node(30, None))), 2)
+30
+&gt;&gt;&gt; value_at(Node(10, Node(20, Node(30, None))), 3)
+IndexError: Index is out of bounds on the list.</code></pre>
+<p>Skeleton function implementation:</p>
+<pre><code>def value_at(head: Optional[Node], index: int) -&gt; int:
+    raise IndexError(&quot;Index is out of bounds on the list.&quot;)</code></pre>
+<h2 id="max-15-points"><code>max</code> – 15 points</h2>
+<p>Given a <code>head</code> <code>Node</code>, return the maximum data value in the linked list. If the linked list is empty, raise a <code>ValueError</code>.</p>
+<pre><code>&gt;&gt;&gt; max(Node(10, Node(20, Node(30, None))))
+30
+&gt;&gt;&gt; max(Node(10, Node(30, Node(20, None))))
+30
+&gt;&gt;&gt; max(Node(30, Node(20, Node(10, None))))
+30
+&gt;&gt;&gt; max(None)
+ValueError: Cannot call max with None.</code></pre>
+<p>Skeleton function implementation:</p>
+<pre><code>def max(head: Optional[Node]) -&gt; int:
+    raise ValueError(&quot;Cannot call max with None&quot;)</code></pre>
+<h2 id="linkify-20-points"><code>linkify</code> – 20 points</h2>
+<p>Given a <code>list[int]</code>, your <code>linkify</code> function should return a Linked List of Nodes with the same values, in the same order, as the input <code>list</code>.</p>
+<p>You will find it helpful to use Python’s slice subscription notation here, which we haven’t discussed in full but you should now be able to pickup quickly. Try the following in the REPL:</p>
+<pre><code>&gt;&gt;&gt; items = [10, 20, 30, 40]
+&gt;&gt;&gt; items[1]
+20
+&gt;&gt;&gt; items[1:3]
+[20, 30]
+&gt;&gt;&gt; items[:3]
+[10, 20, 30]
+&gt;&gt;&gt; items[1:]
+[20, 30, 40]</code></pre>
+<p>Notice when using slice notation a new <code>list</code> is returned to you whose values start with the first index number, inclusive, and end with the index number following the colon, exclusive. If you leave off the starting index, it defaults to <code>0</code>. If you leave off the ending index, it defaults to the <code>len</code> of the <code>list</code>.</p>
+<p>A skeleton for <code>linkify</code> is:</p>
+<pre><code>def linkify(items: list[int]) -&gt; Optional[Node]:
+    return None</code></pre>
+<p>Example usage:</p>
+<pre><code>&gt;&gt;&gt; linkify([1, 2, 3])
+1 -&gt; 2 -&gt; 3 -&gt; None</code></pre>
+<p>After you are certain of the correctness of your <code>linkify</code> function, you may find it valuable to use in writing test cases for the following functions.</p>
+<h2 id="scale-20-points"><code>scale</code> – 20 points</h2>
+<p>Given a head <code>Node</code> of a linked list and a <code>int</code> <code>factor</code> to scale by, return a new linked list of <code>Node</code>s where each value in the original list is scaled (multiplied) by the scaling <code>factor</code>.</p>
+<p>Example usage:</p>
+<pre><code>&gt;&gt;&gt; scale(linkify([1, 2, 3]), 2)
+2 -&gt; 4 -&gt; 6 -&gt; None</code></pre>
+<p>Skeleton function implementation:</p>
+<pre><code>def scale(head: Optional[Node], factor: int) -&gt; Optional[Node]:
+    return None</code></pre>
+<h2 id="linting-and-type-correctness---15-points">Linting and Type Correctness - 15 Points</h2>
+<p>Your code will need to pass the common stylistic and type checking guidelines used throughout the semester.</p>
+<h2 id="testing">Testing</h2>
+<p>You are required to write at least 2 tests for each of the functions above. This will be good practice in thinking about the different edge and use cases for each. Our autograder will be checking for this.</p>
+<p>Reminder to change function names and rediscover tests as you add them. Test functions must have unique names and their names must begin with test_.</p>
+<h2 id="hand-in-will-open-soon">Hand-in Will Open Soon</h2>
+<p>You should write your own tests to be confident of your implementations. None of these functions require much code to complete, but will take some mental gymnastics to think about approaching recursively.</p>
+<p>Remember: Focus on what you need to do with only the head node and then leave the rest of the problem working through the rest of the list to the recursive function call.</p>
+<p>Go ahead and delete any submission zips lingering around in your workspace from the previous exercise.</p>
+<p>When you are ready to submit for grading, close out any open Python Debug Console terminals using the Trash Can and then open up a clean, new terminal.</p>
+<p><code>python -m tools.submission exercises/ex08</code></p>
+</div>
+            </div>
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kris Jordan, Kaki Ryan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

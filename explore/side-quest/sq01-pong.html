@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Pong! - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502745.306812">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="explore-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Pong!</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#step-0-understanding-the-problem">Step 0: Understanding the problem</a></li>
+<li><a href="#step-1-initialize">Step 1: initialize()</a></li>
+<li><a href="#step-2-keypress">Step 2: keypress()</a></li>
+<li><a href="#step-3-model">Step 3: model()</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#bonus">Bonus</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="getting-started">Getting started</h2>
+<blockquote>
+<p>In this side quest, you’ll learn how to make the classic Pong game! That may seem a little daunting, but don’t worry - you are provided a code skeleton that’s been organized in, hopefully, an understandable way. Your task will be to implement 3 functions: <code>initialize</code>, <code>keypress</code>, and <code>model</code>, preferably in that order. You are also provided a solution to look at in case you get stuck. Feel free to email Jesse (jessew13@email.unc.edu) with any concerns.</p>
+</blockquote>
+<h2 id="setup">Setup</h2>
+<p>We’ll be using <a href="https://www.pygame.org/">pygame</a>. Go to your terminal and type <code>pip install pygame</code>. This will install it if it’s not installed.</p>
+<p>Also, create a <code>pong</code> directory somewhere in your workspace and create a file inside. <a href="https://github.com/comp110sidequest/downloads/blob/main/pong_skeleton.py"><strong>Copy the skeleton code</strong></a> into the file. It also includes comments with links to documentation for provided code, if you’re interested.</p>
+<p>Here’s the <a href="https://github.com/comp110sidequest/downloads/blob/main/pong_solution.py"><strong>barebones sample solution</strong></a>. You might want to peek at the solution after each step/substep to make sure you’re on the right track.</p>
+<p>A fancier sample solution with more features might be released later (TM). It hasn’t been coded yet.</p>
+<p>And a quick but important tip: In this course, you’re accustomed to starting your code from scratch. It’s also a valuable skill to be able to read someone else’s code, understand it, and build upon it. Please take a few minutes to analyze the skeleton code. Get an idea of its organization and make sense of the predefined variables (you should probably read through Step 0 first). Read the docstrings and comments - they’re written specifically for people to read!</p>
+<h2 id="step-0-understanding-the-problem">Step 0: Understanding the problem</h2>
+<p>It’s always important to understand the problem and our tools before we start coding! Here’s a picture of the barebones output:</p>
+<p><img src="/static/side-quest/fa21/barebones-output.png" /></p>
+<p>Here’s the same picture with some very important labels.</p>
+<p><img src="/static/side-quest/fa21/labels.png" /></p>
+<p>Some things to notice:</p>
+<ol type="1">
+<li>Coordinate system
+<ul>
+<li>Pygame’s coordinate system has (0, 0) as the <strong>top left</strong> corner.</li>
+<li>+x is in the east direction.</li>
+<li><strong>+y</strong> is in the <strong>south</strong> direction.</li>
+<li>So, the bottom right corner is <code>[WIDTH, HEIGHT]</code>, where <code>WIDTH</code> and <code>HEIGHT</code> are named constants (provided in skeleton code) for the max width and height of the screen.</li>
+</ul></li>
+<li>Paddle 1 is the left paddle. Paddle 2 is the right paddle.</li>
+<li>Paddle and ball positions are (in this implementation) single points in the <strong>center</strong> of the object.
+<ul>
+<li>This is heavily used in the implementation of <code>model</code>.</li>
+<li>Paddle positions are of type <code>int</code>, just a y coordinate, because their x coordinates are constants. Ball position is of type <code>list[int]</code> with 2 elements, an x and y coordinate.</li>
+<li><strong>Check for understanding</strong>: In this picture, what is <code>pad1_ypos</code>? It is <code>HEIGHT - HALF_PAD_HEIGHT</code>.</li>
+<li>If paddle 1’s position were to have an x component, what would it be? It would be <code>HALF_PAD_WIDTH</code>.</li>
+<li>Disclaimer: we should probably add/subtract 1 from some of these expressions since the coordinates are zero-indexed. But I think it’s unnecessary complexity, so the sample solution doesn’t do that.</li>
+</ul></li>
+<li>Velocity
+<ul>
+<li>Paddles and ball both have velocity.</li>
+<li>Essentially, we add an object’s velocity to its position each game tick (or frame) to update its position.</li>
+<li>The paddles just have y velocity, so <code>pad1_vel</code> and <code>pad2_vel</code> are of type <code>int</code>.</li>
+<li>Ball has x and y velocity, so <code>ball_vel</code> is a <code>list[int]</code>: <code>[x velocity, y velocity]</code>.</li>
+</ul></li>
+</ol>
+<p>Lastly, take a look at the <code>main()</code> function in the skeleton code. It’s already been fully implemented for you, so you shouldn’t need to modify it. Note that <code>model()</code> and <code>keypress()</code> are part of a <code>while True:</code> game loop, meaning they’re both called several times per second. <code>keypress()</code> constantly evaluates keyboard input and <code>model()</code> constantly calculates and changes positions and velocities. Inside <code>model()</code>, once you get to it, you should add velocity components to position components only once. The overall effect, since <code>model()</code> is called constantly, will be prolonged movement.</p>
+<h2 id="step-1-initialize">Step 1: initialize()</h2>
+<p>Initialize the declared global variables to their default values (described in docstring). These are the values that the objects are set to before the game begins and each time a player scores. This should be 4 simple lines of code, but <strong>remember to use the named constants</strong> provided to you.</p>
+<h2 id="step-2-keypress">Step 2: keypress()</h2>
+<p>This function takes keyboard input using <code>pygame.key.get_pressed()</code>, which is assigned to the <code>keys</code> variable. Conceptually, it’s simple. According to its <a href="https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed">documentation</a>, it returns a sequence of <code>bool</code>, indexed by key constants.</p>
+<p>For example, <code>keys[pygame.K_w]</code> evaluates to <code>True</code> if w is pressed (at the time the function is called) and <code>False</code> if it isn’t.</p>
+<p>Use <code>keys</code> to track the states of the states of w, s, and the UP and DOWN arrow keys on the keyboard. The constants are <code>pygame.K_w</code>, <code>pygame.K_s</code>, <code>pygame.K_UP</code>, and <code>pygame.K_DOWN</code>.</p>
+<p>Set <code>pad1_vel</code> and <code>pad2_vel</code> according to the keys that are being pressed. Use the <code>PAD_VELOCITY</code> named constant.</p>
+<h2 id="step-3-model">Step 3: model()</h2>
+<p>This is the last step! But it is difficult (lots of calculation) and has a few substeps. To keep things organized, <code>model()</code> has docstrings that tell you where you should put your code for each substep. You could also define your own helper functions.</p>
+<p>Code that draws the paddles and ball has been provided so that you can check your work as you go along (run using <code>python -m ...</code>, based on the directory you have it in and the name of the file).</p>
+<p>You should do the substeps in this order since you’ll be guided more in the first step. You’ll be given less instruction in later steps.</p>
+<p>If you’re stuck on a step, draw a picture!</p>
+<ol type="1">
+<li>Paddles: check vertical bounds
+<ul>
+<li>First, write down what the lower and upper bounds for <code>pad1_pos</code> are. They’re not <code>0</code> and <code>HEIGHT</code>. You should read through Step 0 again if you don’t remember the coordinate system and how position is defined for this program. &gt; By lower and upper bounds, I mean lowest possible point on the screen and highest possible point on the screen, not min and max value. The min value is actually the highest point on the screen because of the coordinate system…</li>
+<li>If <code>pad1_ypos</code> is between those bounds, add <code>pad1_vel</code> to <code>pad1_ypos</code>.</li>
+<li>Else, if <code>pad1_ypos</code> is at the upper bound and its velocity is in the downward direction, add <code>pad1_vel</code> to <code>pad1_ypos</code>. This prevents the paddle from moving off-screen.</li>
+<li>Else, if <code>pad1_ypos</code> is at the lower bound and its velocity is in the upward direction, add <code>pad1_vel</code> to <code>pad1_ypos</code>.</li>
+<li>Check your work by running the program.</li>
+<li>Copy and paste the code and modify variable names for paddle 2.</li>
+<li>When checking for out of bounds, the solution uses <code>&lt;=</code> and <code>&gt;=</code> instead of <code>==</code> to be safe. Though, <code>==</code> does work here.</li>
+</ul></li>
+<li>Ball: check vertical bounds
+<ul>
+<li>Check if the ball is at the upper or lower bounds. Use the provided named constants. You might want to draw a picture.</li>
+<li>What should happen to its velocity?</li>
+</ul></li>
+<li>Ball: check horizontal bounds
+<ul>
+<li>Check if the ball is at the <strong>left</strong> bound.</li>
+<li>Once it’s there, what are the two possible cases that could occur? Hint: for one of those cases, use a function you’ve already implemented.</li>
+<li>How should you handle those cases?</li>
+<li>Copy and paste the code to check the right bound. You’ll need to modify it.</li>
+</ul></li>
+<li>Ball: update ball position
+<ul>
+<li>Almost done! This should be only two very simple lines of code.</li>
+</ul></li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Congrats, you’ve made Pong! You’ve learned quite a bit about simple game design in <code>pygame</code> along the way.</p>
+<h2 id="bonus">Bonus</h2>
+<p>Here are some features you might want to implement. As a coder, you might need to do some Googling to figure these out. Feel free to modify the parts labelled DO NOT MODIFY now that you’re done.</p>
+<ul>
+<li>Player 2 thinks it’s unfair that the ball is always thrown in his direction. Randomize the direction of the ball.</li>
+<li>Add a pausing feature.</li>
+<li>Display the score on <code>screen</code>.</li>
+</ul>
+<p>Here are some thought experiments.</p>
+<ul>
+<li>Did you catch the edge case in <code>keypress()</code>? What happens if someone presses two keys at the same time?</li>
+<li>Comment out <code>screen.fill(BLACK)</code> in <code>main()</code>, which should be line 45. What happens? What does this imply?</li>
+<li>In the solution, check out the <code>MAKES_BOUNCING_LOOK_NICER</code> constant, where it’s used, and comments on those lines.</li>
+<li>For code of larger scale than a class exercise, organization is very important, as you may have seen. In Java (which is currently the language used in COMP210 and COMP310), you’ll get hands-on experience with organizing large(ish)-scale projects. You’ll also learn about <a href="https://www.tutorialspoint.com/java/java_encapsulation.htm">encapsulation</a> and <a href="https://www.tutorialspoint.com/python_design_patterns/python_design_patterns_model_view_controller.htm">Model-View-Controller</a>, which aren’t used in this project but are relevant.</li>
+</ul>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Jesse Wei</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

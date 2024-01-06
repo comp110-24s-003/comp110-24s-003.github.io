@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team Lead Guide to ShiftOverflow - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502757.4947855">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="team-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Team Lead Guide to ShiftOverflow</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#key-objectives">Key Objectives</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#pre-semester-preparation">Pre-Semester Preparation</a>
+<ul>
+<li><a href="#getting-new-members-on-board">Getting New Members On Board</a></li>
+<li><a href="#log-in-issues">Log In Issues</a></li>
+<li><a href="#airtable">Airtable</a></li>
+<li><a href="#checking-and-changing-peoples-teams-and-admin-status">Checking and Changing People’s Teams and Admin Status</a></li>
+<li><a href="#updating-shift-lead-credentials">Updating Shift Lead Credentials</a></li>
+<li><a href="#making-sure-the-allocation-update-script-uses-the-current-semester-data-and-can-run">Making Sure the Allocation Update Script Uses the Current Semester Data and Can Run</a></li>
+<li><a href="#setting-recurring-reminders-for-availability-updates">Setting Recurring Reminders for Availability Updates</a></li>
+</ul></li>
+<li><a href="#generating-a-schedule">Generating a Schedule</a>
+<ul>
+<li><a href="#update-allocations">Update Allocations</a></li>
+<li><a href="#check-or-update-shift-types">Check or Update Shift Types</a></li>
+<li><a href="#add-shifts">Add Shifts</a></li>
+<li><a href="#select-dates-for-generation">Select Dates for Generation</a></li>
+<li><a href="#schedule-generation">Schedule Generation</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="key-objectives">Key Objectives</h2>
+<ul>
+<li>Setup</li>
+<li>Pre-Semester Preparation</li>
+<li>Generating a Schedule</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>To use ShiftOverflow (both for preparing for the semester and for generating weekly schedules), you will need access to the AWS server and MySQL database. Someone who currently has access can get your SSH key set up to be recognized.</p>
+<p>Adding ShiftOverflow to your ssh config is helpful since it’s frequently accessed. For reference, here’s mine (in my <code>~/.ssh/config</code>) which lets me use the command <code>ssh so</code> in order to connect to the server or work with the database:</p>
+<figure>
+<img src="../../resources/shiftoverflow/config.png" alt="" /><figcaption>image</figcaption>
+</figure>
+<p>This is really all you need, though setting up access to MySQL through MySQLWorkbench is helpful when performing manual queries, and the <code>LocalForward</code> piece in the screenshot above is important for that.</p>
+<p>To access the database outside of MySQLWorkbench, you must be ssh’ed into the server. From there, type in <code>sodb</code> which is an alias for the specific command you need to enter the database. This will lead to a prompt for a password, at which point you should type in <code>shiftoverflow</code> + press enter (note: you will not be able to see what you are typing). At this stage, you are in MySQL.</p>
+<hr />
+<h2 id="pre-semester-preparation">Pre-Semester Preparation</h2>
+<h3 id="getting-new-members-on-board">Getting New Members On Board</h3>
+<p>At the start of all or most semesters, new TAs go through orientation. At orientation, you’ll want them to individually sign up for ShiftOverflow. Here’s a tutorial video for them to watch on how to sign up &amp; navigate ShiftOverflow: <a href="https://youtu.be/xUsdSnAreKA">ShiftOverflow intro video</a></p>
+<p>The following paragraph is a potential message template you can use to send to all new members to get them started and familiar with ShiftOverflow:</p>
+<blockquote>
+<p>Hello and welcome to the team! For scheduling UTA office hours each week we use a website called ShiftOverflow. That’s where you can indicate when you’re available to work and also see your schedule each week. <a href="https://youtu.be/xUsdSnAreKA">Here’s a video tutorial</a> of how to sign up and how to use ShiftOverflow so please go through the signup steps and fill in your availability for next week’s setup days. For signing up, the invite code is <strong>cpu_hat</strong>. Let us know in the <em>#newmembers</em> Slack channel if you run into any issues or have any questions doing this!</p>
+</blockquote>
+<p>You must provide an invite code to them before they can sign up in order for them to join the correct team. To find the current invite code, within MySQL run the query:</p>
+<p><code>SELECT inviteCode FROM shiftoverflow.team where name="COMP 110";</code></p>
+<p>Remove the <code>where</code> clause and change <code>inviteCode</code> to <code>*</code> if wanting to see info about every team.</p>
+<p><strong>Important</strong>: The email they use to sign up must match the email associated with them in Airtable (and if not, this will need to be corrected in order for allocations to be automated).</p>
+<h3 id="log-in-issues">Log In Issues</h3>
+<p>Occasionally, people have experienced being unable to login to ShiftOverflow or seeing a completely blank page upon navigating to the site. This usually happens when the server runs out of space so clearing old logs or unused items on the server can help stop this (more detailed steps for going about this are described in the <a href="/shiftoverflow#Troubleshooting">ShiftOverflow Development guide</a>).</p>
+<h3 id="airtable">Airtable</h3>
+<p>To get access to Airtable, talk to Kris or Kaki. Specifically, you will want access to the Appointments table. This way, you can find the View for the current semester (ie SP21) to know who should be on which teams and current office hours allocations.</p>
+<h3 id="checking-and-changing-peoples-teams-and-admin-status">Checking and Changing People’s Teams and Admin Status</h3>
+<p>A lot of the pre-semester preparation involves making sure people are on the right teams in ShiftOverflow with the right credentials. This can be done any time before the first round of schedule generation. As mentioned above, referencing the Airtable is helpful in knowing who should be where.</p>
+<p>For former members, it is not strictly necessary to move them out of the COMP 110 team in MySQL but it can be helpful to reduce clutter in output and on ShiftOverflow’s <code>Manage Members</code> admin page. This (combined with changing the invite code periodically) also prevents previous members from adding availability, getting scheduled, or adding themselves to schedules when they are no longer TAing. If you move them off of the COMP 110 team, the <code>Retirement Home</code> team is a good place to move them to.</p>
+<p>In the <a href="https://github.com/comp110/team110">team repo</a> we have jupyter notebooks you can use to change someone’s team or make a new person admin. You can find these in the <code>team110/code/admin/shiftoverflow</code> directory. Alternatively, you can perform those actions manually in the database by completing the following steps:</p>
+<ol type="1">
+<li><p>Find the member’s personId using: <code>SELECT id FROM shiftoverflow.person where email="&lt;email-address&gt;";</code> where the value in quotes is that member’s email address. You can also query by other information like <code>firstName</code> or <code>lastName</code>.</p>
+<blockquote>
+<p>example: <code>SELECT id FROM shiftoverflow.person where email="test@gmail.com</code></p>
+</blockquote></li>
+<li><p>Use the output <code>personId</code> from the previous step to find that person’s current team memberships: <code>select teamId from membership where personId=&lt;personId&gt;;</code></p></li>
+</ol>
+<blockquote>
+<p>example: <code>select teamId from membership where personId=26</code></p>
+</blockquote>
+<ol start="3" type="1">
+<li><p>The numeric output(s) from the query above represent the <code>teamId</code>s of the teams the person is on. Find out which team that id refers to and what other teams exist in the <code>team</code> table: <code>SELECT * FROM shiftoverflow.team;</code></p></li>
+<li><p>Replace the current team id to the desired team id (in this example <strong>5</strong> is the new id and <strong>1</strong> is the old team id): <code>UPDATE shiftoverflow.membership SET teamId=&lt;newTeamId&gt; WHERE personId=&lt;personId&gt; and teamId=&lt;oldTeamId&gt;;</code></p></li>
+</ol>
+<blockquote>
+<p>example: <code>UPDATE shiftoverflow.membership SET teamId=5 WHERE personId=26 and teamId=1;</code></p>
+</blockquote>
+<p>Before you can generate weekly schedules you’ll also need to make yourself an admin on ShiftOverflow which can be done using one of the jupyter notebooks mentioned above or manually via MySQL: <code>update membership set isAdmin=1 where personId=&lt;yourPersonId&gt; and teamId=1;</code></p>
+<h3 id="updating-shift-lead-credentials">Updating Shift Lead Credentials</h3>
+<p>Each semester, people who have gained enough experience can now be designated shift lead. This usually happens for people who have TA’d for &gt;= 1 semester TAing. It is good to keep this attribute up to date so each shift can maintain a shift lead. You can give someone the shift lead attribute through the web UI or through MySQL directly.</p>
+<p>To change this credential via MySQL, use this query replacing <code>&lt;personId&gt;</code> with the actual <code>personId</code> of the person you are making a shift lead (the 1 is the id of the 110 shift lead attribute): <code>INSERT INTO shiftoverflow.person_attribute (attributeId, personId) VALUES (1, &lt;personId&gt;);</code></p>
+<p>To change this credential via the web UI, go to the admin page on ShiftOverflow by clicking the <strong>Admin Page</strong> button on the bottom left of the home screen. If you do not see this button, make sure you went through the step to make yourself admin. Once on the Admin Page, select <strong>Manage Members</strong> (and if you are an admin on multiple teams, select the team you are working on). Then, scroll to the person you want to make a shift lead. This will show you their info, with the last piece being <strong>Attributes</strong>. There, select the <strong>plus sign in a dashed circle</strong> which will show you a dropdown of possible attributes, from which you want to select <strong>Shift Lead</strong>.</p>
+<h3 id="making-sure-the-allocation-update-script-uses-the-current-semester-data-and-can-run">Making Sure the Allocation Update Script Uses the Current Semester Data and Can Run</h3>
+<p>The script to update allocations can be found in the team repo under <code>team110/code/admin/shiftoverflow/allocations</code>. In order for the script (<code>update_allocations.js</code>) to work, you will need to get the <code>credentials.json</code> file from someone who currently has it (likely whoever is currently scheduling) and put it in the same directory, at the same level, as the script. The script pulls from Airtable for up-to-date allocations. <strong>Line 25</strong> specifies the View and should reflect the current term (ex. view: “FA20”). This script is used before schedule generation each week to ensure correct allocations are used, or whenever a change is made to allocations. More details on how to run the script are included in the upcoming ‘Update Allocations’ section.</p>
+<h3 id="setting-recurring-reminders-for-availability-updates">Setting Recurring Reminders for Availability Updates</h3>
+<p>To set recurring Slack reminders for people to submit updates to their availability, in a new Slack message type:</p>
+<blockquote>
+<p>/remind #announcements to please get updates to your availability for next week’s office hours in on shiftoverflow.com by tonight at 5PM! every Wednesday at 12:00PM</p>
+</blockquote>
+<p>This will set the recurring reminder to send every Wednesday at noon in the #announcements channel from Slackbot. It is done on Wednesdays since usually the goal is to generate a schedule by Thursday night, which is a nice balance between giving people enough time to account for changes in availability and enough advance notice for Sunday office hours.</p>
+<hr />
+<h2 id="generating-a-schedule">Generating a Schedule</h2>
+<p>Schedule generation usually happens weekly on Thursdays. It is important to be aware that any schedules you generate are automatically published, and each time you generate a schedule, a notification with the schedule score and output is sent automatically to the <code>#shiftoverflow-actions</code> channel in Slack. The automatic publishing of every schedule generated can cause confusion if you create a schedule &amp; then later re-generate that same schedule, as people may mistake a draft version of the schedule for the final version. This can be mitigated by completing the schedule generation in one sitting or doing it at a time when people are unlikely to be checking ShiftOverflow (such as when office hours are closed).</p>
+<p>The following steps walk through the process of generating a schedule.</p>
+<h3 id="update-allocations">Update Allocations</h3>
+<ol type="1">
+<li><p>In order to update allocations, you first need to connect to the MySQL database, so <code>ssh</code> into the server in a separate terminal window, since the connection only needs to be open in the background and we do not need to do anything from within the server.</p></li>
+<li><p>To run the allocation update script, in a terminal within the <code>team110/code/admin/shiftoverflow/allocations</code> directory run <code>node update_allocations.js</code> and you will see the output in the same console, including any errors as well as how many hours were allocated per person and the combined total number of hours allocated to office hours.</p></li>
+<li><p>If you see output about issues regarding there not being a match for a person between MySQL and Airtable, it is likely an issue with them having used different emails for team communication and ShiftOverflow, so using one email address per person will reconcile such issues.</p></li>
+</ol>
+<p>For all people whose emails were able to match between Airtable and MySQL, the script updates their office hours allocation in MySQL based on the corresponding current value in Airtable. Comparing the total number of hours allocated that gets reported at the end of the script’s execution (as well as reported individual allocations if necessary) with the values in Airtable is helpful for verifying that all updates occurred as expected. Example output is shown below:</p>
+<figure>
+<img src="../../resources/shiftoverflow/alloc_output.png" alt="" /><figcaption>image</figcaption>
+</figure>
+<h3 id="check-or-update-shift-types">Check or Update Shift Types</h3>
+<p>In the Admin Page, select <strong>Manage Shift Types</strong> (and select the team you are generating a schedule for if you are an admin on multiple teams). Here you will see all Shift Types for that team. An example is below:</p>
+<figure>
+<img src="../../resources/shiftoverflow/shift_types.png" alt="" /><figcaption>image</figcaption>
+</figure>
+<ol type="1">
+<li><p>The <strong>110 OH</strong> is an editable field &amp; serves as the name of the shift that will appear on the schedule. Other key elements are the <strong>min</strong> (3) and <strong>max</strong> (10) people. When in-person office hours are held, the max is often constrained based on how many physical desks are available in the office hours room. The other important piece is the <strong>shift lead constraint</strong> which indicates you want the algorithm to try to have every shift of this type to have a lead.</p></li>
+<li><p>The plus button at the top right will create a duplicate of that shift type, and the adjacent x button will delete that shift type.</p></li>
+<li><p>The <strong>Add shift type</strong> button allows you to create a new shift type.</p></li>
+</ol>
+<p>Shift types are used when building the desired hours and shifts for the schedule you are about to generate.</p>
+<h3 id="add-shifts">Add Shifts</h3>
+<p>In the Admin Page, select <strong>Manage Shifts</strong>. If you’re admin on multiple teams, you’ll need to select the team you’re making a schedule for. Also on this page you will see a calendar and above it a <strong>Select Shift Type</strong> button prefilled with a default shift type that can be changed by clicking &amp; choosing from the dropdown of all available shift types. The type you select is what will be scheduled. It is possible to mix and match shift types with some from one type and shifts of another type as well.</p>
+<figure>
+<img src="../../resources/shiftoverflow/add_shifts.png" alt="" /><figcaption>image</figcaption>
+</figure>
+<ol type="1">
+<li><p>In the calendar on this page, the numbers on the left refer to hours and the dates at the top days. To add a shift to a timeslot, click in the box corresponding to that timeslot. You may also create consecutive shifts by clicking in a timeslot to start the range you want and dragging through the desired slots.</p></li>
+<li><p>To delete a shift, click the <strong>x</strong> on the right side of the shift’s box. It is also possible to schedule multiple shifts for the same hour. To do that, once a shift is allocated to that timeslot, click the white background portion to the right of the already scheduled shift. Simultaneous shifts do not need to be the same type. It’s also worth knowing that if you do this, a person can be scheduled for multiple simultaneous shifts.</p></li>
+<li><p>Note that sometimes there is a delay between when you click or drag and when the shifts appear. This is sometimes resolved by waiting a few seconds or by clicking to make another shift somewhere else to force an update (then deleting it if you don’t actually want that shift).</p></li>
+<li><p>Also note that this calendar goes from 8am to 10pm but the home page schedule view only shows 10am to 8pm, so adding shifts outside this range may schedule people in shifts that won’t appear.</p></li>
+</ol>
+<p>Additionally, when you add shifts on the <strong>Manage Shifts</strong> page, they will appear as shifts with 0 people in the full schedule view on the homepage. Similarly, deleting shifts in the <strong>Manage Shifts</strong> page will cause them to be removed from the schedule view on the homepage as well so be careful not to delete shifts once the schedule has been released.</p>
+<h3 id="select-dates-for-generation">Select Dates for Generation</h3>
+<ol type="1">
+<li><p>In the Admin Page head to the <strong>Generate Schedule</strong> tab and if necessary select which team you’re scheduling. Then, select which shift types you want included. By default, all existing shift types are selected but only the ones you selected and added in the Manage Shifts tab will be used.</p></li>
+<li><p>Next, select the <strong>Choose dates</strong> button below all the listed shift types to open a date picker popup and select the dates you are scheduling for. After, select <strong>Done</strong>.</p></li>
+<li><p>ShiftOverflow will report under the <strong>Choose dates</strong> button any members of the team who have less availability than 2x their allocation (which is the minimum number of hours we ask members to mark available).</p></li>
+</ol>
+<h3 id="schedule-generation">Schedule Generation</h3>
+<p>Before generating the schedule, open the console in the browser as this is where output is reported. Then, when you select <strong>Generate Schedule</strong> check the score in the console. The key piece to look at is Staff utilization, which should always be 1, otherwise there are people who aren’t scheduled the full amount they should be. As a related point, check for unused hours below the scoring section in the additional info section of the output. This tells you each person who is not scheduled their full amount and how many hours short they are.</p>
+<p>Example generation output (though not entirely realistic with the negative utilization, as that is the result of no one having any availability) is below:</p>
+<figure>
+<img src="../../resources/shiftoverflow/generation_output.png" alt="" /><figcaption>image</figcaption>
+</figure>
+<p>It’s often good to generate the schedule a few times before settling on a final version to know what you’re working with. You can regenerate the schedule as many times as you want by re-clicking the <strong>Generate Schedule</strong> button. As a warning, regenerating the schedule many times in a row may cause a timeout / an error about the body having already been consumed / being locked or something similar (an example is below). In that case, pausing and giving it a minute to bounce back helps, and eventually things start working again. Sometimes, after the request has been in progress for a while or has timed out, errors may appear in the console or no output may appear, but the schedule score information may still be posted in Slack.</p>
+<figure>
+<img src="../../resources/shiftoverflow/generation_error.png" alt="" /><figcaption>image</figcaption>
+</figure>
+<p>Once you feel good enough about the Slack/console output, check the schedule on the home page in full calendar mode. You’ll have to click through each shift one by one in order to see who is scheduled in each shift which is good to do to make sure a) each shift has a lead or b) that, during the beginning of the semester, no shift is entirely staffed with new members.</p>
+<p>You also have the ability to download a CSV of the full schedule to see every person scheduled in every shift (which could be used as another method for ensuring each shift has a lead) along with a CSV of everyone’s availability. The CSV of availability is nice way to check:</p>
+<ol type="1">
+<li>when people are scheduled less than their full allocation</li>
+<li>when the algorithm missed an opportunity to schedule them</li>
+<li>when they do not have enough availability in the available range of hours</li>
+</ol>
+<p>If people do not have enough availability and are not scheduled their full allocation, message them and tell them to add themself to however many hours they are short by before that schedule period begins (before the first office hours of that schedule). All instances of someone adding (or dropping or swapping) themself to a shift are logged in the database and send automatic alerts with the details of the action to the <code>#shiftoverflow-actions</code> Slack channel, so you can confirm that they do add themself, and follow up later if they do not.</p>
+<p>If the console shows the schedule successfully generated but each shift in calendar view shows 0 people working, add yourself to a shift (you can remove yourself later) and that should cause everything to update. The schedule should fill in at that point.</p>
+<blockquote>
+<p>Contributors: Madison Huber</p>
+</blockquote>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s): Madison Huber</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502757.4947855"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502757.4947855"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502757.4947855"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>

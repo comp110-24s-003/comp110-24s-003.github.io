@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Pandas Exercise - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502744.5934858">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="explore-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Pandas Exercise</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#exds_00-getting-started-exercise">exds_00: Getting Started (Exercise)</a>
+<ul>
+<li><a href="#introduction">Introduction:</a></li>
+<li><a href="#task-1">Task 1:</a></li>
+<li><a href="#task-2">Task 2:</a></li>
+<li><a href="#task-3">Task 3:</a></li>
+<li><a href="#task-4">Task 4:</a></li>
+<li><a href="#task-5">Task 5:</a></li>
+<li><a href="#task-6-statistics-challenge">Task 6: Statistics Challenge</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="exds_00-getting-started-exercise">exds_00: Getting Started (Exercise)</h2>
+<h3 id="introduction">Introduction:</h3>
+<p>Now that you are familiar with some of the basics of <code>pandas</code> and have learned a little bit about how to manipulate data in the form of <code>DataFrame</code>’s, it is time to put your skills to the test. At this point you should be familiar with the following:</p>
+<ul>
+<li>importing <code>pandas</code></li>
+<li>creating a <code>DataFrame</code>, underlying structure</li>
+<li>reading from and writing to .csv files</li>
+<li>observing the structure of a specific <code>DataFrame</code></li>
+<li>selecting data by column and by row</li>
+<li>some basic analysis using <code>numpy</code></li>
+</ul>
+<p>Additionally, if you have completed one of the recent projects, you will also be familiar with the <code>survey.csv</code> data, which details course evaluation responses from a previous semester. Below you will see some tasks, each with increasing difficulty, that test your newfound data science skills. You may complete this exercise in a new Jupyter Notebook file or in a normal Python file.</p>
+<h3 id="task-1">Task 1:</h3>
+<p>As before, we have to get the data into a usable form for <code>pandas</code>. Load the <code>survey.csv</code> data into a <code>DataFrame</code> called <code>survey</code>.</p>
+<h3 id="task-2">Task 2:</h3>
+<p>It is a best practice to gain an understanding of the sturcture of data before trying to conduct any sort of analysis. Use the <code>.info()</code> method to get a look at the “big picture” of your <code>DataFrame</code>.</p>
+<h3 id="task-3">Task 3:</h3>
+<p>Often, you will deal with data that has ambiguous variable naming conventions. While <code>survey.csv</code> is not one of those datasets, thankfully, it is still essential to understand what each column is trying to tell you about students! Look at the columns labeled <code>kaki_effective</code>, <code>interested</code>, and <code>oh_visits</code> by themselves and describe what they represent below.</p>
+<h3 id="task-4">Task 4:</h3>
+<p>At first glance, this seems to be quite a large dataset with many variables, so it may be helpful to only look at columns of interest. Create a new <code>DataFrame</code> called <code>survey_new</code> which contains only the columns <code>row_number</code>,<code>pace</code>,<code>difficulty</code>,<code>understanding</code>,<code>interested</code>,<code>valuable</code>,<code>grade</code>,and <code>would_recommend</code>. Note that there are many ways to do this, some MUCH more efficient than others. A potential use for this new data would be if we want a more streamlined look at whether perception of difficulty aligns with a student’s grade.</p>
+<h3 id="task-5">Task 5:</h3>
+<p>Perhaps something we are interested in is the difference in <code>difficulty</code> between first-year students and returning students. Subset the data such that only first-year students are included, and store this in a new <code>DataFrame</code> called <code>first_year</code>. Similarly, store returning students in a <code>DataFrame</code> called <code>returning</code>. Then, calculate the average grade and standard deviation using <code>numpy</code> for these two groups. Write a brief statement about these two quantities.</p>
+<h3 id="task-6-statistics-challenge">Task 6: Statistics Challenge</h3>
+<p>An essential skill for any data scientist (or any professional that uses programming) is the ability to research new techniques and read documentation.</p>
+<p>In this <em>challenging</em> task, we want to analyse the difference we saw above, but more rigorously! :)</p>
+<p>Research hypothesis tests specifically for the difference of two means. Write a brief paragraph about your findings, especially detailing the t-distribution. Then look into the <code>scipy</code> <code>.ttest_ind()</code> method and <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html">read the documentation</a>. Write a brief statement about your findings. Finally, conduct the hypothesis test for the null hypothesis that the mean <code>difficulty</code> for first-years is equal to that for returning students. Report your findings!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kyle Sorensen</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

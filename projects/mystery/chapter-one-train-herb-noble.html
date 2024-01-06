@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Chapter 1 - The Bell Tower - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502748.8359637">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="logistics-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Chapter 1 - The Bell Tower</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#the-clue">The CLUE 🔎</a></li>
+<li><a href="#the-task">The TASK 🕵️</a>
+<ul>
+<li><a href="#handling-all-characters">0. Handling all characters</a></li>
+<li><a href="#refactoring-decode_char">1. Refactoring <code>decode_char</code></a></li>
+<li><a href="#decode_char_by_shift-function">2. <code>decode_char_by_shift</code> function</a></li>
+<li><a href="#decode_str_by_shift-function">3. <code>decode_str_by_shift</code> function</a></li>
+<li><a href="#testing-your-program">4. Testing your program</a></li>
+</ul></li>
+<li><a href="#make-a-backup-checkpoint-commit">5. Make a Backup Checkpoint “Commit”</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><script>
+    document.body.classList.add('halloween-mode'); 
+    document.getElementById("mode-switch").classList.add('hidden')
+</script>
+<p style="font-size: xx-large; color: rgba(255, 132, 32, 0.909);">
+🎃 Congratulations you have discoved a clue! 🎃
+</p>
+<blockquote>
+<p>Take a picture at this location with your fellow detectives and fill out <a href="https://airtable.com/shrzczOIak59I0cyx" target="blank">THIS FORM</a> to get onto the leaderboard! Make sure to do this immediately and for every new chapter you discover!</p>
+</blockquote>
+<p style="color: rgba(255, 132, 32, 0.909);">
+You better find Kaki quickly! Review sessions have ground to a halt!
+</p>
+<h2 id="the-clue">The CLUE 🔎</h2>
+<p>Dl tpnoa ullk av ylabyu av aol jyptl zjlul… Zpaalyzvu pazlsm. Mylk Iyvvrz pz hsdhfz dhajopun vcly aol ibpskpun… myvt aol ivaavt msvvy. Wlyohwz ol zhd zvtlaopun? Ahrl h svvr ilulhao opt huk zll pm ol slma bz huf jsblz.</p>
+<h2 id="the-task">The TASK 🕵️</h2>
+<p>It seems that whoever left this clue wanted it to be hard to read, we will have to decode it again. And what is with the number next to the clue? Weird… sometimes caesar ciphers shift by more than one character, perhaps that is it. There also is both uppercase and lowercase letters in this clue. Our cipher decoder will have to handle that too:</p>
+<h3 id="handling-all-characters">0. Handling all characters</h3>
+<p>We want our new and improved Caesar Cipher to be able to handle both uppercase and lowercase letters. We also want our decoder to leave numbers, spaces and punctuation untouched. Lucky for us, python has several built-in <code>str</code> methods that can help us check the case of character and determine if a character is part of the alphabet or not.</p>
+<h4 id="isupper-and-islower"><code>isupper</code> and <code>islower</code></h4>
+<p>Python has a built-in <code>str</code> method, <code>isupper</code>, that returns <code>True</code> if every alphabetic character in the <code>str</code> is uppercase. Since we are only dealing with single-length <code>str</code>s in <code>encode_char</code> and <code>decode_char</code> this method will definitively tell us if we are looking at a capitalized letter or not. You can try the following code out in a REPL</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;c&quot;.isupper()
+False
+&gt;&gt;&gt; &quot;D&quot;.isupper()
+True</code></pre>
+<p>Unsuprisingly, there is also an <code>islower</code> method that does just the opposite.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;c&quot;.islower()
+True
+&gt;&gt;&gt; &quot;D&quot;.islower()
+False</code></pre>
+<h4 id="isalpha-function"><code>isalpha</code> function</h4>
+<p>Python has a built-in <code>str</code> method, <code>isalpha</code>, that returns <code>True</code> if every character in a given <code>str</code> is alphabetic. Since we are only dealing with single-length <code>str</code>s in <code>encode_char</code> and <code>decode_char</code> this method will definitively tell us if we are looking at a letter or some other character such as a number or punctionation. You can try the following code out in a REPL</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;$&quot;.isalpha()
+False
+&gt;&gt;&gt; &quot;a&quot;.isalpha()
+True
+&gt;&gt;&gt; &quot; &quot;.isalpha()
+False
+&gt;&gt;&gt; &quot;A&quot;.isalpha()
+True</code></pre>
+<h3 id="refactoring-decode_char">1. Refactoring <code>decode_char</code></h3>
+<p>With the built-ins methods shown above and our knowledge of <code>if</code> statements, we have the tools under our belt to update our <code>_char</code> functions to handle any character A-Z or a-z and ignore non alphabetic characters. The only difference between encoding an uppercase vs. lowercase character is the <code>int</code> value used to normalize our single-length <code>str</code>. In the first part of the project we used <code>65</code> since that is the ASCII code for <code>A</code>. Now, we still want to use <code>65</code> for uppercase letters, but in the case of an lowercase character we want to use <code>97</code>. This might seem random but if we look up <code>a</code> here: <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" class="uri">https://en.wikipedia.org/wiki/ASCII#Printable_characters</a> we see that its code is <code>97</code>.</p>
+<ol type="1">
+<li>Copy and Paste your original <code>decode_char</code> function and rename it to <code>decode_any_char</code>.</li>
+<li>Change the implementation in your pasted code to handle both lower and uppercase letters.</li>
+<li>Change the implementation to ignore non alphabetic characters.</li>
+<li>You can check if it is working with the following function calls:</li>
+</ol>
+<pre><code>decode_any_char(&quot;A&quot;) --&gt; returns &quot;Z&quot;
+decode_any_char(&quot;B&quot;) --&gt; returns &quot;A&quot;
+decode_any_char(&quot;O&quot;) --&gt; returns &quot;N&quot;
+decode_any_char(&quot;a&quot;) --&gt; returns &quot;z&quot;
+decode_any_char(&quot;b&quot;) --&gt; returns &quot;a&quot;
+decode_any_char(&quot;o&quot;) --&gt; returns &quot;n&quot;
+decode_any_char(&quot; &quot;) --&gt; returns &quot; &quot;
+decode_any_char(&quot;,&quot;) --&gt; returns &quot;,&quot;
+decode_any_char(&quot;&amp;&quot;) --&gt; returns &quot;&amp;&quot;</code></pre>
+<p>Note: This version of the function will not be tested by itself but make sure to get this working before refactoring again in step 2.</p>
+<h3 id="decode_char_by_shift-function">2. <code>decode_char_by_shift</code> function</h3>
+<p>Our decoder also needs to be able to shift by any given number of letters to handle this message. Write a new function called <code>decode_char_by_shift</code> that takes an additional <code>int</code> argument to shift by. You should be able to copy most of the functionality from your <code>decode_any_char</code> function</p>
+<h4 id="functional-requirements-decode_char_by_shift">Functional Requirements – <code>decode_char_by_shift</code></h4>
+<ol type="1">
+<li>Have a function with the following signature:
+<ol type="1">
+<li>Name: <code>decode_char_by_shift</code></li>
+<li>Arguments: a <code>str</code> that can be assumed to be single-length</li>
+<li>Returns: a single-length <code>str</code></li>
+</ol></li>
+<li>The new <code>str</code> should be the parameter given shifted one letter to the left in the alphabet, per the mapping shown above.</li>
+<li>Your function should make use of the <code>ord</code> and <code>chr</code> built-in functions.</li>
+<li>Ensure your function has the expected behavior for both uppercase and lowercase characters.</li>
+</ol>
+<h3 id="decode_str_by_shift-function">3. <code>decode_str_by_shift</code> function</h3>
+<p>The last step is to update the <code>decode_str</code> function to handle <code>str</code>s of any length, any shift number and upper case or lowercase letters. After this, your Caesar Cipher decoder will be powerful enough to handle any word you give it!</p>
+<p>To process a <em>sequence</em> using a loop, consider that the <em>subscription notation</em> expects an <em>integer expression</em> within the square brackets. For example, the following snippet prints every character of a <code>str</code> on its own line:</p>
+<pre class="plaintext"><code>letters: str = &quot;abcdefghijklmnopqrstuvwxyz&quot;
+i: int = 0
+while i &lt; len(letters):
+   letter: str = letters[i]
+   print(letter)
+   i = i + 1</code></pre>
+<p>Notice using the <code>len</code> function to determine the length of <em>any string</em> allows this loop to process the <code>letters</code> <code>str</code> no matter its contents. You will need to make use of a similar strategy for decoding a <code>str</code>.</p>
+<h4 id="functional-requirements-decode_str_by_shift">Functional Requirements – <code>decode_str_by_shift</code></h4>
+<ol type="1">
+<li>Have another function with the following signature:
+<ol type="1">
+<li>Name: <code>decode_str_by_shift</code></li>
+<li>Arguments: a <code>str</code> of any length and an <code>int</code> to shift by.</li>
+<li>Returns: a <code>str</code> with the same length as the argument.</li>
+</ol></li>
+<li>The result of this function should be the parameter <code>str</code> with each letter shifted to the left by the given shift argument.</li>
+<li>Call <code>decode_char_by_shift</code> inside this function for each letter of the parameter.</li>
+<li>Use a <code>while</code> loop with a counter variable to complete this function.</li>
+</ol>
+<h3 id="testing-your-program">4. Testing your program</h3>
+<p>To check that your functions work as expected, you can load your <code>caesar_cipher</code> file into a REPL by opening up a new <code>REPL</code>, and then running <code>from projects.mystery.caesar_cipher import decode_char_by_shift, decode_str_by_shift</code>. From here you can practice calling your functions and seeing if the results match what you expected.</p>
+<pre><code>decode_char_by_shift(&quot;c&quot;, 3) --&gt; returns &quot;z&quot;
+decode_char_by_shift(&quot;F&quot;, 14) --&gt; returns &quot;R&quot;
+decode_char_by_shift(&quot;z&quot;, 26) --&gt; returns &quot;a&quot;
+decode_char_by_shift(&quot;%&quot;, 1) --&gt; returns &quot;%&quot;</code></pre>
+<pre><code>decode_str_by_shift(&quot;Cqn Dwrenabrch xo Wxacq Ljaxurwj&quot;, 9) --&gt; returns &quot;The University of North Carolina&quot;
+decode_str_by_shift(&quot;FcBAtRobO!!&quot;, 13) --&gt; returns &quot;SpONgEboB!!&quot;</code></pre>
+<p>If you are convinced that your decoding functions are working, try decoding the clue. Perhaps it is a clue to where there may be more information.</p>
+<h2 id="make-a-backup-checkpoint-commit">5. Make a Backup Checkpoint “Commit”</h2>
+<p>Follow the instructions on the project introduction page to make a backup commit.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Ezri White,        Marc Lewis, Kaki Ryan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

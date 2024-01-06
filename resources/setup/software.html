@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Software Setup - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502721.7727368">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Software Setup</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#windows-10-and-11-instructions">Windows 10 and 11 Instructions</a>
+<ul>
+<li><a href="#install-the-latest-release-candidate-python-programming-language-toolkit-3.11.1-or-greater">0. Install the Latest (Release Candidate) Python Programming Language Toolkit (3.11.1 or greater)</a></li>
+<li><a href="#install-the-visual-studio-code-vscode-text-editor">1. Install the Visual Studio Code (VSCode) Text Editor</a></li>
+<li><a href="#install-the-git-source-code-management-software-scm">2. Install the <code>git</code> Source Code Management Software (SCM)</a></li>
+<li><a href="#reboot-your-machine">3. Reboot your machine!</a></li>
+</ul></li>
+<li><a href="#macos-instructions">macOS Instructions</a>
+<ul>
+<li><a href="#update-your-default-shell-in-the-terminal">0. Update Your Default Shell in the Terminal</a></li>
+<li><a href="#install-or-update-the-python-programming-language-toolkit-3.11.1-or-greater">1. Install (or Update) the Python Programming Language Toolkit (3.11.1 or greater)</a></li>
+<li><a href="#configure-your-shell-to-use-the-latest-python">2. Configure your Shell to use the Latest Python</a></li>
+<li><a href="#install-the-visual-studio-code-vscode-text-editor-1">3. Install the Visual Studio Code (VSCode) Text Editor</a></li>
+<li><a href="#install-the-git-source-code-management-software-scm-1">4. Install the <code>git</code> Source Code Management Software (SCM)</a></li>
+</ul></li>
+<li><a href="#basic-troubleshooting">Basic Troubleshooting</a>
+<ul>
+<li><a href="#deactivate-conda">Deactivate Conda</a></li>
+<li><a href="#unalias-python">Unalias python</a></li>
+<li><a href="#restart-your-terminal">Restart your Terminal</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>This guide will walk you through installing the software you’ll need for the course. Before diving in it’s worth understanding what you’re about to do at a high level.</p>
+<p>First, you should be sure your operating system is up-to-date. If you did not already move through the <a href="/resources/setup/os-update.html">Operating System Update</a> steps, then go ahead and do that.</p>
+<p>Next, you’ll install the software needed to <em>write your own programs</em> in the course. In general, to write your own programs you need two kinds of software installed: a <strong>programming language toolkit</strong> and a <strong>text editor designed for programming</strong>. For this course we’ll explore programming with the Python programming language using the Visual Studio Code text editor. These are two of the most widely used tools of their kind in 2021 and are highly applicable beyond the scope of this course.</p>
+<p>Finally, you’ll install the Zoom Web Conferencing software. Installing this app on your computer, rather than using the web version, will improve your experience and make it easier for you to share your screen with our course staff as needed. If you already have the app installed, be sure to check for updates as Zoom improved over the break.</p>
+<p>Follow the instructions for your operating system, either <a href="/resources/setup/os-update.html#windows-10-instructions">Windows 10 and 11</a> or <a href="/resources/setup/os-update.html#macos-instructions">macOS</a>.</p>
+<hr />
+<h1 id="windows-10-and-11-instructions">Windows 10 and 11 Instructions</h1>
+<p>Before beginning, be sure you are using the latest version of <a href="/resources/setup/os-update.html#windows-10">Windows 10</a>.</p>
+<h2 id="install-the-latest-release-candidate-python-programming-language-toolkit-3.11.1-or-greater">0. Install the Latest (Release Candidate) Python Programming Language Toolkit (3.11.1 or greater)</h2>
+<p>For these steps, be sure your web browser Window is maximized and be sure to follow step 4.0 closely that <strong>checks</strong> the option “Add Python 3.11.1 to Path” during install.</p>
+<ol start="0" type="1">
+<li>Open the <strong>Python Website</strong> in another tab: <a href="https://www.python.org" target="_blank">https://www.python.org</a></li>
+<li>Press the <strong>Downloads</strong> button in navigation.</li>
+<li>In the headline, you should see <strong>“Download the latest version for Windows”</strong>.
+<ul>
+<li>If, instead, you see “Download the latest version of Python” be sure your browser Window is maximized and refresh the web page.</li>
+</ul></li>
+<li>Press the <strong>Download Python 3.11.4</strong> button. The download should begin.
+<ul>
+<li>If you are taken to another page without a download beginning, scroll down to the <strong>Files</strong> heading and select the file named <code>Windows x86 executable installer</code>.**</li>
+</ul></li>
+<li>Open the download once it completes and <strong>carefully</strong> follow the instructions below, <em>especially the first one</em>:
+<ol start="0" type="1">
+<li><strong>IMPORTANT: Check the box on the first screen labelled “Add Python 3.11.4 to PATH”</strong>
+<ul>
+<li>If you do not see this option, you likely have an older version of Python already installed. Go ahead and uninstall the old version and then retry installing the new version.</li>
+<li>Knowing exactly what this does is beyond your concern, but the gist is it makes it easier for other programs on your system to make use of Python.</li>
+</ul></li>
+<li>After checking the box of Step 0, click Install Now.</li>
+<li>Allow the installer to make changes if further prompted.</li>
+<li>Accept other defaults on following screens.</li>
+<li>Click the Close button to complete the Install.</li>
+</ol></li>
+</ol>
+<h2 id="install-the-visual-studio-code-vscode-text-editor">1. Install the Visual Studio Code (VSCode) Text Editor</h2>
+<ol start="0" type="1">
+<li>Open the <strong>VSCode website</strong> in another tab: <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
+<li>Select the large <strong>Download for Windows</strong> button</li>
+<li>Open the downloaded installer after its download completes
+<ol start="0" type="1">
+<li>Accept the licensing agreement</li>
+<li>You’re asked <em>where</em> to install VS Code. The suggested location is OK. Press Next.</li>
+<li>You’re asked if you want to add VS Code to your start menu. That’s OK, too. Press Next.</li>
+<li><strong>Important</strong> Under additional tasks, <strong>check all</strong> of the options available.
+<ul>
+<li>These options make it easier for you to open files in VS Code.</li>
+</ul></li>
+<li>At Ready to Install, select Install.</li>
+</ol></li>
+</ol>
+<h2 id="install-the-git-source-code-management-software-scm">2. Install the <code>git</code> Source Code Management Software (SCM)</h2>
+<ol start="0" type="1">
+<li>Open the <code>git</code> website in another tab: <a href="https://git-scm.com" target="_blank">https://git-scm.com</a></li>
+<li>Look for the button to “Download for Windows” (it is embedded in a monitor graphic to the right)</li>
+<li>After the download begins open the installer</li>
+<li>Allow the app to make changes and install</li>
+<li>Press Next on the Information page</li>
+<li>Press Next on the Destination Location page (default is fine)</li>
+<li>Press Next on the Components page (defaults are fine)</li>
+<li>Press Next on the Start Menu Folder page</li>
+<li>Choose Visual Studio Code as Git’s default editor and press Next</li>
+<li>Press Next/Install on the remaining pages and accept the defaults</li>
+</ol>
+<h2 id="reboot-your-machine">3. Reboot your machine!</h2>
+<p>Reboot your computer now. Some settings of the applications you just installed will not take effect until you reboot. Attempting to continue on from this point without rebooting will lead to strange errors later.</p>
+<p>Once you’ve completed this, you’ve got the necessary software installed! Great work!</p>
+<hr />
+<h1 id="macos-instructions">macOS Instructions</h1>
+<p>Before beginning, be sure you are using the latest version of <a href="/resources/setup/os-update.html#macos">macOS</a>.</p>
+<h2 id="update-your-default-shell-in-the-terminal">0. Update Your Default Shell in the Terminal</h2>
+<p>There are two pieces of <em>jargon</em> in the title of this section. A “shell” is a program that serves as a concierge to your computer: you give it commands, such as asking it to run a program you’re working on, and the shell does the work of carrying out your command. A “terminal” is the program you will use to interact with your shell. Apple recently updated its recommended shell software to Z-shell, or <code>zsh</code>, so let’s be sure yours is configured to use it.</p>
+<ol start="0" type="1">
+<li>Using Mac’s Spotlight Search, accessed by pressing <code>Command + Spacebar</code> or clicking the search icon near your clock, type <code>Terminal</code> and press enter. This starts the Terminal app, which may look like what hackers use in the movies, <em>because it is</em>.</li>
+<li>Let’s learn what shell program your terminal is using by default by typing the following (cryptic, based on what we know now) command and pressing enter: <code>echo $SHELL</code> (yes, that’s the word <code>echo</code>, followed by a space, and then a dollar sign followed immediately by the word SHELL in all capital letters, <code>$SHELL</code>)</li>
+<li>If you see <code>/bin/bash</code> in the text “printed” below your command, continue to next step to update your default. If, instead, you see <code>/bin/zsh</code>, you are all set and can jump to step 6.</li>
+<li>Since you saw <code>bash</code> instead of <code>zsh</code>, let’s <code>ch</code>ange your default <code>sh</code>ell using the <code>chsh</code> program to be the location, or path, of the <code>zsh</code> shell program on your computer which is <code>/bin/zsh</code>. Type the following command, check that yours matches exactly, in both spaces and capitalization, and press enter: <code>chsh -s /bin/zsh</code></li>
+<li>You will likely be asked for your computer’s password. When you type in your password you will not see any text appear on your screen, not even dots, but the keys you type are being received. Press enter once you’ve entered your password. If you see “Credentials could not be verified, username or password is invalid.” try running the command again and entering your laptop’s password again.</li>
+<li>This change will be applied to your next shell session, so type <code>exit</code>, close your <code>Terminal</code> again. Go back up to step 0, and continue from there, to confirm it was successful.</li>
+<li>Great! You can quit your shell session by typing <code>exit</code>, pressing enter, and then closing your <code>Terminal</code> window.</li>
+</ol>
+<h2 id="install-or-update-the-python-programming-language-toolkit-3.11.1-or-greater">1. Install (or Update) the Python Programming Language Toolkit (3.11.1 or greater)</h2>
+<p>For these steps, be sure your Web Browser window is maximized.</p>
+<ol start="0" type="1">
+<li>Open the <strong>Python Website</strong> in a new tab: <a href="https://www.python.org" target="_blank">https://www.python.org</a></li>
+<li>Select the <strong>Downloads</strong> button in the navigation</li>
+<li>Look for the <strong>“Download latest version for Mac OS X”</strong>
+<ul>
+<li>If you instead see, “Download the latest version of Python”, make sure your browser is full screen and refresh the page.</li>
+</ul></li>
+<li>Click the <strong>Download Python 3.11.4</strong> button. Your download should begin.
+<ul>
+<li>If you are brought to another page, scroll down to the Files section and select the <code>macOS 64-bit universal2 installer</code>.</li>
+</ul></li>
+<li>Open the downloaded package to begin the installer
+<ol start="0" type="1">
+<li>At Introduction screen: Continue</li>
+<li>At the Read Me screen: Continue</li>
+<li>At the License: Continue (Agree)</li>
+<li>At Installation Type: Install</li>
+<li>After Install completes, select Close and close any windows it popped up.</li>
+<li>If asked, move the installer to Trash</li>
+</ol></li>
+</ol>
+<h2 id="configure-your-shell-to-use-the-latest-python">2. Configure your Shell to use the Latest Python</h2>
+<ol start="0" type="1">
+<li>Open a new Terminal window. If you still have one open from section 0, close it out and start a new one, because changes made during the installation of Python will not take effect until a new shell session begins.</li>
+<li>Give the command <code>python3 --version</code>, notice the <code>3</code> after the word <code>python</code> and two dashes at the front of <code>--version</code>, and press enter. You should see <code>Python 3.11.1</code> (or greater) which indicates your install was successful. If not, try the steps above one more time and restart your computer before trying these. Otherwise, come work with us in office hours!</li>
+<li>Now try giving the command <code>python --version</code>, without the <code>3</code> from above. If you see <code>Python 2.X.YY</code>, where <code>X</code> and <code>YY</code> are irrelevant numbers, continue to the next step because Mac also includes a much older version of Python. This is confusing when you’re trying to learn modern Python! If you see <code>Python 3.X.YY</code>, but not <code>Python 3.11.1</code> or greater, this means you previously installed an older version of Python3, and you should also continue to step 3. If you see the result <code>Python 3.11.x</code> then you are all set and can continue to the next section on installing VSCode.</li>
+<li>Let’s simplify life by making <code>python</code> refer to the latest version you just installed, not the old one. What the following command is doing is making a link between the name <code>python</code> and the version you just installed. The command is more advanced than where we are at, so do not worry yourself on its details. You should copy and paste the following command into your Terminal, and press enter, because the punctuation symbols need to match precisely.</li>
+</ol>
+<p><code>sudo ln -s "$(which python3)" "$(dirname $(which python3))/python"</code></p>
+<p>If you are prompted for a password, enter your computer’s password. You will not see any indication of your keystrokes show up as you type in your password, but they are being recorded. Press enter after typing your password invisibly. 4. 4. This change will only take place in a new shell session. Type the <code>exit</code> command, press enter, close your terminal. <strong>Go back to Step 0</strong> and continue on until confirming <code>python --version</code> is successfully linked to <code>Python 3.11.1</code> or greater.</p>
+<h2 id="install-the-visual-studio-code-vscode-text-editor-1">3. Install the Visual Studio Code (VSCode) Text Editor</h2>
+<ol start="0" type="1">
+<li>Open the VSCode website in a new browser tab: <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a></li>
+<li>Select the large Download for Mac button</li>
+<li>When you open this Zip download, it creates an application file named Visual Studio Code in your <strong>Downloads</strong> folder and opens that folder in a new <strong>Finder</strong> window.</li>
+<li>Confirm your <strong>Finder</strong> window sidebar is visible, it should be to the left of your files and you should see <em>Applications</em> listed under <em>Favorites</em>. If you do not see the sidebar, go to the <em>View</em> menu and select <em>Show Sidebar</em>. If you do not see <em>Applications</em> listed under <em>Favorites</em>, open the <em>Finder</em> menu, select <em>Preferences…</em>, and check <em>Applications</em>.</li>
+<li>To install Visual Studio Code as an Application, drag the <em>Visual Studio Code</em> icon into your <em>Applications</em> directory which you should see in the left-hand sidebar of the Finder window under Favorites.</li>
+<li>Open Spotlight Search again (<code>Command + Space</code> or the search icon by your clock) and search for “Code”. You should see Visual Studio Code in the results. Open it and it will likely ask to confirm it’s OK to open a file downloaded off the internet. Accept.</li>
+<li>You should see Visual Studio Code open to a Welcome tab. If you do, you’re all set and can close it for now and continue on.</li>
+</ol>
+<h2 id="install-the-git-source-code-management-software-scm-1">4. Install the <code>git</code> Source Code Management Software (SCM)</h2>
+<ol start="0" type="1">
+<li>If you do not have a running shell session in Terminal, start one as you did above.</li>
+<li>Type <code>git --version</code> and press Enter.</li>
+<li>If you see text displayed such as “git version 2.21.0)” then you already have <code>git</code> installed and can close the terminal and continue on</li>
+<li>If <code>git</code> was not already installed, you should see a pop-up window asking you to install <strong>Git / Developer Tools</strong>. Accept this install request and follow its instructions through completion. After it completes, <code>exit</code> and continue to Step 0 to confirm the install succeeded.
+<ul>
+<li>Note: You may instead see a notice about accepting a license agreement and/or running a given command in your terminal. In that case, just follow the instructions and enter your password if needed.</li>
+</ul></li>
+</ol>
+<p>Once you’ve completed this, you’ve got the necessary software installed! Great work!</p>
+<hr />
+<h1 id="basic-troubleshooting">Basic Troubleshooting</h1>
+<p>If you are having trouble linking to your newest version of python, try these things…</p>
+<p>Remember that you can always check which version of python is being run by typing <code>python --version</code> in your terminal.</p>
+<h2 id="deactivate-conda">Deactivate Conda</h2>
+<p>Many people seem to have issues because they have previously installed Conda. Therefore the <code>python</code> and/or <code>python3</code> commands could be calling this version. If this is your case, open your terminal and type:</p>
+<p><code>conda deactivate</code></p>
+<p>Don’t worry! You will be able to reactivate it again if you need it!</p>
+<h2 id="unalias-python">Unalias python</h2>
+<p>It might be the case that there is an existing Python alias on your computer. Open your terminal and type:</p>
+<p><code>unalias python</code></p>
+<p>If nothing is output, that means that an old alias existed and you just deleted it. If you get an error code, then this was not the issue.</p>
+<h2 id="restart-your-terminal">Restart your Terminal</h2>
+<p>It could just be an issue of closing out of your terminal and opening it back up!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kris Jordan, Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

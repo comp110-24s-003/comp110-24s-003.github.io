@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Objects and Data Types - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502710.467341">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Objects and Data Types</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#bits-and-bit-patterns">Bits and Bit Patterns</a></li>
+<li><a href="#classification-and-representation">Classification and Representation</a></li>
+<li><a href="#built-in-types">Built-in Types</a></li>
+<li><a href="#primitive-data-types">Primitive Data Types</a>
+<ul>
+<li><a href="#literal-expressions-and-type-inspection">Literal Expressions and <code>type</code> inspection</a></li>
+<li><a href="#int---integers"><code>int</code> - Integers</a></li>
+<li><a href="#float---floating-point-decimal-numbers"><code>float</code> - Floating-point “Decimal” Numbers</a></li>
+<li><a href="#str---strings-of-characters-for-textual-data"><code>str</code> - Strings of Characters for “Textual” Data</a></li>
+<li><a href="#bool---booleans"><code>bool</code> - Booleans</a></li>
+</ul></li>
+<li><a href="#an-object-is-a-typed-unit-of-data-in-memory">An object is a typed unit of data in memory</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>The term <strong>object</strong> has many meanings in programming, just as it does in real-life. The first and most fundamental definition is <strong>an object is a typed unit of data in memory</strong>.</p>
+<p><strong>Memory is your canvas and objects are your paint.</strong> Understanding the fundamental types of data you can work with, and their capabilities, is the first step on your journey toward programming!</p>
+<p>Let’s zoom in a bit to explore memory more closely, before zooming our way out toward thinking in terms of <em>objects</em> in memory.</p>
+<h2 id="bits-and-bit-patterns">Bits and Bit Patterns</h2>
+<p>Your computer’s memory is comprised of billions of electronic cells. These cells, called <em>transistors</em> are now the most frequently manufactured device in history, with over 13 sextillion produced<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>! Each transistor has two states, <em>off</em> or <em>on</em>. This is represented numerically as a <strong>bit</strong> whose value is either <code>0</code> or <code>1</code>. Despite <code>1</code> being the maximal value of a bit, notice there are <em>two</em> possible values thanks to <code>0</code>. Unlike humans, <strong>bits are binary</strong>.</p>
+<p>You can form many unique patterns by <em>stringing</em> bits together. For example, with two bits strung together, you can form four different <strong>bit patterns</strong>: <code>00</code>, <code>01</code>, <code>10</code>, and <code>11</code>. With three bits strung together, you can form eight different combinations: <code>000</code>, <code>001</code>, <code>010</code>, <code>011</code>, <code>100</code>, <code>101</code>, <code>110</code>, <code>111</code>. How many <strong>bit patterns</strong> can you form with four bits?</p>
+<p>Each time you extend a bit pattern by another bit, you double the number of possible patterns. Thus, given any number of bits, you can calculate the possible unique patterns with the mathematical expression <span class="math inline">2<sup><em>b</em><em>i</em><em>t</em><em>s</em></sup></span>. With 8 bits, called a <strong>byte</strong> there are <span class="math inline">2<sup>8</sup></span>, which <em>evaluates to</em> 256, different patterns. Exponential growth is a powerful force! With only 64 bits, there are <span class="math inline">2<sup>64</sup></span> patterns, which <em>evaluates to</em> 18,446,744,073,709,551,616 possibilities.</p>
+<p>Humanity has settled on the decimal system as its defacto numbering system. Languages have their own alphabets for textual data. There is an emergent universal <em>character set</em> in emoji 🤠. As all of memory is the binary system of <code>0</code>s and <code>1</code>s, how can computers process these widely different <em><strong>types</strong> of data</em>?</p>
+<h2 id="classification-and-representation">Classification and Representation</h2>
+<p>A symbol will follow this question, what does the symbol mean? <code>V</code></p>
+<p>If you classify it as an English character, it <em>represents</em> the letter “vee”. Classified as a Roman Numeral, though, it <em>represents</em> the number five. If you read it in the phrase, “I’m V excited!” it’s an abbreviation of the word “very”. Choosing to classify, and <em>interpret</em>, the simple symbol <code>V</code> as different types of data allows for <em>the same symbol</em> to <strong>represent</strong> very different ideas.</p>
+<p>Programmers decide to <em>classify</em> each block of memory they use, or each <em>object</em>, as a specific <strong>type</strong> of data: numerical data, textual data, sequences of data, compound groupings of many types of data, and so on. In doing so, the same underlying bit patterns are interpretted to <strong>represent</strong> different ideas.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Binary Bit Pattern</th>
+<th style="text-align: right;">Number (Integer)</th>
+<th style="text-align: left;">Text (Character)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>00000000</code></td>
+<td style="text-align: right;"><code>0</code></td>
+<td style="text-align: left;"><code>NULL (invisible)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>00000001</code></td>
+<td style="text-align: right;"><code>1</code></td>
+<td style="text-align: left;"><code>Start of Heading (invisible)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>00000010</code></td>
+<td style="text-align: right;"><code>2</code></td>
+<td style="text-align: left;"><code>Start of Text (invisible)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>00110000</code></td>
+<td style="text-align: right;"><code>48</code></td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>00110001</code></td>
+<td style="text-align: right;"><code>49</code></td>
+<td style="text-align: left;"><code>1</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>00110010</code></td>
+<td style="text-align: right;"><code>50</code></td>
+<td style="text-align: left;"><code>2</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>01000001</code></td>
+<td style="text-align: right;"><code>65</code></td>
+<td style="text-align: left;"><code>A</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>01000010</code></td>
+<td style="text-align: right;"><code>66</code></td>
+<td style="text-align: left;"><code>B</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>01000011</code></td>
+<td style="text-align: right;"><code>67</code></td>
+<td style="text-align: left;"><code>C</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>01100001</code></td>
+<td style="text-align: right;"><code>97</code></td>
+<td style="text-align: left;"><code>a</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>01100010</code></td>
+<td style="text-align: right;"><code>98</code></td>
+<td style="text-align: left;"><code>b</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>01100011</code></td>
+<td style="text-align: right;"><code>99</code></td>
+<td style="text-align: left;"><code>c</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can poke at this concept directly in an interactive Python session. To follow along, <strong>open a new terminal session</strong> and run the <code>python</code> program by typing it in and pressing enter. Each of the lines beginning with <code>&gt;&gt;&gt;</code> is one where you will type in an expression and press enter for the Python interpreter to <strong>evaluate</strong>.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; int(0b01000001)
+65
+
+&gt;&gt;&gt; chr(0b01000001)
+&#39;A&#39;
+
+&gt;&gt;&gt; int(0b01000010)
+66
+
+&gt;&gt;&gt; chr(0b01000010)
+&#39;B&#39;
+
+&gt;&gt;&gt; int(0b01000011)
+67
+
+&gt;&gt;&gt; chr(0b01000011)
+&#39;C&#39;</code></pre>
+<p>You are encouraged to try other bit patterns! When you are done, evaluate the function call expression <code>quit()</code> in the interactive Python program.</p>
+<p>Each line had its own <em>function call <strong>expression</strong></em>. A <em>function call</em> starts with a function’s name, in these examples there were two functions used, both <code>int</code> and <code>chr</code>. The word <code>int</code> is short for <em>integer</em> and <code>chr</code> short for <em>character</em>, which includes letters, numbers, punctuations, and other textual symbols. Following the function name are a pair of parentheses and inside the parenthesis are any pieces of input data the function needs, called <em>arguments</em>. In these examples, a single argument was given to the function calls, and each of the arguments was a bit pattern. In Python, and many other languages, bit patterns are denoted with a prefix of <code>0b</code> followed by the pattern of 0s and 1s. Each expression you wrote was <strong>evaluated</strong> by the Python interpreter and its resulting value was printed to the screen.</p>
+<blockquote>
+<p>Note: When working in an interactive Python interpreter, the evaluation of each expression is displayed, or “printed”, back to you automatically. This is <em>great</em> for messing around! This <strong>will not</strong> be the case when writing stored programs. There you would need to surround any expression you want displayed in a <code>print</code> function call, for example <code>print(chr(0b01000011))</code>.</p>
+</blockquote>
+<p><strong>What an object’s <em>bit pattern</em> means or <em>represents</em> is decided entirely by the <em>type</em> of data you decide to <em>classify</em> it as.</strong> Thus, when programming in a high level language like Python, it is more important to understand the types of data you are working with than exactly how they are represented as bit patterns. This is one of the most important examples of data <em>abstraction</em> in computer science: we will not need to concern ourselves with the details of these lower, bit-level concerns for quite some time<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>!</p>
+<h2 id="built-in-types">Built-in Types</h2>
+<p>Programming languages offer many built-in data types for you to work with, typically including:</p>
+<ul>
+<li>numerical
+<ul>
+<li>integers</li>
+<li>decimal numbers</li>
+<li>complex numbers</li>
+</ul></li>
+<li>textual</li>
+<li>logical</li>
+<li>collections of many objects
+<ul>
+<li>sequences</li>
+<li>sets</li>
+<li>dictionaries</li>
+</ul></li>
+</ul>
+<p>The names programming languages choose for these common data types, thier capabilities, and their limitations, are usually very similar. However, there will be subtle differences specific to each language. <strong>When learning a new programming language, start by spending time understanding and exploring its built-in data types and their capabilities.</strong></p>
+<h2 id="primitive-data-types">Primitive Data Types</h2>
+<p>Let’s explore these common data types in the context of Python, starting with <em>primitive</em> types which are some of the simplest available to you in a programming language.</p>
+<h3 id="literal-expressions-and-type-inspection">Literal Expressions and <code>type</code> inspection</h3>
+<p>How do you express the integer number one hundred ten in Python? Quite <em>literally</em>! <code>110</code></p>
+<p>What about fifty percent represented as a decimal? Quite <em>literally</em>! <code>0.50</code></p>
+<p>What about the textual word <em>programming</em>? Quite <em>literally</em>! <code>"programming"</code></p>
+<p>The built-in, <em>primitive</em> types of a programming language often have <em>literal</em> syntax for constructing and representing objects directly in your programs. <em>(Notice: none of these examples involve any binary! Though, previously, you wrote a binary literal without knowing it. Abstraction for the win!)</em> These are examples of <strong>literal expressions</strong>.</p>
+<p>To learn the type <em>classification</em> of any object in Python, you can use the built-in <code>type</code> function. Try it by starting <code>python</code> in a terminal, if you don’t already have one running, and following along:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; 110
+110
+
+&gt;&gt;&gt; type(110)
+&lt;class &#39;int&#39;&gt;
+
+&gt;&gt;&gt; type(211)
+&lt;class &#39;int&#39;&gt;
+
+&gt;&gt;&gt; 0.5
+0.5
+
+&gt;&gt;&gt; type(0.5)
+&lt;class &#39;float&#39;&gt;
+
+&gt;&gt;&gt; &quot;programming&quot;
+&#39;programming&#39;
+
+&gt;&gt;&gt; type(&quot;programming&quot;)
+&lt;class &#39;str&#39;&gt;</code></pre>
+<p>Each literal expression evaluates to <em>literally</em> itself. There is no further evaluation necessary or possible in these expressions. You also certainly noticed the classifications of each object’s type have peculiar names such as <code>int</code>, <code>float</code>, <code>str</code>, and <code>bool</code>. Let’s address each individually.</p>
+<h3 id="int---integers"><code>int</code> - Integers</h3>
+<p>The built-in type <code>int</code> is short for <em>integer</em>. Integers are useful for counting and programs count more things than you’d expect! For example, the number of likes on your last social media post, the number of words in your paper, the number of walking steps in your activity tracker, the number of points scored in games, and so on.</p>
+<p>In Python, an <code>int</code> literal is either a zero <em>or</em> a nonzero digit followed by zero or more digits. So, <code>0</code>, <code>1</code>, <code>987654321</code>, and <code>2020</code> are all example <code>int</code> literals, but <code>0110</code> is not. For large numbers you cannot use commas to denote places, such as in <em>1,000</em>, but you can use underscores which are completely ignored. Thus, <code>1_000_000</code> is the same <code>int</code> value as <code>1000000</code>.</p>
+<p>We’ll explore the kinds of <em>capabilities</em> an <code>int</code> object has shortly, but to connect them with your understanding of calculations, try asking the Python interpreter to <em>evaluate</em> some <em>integer arithmetic expressions</em>:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; 110 * 2
+220
+
+&gt;&gt;&gt; 1 + 2 * 3
+7
+
+&gt;&gt;&gt; (1 + 2) * 3
+9
+
+&gt;&gt;&gt; 1_234 + 1
+1235</code></pre>
+<h3 id="float---floating-point-decimal-numbers"><code>float</code> - Floating-point “Decimal” Numbers</h3>
+<p>Why not classify the <em>type</em> of a decimal numbers, such as <code>0.25</code>, with a name like <code>dec</code> or <code>decimal</code>? Because they’re not <em>exactly</em> decimal numbers, if you need to be <em>very precise</em> about it. The name <code>float</code> is short for <em>floating-point</em>.</p>
+<p>Here’s a perplexing, motivating example of <em>very subtle</em> limitations of floating-point arithmetic versus true decimal arithmetic. Can you spot any <em>miniscule</em> errors?</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; 0.25 + 0.25
+0.5
+
+&gt;&gt;&gt; 10.0 / 3.0
+3.3333333333333335
+
+&gt;&gt;&gt; 0.1 + 0.2
+0.30000000000000004</code></pre>
+<p>The exact reasons for these computations having a slight error, less than a trillionth, are beyond your concerns right now, but the intuition behind it, and for the name <em>floating-point</em>, is as follows. Let’s imagine an elementary numbering system where you are given three digit placeholders to form a number with:</p>
+<p><span class="math inline"><em>d</em>.<em>d</em> × 10<sup><em>x</em></sup></span></p>
+<p>For the two <span class="math inline"><em>d</em></span> digits, you can choose any digit between <code>0</code> and <code>9</code>. For the <span class="math inline"><em>x</em></span> digit, you can also choose any digit between <code>0</code> and <code>9</code>, <em>and</em> can choose for it to be positive or negative. <em>In reality, a <code>float</code> value has far more digits to work with than this, this is dramatically simplified for illustrative purposes.</em></p>
+<p>What is the <em>largest</em> number you can represent?</p>
+<p><span class="math inline">9.9 × 10<sup>9</sup></span> which is 9,900,000,000!</p>
+<p>What is the <em>smallest</em> number you can represent?</p>
+<p><span class="math inline">0.1 × 10<sup> − 9</sup></span> which is 0.0000000001</p>
+<p>That’s a massive range of numbers considering you only needed 3 digits and a sign to represent each!</p>
+<p><strong>What’s the catch?</strong> Try describing a limitation of this system on your own.</p>
+<p>What is the second largest number you can represent?</p>
+<p>The second largest number would be <span class="math inline">9.8 × 10<sup>9</sup></span> or 9,800,000,000, that means there are 99,999,999 whole numbers between the largest and second largest that are impossible to represent using this system! More precisely, there are only 1,539 unique numbers this system can represent in the range between 0.0000000001 and 9,900,000,000! Your mathematics has taught you there are an infinite number of decimal numbers in this range!</p>
+<p>The good news is modern floating-point precision numbers use 64-bits of precision and can thus represent <span class="math inline">2<sup>64</sup></span> different possible numbers. That’s astronomically more precision (over 18 quintillion possible numbers!) than our toy system above, but it is not <em>infinite</em> nor <em>arbitrary</em> precision. The motivating examples demonstrated there are often very small round-off errors in floating-point arithmetic that can be ignored. However, if you find yourself writing software that has no room for small errors in precision (rockets, bank software, medical devices, and so on), you will want to invest more time in understanding the trade-offs of <em>floating-point</em> numbers versus <a href="https://docs.python.org/3/library/decimal.html">slower, more specialized options available</a> for handling precise, numerical data.</p>
+<p>We will use <code>float</code> for numbers with decimal points without hesitation or concern moving forward. For our purposes in COMP110, and most purposes you will encounter in computing (apps, games, most data science applications) the exceedingly small amounts of “round-off error” pose no problems and will be ignored moving forward.</p>
+<h3 id="str---strings-of-characters-for-textual-data"><code>str</code> - Strings of Characters for “Textual” Data</h3>
+<p>The “textual” data type in Python is <code>str</code>, short for <em><strong>str</strong>ing of characters</em>, which is common terminology across programming languages. Strings are used <em>all the time</em> in modern programs! Every application you use makes use of string values. Anywhere you see a label, are able to type text in, and so on is made possible by strings.</p>
+<p>Why not simply call it <em>text</em>? <em>Text</em> often conveys a bias toward thinking in <em>words</em> and <em>visible symbols</em> like letters, whereas “characters” can be invisible (such as spaces, tabs, and new line breaks), non-“textual” (digits, code, special symbols, and so on), and from many different <em>character sets</em> (Arabic, Chinese, English, Emoji, German, and so on).</p>
+<p>There are a few different syntaxes for working with <code>str</code> literals, but we will default to choosing double quoted <code>str</code> literals, such as <code>"hello, world"</code>. The characters following the first double-quote character <code>"</code> begin the contents of the string value and the <em>matched pairing</em> double quote ends the <code>str</code> value. You can also use single-quotes, such as <code>'hello, world'</code>, and the result is the same. Most programming languages use double-quoted strings, while some allow either or, so we’ll settle on the syntax that’s more generalizable.</p>
+<p>If a <code>str</code> begins and ends with a double quote, how can you have a double quote within a string? To solve this thorny issue, programming languages have settled on a technique called <em>escaping</em> which means placing a backslash character <code>\</code> before some character with special meaning. This is best demonstrated through tinkering in an interactive Python session:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;The students rejoiced, \&quot;we love programming!\&quot;&quot;
+&#39;The students rejoiced, &quot;we love programming!&quot;`</code></pre>
+<p>Notice the backslashes disappeared! <em>Escape codes</em> in <code>str</code> data only appear in the code you write and when that code is evaluated to become a true <code>str</code> object, the <code>\"</code> is interpreted as simply a <code>"</code>. Without the leading backslashes in this example, there would have been a syntactical error.</p>
+<p>It is worth pausing to emphasize the characters of a string have no meaning in our program beyond simply being characters. For example, the string <code>"110"</code> may have only digit characters in it, but <strong>it is not number</strong> and you cannot do numerical computations with it. Try to and you will see some surprising results:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;110&quot; + &quot;110&quot;
+&#39;110110`</code></pre>
+<p>The add <em>operator</em>, when used with two <code>str</code> values, produces a third <code>str</code> value that is the first <code>str</code>’s characters immediately followed by the second’s. The technical term for this operation is <em>concatenation</em> which is a term that originates in the chemical concept of carbon atoms forming chained bonds with other carbon atoms. Here, characters are being “bonded” into a longer sequence.</p>
+<h4 id="a-str-is-a-sequence-of-characters">A <code>str</code> is a <em>Sequence</em> of Characters</h4>
+<p>Through your programming journey you will encounter many types of data that are considered <strong>sequences</strong> of simpler values. In fact, you already have! Notice a <code>str</code> is a sequence of characters. The ordering of these characters is important! There’s a meaningful difference between “please” and “asleep”, even though they share the exact same characters.</p>
+<p>We will explore <em>sequences</em> in much more depth soon, but while we are on the subject of <code>str</code> values, let’s foreshadow a bit with some examples of how to access individual <strong>items</strong> in a sequence. In a <code>str</code> value, each item is a character.</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; &quot;str!&quot;[0]
+&#39;s&#39;
+
+&gt;&gt;&gt; &quot;str!&quot;[1]
+&#39;t&#39;
+
+&gt;&gt;&gt; &quot;str!&quot;[2]
+&#39;r&#39;
+
+&gt;&gt;&gt; len(&quot;str!&quot;)
+4
+
+&gt;&gt;&gt; &quot;str!&quot;[len(&quot;str!&quot;) - 1]
+&#39;!&#39;
+
+&gt;&gt;&gt; 110[0]
+TypeError: &#39;int&#39; object is not subscriptable</code></pre>
+<p><strong>Subscription</strong> syntax is formed by pairs of square brackets following a compound value. The individual items in a sequence can be accessed by their <em>index</em> inside of the square brackets. You can find the number of items in any sequence using the built-in <code>len</code> function. Notice the <code>str</code> value <code>"str!"</code> has a length of 4 because there are three letter characters followed by an exclamation point character. The quotes are not a part of the <code>str</code>’s contents once it is evaluated, they are simply how we denote <code>str</code> literals in our programs.</p>
+<p><strong>Index numbering starts from 0</strong>. This is true in Python, as well as in most general-purpose programming languages. It takes some comfort to get used to! The first <em>item</em> in a sequence is always at index 0. In a sequence with 10 items, the last item’s index is 9. Since the <code>len</code> function will return the number of items in a sequence, you can always find the last item’s index by computing <code>len(sequence) - 1</code>.</p>
+<p>Integers and floating-point values <em>are not sequences</em>, they are singular numerical values. Thus, you cannot subscript them like a <code>str</code>.</p>
+<h4 id="docstrings-are-for-documentation">Docstrings are for documentation</h4>
+<p>A <strong>docstring</strong> is a special kind of string in Python used to document the programs you write. Typically you will write a <em>docstring</em> at the top of every file describing its purpose. As we begin defining subprograms, or functions, you will also write <em>docstrings</em> in them describing their purposes in plain English.</p>
+<p>Docstrings are written for other humans to read, or for you to read in the future to help refresh the purpose of specific files and functions you authored. Rather than beginning and ending with a single double quote <code>"</code>, a docstring stands out because it begins and ends with <strong>three</strong> double quotes strung together. For example: <code>"""This is a docstring."""</code></p>
+<p>As your programs become more complex, using docstrings will become more important. For now, when working in a stored program, begin each file with a docstring describing its purpose.</p>
+<h3 id="bool---booleans"><code>bool</code> - Booleans</h3>
+<p>The built-in type <code>bool</code> is short for <em>Boolean</em>, named after its <a href="https://en.wikipedia.org/wiki/George_Boole">inventor</a>. Booleans are binary and must be one of two possible values: <code>False</code> or <code>True</code>. Notice there is a direct connection with the <em>binary</em> digits <code>0</code> and <code>1</code>. When you are writing programs you will find <code>bool</code> values are <strong>used when making logical decisions in code</strong>. In the examples below, you see some examples of asking the Python interpreter to <em>evaluate</em> two <em>boolean relationship expressions</em> using the greater than <code>&gt;</code> comparison operator. Relationship expressions allow you to form inquiries such as, “is one number greater than another?”</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; True
+True
+
+&gt;&gt;&gt; type(True)
+&lt;class &#39;bool&#39;&gt;
+
+&gt;&gt;&gt; type(False)
+&lt;class &#39;bool&#39;&gt;
+
+&gt;&gt;&gt; 110 &gt; 101
+True
+
+&gt;&gt;&gt; 110 &lt; 101
+False</code></pre>
+<p>Note that Python, like most programming languages, is <em>case-sensitive</em>. The words <code>true</code>, <code>tRuE</code>, and <code>TrUe</code> are <strong>not</strong> <code>bool</code> values. Only <code>True</code> and <code>False</code> are valid <code>bool</code> values in Python.</p>
+<h2 id="an-object-is-a-typed-unit-of-data-in-memory">An object is a typed unit of data in memory</h2>
+<p>In the opening of this lesson it was said, “an object is a typed unit of data in memory”. There is a lot of information packed into that statement now that you know a bit more about memory and types! Types are important because they decide how data is interpreted and, as you will explore in the next lesson, inform how you can make use of the object and its capabilities. The operations you can perform on numbers, such as adding them or subtracting them, are different than the operations you can perform on strings. This is broadly true both in programming and the real world: when you have different types of objects you’ll want to do different things with them.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>That’s 13,000,000,000,000,000,000,000 transistors produced! <a href="https://en.wikipedia.org/wiki/MOSFET" class="uri">https://en.wikipedia.org/wiki/MOSFET</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>In later computer science courses you will encounter systems programming languages, as you work closer to the actual machine, and will learn in much more depth the various binary systems behind integer, floating point, ASCII/UTF-8 data, and more.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

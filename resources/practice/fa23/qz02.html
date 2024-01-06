@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Quiz 02 Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502736.5913463">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Quiz 02 Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#conceptual-questions">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams">Memory Diagrams</a></li>
+<li><a href="#function-writing">Function Writing</a>
+<ul>
+<li><a href="#autograder-instructions">Autograder instructions:</a></li>
+</ul></li>
+<li><a href="#more-practice">More Practice</a></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#conceptual-questions-1">Conceptual Questions</a></li>
+<li><a href="#memory-diagrams-1">Memory Diagrams</a></li>
+<li><a href="#function-writing-1">Function Writing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><!--
+Note: this wkst pulls from the qz02 and qz03 worksheets from resources/practice/fa21 with some
+minor changes/additions
+-->
+<h1 id="questions">Questions</h1>
+<p>The quiz itself will be similar in difficulty to this practice worksheet.</p>
+<p>Solutions for each problem can be found at the bottom of this page.</p>
+<h2 id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>Global variables are limited to the scope of the function they are declared in. (T/F)</li>
+<li>Variables can have the same name but store different values if they are defined in a different scope. (T/F)</li>
+<li>Named constants should be used to store values that may change throughout the program. (T/F) <!-- 4. All pytest test function names must begin with `test`.
+5. A test will pass if it does not hit a `False` assertion or some other type of error.
+6. Test functions should be written in a file with a name matching the file that the functions are defined in, followed by `_test`. --></li>
+<li>When using a <code>for...in</code> loop, on the first line of the loop you must specify the type of the variable (variable refers to <code>i</code> in <code>for i in nums</code>). (T/F)</li>
+<li>In Python dictionaries, each dictionary’s value type must match its key type. (T/F)</li>
+<li>Writing a <code>for...in</code> loop on a <code>dict</code> loops through the keys of a dictionary. (T/F)</li>
+<li>The values in a dictionary cannot be changed once they are assigned. (T/F)</li>
+<li>Explain the similarities and differences between Python’s <code>list</code> and <code>dict</code>.</li>
+</ol>
+<h2 id="memory-diagrams">Memory Diagrams</h2>
+<ol type="1">
+<li>Produce a memory diagram for the following code snippet, being sure to include its stack, heap, and output.<br />
+</li>
+</ol>
+<pre><code>    def main() -&gt; None:
+        &quot;&quot;&quot;Entry point of program.&quot;&quot;&quot;
+        strings: list[str] = [&quot;hey&quot;, &quot;o&quot;, &quot;eh&quot;, &quot;e&quot;]
+        word: str = make_word(strings)
+        print(word)
+
+
+    def make_word(root: list[str]) -&gt; str:
+        &quot;&quot;&quot;A nonsensical function that makes a &#39;word&#39;.&quot;&quot;&quot;
+        word: str = &quot;&quot;
+        i: int = 0
+        while i &lt; len(root):
+            if i % 2 == 0:
+                word += root[i]
+            else:
+                if len(word) &lt; 5:
+                    word += root[i]
+                else:
+                    return word
+            i += 1
+        return word
+
+
+    if __name__ == &quot;__main__&quot;:
+        main()</code></pre>
+<ol start="2" type="1">
+<li>Produce a memory diagram for the following code snippet, being sure to include its stack, heap, and output.<br />
+</li>
+</ol>
+<pre><code>    &quot;&quot;&quot;References Practice.&quot;&quot;&quot;
+
+
+    def create() -&gt; list[int]:
+        &quot;&quot;&quot;An obnoxious way to make a list.&quot;&quot;&quot;
+        list_1: list[int] = []
+        i: int = 0
+        while i &lt; 3:
+            list_1.append(i)
+            i += 1
+        return list_1
+
+
+    def increase (a_list: list[int], x: int) -&gt; None:
+        &quot;&quot;&quot;Lets pump it up!&quot;&quot;&quot;
+        i: int = 0
+        while i &lt; len(a_list):
+            a_list[i] += x
+            i += 1
+        return None
+
+
+    def main() -&gt; None:
+        &quot;&quot;&quot;Entrypoint of the program.&quot;&quot;&quot;
+        list_1: list[int] = create()
+        list_2: list[int] = list_1
+        list_1 = create()
+        increase(list_1, 2)
+
+        print(list_1)
+        print(list_2)
+
+
+    if __name__ == &quot;__main__&quot;:
+        main()</code></pre>
+<!-- 3. Produce a memory diagram for the following code snippet, being sure to include its stack, heap, and output.  
+```
+    def g(word: str) -> str:
+        global happy
+        if len(word) >- 4:
+            word = happy
+        else:
+            happy = "yay"
+        return word
+
+    happy: str = ":)"
+    print(g("yay"))
+    print(g("happy"))
+    print(happy)
+``` -->
+<!-- 20. Produce a memory diagram for the following code snippet, being sure to include its stack and output.  
+![](/static/practice_worksheets/fa21/qz03-question12.png) -->
+<!-- ## Code Tracing
+15. Given the following code snippet, answer the questions below.  
+```
+    """List Practice."""
+
+    a: int = 3
+    b: int = 0
+    c: float
+
+
+    def main() -> None:
+        """Entry point of program."""
+        global a
+        global b
+        print(fun(a, b))
+
+
+    def fun(a: int, b: int) -> list[int]:
+        """A sample function."""
+        global c
+        nums: list[int] = []
+        if b == 0:
+            while len(nums) < 4:
+                c = a + b / 2
+                if c % 2 == 0:
+                    a += 1
+                    b += 1
+                else:
+                    nums.append(a)
+                    a += 3
+        return nums
+
+
+    if __name__ == "__main__":
+        main()
+```
+
+15.1. What is the printed output once the code snippet completes?  
+15.2. What are the values of the global variables `a`, `b`, and `c` once the code snippet completes? -->
+<ol start="3" type="1">
+<li>Given the following code snippet, answer the questions below.<br />
+</li>
+</ol>
+<pre><code>    def change_and_check(x: int, nums: list[int]) -&gt; int:
+        &quot;&quot;&quot;Let&#39;s see what happens!&quot;&quot;&quot;
+        if x &lt; 0:
+            return 0
+        
+        i: int = 0
+        while i &lt; len(nums):
+            nums[i] += x
+            i += 1
+
+        i = 0
+        while i &lt; len(nums):
+            if nums[i] == x:
+                return 0
+            i += 1
+
+        return x - 1
+
+
+    def main() -&gt; None:
+        &quot;&quot;&quot;The entrypoint of this program.&quot;&quot;&quot;
+        num_1: int = 0
+        list_1: list[int] = [1, 2, num_1]
+        list_1.append(change_and_check(2, list_1))
+        list_1.append(change_and_check(3, list_1))
+
+
+    main()</code></pre>
+<p>4.1. What is the value of <code>list_1</code> once the code snippet completes?<br />
+4.2. What is the value of <code>i</code> on line 10 during the <em>last</em> call to <code>change_and_check</code>?<br />
+4.3. How many total frames are created on the stack throughout the run of this program (including the globals frame)?</p>
+<h2 id="function-writing">Function Writing</h2>
+<ol type="1">
+<li>Odd and Even: <a href="/static/practice_worksheets/sp23/qz02-pp1.pdf">instructions</a></li>
+<li>Value Exists: <a href="/static/practice_worksheets/sp23/qz02-pp2.pdf">instructions</a></li>
+<li>Short Words: <a href="/static/practice_worksheets/sp23/qz02-pp3.pdf">instructions</a></li>
+</ol>
+<h3 id="autograder-instructions">Autograder instructions:</h3>
+<p>Join the Gradescope class for practice problems with the code: 4V7PB5 (Do this by going to your <a href="https://www.gradescope.com/">Gradescope</a> homepage and clicking on “Enroll in Course”) <strong>Do not compress these files before submitting. Simply submit the <code>.py</code> files.</strong></p>
+<h2 id="more-practice">More Practice</h2>
+<p>For more practice, make sure to check out our page of <a href="/resources/practice/MemDiagrams.html">practice memory diagrams</a>. For QZ02, we especially recommend doing the following diagrams:</p>
+<ul>
+<li><a href="/resources/practice/snippets/lists-00.html">Lists, Example 0</a></li>
+<li><a href="/resources/practice/snippets/dicts-00.html">Dictionaries, Example 0</a></li>
+<li><a href="/resources/practice/snippets/dicts-01.html">Dictionaries, Example 1</a></li>
+</ul>
+<h1 id="solutions">Solutions</h1>
+<h2 id="conceptual-questions-1">Conceptual Questions</h2>
+<ol type="1">
+<li>False</li>
+<li>True</li>
+<li>False <!-- 4. True
+5. True
+6. True --></li>
+<li>False</li>
+<li>False</li>
+<li>True</li>
+<li>False</li>
+<li>Similarities:<br />
+Both are collections that can be looped through using a <code>for...in</code> loop, reference types that live on the heap, mutable, can duplicate values, subscription notation to access values, <code>.pop()</code> to remove items<br />
+Differences:<br />
+<code>list</code> – Index by increasing integers, add items with <code>.append()</code>, ordered, <code>for...in</code> loop gives items<br />
+<code>dict</code> – Matched Key-Value pairs, pair with assignment operator <code>=</code> (<code>dict_name[key] = value</code>), control over key type (not limited to <code>int</code>), <code>for...in</code> gives keys<br />
+Note: these are not all of the similarities and differences, just some important ones to remember</li>
+</ol>
+<h2 id="memory-diagrams-1">Memory Diagrams</h2>
+<ol type="1">
+<li><p><img class="img-fluid" src="/static/practice-mem-diagrams/md-qz02.png" alt="The memory diagram includes a column labeled Stack, a column labeled Heap, and a column labeled Output. The stack has 3 frames in the following order from top to bottom: globals, main, and make underscore word. 
+In the Globals frame there are 2 items. First is the label `main` pointing to a function on the heap from lines 1-5. The label make underscore word points to a function on the heap from lines 8-21. 
+The main frame has 4 items, RA, RV, strings, and word. The return address is 25 and the return value is None. The variable `strings` pointing to a list in the Heap. The list is labeled list bracket str close bracket and has 4 rows and 2 columns. The first column has the indices 0, 1, 2, and 3 and the second column has the values 'hey', 'o', 'eh', and 'e'. Finally, the `main` stack frame has the variable `word` with the value of quote H E Y O E H end quote. 
+The make underscore word frame has 5 items, RA, RV, root, word, and i. Make underscore word has a return address of 4 and a return value of quote H E Y O E H end quote. It has the variable `root` pointing to the same list in the heap as the variable strings. There is another variable `word` with the value of quote H E Y O E H end quote and a variable i with the value of 3. Finally, in the output column is the string H E Y O E H."></p></li>
+<li><p><img class="img-fluid" src="/static/practice_worksheets/fa21/qz02-solution12n.png" alt="The memory diagram has three columns labeled stack, heap and output. The stack has 5 frames labeled from top to bottom, in the following order: globals, main, create, create, and increase. 
+The globals frame has three labels: create, increase, and main. Create is pointing to a function on the heap from lines 4-11, increase points to a function on the heap from lines 14-20, and main points to a function on the heap from lines 23-31. 
+The main frame has 4 items, including the RA, RV, and two variables list underscore 1 and list underscore 2. The return address is 31 and the return value is None. list underscore 2 points to a list on the heap labeled list open bracket int close bracket with 3 rows and two columns. At index 0 is the value 0, at index 1 is the value 1 and at index 2 is the value 2. list underscore 1 points to a list on the heap. The list is labeled list open bracket int close bracket and has two columns and three rows below that. The first row has the index 0 on the left and the previous value of 0 crossed out and a final value of 2. Index 1 has the previous value of 1 crossed out and a final value of 3. Index 2 has the previous value of 2 crossed out and the final value of 4.
+The first create frame has four items, RA, RV, list underscore 1, and i. The return address is 25 and the return value points to the same list in the heap that the variable list underscore 2 in the previous main frame pointed to. In the create frame, the variable list underscore 1 points to that same list in the heap. The variable i has the previous values of 0, 1, and 2 crossed out and the final value of 3. 
+The second create frame also has four items, RA, RV, list underscore 1 and i. The return address is 27 and the return value is the same list in the heap that the variable list underscore 1 in main pointed to. Within the create frame, list underscore 1 points to that same list in the heap. The variable i has the previous values of 0, 1, and 2 crossed out and the final value of 3.
+The final frame of increase has 5 items, RA, RV, a underscore list, x, and i. The return address is 28 and the return value is None. a_underscore list points to the same list pointed to by list underscore 1 in main and list underscore 1 in the second create frame. The variable x has the value of 2 and the variable i has the previous values of 0, 1, and 2 crossed out and the final value of 3."></p></li>
+<li><p><img class="img-fluid" src="/static/practice-mem-diagrams/qz02-pp-3.png" alt=""></p></li>
+</ol>
+<p>3.1. <code>[6, 7, 5, 3, 0]</code><br />
+3.2. 4<br />
+3.3. 4</p>
+<h2 id="function-writing-1">Function Writing</h2>
+<p>Note: Your solution does not need to be identical to these, these are just examples of one of many possible solutions.</p>
+<ol type="1">
+<li></li>
+</ol>
+<pre><code>    def odd_and_even(list1: list[int]) -&gt; list[int]:
+        &quot;&quot;&quot;Find the odd elements with even indexes.&quot;&quot;&quot;
+        i: int = 0
+        list2: list[int] = []
+
+        while i &lt; len(list1):
+            if list1[i] % 2 == 1 and i % 2 == 0:
+                list2.append(list1[i])
+            i += 1
+
+        return list2</code></pre>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<pre><code>    def value_exists(inp_dict: dict[str,int], val: int) -&gt; bool:
+        &quot;&quot;&quot;Return true if val is in inp_dict&quot;&quot;&quot;
+        exists: bool = False
+        for elem in inp_dict:
+            if inp_dict[elem] == val:
+                exists = True
+        return exists</code></pre>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<pre><code>    def short_words(inp_list: list[str]) -&gt; list[str]:
+        &quot;&quot;&quot;Filter out the shorter words&quot;&quot;&quot;
+        ret_list = []
+        for x in inp_list:
+            if len(x) &lt; 5:
+                ret_list.append(x)
+            else:
+                print(f&quot;{x} is too long!&quot;)
+        return ret_list</code></pre>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Megan Zhang,        David Karash,        Coralee Vickers,        Alyssa Byrnes, Carolyn Pierce</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

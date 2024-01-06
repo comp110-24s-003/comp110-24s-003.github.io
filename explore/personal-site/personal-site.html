@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Setting Up a Personal Website - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502741.7536063">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resources-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Setting Up a Personal Website</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#create-a-new-jekyll-project">Create a new Jekyll Project</a></li>
+<li><a href="#creating-a-github-repository-for-your-site-named-github-username.github.io">Creating a Github repository for your site named <code>&lt;github-username&gt;.github.io</code></a></li>
+<li><a href="#linking-your-site-to-github">Linking Your Site to Github</a></li>
+<li><a href="#configure-a-publishing-source-for-your-github-pages-site">Configure a publishing source for your GitHub Pages site</a></li>
+<li><a href="#add-content-make-it-pretty">Add Content + Make it Pretty</a></li>
+<li><a href="#more-info">More Info</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="create-a-new-jekyll-project">Create a new Jekyll Project</h1>
+<p>we’re going to set up a new Jekyll project. Jekyll is a static site generator. It helps you build a prettier site and has some really nice features!</p>
+<ol start="0" type="1">
+<li><p>First, make sure you have all of the prerequisites installed by going to <a href="https://jekyllrb.com/docs/installation/">this link</a> and checking under the “Requirements” tab.</p></li>
+<li><p>Open your terminal and use the <code>cd</code> command to navigate to wherever you want to have your site. For example, I’ll want my site file to be stored in documents, so I’ll type <code>cd Documents</code>.</p></li>
+<li><p>Now run the following command to install Jekyll: <code>gem install jekyll bundler</code></p></li>
+<li><p>To create your first Jekyll project, run the following command: <code>jekyll new --skip-bundle &lt;site-name&gt;</code>, where <code>&lt;site-name&gt;</code> is whatever you want to call your site.</p></li>
+<li><p>Now, you’ll have a folder entitled <code>&lt;site-name&gt;</code>! Open Visual Studio and then open the directory site you just created! (If you installed it in your Documents folder, it’ll be inside Documents &gt; <code>&lt;site-name&gt;</code>).</p></li>
+<li><p>You’ll see a file called “Gemfile”. Click to open that file. We are going to modify it!</p></li>
+<li><p>In Gemfile, Add “#” to the beginning of the line that starts with <code>gem "jekyll"</code> to comment out this line.</p></li>
+<li><p>Add the github-pages gem by editing the line starting with <code># gem "github-pages"</code>. Change this line to:</p></li>
+</ol>
+<p><code>gem "github-pages", "~&gt; 228", group: :jekyll_plugins</code></p>
+<p>Then save and close the Gemfile!</p>
+<ol start="8" type="1">
+<li>In your terminal, run <code>bundle install</code></li>
+</ol>
+<h1 id="creating-a-github-repository-for-your-site-named-github-username.github.io">Creating a Github repository for your site named <code>&lt;github-username&gt;.github.io</code></h1>
+<p>Now you need to connect this directory to Github!</p>
+<ol type="1">
+<li><p>Navigate to <a href="https://github.com/">https://github.com/</a> and click on the “New” button to create a new repository.</p></li>
+<li><p>Name your repository <code>&lt;github-username&gt;.github.io</code> where <code>&lt;github-username&gt;</code> is your github username and choose whether or not your repo will be Public or Private. (This will not impact who can see your site. It’ll just impact who can see the <em>repository</em> for your site.) It’s probably best to set your visibility to Private. This will give you some permission limitations when pulling/pushing to github though, so you’ll have to <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">set up an SSH key</a> and use it to connect your Github account with your computer.</p></li>
+<li><p>Click “Create Repository”</p></li>
+</ol>
+<h1 id="linking-your-site-to-github">Linking Your Site to Github</h1>
+<p>Now we want to link the site you just made on your computer with Github!</p>
+<ol type="1">
+<li><p>Open Visual Studio and then open the directory site you just created! (If you installed it in your Documents folder, it’ll be inside Documents &gt; <code>&lt;site-name&gt;</code>).</p></li>
+<li><p>Open the command palette, and type <code>Git: Initialize Repository</code> you can select <code>&lt;site-name&gt;</code> as your workspace folder.</p></li>
+<li><p>Open the command palette again and type <code>Git: Add Remote</code> and input the link to your git repo (<code>https://github.com/&lt;github-username&gt;/&lt;github-username&gt;.github.io.git</code>). When prompted, you can name your remote “origin”.</p></li>
+<li><p>Commit your changes and push to origin!</p></li>
+</ol>
+<h1 id="configure-a-publishing-source-for-your-github-pages-site">Configure a publishing source for your GitHub Pages site</h1>
+<p><em>(It is possible that this step will be automated for you! You can check by going to your site URL: <code>&lt;github-username&gt;.github.io</code> and seeing if anything shows up!)</em></p>
+<p>Follow steps 1-8 <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-from-a-branch">here</a>. For step 1, you can choose your “main” branch.</p>
+<p><img class="img-fluid" src="/static/assets/f23/pages-branch.png" alt="Image of Github Pages settings page under the 'branch' header. 'main' is selected as the branch. "  /></p>
+<p>After you do this, your site should be live at <code>https://&lt;github-username&gt;.github.io</code></p>
+<h1 id="add-content-make-it-pretty">Add Content + Make it Pretty</h1>
+<p>You’ll want to start by modifying the <code>_config.yml</code> file to add some info about yourself!</p>
+<p>You can also change the Jekyll theme of your site to style it! Here is a list of the currently supported themes: <a href="https://pages.github.com/themes/">https://pages.github.com/themes/</a>. Click on the Theme you want and it’ll give you instructions on how to install it!</p>
+<p><em>(I’ll add more here later.)</em></p>
+<h1 id="more-info">More Info</h1>
+<p>More info for general debugging can be found <a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll?platform=mac">here</a></p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Alyssa Lytle</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

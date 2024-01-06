@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Reading 01. Gender Shades - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502746.3980758">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resources-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Reading 01. Gender Shades</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#why-is-this-research-important-why-should-we-care">Why is this research important? Why should we care?</a></li>
+<li><a href="#who-are-the-papers-primary-authors">Who are the paper’s primary authors?</a>
+<ul>
+<li><a href="#joy-buolamwini-phd">Joy Buolamwini, PhD</a></li>
+<li><a href="#timnit-gebru-phd">Timnit Gebru, PhD</a></li>
+</ul></li>
+<li><a href="#where-should-you-ask-questions-on-readings">Where should you ask questions on readings?</a></li>
+<li><a href="#read-the-paper-reflect-and-respond">Read the Paper, Reflect, and Respond</a></li>
+<li><a href="#want-to-learn-more">Want to learn more?</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In this assignment, you are tasked with reading and reflecting on a computer science paper featured in the Assocation of Computing Machinery (ACM) Conference on Fairness, Accountability, and Transparency. The paper is titled “Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification”, and it explores issues surrounding automated facial analysis technology.</p>
+<p>The original seed for the work was planted when the primary author was completing her Master’s thesis and discovered that the facial reconigition tool she was working with would not detect her darker face until she put on a white mask. This experience inspired her to dig deeper into the efficacy of these tools with different types of faces, and you will read all about her findings in the paper. You can watch a featured TED talk she gave about her personal experience with algorithmic bias <a href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms">here</a>.</p>
+<h2 id="why-is-this-research-important-why-should-we-care">Why is this research important? Why should we care?</h2>
+<p>Artificial intelligence is infiltrating every aspect of society, in ways that are often hidden or opaque to those affected. We use algorithms to decide who is qualified for a loan, who deserves to be hired, who deserves to be fired, what ads you might like to see and even how long someone deserves to spend in prison.</p>
+<p>In order for these predictive models to work well, we need to train them on data, and lots of it. This input or “training data” is how engineers and data scientists are able to develop robust models that we trust to help us make decisions that impact real people’s lives. However, social inequities that are embedded into our society inevitably may find their way into our training data, leading to models that only reinforce, rather than mitigate the biases already present.</p>
+<h2 id="who-are-the-papers-primary-authors">Who are the paper’s primary authors?</h2>
+<h3 id="joy-buolamwini-phd">Joy Buolamwini, PhD</h3>
+<p>“Joy Buolamwini is a poet of code who uses art and research to illuminate the social implications of artificial intelligence. She founded the Algorithmic Justice League to create a world with more equitable and accountable technology. Her TED Featured Talk on algorithmic bias has over 1 million views. Her MIT thesis methodology uncovered large racial and gender bias in AI services from companies like Microsoft, IBM, and Amazon. Her research has been covered in over 40 countries, and as a renowned international speaker she has championed the need for algorithmic justice at the World Economic Forum and the United Nations. She serves on the Global Tech Panel convened by the vice president of European Commission to advise world leaders and technology executives on ways to reduce the harms of A.I.” <a href="https://www.poetofcode.com/">Link to Joy Buolamwini’s homepage</a>.</p>
+<h3 id="timnit-gebru-phd">Timnit Gebru, PhD</h3>
+<p>“I am currently a research scientist at Google in the ethical AI team. Prior to that I did a postdoc at Microsoft Research, New York City in the FATE (Fairness Transparency Accountability and Ethics in AI) group, where I studied algorithmic bias and the ethical implications underlying projects aiming to gain insights from data.” <a href="https://ai.stanford.edu/~tgebru/">Link to Timnit Gebru’s Homepage</a>.</p>
+<p>Note: You may recongize Timnit’s names from recent headlines as she recently spoke about her experiences at Google and her controversial firing over a paper she wrote that highlighted the risks associated with Google’s large language models. If you’d like to read more, here is one article you can start with: <a href="https://www.technologyreview.com/2020/12/04/1013294/google-ai-ethics-research-paper-forced-out-timnit-gebru/" class="uri">https://www.technologyreview.com/2020/12/04/1013294/google-ai-ethics-research-paper-forced-out-timnit-gebru/</a></p>
+<h2 id="where-should-you-ask-questions-on-readings">Where should you ask questions on readings?</h2>
+<p>Is there a term or concept used in the paper that you’re confused by? Please email me (Kaki) and I will get back to you!</p>
+<p>Any questions asked on readings in office hours, oustide of logistical questions, will be redirected to Kaki</p>
+<h2 id="read-the-paper-reflect-and-respond">Read the Paper, Reflect, and Respond</h2>
+<p>You can find a PDF copy of the paper to read here: <a href="http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf" class="uri">http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf</a>.</p>
+<p>You will find the assignment “Reading 01 - Gender Shades” on Gradescope. There are 8 possible prompts and you are asked to respond to any 2 prompts that you would prefer. Your responses should be short essays with a minimum word count of 200 words. For the prompts, rubrics, and other instructions please refer to the assignment on Gradescope.</p>
+<p>We really appreciated how much care and effort when into your responses for RD00. We also acknowedge that some of the subject matter hits very close to home and your reflections may be quite personal, so Kaki will be the only ones reading your responses.</p>
+<p>For those interested, IBM and Microsoft both issued responses to the paper which you are encouraged to read. Totally optional but a great example of how good research can effect real change in industry.</p>
+<p><a href="https://www.ibm.com/blogs/research/2018/02/mitigating-bias-ai-models/">IBM’s Response</a></p>
+<p><a href="https://blogs.microsoft.com/ai/gender-skin-tone-facial-recognition-improvement/#:~:text=Microsoft%20improves%20facial%20recognition%20technology,across%20all%20skin%20tones%2C%20genders&amp;text=With%20the%20new%20improvements%2C%20Microsoft,were%20reduced%20by%20nine%20times.">Microsoft’s Response</a></p>
+<h2 id="want-to-learn-more">Want to learn more?</h2>
+<p>This paper is only scratching the surface of the issues of algorithmic bias and ethical computing. The primary author is doing a lot of great work, and if this paper has excited you, definitely check out her website linked above. To find out more about the Gender Shades project and the continuous work being done, check out their site <a href="http://gendershades.org/">here</a></p>
+<p>Dr. Buolamwini is also featured in the Netflix documentary “Coded Bias” which gives a closer look into her journey as well as many other activists fighting for algorithmic fairness worldwide. If you are looking for a longer read, you can check out the book Weapons of Math Destruction by Cathy O’Neil. It is available for free through the UNC library portal.</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kaki Ryan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

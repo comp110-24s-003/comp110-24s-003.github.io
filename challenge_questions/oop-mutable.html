@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Challenge Question - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502746.8675444">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Challenge Question</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#intro-to-object-oriented-programming">Intro To Object Oriented Programming</a>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#set-up-files">0. Set up files</a></li>
+<li><a href="#create-point-class">1. Create <code>Point</code> class</a></li>
+<li><a href="#mutating-method-pointscale_by">2. Mutating Method: <code>Point#scale_by</code></a></li>
+<li><a href="#mutating-method-pointscale">3. Mutating Method: <code>Point#scale</code></a></li>
+<li><a href="#checking-your-methods-for-correctness">Checking Your Methods For Correctness</a></li>
+<li><a href="#submission">4. Submission</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="intro-to-object-oriented-programming">Intro To Object Oriented Programming</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Previously, we’ve talked about whether or not a function <em>mutates</em> (aka changes) a variable.</p>
+<p>For example, we might want a function that takes a <code>list</code> as an input and <em>mutates</em> that list, OR we might want a function that takes a <code>list</code> as an input does NOT mutate that list, but instead tells us something about that list, or returns a new <code>list</code> with changes made to it.</p>
+<p>This ideas also applies to methods! As we’ve talked about previously, methods often <em>mutate</em> (or change) the object they belong to. Think about our <code>Pizza</code> class from the lesson. The <code>add_toppings</code> method <em>mutates</em> a Pizza object by changing the value of <code>self.toppings</code>. On the other hand, the <code>price</code> method did not change the value of any attributes, so it does NOT mutate the Pizza object.</p>
+<p>For this CQ, we are going to create and compare two similar methods. They both have similar functionality, but one <em>mutates</em> the class object and one does not.</p>
+<h2 id="set-up-files">0. Set up files</h2>
+<p>Create a new folder inside “lessons” called “CQ07” and a new file inside of it titled “point.py”.</p>
+<h2 id="create-point-class">1. Create <code>Point</code> class</h2>
+<p>We are creating a <code>Point</code> class that has both an <code>x</code> and a <code>y</code> attribute. Think of it as the representation of a point on an (x,y) coordinate graph. We are going to talk about methods that <em>scale</em> a point, or change its value by multiplying the <code>x</code> and <code>y</code> values by some value.</p>
+<p>Create a class with the following properties:</p>
+<ul>
+<li>The class name is <code>Point</code></li>
+<li>It has the attributes <code>x</code> and <code>y</code> which are both <code>floats</code></li>
+</ul>
+<p>Now, define a constructor (aka an <code>__init__</code> method) that takes as input <code>x_init: float</code> and <code>y_init: float</code> and assigns those as the initial values for the attributes <code>x</code> and <code>y</code>.</p>
+<h2 id="mutating-method-pointscale_by">2. Mutating Method: <code>Point#scale_by</code></h2>
+<p>Now, you are going to write a method that belongs to the Point class and <em>mutates</em> a <code>Point</code>.</p>
+<p>It’ll should the following properties:</p>
+<ul>
+<li>Method name: <code>scale_by</code></li>
+<li>Parameters: <code>self</code> and <code>factor: int</code> (In general, the first parameter of a method should always be <code>self</code>)</li>
+<li>Return Type: None</li>
+<li>Behavior: It should update the x and y attributes so that <code>x = x * factor</code> and <code>y = y * factor</code></li>
+</ul>
+<h2 id="mutating-method-pointscale">3. Mutating Method: <code>Point#scale</code></h2>
+<p>Now, you are going to write a method that belongs to the Point class and instead of <em>mutating</em> a <code>Point</code>, it creates a new <code>Point</code>.</p>
+<p>It’ll should the following properties:</p>
+<ul>
+<li>Method name: <code>scale</code></li>
+<li>Parameters: <code>self</code> and <code>factor: int</code> (In general, the first parameter of a method should always be <code>self</code>)</li>
+<li>Return Type: <code>Point</code> *</li>
+<li>Behavior: It should return a new <code>Point</code> with x and y attributes equal to <code>self.x * factor</code> and <code>self.y * factor</code>.</li>
+</ul>
+<p>*Reminder: if we are defining a method that returns its own type (e.g. a method in our <code>Point</code> class that returns a <code>Point</code>), we also need to add the line <code>from __future__ import annotations</code> to the top of our file. For an example, look back at our <code>Pizza</code> class!</p>
+<h2 id="checking-your-methods-for-correctness">Checking Your Methods For Correctness</h2>
+<p>You can check your methods by creating a new file in your <code>CQ07</code> file called <code>make_points.py</code> and importing your <code>Point</code> class using <code>from lessons.CQ07.point import Point</code>. Then create a new point and call the methods.</p>
+<h2 id="submission">4. Submission</h2>
+<p>Create your submission with the following command:</p>
+<pre><code>python -m tools.submission lessons/CQ07</code></pre>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

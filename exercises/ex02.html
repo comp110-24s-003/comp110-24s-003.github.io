@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX02 - One-Shot Wordle - Loops! - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502766.430224">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX02 - One-Shot Wordle - Loops!</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#permitted-constructs">Permitted Constructs</a></li>
+<li><a href="#background-lesson-advanced-string-concepts">Background Lesson: Advanced String Concepts</a></li>
+<li><a href="#part-0.-setting-up-the-python-program">Part 0. Setting up the Python Program</a></li>
+<li><a href="#part-1.-establishing-a-secret-and-prompting-for-a-guess-30-points">Part 1. Establishing a Secret and Prompting for a Guess – 30 Points</a></li>
+<li><a href="#part-2.-checking-indices-for-correct-matches-30-points">Part 2. Checking Indices for Correct Matches – 30 Points</a></li>
+<li><a href="#part-3.-checking-other-indices-for-correct-letters-at-incorrect-positions-10-points">Part 3. Checking Other Indices for Correct Letters at Incorrect Positions – 10 Points</a></li>
+<li><a href="#part-4.-style-and-documentation-requirements-20-points-manually-graded">Part 4. Style and Documentation Requirements – 20 Points (Manually Graded)</a></li>
+<li><a href="#part-5.-type-safety-and-linting---9-points">Part 5. Type Safety and Linting - 9 Points</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submit-to-gradescope-for-grading">Submit to Gradescope for Grading</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Please complete all lessons before attempting to begin this exercise.</p>
+<p>The next step on our journey to implementing <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> is to produce a program that gives the player <a href="https://www.youtube.com/watch?v=_Yhyp-_hX2s">one shot</a> at guessing your program’s secret word. (Of course, they can play the game multiple times in order to have multiple chances.)</p>
+<p>In this exercise, you will prompt the user for a word that matches the length of your secret word. We’ll use <code>"python"</code> for the purposes of our examples and autograding. By the end of this exercise, your program will be able to work with a secret word of any length, though!</p>
+<p>You should follow the steps below for implementing the program one step at a time. To get a sense of where you are going, here is an example of a final game ():</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? hello
+    That was not 6 letters! Try again: whoopsy
+    That was not 6 letters! Try again: jumped
+    ⬜⬜⬜🟨⬜⬜
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? mythic
+    ⬜🟩🟩🟩⬜⬜
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? photos
+    🟩🟨🟨🟨🟩⬜
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? python
+    🟩🟩🟩🟩🟩🟩
+    Woo! You got it!</code></pre>
+<p>The emoji boxes of output have three possible states. Each box corresponds to a the corresponding index of the guessed word. A white box for a given index means that the guessed letter is not in the secret word, at all. A green box for a given index means that the guessed letter is correct at the same index of the secret word. A yellow box means the letter at that index <em>is in</em> the secret word, but not at the guessed position. Hence, for the secret word “python”, a guess of “photos” has green boxes at indices 0 and 4 because both words begin with ‘p’ and the second from last letter is ‘o’. The last box is white because the guessed letter was ‘s’ and “python” does not contain an ‘s’. Indices 1 through 3 are yellow because the letters at the guessed indices <em>are in</em> the word “python”, but they are not in the correct positions. If this does not yet make sense, try playing <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a> online for a chance to try it out!</p>
+<h2 id="permitted-constructs">Permitted Constructs</h2>
+<p>We expect you to implement this exercise using only the concepts covered in COMP110. If you have prior programming experience, restrict your implementation to only the concepts covered. While there are many ways to implement this program with additional concepts beyond those we have covered, you should not attempt to do so until after submitting this exercise for full credit once the autograder is posted. Gaining additional practice with the fundamentals may feel clunky, but will help ensure you have full command over the concepts we expect you to know. Additionally, it is good practice for working in other programming environments which are more constrained and require creativity to overcome restrictions. For this exercise, you will be penalized for using any kind of loop construct other than a <code>while</code> loop. Additionally, string methods (such as <code>.count</code> and <code>.format</code>) are not permitted.</p>
+<h2 id="background-lesson-advanced-string-concepts">Background Lesson: Advanced String Concepts</h2>
+<p>In this exercise you will need to make use of a few advanced string concepts:</p>
+<ol type="1">
+<li>Emoji! 🤠</li>
+<li>Formatted Strings (f-Strings)</li>
+</ol>
+<p>Before beginning work on this exercise, read the following lesson and complete the related questions on Gradescope: <a href="/lessons/strings.html">LS11 - Unicode, Emoji, Escape Sequences, and f-Strings</a></p>
+<h2 id="part-0.-setting-up-the-python-program">Part 0. Setting up the Python Program</h2>
+<p>In Visual Studio Code, be sure your workspace is open. (Reminder: File &gt; Open Recent &gt; comp110-YYS-workspace is a quick way to reopen it! Where YY is the current year and S is the semeseter: S for Spring, F for Fall.)</p>
+<p>Open the Explorer pane (click the icon with two sheets of paper or to to <em>View</em> &gt; <em>Explorer</em>) and expand the <em>Workspace</em> directory.</p>
+<p>Right click on the <code>exercises</code> directory and select “New File”. Enter the following filename, being careful to match capitalization and punctuation:</p>
+<ul>
+<li><code>ex02_one_shot_wordle.py</code></li>
+</ul>
+<p>Before beginning work on the program, you should add a <em>docstring</em> to the top of your Python <em>module</em> just as you did in EX00 and EX01. Then, you should add a line with the special variable named <code>__author__</code> assigned to be a <strong>string</strong> with your 9-digit student PID. (Disclaimer: Out in the real world the <code>__author__</code> variable is typically your name and e-mail address, but since we will grade your programs we’d like to avoid potential bias in seeing your names as part of the programs as we’re grading.) Fill in <em>your</em> 9-digit UNC PID number, without any spaces or dashes, in the <code>__author__</code> string.</p>
+<h2 id="part-1.-establishing-a-secret-and-prompting-for-a-guess-30-points">Part 1. Establishing a Secret and Prompting for a Guess – 30 Points</h2>
+<p>In your program, establish a variable to hold your secret word and initialize it to the secret word of your choice. <strong>For autograding purposes, please use a secret word of <code>"python"</code>. Once you have submitted for full autograding credit, you are encouraged to change your secret word to any word of your choice and see if your friends can solve it.</strong></p>
+<p>The first task of this program is to gather a guess from the user. Now that you have <code>while</code> loops at your disposal, you will not exit early when the incorrect number of letters is given. Instead, you will continue prompting the player until they provide a guess of the correct length. Remember, you can <em>reassign</em> a variable to be the result of prompting the player for input again. Here is how your program should perform at this step, if your secret word were “python”.</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? hi
+    That was not 6 letters! Try again: okk
+    That was not 6 letters! Try again: whyy
+    That was not 6 letters! Try again: nooooooo
+    That was not 6 letters! Try again: tootle
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? snakes
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? python
+    Woo! You got it!</code></pre>
+<p>Before you continue on: does this step of your program work correctly if you change your secret word to be a different number of letters? Your secret word should be assigned to a variable. Changing <em>only that variable</em> to a word with a different number of letters should not break anything else in your program. Specifically, your prompt strings should ask for the expected number of characters no matter what your secret word is. Remember, you can use <code>len</code> to find the length of a given string value.</p>
+<p>Additionally, be sure you are using <code>f-String</code> templates rather than concatenation for this output, as introduced in the background lesson.</p>
+<p><strong>WARNING:</strong> Autograding will very specifically be looking for <em>exactly</em> the format of lines output shown above. You will not see the <code>$</code> at your command-line prompt in VSCode, you can ignore that part. Otherwise, when you run the program on your machine with the same inputs as above on the first two lines, your printed results should look exactly like the 3rd line.</p>
+<h2 id="part-2.-checking-indices-for-correct-matches-30-points">Part 2. Checking Indices for Correct Matches – 30 Points</h2>
+<p>Now that you have gathered a guess from Part 1, your task is to check each index of the word string to see if it matches (hint: <em>is equal to</em>) the corresponding index of your secret word. This check will be <em>similar</em> to chardle, except it will need to use a <code>while</code> loop in order to test each index of secret words of arbitrary lengths. Additionally, you will need to build up a string using concatenation with each index you check in the loop. You can use the following <em>named constants</em> in your program to simplify your implementation. We will learn more about named constants soon, but for now know they are simply variables whose values you will not change later in your program and make your programs easier to read:</p>
+<pre class="plaintext"><code>WHITE_BOX: str = &quot;\U00002B1C&quot;
+GREEN_BOX: str = &quot;\U0001F7E9&quot;
+YELLOW_BOX: str = &quot;\U0001F7E8&quot;</code></pre>
+<p>Since loops are new to your repertoire, in this exercise we will give you a general strategy for accomplishing this task. Your job will be to translate this plan in English into working Python code.</p>
+<ol type="1">
+<li>First, establish a variable to keep track of the index of the word you are checking and initialize it to the first index of a string.</li>
+<li>Additionally, establish a variable to store the resulting emoji of the guess and initialize it to an empty string.</li>
+<li><em>While</em> the index variable is less than the length of the secret word, do as follows.
+<ol type="1">
+<li>Test to see if the current index of the guessed word is equal to the same index of your secret word.
+<ol type="1">
+<li>If so, concatenate a <code>GREEN_BOX</code> emoji to the result string variable you setup previously.</li>
+<li>Otherwise, concatenate a <code>WHITE_BOX</code> emoji.<br />
+</li>
+</ol></li>
+<li>After the test, increase your index variable by one so that you do not have an infinite loop.</li>
+</ol></li>
+<li>Once the loop completes, print the resulting emoji string.</li>
+</ol>
+<p>Notice, when this part of your program is completed, you will only have white and green boxes. In the final part of this program, you will add support for letting the player know a letter is in the word but at the wrong position. After this part, your program should behave as follows for a secret word of any length.</p>
+<pre class="plaintext"><code>$ python -m exercises.ex02_one_shot_wordle
+What is your 6-letter guess? photos
+🟩⬜⬜⬜🟩⬜
+Not quite. Play again soon!
+
+$ python -m exercises.ex02_one_shot_wordle
+What is your 6-letter guess? python
+🟩🟩🟩🟩🟩🟩
+Woo! You got it!</code></pre>
+<p>Once again, you should try changing your secret</p>
+<h2 id="part-3.-checking-other-indices-for-correct-letters-at-incorrect-positions-10-points">Part 3. Checking Other Indices for Correct Letters at Incorrect Positions – 10 Points</h2>
+<p>Be sure you have completed Part 2 before beginning Part 3!</p>
+<p>The real wordle will report yellow boxes for letters of a guess that are <em>contained in</em> the secret word but <em>not in the correct position</em>. In this part, you will add support for yellow boxes!</p>
+<p>At this point, you have all the tools you need in order to figure this out for yourself. There are many ways of doing this, so we would encourage you to try on your own before reading the English description which follows and gives you a path towards completing this. “Pause the video here for a challenge.”</p>
+<p>Did you get it? No, that’s ok, too. Here’s a strategy to try implementing this on your own.</p>
+<p>Identify the location of your code that is evaluated <em>when the current index of the guess being checked does not match the corresponding index of the secret.</em> At this location, rather than simply deciding the guess was wrong, you will need to do a little more work to see if the guessed letter is found <em>anywhere else</em> in the secret. Once again, you will want to rely on a loop for this check so that you can change your secret word to be a word of any length later on (if you wrote a bunch of if-statements, like in Chardle, you would have to add or remove those statements each time your secret length changed).</p>
+<p>Please implement the following algorithm for this part of the exercise:</p>
+<ol type="1">
+<li>Find the location in your program you are certain the current index of the guess does not match the same index of the secret</li>
+<li>Declare a boolean variable to keep track of whether the guessed character exists anywhere else in the word and initialize it to <code>False</code>. Give it a simple, descriptive name.</li>
+<li>Declare a variable to keep track of the alternate indices of the secret you are checking for a match and initialize it to <code>0</code>. Give it a simple, descriptive name.</li>
+<li>Write <code>while</code> loop with the following test logic: while the boolean variable is <em>not</em> true <em>and</em> the index is less than the length of the secret,
+<ol type="1">
+<li>Test to see if the alternate index of the secret word is equal to the current index of the guessed word.
+<ol type="1">
+<li>If so, assign <code>True</code> to your boolean variable.</li>
+<li>Otherwise, increment your alternate index variable.</li>
+</ol></li>
+</ol></li>
+<li>After the <code>while</code> loop completes, test to see if your boolean variable is <code>True</code>. (Check for understanding: what does it <em>mean</em> for this to be True?)
+<ol type="1">
+<li>If so, append the Emoji box that signals this outcome.</li>
+<li>Otherwise, append the other Emoji box.</li>
+</ol></li>
+</ol>
+<p>Once you have completed this part of the program, your output should look as follows when using <code>"python"</code> as your secret word:</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? photos
+    🟩🟨🟨🟨🟩⬜
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? oneten
+    🟨🟨⬜🟨⬜🟩
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 6-letter guess? python
+    🟩🟩🟩🟩🟩🟩
+    Woo! You got it!</code></pre>
+<p>Once again, you should try changing your secret word variable to a word of a different length. Your program should still work correctly! For example, here’s how it should work if you chose the secret word <code>"knoll"</code>.</p>
+<pre class="plaintext"><code>    $ python -m exercises.ex02_one_shot_wordle
+    What is your 5-letter guess? quest
+    ⬜⬜⬜⬜⬜
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 5-letter guess? help
+    That was not 5 letters! Try again: hello
+    ⬜⬜🟨🟩🟨
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 5-letter guess? troll
+    ⬜⬜🟩🟩🟩
+    Not quite. Play again soon!
+
+    $ python -m exercises.ex02_one_shot_wordle
+    What is your 5-letter guess? knoll
+    🟩🟩🟩🟩🟩
+    Woo! You got it!</code></pre>
+<p>Before autograding submission, go ahead and change your secret back to <code>"python"</code>.</p>
+<p>Once you have this step of your program working, you should look back over the code you have written and convince yourself you understand the full logic of how it comes together! Congratulations on writing the essential logic of the same algorithm that <em>the real Wordle</em> uses.</p>
+<h2 id="part-4.-style-and-documentation-requirements-20-points-manually-graded">Part 4. Style and Documentation Requirements – 20 Points (Manually Graded)</h2>
+<p>We will manually grade your code and are looking for good choices of meaningful variable names. Your variable names should be descriptive of their purposes. (Loop indexing variables can be short, such as <code>i</code>, or <code>idx</code>.) You should also use the Python <code>snake_case</code> convention where variable names are all lowercase and new words are separated by underscores.</p>
+<p>You should add code comments in your own English words to describe what is happening at important stages of your program.</p>
+<p>Your program should work regardless of the secret’s length. Thus, you should not have any hard-coded numbers (such as <code>6</code> for <code>"python"</code>). All numbers that appear in output and the boundaries of loops should be based on the <code>len</code>-gth of your secret word.</p>
+<h2 id="part-5.-type-safety-and-linting---9-points">Part 5. Type Safety and Linting - 9 Points</h2>
+<p>The autograder uses industry standard tools for checking the type safety of your programs (e.g. being sure you’re using variables of the correct data types in valid ways) and linting style rules. If you have point deductions on Type Safety or Linting, read through the feedback the autograder gives and it should direct you to the line number in your program with the issue.</p>
+<h2 id="make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise 1” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submit-to-gradescope-for-grading">Submit to Gradescope for Grading</h2>
+<p>All that’s left now is to hand-in your work on Gradescope for grading!</p>
+<p>Login to Gradescope and select the assignment named “EX02 - One-shot Wordle”. You’ll see an area to upload a zip file. To produce a zip file for autograding, return back to Visual Studio Code.</p>
+<p>If you <em>do not</em> see a Terminal at the bottom of your screen, open the Command Palette and search for “View: Toggle Integrated Terminal”.</p>
+<p>Type the following command (all on a single line):</p>
+<p><code>python -m tools.submission exercises/ex02_one_shot_wordle.py</code></p>
+<p>In the file explorer pane, look to find the zip file named “yy.mm.dd-hh.mm-exercises-ex02_one_shot_wordle.py.zip”. The “yy”, “mm”, “dd”, and so on, are timestamps with the current year, month, day, hour, minute. If you right click on this file and select “Reveal in File Explorer” on Windows or “Reveal in Finder” on Mac, the zip file’s location on your computer will open. Upload this file to Gradescope to submit your work for this exercise.</p>
+<p>Autograding will take a few moments to complete. For this exercise there will be 20 “human graded” points. Thus, you should expect a maximum autograding score of 80 possible points on this assignment. If there are issues reported, you are encouraged to try and resolve them and resubmit. If for any reason you aren’t receiving full credit and aren’t sure what to try next, come give us a visit in office hours!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

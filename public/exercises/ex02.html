@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX02 - Conditonals and Loops - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502720.2904243">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX02 - Conditonals and Loops</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <div class="container">
+                <div class="content"><p>In this exercise you will use the concepts learned in the Lessons from Thursday 9/02 to produce three little programs.</p>
+<p>Assignment Outline</p>
+<ul>
+<li>Fortune Cookie (Level: Novice) – 30 Points Autograded</li>
+<li>Repeat Beat (Level: Advanced) – 35 Points Autograded</li>
+<li>Factorial (On Your Own) – 15 Points Autograded</li>
+<li>Style, Linting, Typing – 20 Points Autograded</li>
+</ul>
+<h2 id="pull-the-skeleton-code">0. Pull the skeleton code</h2>
+<p>You will find the starter files needed by “pulling” from the course workspace repository. Before beginning, be sure to:</p>
+<ol start="0" type="1">
+<li>Be sure you are in your course workspace. Open the file explorer and you should see your work for the course. If you do not, open your course workspace through File &gt; Open Recent.</li>
+<li>Open the <em>Source Control View</em> by clicking the 3-node (circles) graph (connected by lines) icon in your sidebar or opening the command palatte and searching for <em>Source Control</em>.</li>
+<li>Click the Ellipses in the Source Control pane and select “Pull” from the drop-down menu. This will begin the pulling process from the course repository. It should silently succeed.</li>
+<li>Return to the File Explorer pane and open the <code>exercises</code> directory. You should see it now contains another directory named <code>ex02</code>. If you expand that directory, you should see the starter files for the two Python programs in this exercise.</li>
+</ol>
+<h2 id="fortune_cookie.py-30-points">1. fortune_cookie.py – 30 Points</h2>
+<p>After pulling the skeleton code, above, you can find the starter code for Fortune Cookie in the file <code>exercises/ex02/fortune_cookie.py</code>.</p>
+<p>Your program is expected to print three lines. The first line of output must be the message <code>Your fortune cookie says...</code>. The second line of output is random and will be discussed further following the example. The third line of output must be the message <code>Now, go spread positive vibes!</code>. An example of running this program a few times is shown below.</p>
+<pre class="plaintext"><code>$ python -m exercises.ex02.fortune_cookie
+Your fortune cookie says...
+A beautiful, smart, and loving person will be coming into your life.
+Now, go spread positive vibes!
+
+$ python -m exercises.ex02.fortune_cookie
+Your fortune cookie says...
+Your life will be happy and peaceful.
+Now, go spread positive vibes!
+
+$ python -m exercises.ex02.fortune_cookie
+Your fortune cookie says...
+Soon life will become more interesting.
+Now, go spread positive vibes!</code></pre>
+<h3 id="randomization">Randomization</h3>
+<p>Python has a standard <code>random</code> library for producing pseudo-random numbers, which is great for our purposes. In the skeleton code, we have already imported a function named <code>randint</code> for you from the <code>random</code> library. You can use this function to generate a random <code>int</code> value within some range of possible numbers. You can play around with <code>randint</code> by starting an interactive Python REPL and importing it as shown in the skeleton code:</p>
+<pre class="plaintext"><code>$ python
+Python 3.10.1 (tags/v3.10.1:1e5d33e, Dec  7 2020, 17:08:21) [MSC v.1927 64 bit (AMD64)] on win32
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; from random import randint
+&gt;&gt;&gt; print(randint(1, 10))
+8   
+&gt;&gt;&gt; print(randint(50, 100)) 
+76   
+&gt;&gt;&gt; print(randint(1, 2))
+1
+&gt;&gt;&gt; print(randint(1, 2))
+2   
+&gt;&gt;&gt; type(randint(1, 10))
+&lt;class &#39;int&#39;&gt;
+&gt;&gt;&gt; quit()</code></pre>
+<p>The numbers your examples produce will be <em>random</em> and different from the example shown above. Notice the <code>randint</code> function takes two input arguments, both <code>int</code> expressions separated by a comma, and evaluates to a single <code>int</code> value that is a random <code>int</code> between and inclusive of the two input arguments.</p>
+<p>Since the evaluation of a call to <code>randint</code> is an <code>int</code>, you can use a variable declaration and assignment statement in your program to store the randomized result. Then, using that variable and nested <code>if/else</code> conditional statements, you should print one of at least four messages at random.</p>
+<p>You can choose any random fortune messages you would like for your program!</p>
+<h3 id="notes">Notes:</h3>
+<ol type="1">
+<li>Only make one call to <code>randint</code> and store the result in a variable</li>
+<li>Use nested <code>if/else</code> conditional statements within <code>else</code> blocks to control which fortune is printed. In other words, do not use four linear, unrelated <code>if</code> statements.</li>
+</ol>
+<h2 id="repeat_beat.py-35-points">2. repeat_beat.py – 35 Points</h2>
+<p>After pulling the skeleton code, above, you can find the starter code for Fortune Cookie in the file <code>exercises/ex02/repeat_beat.py</code>.</p>
+<p>This program will repeat a chosen word or phrase a specified number of times.</p>
+<p>Use the <code>input</code> function to prompt the user for a beat (whatever string they want to repeat) and a number (however many times they want to repeat the beat).</p>
+<p>The printed output should be the beat repeated however many times the user specified, with a space between each instance of the beat.</p>
+<p>If the number given by the user is less than or equal to 0, print “No beat…”.</p>
+<p>Example program run A:</p>
+<pre class="plaintext"><code>python -m exercises.ex02.repeat_beat
+What beat do you want to repeat? bop
+How many times do you want to repeat it? 3
+bop bop bop </code></pre>
+<p>Example program run B:</p>
+<pre class="plaintext"><code>python -m exercises.ex02.repeat_beat
+What beat do you want to repeat? boom
+How many times do you want to repeat it? -1
+No beat...</code></pre>
+<p>This must be completed using a <strong>while loop</strong>. Use of any concepts not learned yet in this course are prohibited.</p>
+<h3 id="notes-1">Notes:</h3>
+<ul>
+<li>For full credit, you shouldn’t have a space after the final beat. For example, repeating bop 3 times should print “bop bop bop”.</li>
+<li>If you’ve encountered the string multiplication operator before, we don’t want you to use it for this assignment. Use the concatenation operator instead for now.</li>
+<li>Consider having a <code>str</code> variable, separate from the beat, that you can add to in a <em>repetitive</em> fashion.</li>
+</ul>
+<p><strong>WARNING:</strong> Autograding will very specifically be looking for <em>exactly</em> the format of lines output shown above. There should only be one single space between each of the numbers, operators, the word is, and the result. When you run the program on your machine with the same inputs as above, your printed results should look exactly as shown.</p>
+<h2 id="count_letters.py-on-your-own-15-points">3. count_letters.py <em>ON YOUR OWN</em> – 15 Points</h2>
+<p>The third program in today’s exercises involves practicing with conditionals and loops and is to be completed <em>on your own</em> with no outside help from anyone, including course staff. Completing the first two parts of the exercise along with the material through 9/2 will set you up to complete this portion of the exercise.</p>
+<p>If you have an error or problem that is stopping you from running your program, we are happy to help you get to a point where you can make forward progress.</p>
+<p>Open up the file in your ex02 directory titled <code>count_letters.py</code></p>
+<p>Your goal in this program is to allow the user to input two strings, a single letter to search for an arbitrary word, and then to print out the number of times that letter appears in the word.</p>
+<p>Here are some examples of what your program should accomplish:</p>
+<pre><code>    $ python -m exercises.ex02.count_letters
+    What letter do you want to seach for?: a
+    Enter a word: California
+    Count: 2</code></pre>
+<pre><code>    $ python -m exercises.ex02.count_letters
+    What letter do you want to seach for?: p
+    Enter a word: Apple
+    Count: 2</code></pre>
+<p>Your program should be <strong>case sensitive</strong>. For example:</p>
+<pre><code>    $ python -m exercises.ex02.count_letters
+    What letter do you want to seach for?: a
+    Enter a word: Apple
+    Count: 0</code></pre>
+<pre><code>    $ python -m exercises.ex02.count_letters
+    What letter do you want to seach for?: A
+    Enter a word: Apple
+    Count: 1</code></pre>
+<p>You can run your program to test it as you with the following command: <code>python -m exercises.ex02.count_letters</code></p>
+<p>This must be completed using a <strong>while loop</strong>. Use of any concepts not learned yet in this course are prohibited.</p>
+<p><strong>WARNING:</strong> Autograding will very specifically be looking for <em>exactly</em> the format of lines output shown above. There should only be one single space between each of the numbers, operators, the word is, and the result. When you run the program on your machine with the same inputs as above, your printed results should look exactly as shown.</p>
+<h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise 1” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</h2>
+<p>Login to Gradescope and select the assignment named “EX02 - Conditionals and Loops.”. You’ll see an area to upload a zip file. To produce a zip file for autograding, return back to Visual Studio Code.</p>
+<p>If you <em>do not</em> see a Terminal at the bottom of your screen, open the Command Palette and search for “View: Toggle Integrated Terminal”.</p>
+<p>Type the following command (all on a single line):</p>
+<p><code>python -m tools.submission exercises/ex02</code></p>
+<p>In the file explorer pane, look to find the zip file named “21.mm.dd-hh.mm-exercises-ex02.zip”. The “mm”, “dd”, and so on, are timestamps with the current month, day, hour, minute. If you right click on this file and select “Reveal in File Explorer” on Windows or “Reveal in Finder” on Mac, the zip file’s location on your computer will open. Upload this file to Gradescope to submit your work for this exercise.</p>
+<p>Autograding will take a few moments to complete. If there are issues reported, you are encouraged to try and resolve them and resubmit. If for any reason you aren’t receiving full credit and aren’t sure what to try next, come give us a visit in office hours!</p>
+</div>
+            </div>
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kaki</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

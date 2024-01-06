@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Environment Diagrams - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502706.28378">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Environment Diagrams</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#environment-diagrams-101">Environment Diagrams 101</a>
+<ul>
+<li><a href="#what-is-an-environment-diagram">What is an environment diagram?</a></li>
+<li><a href="#how-to-use-an-environment-diagram">How to use an environment diagram:</a></li>
+<li><a href="#important-vocabulary-review">Important Vocabulary Review</a></li>
+</ul></li>
+<li><a href="#environment-diagram-practice">Environment Diagram Practice</a>
+<ul>
+<li><a href="#ex01-classes">EX01: Classes</a></li>
+<li><a href="#ex02-linked-lists">EX02: Linked Lists</a></li>
+<li><a href="#ex03-recursion">EX03: Recursion</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="environment-diagrams-101">Environment Diagrams 101</h2>
+<h3 id="what-is-an-environment-diagram">What is an environment diagram?</h3>
+<ul>
+<li>Environment diagrams are a visual aid that help us to trace through the execution of a program and keep track of the information we have stored on the stack and the heap at any given point!</li>
+</ul>
+<h3 id="how-to-use-an-environment-diagram">How to use an environment diagram:</h3>
+<ol type="1">
+<li>First, we need to get all set up! Add columns for the stack, the heap, and the programs output.
+<ul>
+<li>Reminder:
+<ul>
+<li>The <strong>stack</strong> is the program’s “working space.” It consists of a bunch of ‘frames’ that will correspond with each function call. The stack is specifically ordered and follows the same structure as your function calls!</li>
+<li>The <strong>heap</strong> is essentially dynamic memory. Variables that are reference types such as lists and objects live here!</li>
+</ul></li>
+</ul></li>
+<li>Add the globals frame to the call stack. This is always going to be your first frame on the stack and will hold <strong>function definitions</strong> and any <strong>global variables</strong>.
+<ul>
+<li>For <strong>function definitions</strong>, write the name of the function in the globals frame and draw an arrow to the corresponding function object on the heap labeled: <strong>Fn: [start line] - [end line]</strong>.</li>
+<li>Remember: <strong>global variables</strong> are any variables defined outside of any context such as a function definition. If the variable isn’t in the body of a function, it belongs here!</li>
+</ul></li>
+<li>Next, we have to deal with our first <strong>function call</strong>: the call to <strong>main</strong>! Remember, anytime a function is called it gets a frame on the stack that includes the following:
+<ul>
+<li>The name of the function</li>
+<li>The <strong>return address</strong>, or RA. This is the line where this function call was invoked and tells us where to return the function’s return value when its execution is complete.</li>
+<li>The <strong>return value</strong> of the function.</li>
+<li>Any <strong>parameters</strong> or <strong>local variables</strong> defined within that function.
+<ul>
+<li>Remember: Any reference types will live on the heap. To deal with this, we write the variable name in the frame on the stack and then point, or refer to, the data on the heap!</li>
+</ul></li>
+</ul></li>
+<li>Rinse and repeat! Anytime a new function is called, give it a frame on the stack and track all of it’s important information! This way, the next time you are unsure what a variables value is, you have all the information you need right in front of you!</li>
+</ol>
+<h3 id="important-vocabulary-review">Important Vocabulary Review</h3>
+<p>Wow, that’s a lot of new vocab to remember! Below is a list of commonly used terms when talking about environment diagrams. Feel free to reference it anytime you find yourself getting confused!</p>
+<ul>
+<li><strong>Stack</strong>: The program’s “working space.” It consists of a bunch of ‘frames’ that will correspond with each function call. The stack is specifically ordered and follows the same structure as your function calls!</li>
+<li><strong>Heap</strong>: Dynamic memory! Variables that are reference types such as lists and objects live here!</li>
+<li><strong>Global Variables</strong>: Variables defined outside of any context such as a function definition</li>
+<li><strong>Return Address</strong>: This is the line where this function call was invoked. It tells us where to return the function’s return value when its execution is complete.</li>
+<li><strong>Return Value</strong>: The value that is returned from a function call.</li>
+<li><strong>Current Frame</strong>: The most recently added frame that has not returned. (No RV!)</li>
+<li><strong>Name Resolution</strong>: The process of retrieving the value of a variable. A good rule of thumb for this is to look for name in the current frame. Not there? Check Globals frame!</li>
+</ul>
+<h2 id="environment-diagram-practice">Environment Diagram Practice</h2>
+<p>Below are optional practice problems for drawing environment diagrams. Try tracing through the code blocks using the rules listed above!</p>
+<h3 id="ex01-classes">EX01: Classes</h3>
+<p><img src="/static/assets/env-diagrams/code-blocks/env-classes.PNG" /></p>
+<h4 id="solution">Solution:</h4>
+<p><img src="/static/assets/env-diagrams/diagrams/classes-solution.png" /></p>
+<h3 id="ex02-linked-lists">EX02: Linked Lists</h3>
+<p><img src="/static/assets/env-diagrams/code-blocks/env-linked-list.PNG" /></p>
+<h4 id="solution-1">Solution:</h4>
+<p><img src="/static/assets/env-diagrams/diagrams/recursion-solution.png" /></p>
+<h3 id="ex03-recursion">EX03: Recursion</h3>
+<p><img src="/static/assets/env-diagrams/code-blocks/env-recursion.PNG" /></p>
+<h4 id="solution-2">Solution:</h4>
+<p><img src="/static/assets/env-diagrams/diagrams/linked-list-solution.png" /></p>
+<p>Still looking for more practice? Check out the Environment Diagram Practice page in resources!</p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Tori Hoffmann</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

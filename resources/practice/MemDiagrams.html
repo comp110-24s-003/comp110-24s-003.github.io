@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Practice Memory Diagrams, Organized By Topic - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502731.3199122">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Practice Memory Diagrams, Organized By Topic</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#printable-memory-diagram-templates">Printable Memory Diagram Templates</a></li>
+<li><a href="#practice-memory-diagrams">Practice Memory Diagrams</a>
+<ul>
+<li><a href="#basics">Basics</a></li>
+<li><a href="#conditionals">Conditionals</a></li>
+<li><a href="#conditionals-elif">Conditionals + “elif”</a></li>
+<li><a href="#functions-importing">Functions + Importing</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#dictionaries">Dictionaries</a>
+<ul>
+<li><a href="#extras">Extras</a></li>
+</ul></li>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#magic-methods-operator-overloads-and-default-parameters">Magic Methods, Operator Overloads, and Default Parameters</a></li>
+<li><a href="#recursion">Recursion</a></li>
+<li><a href="#nested-data-structures">Nested Data Structures</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h1 id="printable-memory-diagram-templates">Printable Memory Diagram Templates</h1>
+<p><a href="/static/MDTemplate0.png">Template 0</a> | <a href="/static/MDTemplate1.png">Template 1</a></p>
+<h1 id="practice-memory-diagrams">Practice Memory Diagrams</h1>
+<h2 id="basics">Basics</h2>
+<p><a href="/resources/practice/memory-diagrams/basic/basic-00.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/basic/basic-01.html">Example 1</a> | <a href="/resources/practice/memory-diagrams/basic/basic-02.html">Example 2</a></p>
+<h2 id="conditionals">Conditionals</h2>
+<p><a href="/resources/practice/memory-diagrams/conditionals/conditionals-00.html">Example 0</a></p>
+<h2 id="conditionals-elif">Conditionals + “elif”</h2>
+<p><a href="/resources/practice/memory-diagrams/elif/elif-00.html">Example 0</a></p>
+<!-- ## bool Operators
+
+## f-strings
+
+## Functions -->
+<h2 id="functions-importing">Functions + Importing</h2>
+<p><a href="/resources/practice/memory-diagrams/functions/func-import-00.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/functions/func-import-01.html">Example 1</a> | <a href="/resources/practice/memory-diagrams/functions/func-import-02.html">Example 2</a></p>
+<h2 id="lists">Lists</h2>
+<p><a href="/resources/practice/memory-diagrams/lists/lists-00.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/lists/lists-01.html">Example 1</a></p>
+<h2 id="dictionaries">Dictionaries</h2>
+<p><a href="/resources/practice/memory-diagrams/dicts/dicts-00.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/dicts/dicts-01.html">Example 1</a> | <a href="/resources/practice/memory-diagrams/dicts/lineups.html">Example 2</a></p>
+<h3 id="extras">Extras</h3>
+<p>(These are unreviewed, so please let us know if you find any mistakes!)</p>
+<ul>
+<li><a href="/static/practice-mem-diagrams/pallavi1.png">Code Snippet</a> | <a href="/static/practice-mem-diagrams/pallavi1_sol.png">Solution</a></li>
+<li><a href="/static/practice-mem-diagrams/chloe1.png">Code Snippet</a> | <a href="/static/practice-mem-diagrams/Chloe1_sol.png">Solution</a></li>
+<li><a href="/static/practice-mem-diagrams/vrinda2.pdf">Code Snippet</a> | <a href="/static/practice-mem-diagrams/vrinda2_sol.pdf">Solution</a></li>
+<li><a href="/static/practice-mem-diagrams/Pallavi3.png">Code Snippet</a> | <a href="/static/practice-mem-diagrams/Pallavi3_sol.pdf">Solution</a></li>
+<li><a href="/static/practice-mem-diagrams/Pallavi4.png">Code Snippet</a> | <a href="/static/practice-mem-diagrams/Pallavi4_sol.pdf">Solution</a></li>
+</ul>
+<h2 id="classes">Classes</h2>
+<p><a href="/resources/practice/memory-diagrams/oop/tweets.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/oop/stadium.html">Example 1</a></p>
+<h2 id="magic-methods-operator-overloads-and-default-parameters">Magic Methods, Operator Overloads, and Default Parameters</h2>
+<p><a href="/resources/practice/memory-diagrams/oop-advanced/team.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/oop-advanced/playlist.html">Example 1</a></p>
+<h2 id="recursion">Recursion</h2>
+<p><a href="/resources/practice/memory-diagrams/recursion/basic-loop.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/recursion/list-len.html">Example 1</a> | <a href="/resources/practice/memory-diagrams/recursion/silly-loop.html">Example 2</a></p>
+<h2 id="nested-data-structures">Nested Data Structures</h2>
+<p><a href="/resources/practice/memory-diagrams/nested-structures/data.html">Example 0</a> | <a href="/resources/practice/memory-diagrams/nested-structures/nested.html">Example 1</a></p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Alyssa Lytle, Team 110</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

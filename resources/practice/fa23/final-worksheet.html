@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Final Exam Practice - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502737.413356">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Final Exam Practice</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#questions">Questions</a>
+<ul>
+<li><a href="#function-writing">Function Writing</a></li>
+</ul></li>
+<li><a href="#solutions">Solutions</a>
+<ul>
+<li><a href="#function-writing-1">Function Writing</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>The final exam only includes one new concept: recursion! We will be adding practice recursive memory diagrams to the <a href="/resources/practice/MemDiagrams.html">practice memory diagram page</a> soon! You also should make sure you are more comfortable with nested data structures (e.g. lists of dicts), as that’s what we worked on with DataWrangling!</p>
+<p>Otherwise, to practice, you should review the practice problems for the previous quizzes:</p>
+<ul>
+<li><a href="/resources/practice/fa23/qz01.html">QZ01</a></li>
+<li><a href="/resources/practice/fa23/qz02.html">QZ02</a></li>
+<li><a href="/resources/practice/fa23/qz03.html">QZ03</a></li>
+</ul>
+<p>Additionally, you will be expected to do more advanced function writing for the final, so we’ve included more function writing practice problems below.</p>
+<h1 id="questions">Questions</h1>
+<p>This review is not comprehensive of all content that will be on the final exam, but rather provides a few extra practice questions. Previous quizzes/practice questions are also valuable in reviewing for the final exam. Lecture videos are another valuable resource.</p>
+<p>Solutions for each problem can be found at the bottom of this page. Keep in mind that there may be multiple solutions to each problem.</p>
+<h2 id="function-writing">Function Writing</h2>
+<ol type="1">
+<li><p>Write a function called <code>free_biscuits</code>. Given a dictionary with <code>str</code> keys (representing basketball games) and <code>list[int]</code> values (representing points scored by players), <code>free_biscuits</code> should return a new dictionary of type <code>dict[str, bool]</code> that maps each game to a boolean value for free biscuits. (<code>True</code> if the points add up to 100+, <code>False</code> if otherwise)<br />
+Example: <code>free_biscuits({ “UNCvsDuke”: [38, 20, 42] , “UNCvsState”: [9, 51, 16, 23] })</code> should return <code>{ “UNCvsDuke”: True, “UNCvsState”: False }</code>.</p></li>
+<li><p>Write a function called <code>max_key</code>. Given a dictionary with <code>str</code> keys and <code>list[int]</code> values, return a <code>str</code> with the name of the key whose list has the highest <em>sum</em> of values. Example: <code>max_key({"a": [1,2,3], "b": [4,5,6]})</code> should return <code>"b"</code> because the sum of <code>a</code>’s elements is 1 + 2 + 3 = 6 and the sum of <code>b</code>’s elements is 4 + 5 + 6 = 15, and 15 &gt; 6.</p></li>
+<li><p>Write a function called <code>multiples</code>. Given a <code>list[int]</code>, <code>multiples</code> should return a <code>list[bool]</code> that tells whether each <code>int</code> value is a multiple of the previous value. For the first number in the list, you should wrap around the list and compare this <code>int</code> to the last number in the list. (Hint: <code>x</code> is a multiple of <code>y</code> if and only if <code>x % y</code> is <code>0</code>.) Example: <code>multiples([2, 3, 4, 8, 16, 2, 4, 2])</code> should return <code>[True, False, False, True, True, False, True, False]</code>.</p></li>
+<li><p>Write a function called <code>merge_lists</code>. Given a <code>list[str]</code> and a <code>list[int]</code>, <code>merge_lists</code> should return a <code>dict[str, int]</code> that maps each item in the first list to its corresponding item in the second (based on index). If the lists are not the same size, the function should return an empty dictionary.<br />
+Example: <code>merge_lists([“blue”, “yellow”, “red”], [5, 2, 4])</code> should return <code>{"blue": 5, "yellow": 2, "red": 4}</code>.</p></li>
+<li><p>Write a function called <code>reverse_multiply</code>. Given a <code>list[int]</code>, <code>reverse_multiply</code> should return a <code>list[int]</code> with the values from the original list doubled and in reverse order.<br />
+Example: <code>reverse_multiply([1, 2, 3])</code> should return <code>[6, 4, 2]</code>.</p></li>
+</ol>
+<!-- ## Class Writing
+
+6. Create a class called `HotCocoa` with the following specifications:
+    a. Each `HotCocoa` object has a `bool` attribute called `has_whip`, a `str` attribute called `flavor`, and two `int` attributes called `marshmallow_count` and `sweetness`.
+    b. The class should have a constructor that takes in and sets up each of its attribute’s values.
+    c. Write a method called `mallow_adder` that takes in an `int` called `mallows`, increases the `marshmallow_count` by that amount, and increases the `sweetness` by that amount times 2.
+    d. Write a method called `calorie_count` that returns a `float`. If the `flavor` of the `HotCocoa` is “vanilla” or “peppermint”, increase the calorie count by 30, otherwise increase it by 20. If the `HotCocoa` has whipped cream (`has_whip` is `True`), increase the calorie count by 100. Finally, increase the calorie count by half the number of marshmallows. The calorie count should be calculated and returned when this method is called.  
+
+
+7. Create a class called `TimeSpent` with the following specifications:
+    a. Each `TimeSpent` object has a `str` attribute called `name`, a `str` attribute called `purpose`, and an `int` attribute called `minutes`.
+    b. The class should have a constructor that takes in and sets up each of its attribute’s values.
+    c. Write a method called `add_time` that takes in an `int` and increases the `minutes` attribute by this amount. The method should return `None`.
+    d. Write a method called `reset` that resets the amount of time that is stored in the `minutes` attribute.  The method should return the amount that was stored in `minutes`. 
+    e. Write a method called `report` that prints a line reporting information about the current `TimeSpent` object.  Suppose a `TimeSpent` object has `name` = `“Ariana”`, `purpose` = `“screen time”`, and `minutes` = `130`.  The report method should print: `“Ariana has spent 2 hours and 10 minutes on screen time.”`
+ -->
+<h1 id="solutions">Solutions</h1>
+<h2 id="function-writing-1">Function Writing</h2>
+<ol type="1">
+<li></li>
+</ol>
+<pre><code>    def free_biscuits(input: dict[str, list[int]]) -&gt; dict[str, bool]:
+        &quot;&quot;&quot;Check each game to see if we get free biscuits.&quot;&quot;&quot;
+        result: dict[str, bool] = {}
+        # loop over each key in my input dictionary
+        for key in input:
+            # for each element of the dictionary, sum up its values
+            list_to_sum: list[int] = input[key]
+            sum: int = 0
+            # loop through list and add each value to sum
+            for element in list_to_sum:
+                sum += element
+            # if sum &gt;= 100, store in result under key &quot;key&quot; with value True
+            if sum &gt;= 100:
+                result[key] = True
+            else: # if not, store as False
+                result[key] = False
+        return result</code></pre>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<pre><code>    def max_key(input: dict[str, int]) -&gt; str:
+        # Create variables to store max key and max val sum
+        max_key: str = &quot;&quot;
+        max_val_sum: int = 0
+        # Loop through each key of the dictionary
+        for key in input:
+            # Sum up the values of that key&#39;s corresponding list
+            val_sum: int = 0
+            for value in input[key]:
+                val_sum += value
+            # If the sum is the max so far, update the max_key and max_val_sum
+            if val_sum &gt; max_val_sum:
+                max_val_sum = val_sum
+                max_key = key 
+        return max_key</code></pre>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<p>One Solution:</p>
+<pre><code>    def multiples(input: list[int]) -&gt; list[bool]:
+        &quot;&quot;&quot;Return a mapping of each element for whether or not it&#39;s a multiple of the previous element&quot;&quot;&quot;
+        # initialize the output
+        output: list[bool] = []
+        # handle the &quot;wrap around&quot; case to check if the first element is a multiple of the last element
+        if input[0] % input[len(input) - 1] == 0: # If first element is a multiple of last
+            output.append(True) # Append True
+        else:
+            output.append(False) # Otherwise, append False
+        # now, handle the rest of the list 
+        # for idx values 1 to len(input) - 1...
+        idx: int = 1
+        while idx &lt; len(input):
+            # ...we want to see if val at idx is a multiple of val at idx-1
+            if input[idx] % input[idx-1] == 0:
+                output.append(True)
+            else:
+                output.append(False)
+            idx += 1
+        return output</code></pre>
+<p>Another Solution:</p>
+<pre><code>    def multiples(input: list[int]) -&gt; list[bool]:
+        &quot;&quot;&quot;Return a mapping of each element for whether or not it&#39;s a multiple of the previous element&quot;&quot;&quot;
+        # initialize the output
+        output: list[bool] = []
+        # handle the &quot;wrap around&quot; case to check if the first element is a multiple of the last element
+        output.append(input[0] % input[len(input) - 1] == 0)
+        # now, handle the rest of the list 
+        # for idx values 1 to len(input) - 1...
+        idx: int = 1
+        while idx &lt; len(input):
+            # ...we want to see if val at idx is a multiple of val at idx-1
+            output.append(input[idx] % input[idx-1] == 0)
+            idx += 1
+        return output</code></pre>
+<ol start="4" type="1">
+<li><p><img src="/static/practice_worksheets/fa21/final-solution4.png" /></p></li>
+<li><p><img src="/static/practice_worksheets/fa21/final-solution1.png" /></p></li>
+</ol>
+<!-- 
+## Class Writing
+
+6. ![](/static/practice_worksheets/fa21/final-solution5.png)
+
+7. ![](/static/practice_worksheets/fa21/final-solution6.png) -->
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        David Karash,        Megan Zhang, Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

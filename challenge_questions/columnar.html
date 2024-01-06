@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Challenge Question - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502747.3160691">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="lessons-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Challenge Question</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#reformatting-data">Reformatting Data</a></li>
+<li><a href="#hints">Hints:</a>
+<ul>
+<li><a href="#write-the-function-to-just-return-a-dict-with-keys-and-empty-lists">1. Write the function to just return a dict with keys and empty lists:</a></li>
+<li><a href="#use-the-column_vals-function">2. Use the <code>column_vals</code> function:</a></li>
+</ul></li>
+<li><a href="#submission">Submission</a></li>
+<li><a href="#bonus">Bonus!</a></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="reformatting-data">Reformatting Data</h2>
+<p>As dicussed in class, you will be writing a function called <code>columnar</code> in <code>lessons/data_practice/data_utils.py</code> that takes a variable in the following form:</p>
+<pre><code>  d: list[dict[str,str]] = [{&#39;Day&#39;: &#39;Monday&#39;, &#39;Low&#39;: &#39;56&#39;, &#39;High&#39;: &#39;75&#39;}, {&#39;Day&#39;: &#39;Tuesday&#39;, &#39;Low&#39;: &#39;53&#39;, &#39;High&#39;: &#39;72&#39;}, {&#39;Day&#39;: &#39;Wednesday&#39;, &#39;Low&#39;: &#39;50&#39;, &#39;High&#39;: &#39;72&#39;}]</code></pre>
+<p>and converts it to the form:</p>
+<pre><code>{&#39;Day&#39;: [&#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;], &#39;Low&#39;: [&#39;56&#39;, &#39;53&#39;, &#39;50&#39;], &#39;High&#39;: [&#39;75&#39;, &#39;72&#39;, &#39;72&#39;]}</code></pre>
+<h2 id="hints">Hints:</h2>
+<h3 id="write-the-function-to-just-return-a-dict-with-keys-and-empty-lists">1. Write the function to just return a dict with keys and empty lists:</h3>
+<p>In other words, for input:</p>
+<pre><code>  d: list[dict[str,str]] = [{&#39;Day&#39;: &#39;Monday&#39;, &#39;Low&#39;: &#39;56&#39;, &#39;High&#39;: &#39;75&#39;}, {&#39;Day&#39;: &#39;Tuesday&#39;, &#39;Low&#39;: &#39;53&#39;, &#39;High&#39;: &#39;72&#39;}, {&#39;Day&#39;: &#39;Wednesday&#39;, &#39;Low&#39;: &#39;50&#39;, &#39;High&#39;: &#39;72&#39;}]</code></pre>
+<p>It’ll return</p>
+<pre><code>{&#39;Day&#39;: [], &#39;Low&#39;: [], &#39;High&#39;: []}</code></pre>
+<h3 id="use-the-column_vals-function">2. Use the <code>column_vals</code> function:</h3>
+<p>Think about how you can call the column_vals function we defined in class to get the values you need for the lists.</p>
+<h2 id="submission">Submission</h2>
+<p>Create a .zip file by running the following command in your terminal:</p>
+<p><code>python -m tools.submission lessons/data_practice</code></p>
+<p>Then, drag and drop that .zip file into Gradescope!</p>
+<h2 id="bonus">Bonus!</h2>
+<p>Now that you’ve written your columnar function, try adding the following cell to <code>csv_data.ipynb</code> to see a nice visualization of your data!</p>
+<pre><code>    from data_utils import columnar
+    from tabulate import tabulate
+
+    column_data: dict[str,list[str]] = columnar(data)
+    tabulate(column_data, column_data.keys(), &quot;html&quot;)</code></pre>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Alyssa Byrnes</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

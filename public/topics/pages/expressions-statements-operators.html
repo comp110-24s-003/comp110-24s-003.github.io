@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Expressions, Statements, and Operators - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1704502714.0326202">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus" class="nav-link">syllabus</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Expressions, Statements, and Operators</h1>
+        <hr class="title" />
+      </div>
+    </div>
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#statements">Statements</a>
+<ul>
+<li><a href="#what-are-statements">What are statements?</a></li>
+<li><a href="#example">Example</a></li>
+</ul></li>
+<li><a href="#expressions">Expressions</a>
+<ul>
+<li><a href="#what-are-expressions">What are expressions?</a></li>
+<li><a href="#function-call-expressions">Function call expressions</a></li>
+<li><a href="#method-call-expressions">Method call expressions</a></li>
+</ul></li>
+<li><a href="#operators">Operators</a>
+<ul>
+<li><a href="#what-are-operators">What are operators?</a></li>
+<li><a href="#mathematical-operators">Mathematical operators</a></li>
+<li><a href="#assignment-and-concatenation-operators">Assignment and concatenation operators</a></li>
+<li><a href="#conditional-operators">Conditional operators</a></li>
+<li><a href="#relational-operators">Relational operators</a></li>
+<li><a href="#equality-operators">Equality Operators</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="statements">Statements</h2>
+<h3 id="what-are-statements">What are statements?</h3>
+<p>Every <strong>statement</strong> you write is a separate instruction you’re giving the computer.</p>
+<p>In Python, statements do not end with any symbols, but in other languages such as Java, statements usually end with a semicolon (;)</p>
+<p>In stored programs, you can write statements and, when the program runs, the computer evaluates each statement individually AND in order!</p>
+<p>We explain what we want a program to do using statements. For example, statements are used every time we <strong>declare</strong> or <strong>initialize</strong> a variable, or when we <strong>assign</strong> a new value to a variable. We also use statements in other ways, such as when we print things.</p>
+<h3 id="example">Example</h3>
+<div class="sourceCode" id="cb1" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>person: <span class="bu">str</span>  <span class="co"># Variable declaration statement</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>person <span class="op">=</span> <span class="st">&quot;Michael Scott&quot;</span>  <span class="co"># Variable assignment statement</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>quote: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;&#39;I&#39;m not superstitious, but I am a little stitious.&#39;&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co"># Varibale declaration and assignment in one statement!</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="bu">print</span>(quote)  <span class="co"># Print statement</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="bu">print</span>(<span class="st">&quot;-- &quot;</span> <span class="op">+</span> person)  <span class="co"># Print statement</span></span></code></pre></div>
+<p>The printed output of this program looks like:</p>
+<p>‘I’m not superstitious, but I am a little stitious.’</p>
+<p>– Michael Scott</p>
+<p>To get a better idea of what’s really happening in a statement, let’s look at the first print statement from our example: <em>print(quote)</em></p>
+<p>In this statement, we tell the computer to <strong>print</strong> to the screen the string that is stored in the <strong>quote variable</strong>. So, when we run the program the computer will find what’s stored in the quote variable <em>(“‘I’m not superstitious, but I am a little stitious.’”)</em> and print that out on the screen. The computer is now done with this statement, so it will move on to the next statement, evaluating all statements until the program is complete.</p>
+<h2 id="expressions">Expressions</h2>
+<h3 id="what-are-expressions">What are expressions?</h3>
+<p><strong>Expressions</strong> are combinations of variables, literals, operators, or functions that can be evaluated to produce a result. <em>Expressions simplify to a single value.</em></p>
+<p>This is the key: expressions evaluate to a typed value at runtime. The evaluation of an expression <em>only occurs when the program is running</em> OR when you ask the interactive Python interpreter to evaluate it. You can think of an <strong>expression</strong> as an intent to do something.</p>
+<p>Here is an example:</p>
+<div class="sourceCode" id="cb2" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>y: <span class="bu">int</span> <span class="op">=</span> <span class="dv">4</span>  <span class="co"># This is a STATEMENT because it is an instruction assigning &#39;y&#39; to 4</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span>  <span class="co"># This is a STATEMENT because it is an instruction assigning &#39;x&#39; to 3</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="dv">4</span> <span class="op">*</span> x  <span class="co"># This is an EXPRESSION because it will evaulate to a single value</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>y <span class="op">+</span> x  <span class="co"># This is anther EXPRESSION because it will also evaluate to a single value</span></span></code></pre></div>
+<p>In this example, the final two lines are <strong>expressions</strong> because they evaluate to a single value. These lines also use <strong>operators</strong>, which are covered later on this page.</p>
+<p>The types of <strong>expressions</strong> you can execute with certain objects are dictated by the object’s <em>type</em>. In the above example, <strong>x</strong> and <strong>y</strong> are typed <strong>int</strong>, so you can use mathematical operators __*__ and <strong>+</strong> to compute a product or sum. Another object type is <strong>boolean</strong>, which we can use to execute a <strong>boolean expression</strong> (boolean expressions are expressions that return True or False).</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb3" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>cat: <span class="bu">bool</span> <span class="op">=</span> <span class="va">True</span>  <span class="co"># STATEMENT assigning &#39;cat&#39; to True</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>dog: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>  <span class="co"># STATEMENT assigning &#39;dog&#39; to False</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>cat <span class="kw">and</span> dog  <span class="co"># EXPRESSION evaluating to a single value</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>cat <span class="kw">or</span> dog  <span class="co"># EXPRESSION evaluating to a single value</span></span></code></pre></div>
+<p>In this example, <strong>cat</strong> is assigned to the boolean True, and <strong>dog</strong> is assigned to the boolean <strong>false</strong>. The expression <em>“cat and dog”</em> evaluates to False, and the expression <em>“cat or dog”</em> evaluates to True. For a recap on why these evaluate to False and True respectively, <a href="/public/lessons/ls06-logical-operators.html">follow this link</a></p>
+<p>Another example of a boolean expression is:</p>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span>  <span class="co"># STATEMENT assigning &#39;x&#39; to 3</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>y: <span class="bu">int</span> <span class="op">=</span> <span class="dv">4</span>  <span class="co"># STATEMENT assigning &#39;y&#39; to 4</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>x <span class="op">&gt;</span> y  <span class="co"># EXPRESSION evaluating to a single value</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>y <span class="op">==</span> x  <span class="co"># EXPRESSION evaluating to a single value</span></span></code></pre></div>
+<p>Both of these <strong>expressions</strong> will evaluate to False because the value assigned to <strong>x</strong> is not greater than the value assigned to <strong>y</strong>, and the value assigned to <strong>y</strong> does not equal the value assigned to <strong>x</strong>. More on these <strong>operators</strong> below.</p>
+<h3 id="function-call-expressions">Function call expressions</h3>
+<p>Functions are oftentimes thought of as “subprograms” of a larger program and are usually written to carry out a specific task. For a review of functions, <a href="/lessons/ls08-functions.html">follow this link</a></p>
+<p>A function call, once evaluated, returns a value.</p>
+<p>For example: let’s use one of Python’s built-in functions, <strong>max()</strong>. The max() function returns the maximum value of one or more items. Here is an example of a function call expression using max():</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="bu">max</span>(<span class="dv">4</span>, <span class="dv">5</span>)  <span class="co"># evaluates to 5</span></span></code></pre></div>
+<h3 id="method-call-expressions">Method call expressions</h3>
+<p>Like function calls, when a method of an object is called, a value is often returned. Let’s use String’s method <strong>upper()</strong>:</p>
+<div class="sourceCode" id="cb6" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>my_string: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;I love pizzaaa&quot;</span>  <span class="co"># Remember... this is a statement! (an instruction!)</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>my_string <span class="op">=</span> my_string.upper()  <span class="co"># This is trickier... it is a statement assigning my_string to an EXPRESSION, which is my_string.upper() ! </span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(my_string)</span></code></pre></div>
+<p>In this example, we first assign <em>my_string</em> to the string <em>“I love pizzaaa”</em>, which is a <strong>statement</strong> because it is an assignment instruction. Then, we evaluate this string to be completely uppercase with the <strong>upper()</strong> method. <em>THE EXPRESSION IS my_string.upper() BECAUSE IT RETURNS A NEW VALUE, WHICH IS THE UPPERCASE VERSION OF OUR STRING!</em> This is the new value assigned (assignment = statement) to <em>my_string</em>, so when we print <em>my_string</em>, the output is <strong>“I LOVE PIZZAAA”</strong>.</p>
+<h2 id="operators">Operators</h2>
+<h3 id="what-are-operators">What are operators?</h3>
+<p><strong>Operators</strong> are special symbols used to perform <strong>mathematical functions, comparisons</strong>, and <strong>assignments</strong>. They are not expressions nor statements, but they are often used <em>in</em> expressions and statements!</p>
+<h3 id="mathematical-operators">Mathematical operators</h3>
+<p>Most mathematical operators are exactly the same as they are in math! For example: +, -, / and * for addition, subtraction, division and multiplication.</p>
+<p>There are a few operators, though, that are not the same as their math counterparts. For example, to raise a number to a power we use the double asterisk (**).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span> <span class="op">**</span> <span class="dv">2</span></span></code></pre></div>
+<p>x evaluates to 9.</p>
+<p>Another less familiar operator is the <strong>modulus</strong> (%). The modulus divides one number by another and tells us the remainder. This is useful for determining if one number is a factor of another, but that is not its only use.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span> <span class="op">%</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>y: <span class="bu">int</span> <span class="op">=</span> <span class="dv">4</span> <span class="op">%</span> <span class="dv">2</span></span></code></pre></div>
+<p>x evalues to 1 because 2 can go into 3 once, leaving a remainder of 1. y evaluates to 0 because 2 goes into 4 twice evenly with no remainder.</p>
+<p><strong>Don’t forget!</strong>: like in algebra, our trusty order of operations applies… and yes, this means to remember <strong>PEMDAS</strong>! Just a quick reminder that <strong>PEMDAS</strong> isn’t just <em>Please excuse my dear Aunt Sally</em>, but it stands for the order in which multi-operator expressions are evaluated. (<strong>P</strong> = Parentheses, <strong>E</strong> = Exponents, <strong>M</strong> = Multiplication, <strong>D</strong> = Division, <strong>A</strong> = Addition, and <strong>S</strong> = Subtraction)</p>
+<p>Additionally, any mathematical operator can be combined with an equals symbol = when incrementing a variable. For example:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>x <span class="op">+=</span> <span class="dv">3</span></span></code></pre></div>
+<p>In this example, x is first assigned the integer value of 3, and then it is incremented by another 3, reassigning the value of 6 to x. You can read “<em>x += 3</em>” as “<em>x is x plus three</em>.”</p>
+<h3 id="assignment-and-concatenation-operators">Assignment and concatenation operators</h3>
+<p>For <strong>assigning</strong> variables, use the = operator. Assigning a variable is considered a statement because it is an instruction to the computer. However, you can <em>assign</em> a statement to an expression if what’s being assigned is an expression.</p>
+<p>For example: (For <strong>string concatenation</strong>, use the + operator. )</p>
+<div class="sourceCode" id="cb10" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>first_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Creed&quot;</span>  <span class="co"># assignment statement</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>last_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;Bratton&quot;</span>  <span class="co"># assignment statement</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>full_name: <span class="bu">str</span> <span class="op">=</span> first_name <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> last_name  <span class="co"># assignment statement AND expression </span></span></code></pre></div>
+<p>In this example, <em>full_name</em> is assigned to the expression <em>first_name + " " + last_name</em>.</p>
+<p><em>full_name</em> evaluates to ‘Creed Bratton’. We use the = operator to assign the variables <em>first_name, last_name</em> and <em>full_name</em> values, and we use the + operator to concatenate <em>first_name and last_name</em></p>
+<h3 id="conditional-operators">Conditional operators</h3>
+<p>Booleans are either true or false, but we can also have <strong>expressions</strong> that are true or false. This means we can have whole expressions that are booleans. Boolean expressions use <strong>conditional operators</strong>, which are operators that help compare data. The following two types of operators are conditional operators!</p>
+<h3 id="relational-operators">Relational operators</h3>
+<p>Many of these symbols come from math and are pretty recognizable:</p>
+<p><strong>&gt;</strong></p>
+<p>This is the ‘greater than’ operator. Is the number on the left of the ‘&gt;’ larger than the one on the right? If <em>yes</em>, the epxression is True. If <em>no</em>, the expression is False.</p>
+<p><strong>&lt;</strong></p>
+<p>This is the ‘less than’ operator. Is the number on the left of the ‘&lt;’ smaller than the one on the right? If <em>yes</em>, the epxression is True. If <em>no</em>, the expression is False.</p>
+<p><strong>&gt;=</strong></p>
+<p>This is the ‘greater than or equal to’/‘is at least’ operator. (Looks like ≥ in math). Is the number on the left of the ‘&gt;=’ larger or equal to than the one on the right? If <em>yes</em>, the epxression is True. If <em>no</em>, the expression is False.</p>
+<p><strong>&lt;=</strong></p>
+<p>This is the ‘less than or equal to’/‘is at most’ operator. (Looks like ≤ in math). Is the number on the left of the ‘&lt;&gt;=’ smaller than or equal to the one on the right? If <em>yes</em>, the epxression is True. If <em>no</em>, the expression is False.</p>
+<h3 id="equality-operators">Equality Operators</h3>
+<p>Should I use a single = OR a double == ? Remember, the singe = is an <strong>assignment</strong> operator, which temporarily links a variable to its <em>assigned</em> value. SO what is the double == for?</p>
+<p>The <strong>==</strong> is the <strong>equal to</strong> operator. It has TWO equals symbols in a row.</p>
+<p>The <strong>==</strong> checks for <em>deep equality</em>, or if the objects are the same. An expression with <strong>==</strong> evaluates to a boolean.</p>
+<pre><code>1066 == 1066 would be True
+21 == 939 would be False</code></pre>
+<p>The <strong>!=</strong> is the <strong>not equal to</strong> operator. The ! symbol means <em>“NOT”</em>. It has an exclamation point followed by a singular equals symbol, and it works oppositely to the <strong>==</strong> operator.</p>
+<pre><code>1066 != 1066 would be False
+21 != 939 would be True</code></pre>
+<p>For more information about expressions, check out <a href="/lessons/expressions.html">this lesson page!</a></p>
+</div>
+
+       
+
+    </div> 
+
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Claire Helms</span>
+    </div>
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.initLineNumbersOnLoad();</script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>

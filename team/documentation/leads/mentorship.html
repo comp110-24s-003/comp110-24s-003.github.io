@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0" data-nav1="true">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team Lead Guide to Mentoring - COMP110 - 22F</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/styles.css?v=1704502758.8195004">
+</head>
+
+<body id="body" class="absolute-page container">
+  
+    <div onKeyPress="return myFunction(event)">
+        <form id="log-in" class="center-text" id="form01" action="demo_form.asp" onsubmit="return false;" >
+            <h3 style="margin-bottom: 20px">Team Login</h3>
+            <input id="username" type="text" placeholder="username" style="margin-bottom: 10px">
+            <input id="password" type="text" placeholder="password">
+            <input class="hidden" type="button" value="Submit" onclick="myFunction(0)">
+        </form>
+    </div>
+
+
+    <a name="top"></a>
+    <div id="page-container">
+    <div id="content-wrapper">
+    <script src="/static/scripts/log-in-element.js"></script>
+    <div class="wrapper">
+
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+      <div class="container">
+        <a href="/team" class="navbar-brand">COMP 110</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto"> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/documentation">documentation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/career">career</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team/yearbook">yearbook</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="team-page" class="container">
+        <div class="row pt-4">
+            <div class="col-12">
+            <h2 >Team Lead Guide to Mentoring</h2>
+            <hr class="title"/>
+        </div>
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div id="menu-overview" class="link-page horizon-box">
+                <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                <div id="overview-links">
+                    <div id="TOC" role="doc-toc">
+                        <ul class="overview-item"><ul>
+<li><a href="#key-objectives">Key Objectives</a></li>
+<li><a href="#my-guiding-principles">My Guiding Principles</a></li>
+<li><a href="#mentor-mentee-matching">Mentor / Mentee Matching</a>
+<ul>
+<li><a href="#mentorship-interest-form-questions">Mentorship Interest Form Questions:</a></li>
+<li><a href="#matching-and-coordination">Matching and Coordination</a></li>
+</ul></li>
+<li><a href="#check-ins">Check Ins</a></li>
+<li><a href="#shadowing">Shadowing</a></li>
+<li><a href="#example-messages-i-sent">Example Messages I Sent:</a></li>
+<li><a href="#main-takeaways">Main Takeaways</a></li>
+<li><a href="#things-i-helped-plan">Things I Helped Plan</a></li>
+<li><a href="#feedback-questions-spring-21">Feedback Questions (Spring ’21)</a></li>
+<li><a href="#feedback-results-spring-21">Feedback Results Spring ’21:</a>
+<ul>
+<li><a href="#highlights-things-that-worked">Highlights / Things that Worked:</a></li>
+</ul></li>
+</ul>
+</</ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="key-objectives">Key Objectives</h2>
+<ul>
+<li>Mentor / Mentee Matching</li>
+<li>Checkins</li>
+<li>Shadowing</li>
+</ul>
+<h2 id="my-guiding-principles">My Guiding Principles</h2>
+<ol type="1">
+<li>Each mentee should feel like they can approach at least one older member whenever they need help</li>
+<li>One on one communication is way more effective than messages in the big slack channels</li>
+<li>Mentors should also feel supported if any problems arise!</li>
+</ol>
+<h2 id="mentor-mentee-matching">Mentor / Mentee Matching</h2>
+<p>In order to make this work, I coordinated with the grad TA (Kaki) to get a list of new members. I then gauged interest in being mentors among existing TAs by creating a google form. Everyone who filled out the form was added to the Google Sheet. I then chose mentors with priority being given to those who had been a TA for the team for at least 2 semesters, had not yet had the chance to be a mentor, and had said that being a mentor was very important to them.</p>
+<h3 id="mentorship-interest-form-questions">Mentorship Interest Form Questions:</h3>
+<ul>
+<li>Name</li>
+<li>Year</li>
+<li>Have you been a mentor before?</li>
+<li>How important is being a mentor for you (1 to 5 scale)?</li>
+<li>Additional thoughts/questions?</li>
+</ul>
+<h3 id="matching-and-coordination">Matching and Coordination</h3>
+<ul>
+<li>I used a Google Sheets document to match everyone (which ended up being my key reference point throughout the semester) with the help of Kris &amp; Kaki</li>
+<li>There were 2 slack channels that I communicated in (for general messages):
+<ul>
+<li><strong>#new-members</strong></li>
+<li><strong>#mentors-s21</strong></li>
+</ul></li>
+<li>Otherwise, all other communication was done by DM. While a bit tedious, this made sure everyone felt directly spoken to and I could be sure of who received a message and who didn’t. I felt this assurance was especially important in a completely remote semester. These types of messages were:
+<ul>
+<li>Introducing Mentees to their Mentor (owness on the mentor to reach out separately)</li>
+<li>Asking people to be Mentors</li>
+</ul></li>
+</ul>
+<h2 id="check-ins">Check Ins</h2>
+<ul>
+<li>helping new members set up their profiles on github</li>
+<li>filling in when mentors can’t</li>
+<li>every 2 weeks to once a month messaging mentors to reach out to their mentees</li>
+<li>sending out a Google Form for feedback 3 months into the semester</li>
+</ul>
+<p>A good example would be posting in random if anyone wanted to hop on my Zoom and work on the first problem set. Anticipating what may be difficult and providing an accessible stress free resource (a Zoom link) and a time helped a few people. I also, with the help of Naomi, set up a Zoom meeting for everyone to go over confusing parts of the code we had to finish before the semester began.</p>
+<h2 id="shadowing">Shadowing</h2>
+<p>This was a new addition to the semester with credit going to Claire for suggesting it! I would usually (on Sunday’s) make a preemptive list of TAs with office hours coinciding with a new member, using ShiftOverflow. I’d then message said older member to see if they’d be fine being shadowed. Once confirmed, I messaged the new member with the Date + Time + TA they’d be shadowing. The shadowing process was handled by Kaki in the Spring 2021 semester.</p>
+<ul>
+<li>Shadowing OH Techniques</li>
+<li>Shadowing Grading Techniques (for projects)</li>
+</ul>
+<h2 id="example-messages-i-sent">Example Messages I Sent:</h2>
+<blockquote>
+<p>helloooo! so we’re looking for mentors for the 18 new team members. because things are virtual, this will be such a key way to build community. the theme for the semester is ~good vibes~ haha &amp; i think you’d be spectacular at that :smile: just some expectations, this would involve being a resource &amp; semi-regular check ins (for example: scheduling a 30 minute zoom chat every couple of weeks). Are you interested in being one? :slightly_smiling_face:</p>
+</blockquote>
+<blockquote>
+<p>hiii, if you have any questions about reapplying to be a TA, definitely reach out to your mentor or me! (also if you are returning to 110 &amp; are interested in bumping up to 10 hours but don’t know what that entails, please please reach out, this was also super confusing for me too). :heart:</p>
+</blockquote>
+<blockquote>
+<p>if you have any questions about the new project, please message me or your mentor (we’d love to help) :heart: have a great rest of your week!</p>
+</blockquote>
+<blockquote>
+<p>ok, you’re all set to pair with <strong>Mentor</strong> for grading 110 stuff. You should message them and find 1 hour to grade together this coming week. You’ll be leading the grading you do together but definitely ask for any help (&amp; check my message in #new-members for more info)</p>
+</blockquote>
+<h2 id="main-takeaways">Main Takeaways</h2>
+<ul>
+<li>Running mentorship is all about filling in gaps. Some weeks, I’d just message each new member to make sure they were doing well and see if there’s anything they needed. These convos varied from short to long and sometimes morphed into whole other topics.</li>
+<li>If you notice a new member is struggling with something, reach out! This can be anything from not knowing how to merge to the team repo or simply looking for a fellow TA in a difficult course. I dedicated some time to hopping on calls to work through these issues one on one if necessary or sending a message on behalf of a new member to facilitate a conversation between 2 people.</li>
+<li>A personal goal of mine was making sure people knew the value they added to the team. Encouraging new members to speak up during All Hands or getting them to contribute to documentation or other team projects is a good example. For the Mentor / Mentee Game Night, I tried to message every new member who left before the end and thank them for coming! It’s my hope that all these new members one day feel comfortable bumping up to 10 hours and being leaders in their own right!</li>
+</ul>
+<h2 id="things-i-helped-plan">Things I Helped Plan</h2>
+<ul>
+<li>Mentor - Mentee Pairings</li>
+<li>Intro Zoom Calls to Troubleshoot the Problem Sets</li>
+<li>The Initial Mentor / Mentee Zoom Call</li>
+<li>Shadowing</li>
+<li>Google Form Feedback Form (1/2 way through semester)
+<ul>
+<li>For the Spring 2021 semester, I sent out an (anonymous) form to everyone on the team to get feedback on improvements</li>
+</ul></li>
+<li>Mentor / Mentee Game Night</li>
+</ul>
+<h2 id="feedback-questions-spring-21">Feedback Questions (Spring ’21)</h2>
+<ol type="1">
+<li>How was your overall experience with having a mentor (1 to 5 scale)?</li>
+<li>What were some highlights of your experience as a mentee?</li>
+<li>Do you have any general tips for mentors?</li>
+<li>Was there anything that would have improved your experience as a mentee?</li>
+<li>Did you meet with your mentee online or in-person?</li>
+<li>Do you feel like your transition from 5 to 10 hours was easy? If you are currently at 5 hours and are thinking about increasing to 10 hours, how clear do you think the transition will be (1 to 5 scale)?</li>
+</ol>
+<h2 id="feedback-results-spring-21">Feedback Results Spring ’21:</h2>
+<h3 id="highlights-things-that-worked">Highlights / Things that Worked:</h3>
+<ul>
+<li>Having someone they felt comfortable using as their point of contact</li>
+<li>Explaining how the team works / rehiring / how to be a TA</li>
+<li>Mentor suggesting different types of activities (in person / virtual)</li>
+<li>Asking if the mentee was going to team events</li>
+<li>Getting more insight on the major / answering questions (reaching out to see if they had any questions)</li>
+</ul>
+<blockquote>
+<p>Contributors: Chiazo Agina, Andrew Zheng</p>
+</blockquote>
+</div>
+
+       
+
+    </div> 
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+    <div class="authors-box bg-light mt-4 py-3 ps-4">
+      <span> Contributor(s):              Chiazo Agina, Andrew Zheng</span>
+    </div>       
+  </div>
+
+  <div class='link-page mt-3 container'>
+    <footer>
+        <h6 class="text-center align-middle footer-text">&copy; 2023 <a href="https://krisjordan.com">Kris Jordan</a>
+          - <a href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback Form</a>
+          - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h6>
+      </footer>
+  </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Load our React components. -->
+
+    <script type="text/babel" src="/static/components//Itinerary/EventSection.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/DateSection.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dates.tsx?cache=1704502758.8195004"></script>
+        <script type="text/babel" src="/static/components//Itinerary/DropdownButton.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Dropdown.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Search.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButtons.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/PillButton.tsx?cache=1704502758.8195004"></script>
+    <script type="text/babel" src="/static/components//Itinerary/Itinerary.jsx?cache=1704502758.8195004"></script>
+    <script src="/static/scripts/log-in-handler.js"></script>
+
+    
+</body>
+
+</html>
