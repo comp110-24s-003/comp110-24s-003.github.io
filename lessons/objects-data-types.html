@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1704948791.8544233">
+  <link rel="stylesheet" href="/static/styles.css?v=1704949613.9718955">
 </head>
 
 <body>
@@ -156,8 +156,9 @@
 </tr>
 </tbody>
 </table>
-<p>You can poke at this concept directly in an interactive Python session. To follow along, <strong>open a new terminal session</strong> and run the <code>python</code> program by typing it in and pressing enter. Each of the lines beginning with <code>&gt;&gt;&gt;</code> is one where you will type in an expression and press enter for the Python interpreter to <strong>evaluate</strong>.</p>
-<pre class="plaintext"><code>&gt;&gt;&gt; int(0b01000001)
+<p>You can poke at this concept directly in an interactive Python session. To follow along, <strong>open a new terminal session in VSCode</strong> and run the <code>python</code> program by typing it in and pressing enter. Each of the lines beginning with <code>&gt;&gt;&gt;</code> is one where you will type in an expression and press enter for the Python interpreter to <strong>evaluate</strong>.</p>
+<pre class="plaintext"><code>
+&gt;&gt;&gt; int(0b01000001)
 65
 
 &gt;&gt;&gt; chr(0b01000001)
@@ -173,7 +174,8 @@
 67
 
 &gt;&gt;&gt; chr(0b01000011)
-&#39;C&#39;</code></pre>
+&#39;C&#39;
+</code></pre>
 <p>You are encouraged to try other bit patterns! When you are done, evaluate the function call expression <code>quit()</code> in the interactive Python program.</p>
 <p>Each line had its own <em>function call <strong>expression</strong></em>. A <em>function call</em> starts with a function’s name, in these examples there were two functions used, both <code>int</code> and <code>chr</code>. The word <code>int</code> is short for <em>integer</em> and <code>chr</code> short for <em>character</em>, which includes letters, numbers, punctuations, and other textual symbols. Following the function name are a pair of parentheses and inside the parenthesis are any pieces of input data the function needs, called <em>arguments</em>. In these examples, a single argument was given to the function calls, and each of the arguments was a bit pattern. In Python, and many other languages, bit patterns are denoted with a prefix of <code>0b</code> followed by the pattern of 0s and 1s. Each expression you wrote was <strong>evaluated</strong> by the Python interpreter and its resulting value was printed to the screen.</p>
 <blockquote>
@@ -364,7 +366,6 @@ False</code></pre>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-  <script>hljs.initLineNumbersOnLoad();</script>
   <script>hljs.highlightAll();</script>
   
 </body>
