@@ -38,9 +38,9 @@
         {
             "kind": "LS",
             "n": 2,
-            "title": "Objects and Data Types (Due Sunday 1/14)",
+            "title": "Objects and Data Types (Due Monday 1/15)",
             "date": "2024-01-11",
-            "deadline": "2024-01-14",
+            "deadline": "2024-01-15",
             "links": {
                 "": "/lessons/objects-data-types.html"
             }
@@ -48,9 +48,9 @@
         {
             "kind": "LS",
             "n": 3,
-            "title": "Expressions (Due Sunday 1/14)",
+            "title": "Expressions (Due Monday 1/15)",
             "date": "2024-01-11",
-            "deadline": "2024-01-14",
+            "deadline": "2024-01-15",
             "links": {
                 "": "/lessons/expressions.html"
             }
