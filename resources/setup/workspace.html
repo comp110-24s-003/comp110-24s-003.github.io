@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1704936917.3732414">
+  <link rel="stylesheet" href="/static/styles.css?v=1704937884.8051314">
 </head>
 
 <body>
@@ -63,19 +63,10 @@
                         <ul class="overview-item"><ul>
 <li><a href="#find-your-canvas-unc-e-mail-address">0. Find Your Canvas UNC E-mail Address</a></li>
 <li><a href="#register-for-github">1. Register for GitHub</a></li>
-<li><a href="#setup-your-workspace-in-visual-studio-code">2. Setup your Workspace in Visual Studio Code</a></li>
-<li><a href="#installing-vscode-extensions">3. Installing VSCode Extensions</a></li>
-<li><a href="#installing-python-libraries">4. Installing Python Libraries</a>
-<ul>
-<li><a href="#everyone-follow-these-steps-5-6">Everyone follow these steps 5-6:</a></li>
-</ul></li>
-<li><a href="#setup-your-backup-workspace-on-github">5. Setup your Backup Workspace on GitHub</a></li>
-<li><a href="#configure-your-git-name-and-e-mail">6. Configure your <code>git</code> Name and E-mail</a></li>
-<li><a href="#operating-system-specific-configuration">7. Operating System Specific Configuration</a>
-<ul>
-<li><a href="#windows">Windows</a></li>
-<li><a href="#macos">macOS</a></li>
-</ul></li>
+<li><a href="#login-to-github-in-vscode">2. Login to Github in VSCode</a></li>
+<li><a href="#installing-vscode-dev-container-extension">4. Installing VSCode Dev Container Extension</a></li>
+<li><a href="#setup-your-workspace-in-visual-studio-code">3. Setup your Workspace in Visual Studio Code</a></li>
+<li><a href="#setup-your-backup-workspace-on-github">4. Setup your Backup Workspace on GitHub</a></li>
 <li><a href="#confirm-everything-is-good-to-go">8. Confirm Everything is Good to Go</a></li>
 </ul>
 </</ul>
@@ -83,14 +74,14 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Before beginning these instructions you should have first <a href="/resources/setup/os-update.html">updated your operating system</a> and then <a href="/resources/setup/software.html">installed the required software (Python 3.11, Visual Studio Code, and git)</a>.</p>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Before beginning these instructions you should have first <a href="/resources/setup/os-update.html">updated your operating system</a> and then <a href="/resources/setup/software.html">installed the required software (Docker Desktop and Visual Studio Code)</a>.</p>
 <h2 id="find-your-canvas-unc-e-mail-address">0. Find Your Canvas UNC E-mail Address</h2>
 <p><em><strong>Canvas UNC e-mail addresses typically end in <span class="citation" data-cites="live.unc.edu">@live.unc.edu</span> or <span class="citation" data-cites="email.unc.edu">@email.unc.edu</span></strong>!</em></p>
 <p>Find your Canvas e-mail address by logging into Canvas, clicking on “Account” in the top right corner, selecting “Settings”, and looking under the Email field on the right.</p>
 <p>Use your Canvas e-mail address when you login to Gradescope and register for GitHub.</p>
 <h2 id="register-for-github">1. Register for GitHub</h2>
 <p>GitHub is for backing up your course Workspace Repository and for downloading course materials.</p>
-<p>You can think of GitHub as a social network where people and organizations share and collaborate on code with one another. Organizations like NASA, NOAA, Peace Corps, Washington Post, New York Times, and so on, host projects publicly (and privately) on GitHub. It’s a valuable service for data scientists, software engineers, research teams, and more.</p>
+<p>You can think of GitHub as a social network where people and organizations share and collaborate on code with one another. Organizations like NASA, NOAA, Peace Corps, Washington Post, New York Times, and so on, host projects publicly (and privately) on GitHub. It’s a valuable service for software engineers, data scientists, research teams, and more.</p>
 <p>Your coursework will have its own private “git repository”. The technology we use for backing up versions of our projects and transmitting them to or from the internet, hosted on GitHub, is called <em>git</em>. Visual Studio Code has git support built into it. Git is a professional <em>version control</em> tool we use in limited ways in COMP110, but if you continue on in a field that involves programming and data you’ll likely encounter it again.</p>
 <ol type="1">
 <li>Register for a GitHub account with your primary UNC address: <a href="https://github.com/" target="_blank">https://github.com/</a>
@@ -99,14 +90,30 @@
 </ul></li>
 <li>After registering, edit your profile from this page: <a href="https://github.com/settings/profile" target="_blank">https://github.com/settings/profile</a>
 <ul>
-<li>Be sure your name and email match what you used on Course.Care</li>
+<li>Be sure your name and email match what is in Canvas</li>
 <li>Fill out the rest of your GitHub profile with a high quality photo of yourself, a brief bio, UNC Chapel Hill as your “company”, and Chapel Hill (or home) as your location if you are going to continue in a field that involves programming (computer science, data science, information science, and so on). Think of this as a secondary LinkedIn when it comes to future opportunities, because that’s often how employers and graduate schools look at it.</li>
 </ul></li>
 </ol>
-<h2 id="setup-your-workspace-in-visual-studio-code">2. Setup your Workspace in Visual Studio Code</h2>
+<h2 id="login-to-github-in-vscode">2. Login to Github in VSCode</h2>
 <ol type="1">
-<li>Open Visual Studio Code</li>
-<li>Open the <em>View</em> menu and select <em>Command Palette</em>
+<li>Open the VSCode application on your computer.</li>
+<li>In the bottom left corner, look for a user/profile icon above a settings gear icon. Click it.</li>
+<li>Click “Sign in” or “Sign in to sync settings”</li>
+<li>This will open a browser window. If you are not already logged into GitHub, you will be prompted to login. If you are logged in, you may get redirected back to VSCode. Follow the prompts until you are taken back to VSCode.</li>
+<li>Confirm you are logged in by clicking the user/profile icon in the bottom left corner of VSCode. You should see your GitHub username followed by (GitHub).</li>
+</ol>
+<h2 id="installing-vscode-dev-container-extension">4. Installing VSCode Dev Container Extension</h2>
+<p>VSCode can be customized with extensions specific to the types of work you use it for. We need a specific extension to enable a feature called “DevContainers” short for Development Containers. This feature of VSCode, combined with Docker, is what will ensure you and all of your peers in the course have exactly the same software setup.</p>
+<ol type="1">
+<li>From the View menu, select Extensions</li>
+<li>In the search box, type: “Dev Containers”.</li>
+<li>Click the top result that is verified as published by Microsoft.</li>
+<li>Click the Install button to install the extension.</li>
+<li>If prompted to reload the VSCode window, accept.</li>
+</ol>
+<h2 id="setup-your-workspace-in-visual-studio-code">3. Setup your Workspace in Visual Studio Code</h2>
+<ol start="2" type="1">
+<li>In VSCode, from the <em>View</em> menu and select <em>Command Palette</em>
 <ul>
 <li>You’ll use the Command Palette a lot so it’s worth trying to remember its shortcut!</li>
 <li>Windows: <code>Control+Shift+P</code></li>
@@ -116,12 +123,12 @@
 <ul>
 <li>If you do not see this option after installing course software previously, try rebooting your computer.</li>
 </ul></li>
-<li>Copy the following URL: <code>https://github.com/comp110-23f/comp110-23f-workspace.git</code>
+<li>Copy the following URL: <code>https://github.com/comp110-24s-003/comp110-24s-workspace.git</code>
 <ul>
 <li>Right Click and Paste the copied URL into the text box that appeared in VS Code after the previous step.</li>
 <li>Or use the Paste keyboard shortcut: <code>Control+V</code> Windows / <code>Command+V</code> Mac</li>
 </ul></li>
-<li>Press Enter and you will be asked where you want your course workspace repository to be saved on your computer. Just accepting the default suggestion is OK.</li>
+<li>Press Enter and you will be asked where you want your course workspace repository to be saved on your computer. Accepting the default suggestion is OK, but if you have a folder you would prefer to keep the course work go ahead and select it. Trying to move your workspace after this step and should be avoided until the semester ends.</li>
 <li>Visual Studio Code may ask you to enter your GitHub username and password in the same place you just entered your Workspace Repository URL. If you don’t see this prompt you can proceed to step 7.
 <ul>
 <li>If it asks for your GitHub username, type it in and press enter. Your username can be found in the top left of your GitHub profile at <a href="https://github.com/settings/profile" target="_blank">https://github.com/settings/profile</a>.</li>
@@ -129,46 +136,7 @@
 </ul></li>
 <li>Press OK when asked if you would like to Open the repository after it downloads.</li>
 </ol>
-<h2 id="installing-vscode-extensions">3. Installing VSCode Extensions</h2>
-<p>VSCode can be customized with extensions specific to the types of work you use it for. We will install extensions that help us this this course. We recommend limiting the number of additional extensions you install, you shouldn’t need any more for our course, because they can slow down VSCode and not cooperate with one another nicely in some configurations.</p>
-<ol type="1">
-<li>If you see a popup notifying you “This workspace has extension recommendations.” then click “Install All”
-<ul>
-<li>VSCode will ask you to restart for the Pylance extension. Allow it to.</li>
-<li>Press ignore for any additional prompts to install additional plugins such as <code>pytest</code> or <code>flake8</code>. For these you can click the gear icon and ask VSCode to stop recommending them.</li>
-</ul></li>
-<li>Confirm you have the correct VS Code extensions installed by clicking the <code>View</code> menu and selecting <code>Extensions</code>. If you do not see the following listed under “Installed”, find them under Recommended, click on each, and click install.
-<ol type="1">
-<li>Python</li>
-<li>Pylance</li>
-<li>Jupyter</li>
-<li>Edit csv</li>
-</ol></li>
-<li>Restart VSCode by going to File &gt; Exit and then opening VSCode.</li>
-</ol>
-<h2 id="installing-python-libraries">4. Installing Python Libraries</h2>
-<p>We will use some popular 3rd party libraries this semester in COMP110. These are freely available, open source packages that other software developers made and shared. The packages installed will help us with some data science concerns when we reach that segment of the course.</p>
-<ol type="1">
-<li>Open the <em>File</em> menu, followed by <em>Open Recent</em> and you should see the top entry listed as something like “comp110-23f-workspace”
-<ul>
-<li>If you do not, try closing and reopening VSCode.</li>
-</ul></li>
-<li>In the future, if you open VS Code and need to get back to your COMP110 Workspace, the easiest way is to repeat step 1 above.</li>
-<li>In the bottom “status bar” of VSCode, to the right of “main” and a refresh icon, you should now see Python followed by a version number. If the version number is not there or is not 3.10 or greater, follow the next bullet:
-<ul>
-<li>Open the <em>View</em> menu and <em>Command Palette</em>. Type “Python: Select Interpreter” (without the quotes) and press Enter. From the list that pops up choose Python 3.10 or greater.</li>
-</ul></li>
-<li>Open the <em>View</em> menu and select <em>Terminal</em> to bring up the built-in terminal.</li>
-</ol>
-<h3 id="everyone-follow-these-steps-5-6">Everyone follow these steps 5-6:</h3>
-<ol start="5" type="1">
-<li>In the <em>Terminal</em> type the following command, being careful to match it <em>exactly</em>.</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>    <span class="ex">python</span> -m pip install pip -r requirements.txt --user</span></code></pre></div>
-<ol start="6" type="1">
-<li>Press <code>Enter</code> to run the command. This command installs additional Python libraries, which give you functionalities we’ll use later in the course.</li>
-</ol>
-<h2 id="setup-your-backup-workspace-on-github">5. Setup your Backup Workspace on GitHub</h2>
+<h2 id="setup-your-backup-workspace-on-github">4. Setup your Backup Workspace on GitHub</h2>
 <ol type="1">
 <li>Navigate a web browser to <a href="https://classroom.github.com/a/LJDEazcr" target="_blank">https://classroom.github.com/a/ooZVJMQj</a></li>
 <li>Click “Skip to the next step” when prompted to select your user / identification</li>
@@ -177,7 +145,7 @@
 <li>Click the link to your personal backup repository that looks something like this <code>https://github.com/comp110-23f/comp110-workspace-KrisJordan</code> (except instead of <code>KrisJordan</code> you will see your GitHub username).</li>
 <li>Toward the top of the page there will be a green button that says <code>Code</code>. Click this and you will see two options: HTTPS and SSH. Click HTTPS.</li>
 <li>Copy the text in the box to the right of the HTTPS/SSH buttons (or click the clipboard icon). This is the URL to your backup repository.</li>
-<li>In VSCode, ppen the <em>View</em> menu and select <em>Command Palette</em>, the shortcut for this menu is:
+<li>In VSCode, open the <em>View</em> menu and select <em>Command Palette</em>, the shortcut for this menu is:
 <ul>
 <li>Windows: <code>Control+Shift+P</code></li>
 <li>Mac: <code>Command+Shift+P</code></li>
@@ -198,41 +166,6 @@
 <li>At the prompt, type the following command and press enter: <code>git push --force backup main</code></li>
 </ul></li>
 </ol>
-<h2 id="configure-your-git-name-and-e-mail">6. Configure your <code>git</code> Name and E-mail</h2>
-<ol type="1">
-<li>If your <em>Terminal</em> window from above is still open from section 3, great! If not, open a new <em>Terminal</em> pane in VS Code.</li>
-<li>At the prompt, type the following command and press enter with your primary e-mail address inside the double quotes:</li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">git</span> config --global user.email <span class="st">&quot;your@primary.email&quot;</span></span></code></pre></div>
-<ol start="3" type="1">
-<li>Then, type tye following command and press enter with your first and last name inside the double quotes:</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">git</span> config --global user.name <span class="st">&quot;Your Name&quot;</span></span></code></pre></div>
-<p>After doing this, when you make backup commits in <code>git</code> (which you’ll do shortly!) they’ll be correctly attributed to you.</p>
-<h2 id="operating-system-specific-configuration">7. Operating System Specific Configuration</h2>
-<h3 id="windows">Windows</h3>
-<p>If your laptop is running Windows, you should change the default shell in VSCode to be Git Bash.</p>
-<ol type="1">
-<li>Open the <em>View</em> menu and select <em>Command Palette</em> (or press Control + Shift + P)</li>
-<li>Type: Select Default Profile</li>
-<li>Press Enter</li>
-<li>From the dropdown list, you should see Git Bash. Select it.</li>
-</ol>
-<h3 id="macos">macOS</h3>
-<p>If your laptop is running macOS, you should confirm the default shell in VSCode is <code>zsh</code>. This should already be the case, but to be sure, run these steps:</p>
-<ol type="1">
-<li>Open the <em>View</em> menu and select <em>Command Palette</em> (or press Command + Shift + P)</li>
-<li>Type: Select Default Profile</li>
-<li>Press Enter</li>
-<li>From the dropdown list, you should see <code>zsh</code> in one of the options. Select it.</li>
-</ol>
-<p>It is handy to be able to open Visual Studio Code from your Terminal using the <code>code</code> command in the future. To register this:</p>
-<ol type="1">
-<li>Open the <em>View</em> menu and select <em>Command Palette</em> (or press Command + Shift + P)</li>
-<li>Type: Install code command</li>
-<li>Press Enter</li>
-</ol>
-<hr />
 <h2 id="confirm-everything-is-good-to-go">8. Confirm Everything is Good to Go</h2>
 <p>From the View Menu, select Explorer. You should see a left-hand sidebar with comp110-WORKSPACE at the top and if you expand it you should see <code>exercises</code>, <code>README.md</code>, etc. These are folders, which we refer to more technically as directories, and files in your workspace.</p>
 <p>Let’s be sure you are able to exit out of VSCode and find your work again. Go ahead and close VSCode. Then open new window. If you see the same files in the left-hand sidebar: great! Keep reading, though, so you know what to do in the future if you do not see your workspace.</p>
