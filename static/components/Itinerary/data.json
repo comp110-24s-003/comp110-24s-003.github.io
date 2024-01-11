@@ -2,37 +2,57 @@
     "2024-01-10": [],
     "2024-01-11": [
         {
-            "kind": "LS",
+            "kind": "CL",
             "n": 0,
             "title": "Welcome to COMP110!",
             "date": "2024-01-11",
             "deadline": "None",
-            "links": {}
+            "links": {
+                "": "https://youtube.com/live/FAM_8MWecDU"
+            }
         },
         {
             "kind": "LS",
-            "n": 1,
-            "title": "Syllabus and Support (Due Friday 1/12)",
+            "n": 0,
+            "title": "Syllabus Familiarity (Due Friday 1/12)",
             "date": "2024-01-11",
             "deadline": "2024-01-12",
             "links": {
                 "1. Read the Syllabus": "/resources/syllabus.html",
                 "2. Read Quiz Expectations": "/resources/quiz-expectations.html",
-                "3. Read Support Resources": "/support",
-                "4. Complete Lesson 01 Responses on Gradescope": "https://www.gradescope.com/"
+                "3. Complete Lesson 01 Responses on Gradescope": "https://www.gradescope.com/"
             }
         },
         {
-            "kind": "EX",
-            "n": 0,
-            "title": "Hello World (Due Saturday 1/13)",
+            "kind": "LS",
+            "n": 1,
+            "title": "Software Setup (Due Friday 1/12)",
             "date": "2024-01-11",
-            "deadline": "2024-01-13",
+            "deadline": "2024-01-12",
             "links": {
                 "Software Setup (1/3)": "/resources/setup/os-update.html",
                 "Software Setup (2/3)": "/resources/setup/software.html",
-                "Software Setup (3/3)": "/resources/setup/workspace.html",
-                "EX00 - Hello, World": "/exercises/ex00_hello_world.html"
+                "Software Setup (3/3)": "/resources/setup/workspace.html"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 2,
+            "title": "Objects and Data Types (Due Sunday 1/14)",
+            "date": "2024-01-11",
+            "deadline": "2024-01-14",
+            "links": {
+                "": "/lessons/objects-data-types.html"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 3,
+            "title": "Expressions (Due Sunday 1/14)",
+            "date": "2024-01-11",
+            "deadline": "2024-01-14",
+            "links": {
+                "": "/lessons/expressions.html"
             }
         }
     ],
