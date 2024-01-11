@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1704949612.9216557">
+  <link rel="stylesheet" href="/static/styles.css?v=1704949972.1573553">
 </head>
 
 <body>
@@ -65,7 +65,6 @@
 <li><a href="#table-of-relational-operators">Table of Relational Operators</a></li>
 <li><a href="#operators-on-other-types">Operators on Other Types</a></li>
 </ul></li>
-<li><a href="#variable-access">Variable Access</a></li>
 <li><a href="#constructor-expressions-for-type-conversions">Constructor Expressions for Type Conversions</a></li>
 <li><a href="#function-call-expressions">Function Call Expressions</a></li>
 <li><a href="#method-call-expressions">Method Call Expressions</a></li>
@@ -269,31 +268,6 @@ False</code></pre>
 <h3 id="operators-on-other-types">Operators on Other Types</h3>
 <p>You will encounter and learn additional operators in the coming weeks. For example, equality and inequality operators for comparing two objects with one another, logical operators for forming complex logical expressions, and more.</p>
 <p>Operators have specialized syntax, the symbols such as <code>+</code>, <code>**</code>, and so on, and an object’s <em>type</em> decides whether that operator is defined for that type and what the meaning of it is. We started with numerical operators because you have years of experience with their inspiration. When you later get to <em>invent your own types</em>, <em>you</em> can decide whether to define meaning for these operators or not.</p>
-<h2 id="variable-access">Variable Access</h2>
-<p>A variable is a names you associate with a block of memory that refers to an object. Variables are so important they will have a special lesson on their own just after this one. They are worth demonstrating briefly, though, in conjunction with the operators shown above.</p>
-<p>Follow along with this example where you establish an <code>int</code> variable named <code>x</code>, initially bind it to a value of <code>110</code>, and then later rebind it to a different value. In between, you can use the name <code>x</code> in expressions, called <strong>variable access expressions</strong>. A variable access will evaluate to the <em>last value bound to the variable’s name</em>.</p>
-<pre class="plaintext"><code>&gt;&gt;&gt; x: int = 110
-
-&gt;&gt;&gt; x
-110
-
-&gt;&gt;&gt; x * 2
-220
-
-&gt;&gt;&gt; x * x
-12100
-
-&gt;&gt;&gt; x = 3
-
-&gt;&gt;&gt; x
-3
-
-&gt;&gt;&gt; x * 2
-6
-
-&gt;&gt;&gt; x * x
-9</code></pre>
-<p>Notice the single <code>=</code> symbol does not mean the same as what it does in mathematics! It can be read as <em>“is bound to a value of”</em>. The full details of variables will be explored in the next lesson!</p>
 <h2 id="constructor-expressions-for-type-conversions">Constructor Expressions for Type Conversions</h2>
 <p>For types of data that do not have built-in literal syntax, meaning types other than <code>str</code>, <code>int</code>, and so on, you need a way to <em>construct</em> a new object of that type. Each <em>type</em> is defined by a <em>class</em> that has a <em>constructor</em>. By convention, the name of the <em>constructor</em> is the same as the <em>class</em>.</p>
 <p>Although types such as <code>str</code> and <code>int</code> have literal syntax, they also have constructor functions. Each of the primitive types’ constructor functions can be used to convert a value from another type to it. This is best explored through following along:</p>
@@ -352,25 +326,19 @@ False</code></pre>
 <pre class="plaintext"><code>&gt;&gt;&gt; &quot;hello, world&quot;.upper()
 &#39;HELLO, WORLD&#39;
 
-&gt;&gt;&gt; msg: str = &quot;hello, world&quot;
-
-&gt;&gt;&gt; msg.capitalize()
+&gt;&gt;&gt; &quot;hello, world&quot;.capitalize()
 &#39;Hello, world&#39;
 
-&gt;&gt;&gt; msg.startswith(&quot;help&quot;) 
+&gt;&gt;&gt; &quot;hello, world&quot;.startswith(&quot;help&quot;) 
 False
 
-&gt;&gt;&gt; msg.startswith(&quot;hello&quot;) 
-True
-
-&gt;&gt;&gt; msg
-&#39;hello, world&#39;</code></pre>
-<p>Each of the expressions you wrote that involved a <code>str</code>, or variable access that evaluated to a <code>str</code>, followed by a <code>.</code> and then what looks similar to a <em>function call</em> was a <em>method call expression</em>. As another foreshadowing, the use of a <code>str</code> variable named <code>msg</code> was included.</p>
+&gt;&gt;&gt; &quot;hello, world&quot;.startswith(&quot;hello&quot;) 
+True</code></pre>
+<p>Each of the expressions you wrote that involved a <code>str</code>, followed by a <code>.</code> and then what looks similar to a <em>function call</em> was a <em>method call expression</em>. These are function calls associated with a specific object, in these examples, the <code>str</code> literal <code>"hello, world"</code>.</p>
 <p>To read more about the <code>str</code> methods available in Python, you are encouraged to read through the <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">String methods</a> section of the official documentation.</p>
 <h2 id="objects-types-and-expressions">Objects, Types, and Expressions</h2>
 <p>This was a high-level, whirlwind tour of some of the different kinds of expressions you will encounter when programming. As the course continues, each will be covered in full depth so that you know not only how to recognize them, but also what is happening behind the scenes to make them possible.</p>
 <p>The big take away idea of this lesson, in conjunction with the previous on types, is that <em>types</em> are fundamentally important to the practice of programming. All of the data your programs will process, which you can think of as objects in your computer’s memory, have a specific type. That type is important because it guides the kinds of expressions you can form and thus the steps of computation you can carry out. As you grow more comfortable programming you will gain confidence in knowing what kinds of expressions you need to make use of to achieve your creative vision.</p>
-<p>In the next lessons you will learn more about variables, followed by information on logical data types, and how to write programs that respond differently based on user input. You’ll be making fun, little text-driven games sooner than you expect! In the meantime, you are encouraged to explore and tinker within your interactive Python sessions to explore expressions and data types.</p>
 </div>
 
        
