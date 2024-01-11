@@ -19,25 +19,29 @@ template: home
 <div class="row">
 
 <!-- Horizon Box/Column -->
+
 <div class="col-lg-4 col-md-12 col-md-1 order-lg-3 pt-5"> 
-    <div class="horizon-box mb-3">
-        <h3 class="header text-center pt-2">On The Horizon</h3>
-        {%- if horizoninfo|length > 0 -%}
-            <ul class="list-unstyled d-flex  px-sm-5 px-md-5 px-lg-0 flex-wrap justify-content-center justify-content-md-between justify-content-lg-center align-items-center">
-                {%- for plan in horizoninfo -%}
-                    <li class="horizon-item">
-                        {%- if plan.links != {} -%}
-                            {%- for link in plan.links -%}
-                                <a href="{{ plan.links[link] }}">{{ plan.descriptor }}</a>
-                            {%- endfor -%}
-                        {%- endif -%}
-                        {%- if plan.links == {} -%}
-                            <span>{{ plan.descriptor }}</span>
-                        {%- endif -%}
-                    </li>
-                {%- endfor -%}
-            </ul>
-        {%- endif -%} 
+    <div class="sun-container">
+        <div id="sun"></div>
+        <div class="horizon-box mb-3">
+            <h3 class="header text-center pt-2">On The Horizon</h3>
+            {%- if horizoninfo|length > 0 -%}
+                <ul class="list-unstyled d-flex  px-sm-5 px-md-5 px-lg-0 flex-wrap justify-content-center justify-content-md-between justify-content-lg-center align-items-center">
+                    {%- for plan in horizoninfo -%}
+                        <li class="horizon-item">
+                            {%- if plan.links != {} -%}
+                                {%- for link in plan.links -%}
+                                    <a href="{{ plan.links[link] }}">{{ plan.descriptor }}</a>
+                                {%- endfor -%}
+                            {%- endif -%}
+                            {%- if plan.links == {} -%}
+                                <span>{{ plan.descriptor }}</span>
+                            {%- endif -%}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            {%- endif -%} 
+        </div>
     </div>
     {# Button to bring page to the past section of itinerary #}
     <div class="past-link">

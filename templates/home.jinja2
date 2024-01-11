@@ -28,7 +28,7 @@
 <body onload = "show()">
   <script src="/static/scripts/nav-menu-esc.js"></script> 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
     <div class="container">
       <a href="/" class="navbar-brand">COMP 110</a>
 
@@ -84,34 +84,22 @@
     </div>
   </nav>
 
-
-
-  {# INTRO SECTION #}
-  <section class="bg-dark text-light p-5 pt-lg-5 text-center text-sm-start d-none d-md-block">
-    <div class="container">
-      <div class="d-sm-flex align-items-center justify-content-between">
-        <div>
-          <h1><span class="primary-blue">COMP110_003</span>: <span class="green">str</span> = "Intro to Programming"</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-
   
   <a href="#latest">
     <button id="hiddenButton" style="display: none;"class="text-center" >Skip To Main Content</button>
   </a>
+  <div class="cloud-container">
+      <div id="cloud-intro">
+      {# BODY OF HOMEPAGE: Found at index.md #}
 
-
-  {# BODY OF HOMEPAGE: Found at index.md #}
-  {% block content %}
-  <div class="container">
-    <div class="content">{{body}}</div>
+      {% block content %}
+      <div class="container">
+        <div class="content">{{body}}</div>
+      </div>
+      {% endblock %}
   </div>
-  {% endblock %}
-
-
-  </div>
+    </div>
+    </div>
   {# PAGE FOOTER #}
   <div class='link-page mt-3 container'>
     <footer>

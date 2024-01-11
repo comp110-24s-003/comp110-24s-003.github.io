@@ -18,9 +18,9 @@
 
 <body>
   <script src="/static/scripts/nav-menu-esc.js"></script> 
-
+  
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-1 fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
     <div class="container">
       <a href="/" class="navbar-brand">COMP 110</a>
       {# Hamburger Icon on smaller screens #}
@@ -65,6 +65,8 @@
   </nav>
 
   {# CONTENT #}
+  <div class="cloud-container">
+    <div id="cloud-intro">
   <div id="{{page}}-page" class="container">
     <div class="row pt-4">
       <div class="col-12">
@@ -72,9 +74,11 @@
         <hr class="title" />
       </div>
     </div>
+    
 
     {% block content %}{% endblock %}
-
+    </div>
+    </div>
     {# CONTRIBUTORS BOX #}
     <div class="authors-box bg-dark mt-4 py-3 ps-4">
       <span> Contributor(s):
@@ -86,6 +90,7 @@
         {%- endif -%}
       </span>
     </div>
+
   </div>
   {# PAGE FOOTER #}
   <div class='link-page mt-3 container'>
