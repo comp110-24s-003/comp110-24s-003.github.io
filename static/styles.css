@@ -613,15 +613,17 @@ text-decoration: none;}
   margin-bottom: 16px;
 }
 
-#exercises-page .turtle-talk img,
-#exercises-page .fox-talk img,
-#exercises-page .owl-talk img,
-#exercises-page .turtle-talk figure img,
-#exercises-page .fox-talk figure img,
-#exercises-page .owl-talk figure img {
+#exercises-page .turtle-talk figure, 
+#exercises-page .fox-talk figure, 
+#exercises-page .owl-talk figure {
   width: 25%;
   margin-right: 16px;
   flex: 1;
+}
+
+#exercises-page .turtle-talk figure img,
+#exercises-page .fox-talk figure img,
+#exercises-page .owl-talk figure img {
   border-radius: 32px;
   border-width: 8px;
   margin-right: 16px;
