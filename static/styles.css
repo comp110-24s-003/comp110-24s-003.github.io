@@ -582,3 +582,62 @@ text-decoration: none;}
 #exercises-page .content img {
   max-width: 100%;
 }
+
+#exercises-page .turtle-talk {
+  margin-top: 32px;
+  background: rgba(0, 67, 0, 0.576);
+  float: clear;
+  display: flex;
+  border-radius: 32px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+#exercises-page .owl-talk {
+  margin-top: 32px;
+  background: rgba(94, 29, 1, 0.653);
+  float: clear;
+  display: flex;
+  border-radius: 32px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+#exercises-page .fox-talk {
+  margin-top: 32px;
+  background: rgba(197, 97, 3, 0.775);
+  float: clear;
+  display: flex;
+  border-radius: 32px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+#exercises-page .turtle-talk figure, 
+#exercises-page .fox-talk figure, 
+#exercises-page .owl-talk figure {
+  width: 25%;
+  margin-right: 16px;
+  flex: 1;
+}
+
+#exercises-page .turtle-talk figure img,
+#exercises-page .fox-talk figure img,
+#exercises-page .owl-talk figure img {
+  border-radius: 32px;
+  border-width: 8px;
+  margin-right: 16px;
+}
+
+#exercises-page .turtle-talk figcaption,
+#exercises-page .fox-talk figcaption,
+#exercises-page .owl-talk figcaption {
+  display: none;
+}
+
+#exercises-page .turtle-talk .message,
+#exercises-page .fox-talk .message,
+#exercises-page .owl-talk .message {
+  width: 75%;
+  flex: 3;
+}

@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1705209006.748415">
+  <link rel="stylesheet" href="/static/styles.css?v=1705259152.1934116">
 </head>
 
 <body>
@@ -79,6 +79,7 @@
         <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="gearing-up">0. Gearing Up</h2>
 <p>Campers, wecome to CAMP110! By this point, you should be fully geared with your laptop’s <a href="/resources/setup/os-update.html">operating system up-to-date</a>, <a href="/resources/setup/software.md">software installed</a>, and <a href="/resources/setup/workspace.md">workspace</a> ready to go. If you have not completed those steps yet, please do so before journeying off into this exercise.</p>
 <h2 id="starting-from-the-trailhead">1. Starting from the Trailhead</h2>
+<p>Before opening up VSCode, you will want to be sure Docker Desktop is running on your computer. On a Mac, you can check this by looking for the whale with boxes icon in your top menu bar. On Windows, you can check this by looking for the whale with boxes icon in your system tray. If you do not see the icon, open the Docker Desktop application from your start menu or applications folder.</p>
 <p>Our programming journey begins in Visual Studio Code, a free, leading text-editor designed for software development. Go ahead and open Visual Studio Code!</p>
 <p>Once open, from the “File” menu, select “Open Recent…”. After completing the setup instructions above, you should see two entries with <code>comp110-24s-workspace-[Your GitHub Username]</code>. You want to select the one with <code>[Dev Container]</code> at the end of it. Go ahead and open it up!</p>
 <p>You should be greeted with window that looks like the following (if tabs are open in the main part of the window, you can close them):</p>
@@ -122,6 +123,14 @@
 <figure>
 <img src="/static/exercises/ex00/repl-greet.png" alt="" /><figcaption><code>greet</code> REPL Interactions</figcaption>
 </figure>
+<div class="turtle-talk">
+<img src="/static/camp110/cozy-turtle.png" title="fig:" alt="Turtle Talk" />
+<div class="message">
+<p>Hi, I’m <strong>Theo the Thorough Turtle</strong>!</p>
+<p>I’m here to help you slow down and think through the details of what you are learning step-by-step. I’ll be popping up throughout the course as a reminder to zoom in on some of the beautifully, nitty gritty details of programming.</p>
+<p>At times, this can feel tedious, but when you understanding and appreciate the details, you will have the confidence to take on bigger challenges!</p>
+</div>
+</div>
 <p>Let’s break down what is happening here by starting with the function definition in VSCode. The following image points out the important parts of this function definition:</p>
 <figure>
 <img src="/static/exercises/ex00/function-syntax.png" alt="" /><figcaption><code>greet</code> Function Definition</figcaption>
@@ -144,12 +153,22 @@
 <p>As a reminder from the reading on <em>expressions</em>, a function call is an expression like any other expresion: it evaluates to a value of a specific type. In the REPL, you wrote a a function call expression, then pressed enter, which caused the expression to evaluate, and finally you were presented with the value and type the function call expression evaluated to.</p>
 <ol type="1">
 <li><p>A <strong>function call expression</strong> begins with an <em>identifier</em> which is the <em>name</em> of the function you are calling. Extremely importantly in a <strong>function call</strong>, the name of the function is followed by a pair of matching parentheses <code>()</code>. This is how Python knows you are <em>calling</em> a function and <em>not</em> just referring to the function by its name. (To illustrate this, try just typing <code>greet</code> into the REPL and pressing enter. You will see the parameters and return type display because that is the function definition the name <code>greet</code> refers to.)</p></li>
-<li><p><strong>Argument(s)</strong> are specified inside of the parentheses. Here we are using a special kind of argument, called a <em>keyword argument</em>, that specifies the name of the parameter we are providing an input value for, followed by the <code>=</code> symbol, followed by the value the parameter will be assigned. Argument values are <em>expressions</em>; knowing this fact and what an expression is, can you think of an example expression to use as the name argument that is not simply a <code>str</code> literal in order to <em>prove</em> to yourself that an argument value is an expression? Try it in the REPL!</p></li>
+<li><p><strong>Argument(s)</strong> are specified inside of the parentheses. Here we are using a special kind of argument, called a <em>keyword argument</em>, that specifies the name of the parameter we are providing an input value for, followed by the <code>=</code> symbol, followed by the value the parameter will be assigned. Argument values are <em>expressions</em>.</p></li>
 </ol>
 <p>When you press enter, this function call expression is evaluated. Python will begin by looking at the identifier you gave, <code>greet</code>, and see if it knows what this name refers to. Well, in your module, you defined a function named <code>greet</code>. Python then sees, thanks to the parentheses following the identifier, that this is a function call so it checks to see “does <code>greet</code> refer to a function definition?” It does! So, Python will then take the argument value provided (in this case, <code>name="Campers"</code> says "<code>name</code> is assigned to be the <code>str</code> <code>"Campers"</code>) and <em>bind</em> the <code>str</code> value <code>"Campers"</code> to the corresponding parameter in the function definition. Python then jumps into the function definition’s body and begins evaluating its code line-by-line. In this case, the only line of code is the <code>return</code> statement with the expression <code>"Hello, " + name + "!"</code>. This statement evaluates the identifier <code>name</code> to be bound to the value <code>"Campers"</code>, thus returning the concatenated value <code>"Hello, Campers!"</code>.</p>
 <ol start="3" type="1">
 <li>The <strong>Return Value</strong> from the evaluated function call is then displayed in the REPL as soon as the function call completes. In Trailhead, when you <em>evaluate</em> an expression in the REPL, the result is displayed in a blue box with a lightning bolt icon. This is to indicate that the code you entered into the REPL was an expression and the visualization indicates both the returned value, as well as its type.</li>
 </ol>
+<div class="fox-talk">
+<img src="/static/camp110/cozy-fox.png" title="fig:" alt="Fox Talk" />
+<div class="message">
+<p>Hi, I’m <strong>Fern the Philosophical Fox</strong>!</p>
+<p>I’m here to ask you some fierce questions to think like a foxy programmer about as you learn. The questions I ask are important to reflect on. Taking a moment to answer them will give you confidence that you understand key ideas.</p>
+<p>You should try experimenting in either the REPL, or your Python program code, to see if you can prove to yourself that you understand the answers to my questions!</p>
+</div>
+</div>
+<p><strong>Fern Question 1.</strong> If an argument can be an expression, as claimed above, can you think of an example expression to use as the <code>name</code> argument in a call to your <code>greet</code> that is <strong>not</strong> just a <code>str</code> literal? This is a way of <em>proving</em> to yourself that an argument <em>can be an expression</em>. Try this in the REPL!</p>
+<p><strong>Fern Question 2.</strong> If a function call to <code>greet</code> is an expression, can you use the resulting value of a call to <code>greet</code> as the <code>name</code> argument to <em>another call</em> to <code>greet</code>? Try this in the REPL!</p>
 <h2 id="ceremonial-program-structure">5. Ceremonial Program Structure</h2>
 <p>Changing tabs back to the “Run” tab in Trailhead, you will see that the module still exits without any output. This is because in your module, you have not made use of the function definition; you were experimenting with it in the REPL. This is not only OK, it’s a common strategy for writing programs: start with small functions, test them out to be sure they work, and build larger programs with them.</p>
 <p>The code you are about to add to the bottom of your <code>ex00_hello_world</code> module is “ceremonial” in nature, because it appeases a convention of the Python programming language. It’s specific to the Python programming language, and idiomatic, but different languages have different idioms for achieving the same effect. What, exactly, it means is beyond your concern right now. This is one of the few places we will tell you to just “do it this way and don’t worry about it yet.” In the weeks ahead, we will reveal the mysteries behind the ceremony.</p>
@@ -157,13 +176,19 @@
 <p>Note that there are <strong>two</strong> underscores on <strong>each side</strong> of the identifier <code>__name__</code> and inside the string literal <code>"__main__"</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>    <span class="bu">print</span>(greet(name<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;What is your name? &quot;</span>)))</span></code></pre></div>
-<p>Before we reveal what this code does at a high level, please try saving your code and running it again in Trailhead. Now, come back to the code, and try and break down the second line for yourself. Just like in math, you can expect to work your way from the innermost parentheses outward.</p>
+<p>Before revealing what this code is doing, please try saving your code and running it again in Trailhead. Now, come back to the code, and try and break down the second line for yourself. Just like in math, you can expect to work your way from the innermost parentheses outward.</p>
 <p>What do you suspect that <code>input("What is your name? ")</code> is doing? It is a special function call <em>expression</em> that returns a <code>str</code>.</p>
 <p>Since the <code>input</code> function call is an <em>expression</em> that returns a <code>str</code>, try to explain what you suspect the next expression evaluates to: <code>greet(name=input("What is your name? "))</code>.</p>
 <p>Finally, what must <code>print</code> be doing?</p>
 <p>I’ll bet your intuitions on how this works are very close, if not fully correct!</p>
-<p><br /></p>
-<p>Now that you have reasoned through it, let’s reveal at a high-level what is going on in this little snippet. First, the line <code>if __name__ == "__main__":</code> is a special kind of statement called a <em>conditional statement</em> you’ll learn about in a few weeks. The effect it has here is when you run this program in the “Run” tab, the indented code beneath the <code>if</code> statement will be evaluated. However, when you load this program in the REPL of the “Interact” tab, the code beneath the <code>if</code> statement <em>will not</em> be run. This gives us the best of both worlds.</p>
+<div class="turtle-talk">
+<img src="/static/camp110/cozy-turtle.png" title="fig:" alt="Turtle Talk" />
+<div class="message">
+<p>Hi, <strong>Theo</strong> again!</p>
+<p>You are doing great! I know this level of detail is a lot to take in, but let’s slow down and try and understand this final snippet of code needed to make EX00 a complete program!</p>
+</div>
+</div>
+<p>Let’s reveal at what is going on in this little snippet! First, the line <code>if __name__ == "__main__":</code> is a special kind of statement called a <em>conditional statement</em> you’ll learn about in a few weeks. The effect it has here is when you run this program in the “Run” tab, the indented code beneath the <code>if</code> statement will be evaluated. However, when you load this program in the REPL of the “Interact” tab, the code beneath the <code>if</code> statement <em>will not</em> be run. This gives us the best of both worlds.</p>
 <p>Next, under the <code>if</code> statement, you added some nested function calls. The innermost function call is <code>input("What is your name? ")</code>. The <code>input</code> function is a <a href="https://docs.python.org/3/library/functions.html#input">Python built-in</a> that prompts the user of a program for a textual input, waits for the user to enter some text and once the user does, the function call expression to <code>input</code> evaluates to the <code>str</code> of text the user typed in. For the sake of simplifying the explanation, let’s assume that you typed in the <code>"Campers"</code> when prompted for a name.</p>
 <p>The next function call evaluated is <code>greet(name="Campers")</code>, where the <code>name</code> argument will be <code>"Campers"</code> because that’s what the call to <code>input</code> evaluated to in the previous paragraph. This function call expression works through the same set of steps described in the previous section and calls your <code>greet</code> function! Remember, your <code>greet</code> function returns a value of type <code>str</code>, so this function call expression also evaluates to a <code>str</code> whose value is <code>"Hello, Campers!"</code>.</p>
 <p>Finally, the last function call expression to evaluate is <code>print("Hello, Campers!")</code>. This buit-in function “prints”, or displays, the argument it is given to your program’s output and causes the text, without any quotes or its type, to appear as the next line of textual output in your program. As an astute reader, I am sure you are wondering, “if the <code>print</code> function call is an expression and every expression evaluates to a value, what type of value does <code>print</code> evaluate to?” I’m so glad you were wondering! The function <code>print</code> is a special kind of function that evaluates to a “nothing value” in Python called <code>None</code>; functions that return <code>None</code> tend to have “side-effects” on the “environment”. In this case, <code>print</code>’s side effect is causing output to display on your screen.</p>
@@ -195,7 +220,15 @@
 </ol>
 <p>To see your commit on Github, in a web browser, navigate to <code>https://github.com/comp110-24s-003/comp110-24s-workspace-USERNAME</code> and substitute <code>USERNAME</code> with your GitHub username. You should see your work in <code>ex0_hello_world.py</code> backed up to GitHub. Notice above the file’s content’s you’ll see your commit message.</p>
 <h2 id="congratulations">8. Congratulations!</h2>
-<p>WOO! You have completed your first exercise in the course! Most exercises will require you to write functions on your own, but as we are getting started we wanted to guide you through each of these steps with narrative so that you could learn some important fundaments.</p>
+<div class="owl-talk">
+<img src="/static/camp110/cozy-owl.png" title="fig:" alt="Owl Talk" />
+<div class="message">
+<p>Hi, I’m <strong>Owlivia the Observant</strong>!</p>
+<p>I’m here to help you think about the big picture of what you are learning. I’ll be popping up throughout the course as a reminder to zoom out and see how the details you are learning fit together into big ideas and important <em>abstractions</em>.</p>
+<p>It is important to take a step back and see the forest for the trees. Connecting how the pieces fit together will help you achieve great things!</p>
+</div>
+</div>
+<p>HOO! You have completed your first exercise in the course! Most exercises will require you to write functions on your own, but as we are getting started we wanted to guide you through each of these steps with narrative so that you could learn some important fundaments.</p>
 <p>In this exercise, you experienced many big ideas you will encounter frequently in the trails ahead:</p>
 <ul>
 <li>Defining a Function with a single parameter, return type, doc string, and return statement</li>
