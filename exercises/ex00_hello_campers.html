@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1705208309.0213702">
+  <link rel="stylesheet" href="/static/styles.css?v=1705209006.748415">
 </head>
 
 <body>
@@ -67,7 +67,8 @@
 <li><a href="#ceremonial-program-structure">5. Ceremonial Program Structure</a></li>
 <li><a href="#module-documentation-and-attribution">6. Module Documentation and Attribution</a></li>
 <li><a href="#submitting-your-work">6. Submitting Your Work</a></li>
-<li><a href="#congratulations">7. Congratulations!</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#congratulations">8. Congratulations!</a></li>
 </ul>
 </</ul>
                         </div>
@@ -179,7 +180,21 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">python</span> -m tools.submission ex00_hello_world.py</span></code></pre></div>
 <p>You will notice a file appeared in your workspace named <code>24.01.dd-hh.mm.ss-ex00_hello_world.py.zip</code>. You will see numbers for the current day of the month in place of <code>dd</code>, 24-hour digits in place of <code>hh</code>, minutes in place of <code>mm</code>, and so on. This “zip” file contains your <code>ex00_hello_world.py</code> file and is what you will submit to the autograder.</p>
 <p>In Gradescope, open assignment “EX00 - Hello World”. You should see an area to upload a zip file. Click this area and browse to your course’s workspace directory on your computer. You should see the zip file you just created. Select it and upload it to Gradescope. Autograding should complete within about a minute and you should see a score of 100%, or more if you are submitting early. If you see less than 100%, try to understand the feedback and resubmit. If you are still having trouble, please come see us in office hours!</p>
-<h2 id="congratulations">7. Congratulations!</h2>
+<h2 id="make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</h2>
+<p>Now that your first program is complete, let’s practice making a backup. Visual Studio Code has built-in support for <code>git</code> source control management (SCM). SCM tools are made to help create versioned checkpoints of a project’s source code (your program is source code!) amont other uses. The current de facto SCM is called <code>git</code>. As one more piece of terminology, a checkpointed version in git is called a <code>commit</code>. Once your work is in a <code>commit</code> checkpoint, you can always return back to your project at that point in time without the risk of losing work. We encourage committing work to backup <em>at least</em> each time you submit a project for grading or are finishing out a working session for the day. Commits are free to make and can only help you avoid losing work; use them liberally!</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Finished Exercise 00!” will suffice.</li>
+<li>Press the Commit button to make a <em>Commit</em> (a version) of your work.</li>
+<li>In the Terminal, type the command <code>git push --set-upstream backup main</code>. If your terminal was closed, go to the Terminal menu and select “New Terminal”. This command “pushed” your changes to your backup repository on GitHub.</li>
+</ol>
+<p>To see your commit on Github, in a web browser, navigate to <code>https://github.com/comp110-24s-003/comp110-24s-workspace-USERNAME</code> and substitute <code>USERNAME</code> with your GitHub username. You should see your work in <code>ex0_hello_world.py</code> backed up to GitHub. Notice above the file’s content’s you’ll see your commit message.</p>
+<h2 id="congratulations">8. Congratulations!</h2>
 <p>WOO! You have completed your first exercise in the course! Most exercises will require you to write functions on your own, but as we are getting started we wanted to guide you through each of these steps with narrative so that you could learn some important fundaments.</p>
 <p>In this exercise, you experienced many big ideas you will encounter frequently in the trails ahead:</p>
 <ul>
@@ -188,7 +203,9 @@
 <li>Using the REPL to Interact with Functions and Expressions</li>
 <li>Making a module runnable as a program (the <code>if __name__ == "__main__":</code> part)</li>
 <li>Prompting the user for <code>input</code> and <code>print</code>ing output</li>
-<li>Documenting a module</li>
+<li>Documenting a module with a doc string and author attribution</li>
+<li>Submitting a COMP110 program to Gradescope for autograding</li>
+<li>Backing up your work to GitHub</li>
 </ul>
 </div>
 
