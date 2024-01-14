@@ -1,64 +1,18 @@
 {
-    "2024-01-10": [],
-    "2024-01-11": [
+    "2024-01-12": [],
+    "2024-01-13": [],
+    "2024-01-14": [
         {
-            "kind": "CL",
+            "kind": "EX",
             "n": 0,
-            "title": "Welcome to COMP110!",
-            "date": "2024-01-11",
-            "deadline": "None",
+            "title": "Hello World (Due Thursday 1/18)",
+            "date": "2024-01-14",
+            "deadline": "2024-01-18",
             "links": {
-                "": "https://youtube.com/live/FAM_8MWecDU"
-            }
-        },
-        {
-            "kind": "LS",
-            "n": 0,
-            "title": "Syllabus Familiarity (Due Friday 1/12)",
-            "date": "2024-01-11",
-            "deadline": "2024-01-12",
-            "links": {
-                "1. Read the Syllabus": "/resources/syllabus.html",
-                "2. Read Quiz Expectations": "/resources/quiz-expectations.html",
-                "3. Complete Lesson 01 Responses on Gradescope": "https://www.gradescope.com/"
-            }
-        },
-        {
-            "kind": "LS",
-            "n": 1,
-            "title": "Software Setup (Due Friday 1/12)",
-            "date": "2024-01-11",
-            "deadline": "2024-01-12",
-            "links": {
-                "Software Setup (1/3)": "/resources/setup/os-update.html",
-                "Software Setup (2/3)": "/resources/setup/software.html",
-                "Software Setup (3/3)": "/resources/setup/workspace.html"
-            }
-        },
-        {
-            "kind": "LS",
-            "n": 2,
-            "title": "Objects and Data Types (Due Monday 1/15)",
-            "date": "2024-01-11",
-            "deadline": "2024-01-15",
-            "links": {
-                "": "/lessons/objects-data-types.html"
-            }
-        },
-        {
-            "kind": "LS",
-            "n": 3,
-            "title": "Expressions (Due Monday 1/15)",
-            "date": "2024-01-11",
-            "deadline": "2024-01-15",
-            "links": {
-                "": "/lessons/expressions.html"
+                "": "/exercises/ex00_hello_campers.html"
             }
         }
     ],
-    "2024-01-12": [],
-    "2024-01-13": [],
-    "2024-01-14": [],
     "2024-01-15": [],
     "2024-01-16": [],
     "2024-01-17": [],
