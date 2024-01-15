@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Common Issues with Software - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1705339996.7486978">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus.html" class="nav-link">syllabus</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cloud-container">
+    <div id="cloud-intro">
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Common Issues with Software</h1>
+      </div>
+    </div>
+    
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div>
+                <div class="sun"></div>
+                <div id="menu-overview" class="link-page-overview horizon-box">
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <div id="overview-links">
+                        <div id="TOC" role="doc-toc">
+                            <ul class="overview-item"><ul>
+<li><a href="#common-symptoms">Common Symptoms</a>
+<ul>
+<li><a href="#vscode-docker-returned-an-error.-make-sure-the-docker-daemon-is-running">VSCode: Docker returned an error. Make sure the Docker daemon is running…</a></li>
+<li><a href="#vscode-an-error-occurred-setting-up-the-container">VSCode: An error occurred setting up the container</a></li>
+<li><a href="#trailhead-error-in-loading-welcome.py">Trailhead: Error in loading <code>welcome.py</code></a></li>
+<li><a href="#vscode-remote-extension-host-terminated-unexpectedly-macos">VSCode: Remote Extension Host terminated unexpectedly (macOS)</a></li>
+</ul></li>
+<li><a href="#common-fixes">Common Fixes</a>
+<ul>
+<li><a href="#resetting-the-container">Resetting the Container</a></li>
+</ul></li>
+<li><a href="#macos-intel---disable-virtiofs-and-virtualization-framework">macOS Intel - Disable VirtioFS and Virtualization Framework</a></li>
+</ul>
+</</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="common-symptoms">Common Symptoms</h2>
+<h3 id="vscode-docker-returned-an-error.-make-sure-the-docker-daemon-is-running">VSCode: Docker returned an error. Make sure the Docker daemon is running…</h3>
+<p>If you open up VSCode and see this error message, it means that your Docker Desktop program is not running. Start Docker Desktop, give it a minute to begin after starting it, then retry opening the Dev Container in VSCode.</p>
+<h3 id="vscode-an-error-occurred-setting-up-the-container">VSCode: An error occurred setting up the container</h3>
+<p>To fix this issue, follow the instructions of <a href="#resetting-the-container">Common Fix: Resetting the Container</a>.</p>
+<h3 id="trailhead-error-in-loading-welcome.py">Trailhead: Error in loading <code>welcome.py</code></h3>
+<p>If you load the <code>welcome</code> module in Trailhead and see an error, the first step is to make sure your VSCode is up-to-date and reloaded. With VSCode open, open the command palette and search for “Code: Check for Updates”. If updates are available, install them. After they are installed. Fully close and exit VSCode, then reopen it. Try again.</p>
+<p>If the error continues, look in the bottom-right corner of the VSCode window with <code>welcome.py</code> open and look for “Python 3.12.1”. If you see an earlier version of Python listed, like 3.9 or 3.10, click on the version and a list of versions should pop-up. From here, select the recommended 3.12.1 version.</p>
+<p>If the error continues, finally try the <a href="#resetting-the-container">Common Fix: Resetting the Container</a>.</p>
+<h3 id="vscode-remote-extension-host-terminated-unexpectedly-macos">VSCode: Remote Extension Host terminated unexpectedly (macOS)</h3>
+<p>If you are on a Mac, especially an Intel-based Mac, you may be experiencing crashes to internal components of VSCode due to a new Apple framework breaking compatibility with Intel-based Macs. The good news is, the fix is pretty straightforward, please follow the steps in the fix <a href="#macos-intel---disable-virtiofs-and-virtualization-framework">macOS Intel - Disable VirtioFS and Virtualization Framework</a>.</p>
+<h2 id="common-fixes">Common Fixes</h2>
+<h3 id="resetting-the-container">Resetting the Container</h3>
+<p>Many issues involve resetting your DevContainer. This does not risk losing any of your work, it simply gets you back to a clean slate in the DevContainer setup.</p>
+<p>To fully reset your Dev Container, exit VSCode. Open the Docker Desktop Dashboard. Select “Containers” in the sidebar. Check the box next to <code>comp110-24s-003</code> and delete the container.</p>
+<p>Now try reopening the Dev Container for your COMP110 workspace in VSCode. Open VSCode, go to File &gt; Open Recent and select the [Dev Container] entry for COMP110. Give it some time to start up. You will see lots of lines of obscure output being printed to a terminal. Give it a minute to start and load extensions, you should not see any spinning circles or loading icons in the bottom status bar of VSCode.</p>
+<p>If prompted to “Reload Window” for Pylance/Python extension, do so. If not prompted, you should <em>Reload Window</em> anyway through the command palette search for “Developer: Reload Window” and select it. This will cause the VSCode window to reload.</p>
+<p>At this point, you have fully reset your Dev Container.</p>
+<h2 id="macos-intel---disable-virtiofs-and-virtualization-framework">macOS Intel - Disable VirtioFS and Virtualization Framework</h2>
+<p>If you are on an Intel-based mac and seeing issues in VSCode, changing the following two settings tends to resolve it:</p>
+<ol type="1">
+<li>Open Docker Desktop Settings and under ‘file sharing’ select <code>osxfs (Legacy)</code></li>
+<li>Uncheck the box “Use Virtualization Framework”</li>
+</ol>
+<p>Click the “Apply and Restart” button to make the changes in Docker save and restart Docker. After doing so, reopen VSCode and try again. If this still does not resolve the issue, it is worth trying the <a href="#resetting-the-container">Common Fix: Resetting the Container</a></p>
+</div>
+
+       
+
+    </div> 
+    </div>
+    </div>
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>
