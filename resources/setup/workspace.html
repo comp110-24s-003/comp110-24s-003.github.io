@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1705348673.11056">
+  <link rel="stylesheet" href="/static/styles.css?v=1705354567.0743973">
 </head>
 
 <body>
@@ -146,18 +146,8 @@
 <li>In VSCode, type in <em>Git: Add Remote</em> and press enter with the option selected.</li>
 <li>In the blank text box that appears, paste in the URL to your backup repository that you just copied. Press enter.</li>
 <li>When asked for “Remote name” type in: <code>backup</code></li>
-<li>Open up the <em>Command Palette</em> once more, just as in step 7.</li>
-<li>Begin typing in: <code>Git: Push to...</code> and press <code>Enter</code> once it is the first option.</li>
-<li>Select the <code>backup</code> remote that is your personal workspace on GitHub.
-<ul>
-<li>You may see a spinning “refresh” icon in your status bar at the bottom of VSCode. Unless an error backing up occurs, you will not see any confirmation. It succeeds silently.</li>
-<li>If you want to see your backed up work on Github, back in your web browser, refresh the page you had open and you should see files in it now.</li>
-</ul></li>
-<li>If steps 13 and 14 do not work, do the following:
-<ul>
-<li>If your <em>Terminal</em> window from above is still open from section 3, great! If not, open a new <em>Terminal</em> pane in VS Code.</li>
-<li>At the prompt, type the following command and press enter: <code>git push --force backup main</code></li>
-</ul></li>
+<li>Open a new terminal tab, from the <em>Command Palette</em> select “Terminal: Create New Terminal”</li>
+<li>In the terminal that pops up, type: <code>git push --set-upstream backup main</code> then press enter (two dashes in the of <code>--set-upstream</code>). This command backs your work up to your GitHub repository.</li>
 </ol>
 <h2 id="confirm-everything-is-good-to-go">6. Confirm Everything is Good to Go</h2>
 <p>Phew, you’re almost to the end of setup! Hang in there!</p>

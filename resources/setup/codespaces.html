@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> CodeSpaces - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1705354566.6514077">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus.html" class="nav-link">syllabus</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cloud-container">
+    <div id="cloud-intro">
+  <div id="resource-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>CodeSpaces</h1>
+      </div>
+    </div>
+    
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div>
+                <div class="sun"></div>
+                <div id="menu-overview" class="link-page-overview horizon-box">
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <div id="overview-links">
+                        <div id="TOC" role="doc-toc">
+                            <ul class="overview-item"><ul>
+<li><a href="#codespaces-when-software-setup-or-computers-fail">CodeSpaces when Software Setup or Computers Fail</a></li>
+<li><a href="#setting-up-a-codespace">Setting up a Codespace</a></li>
+<li><a href="#open-your-github-repository">Open your GitHub Repository</a></li>
+<li><a href="#create-a-codespace">Create a Codespace</a></li>
+<li><a href="#backing-up-your-work">Backing Up Your Work</a></li>
+<li><a href="#stopping-work">Stopping Work</a></li>
+<li><a href="#coming-back-to-a-codespace">Coming Back to a Codespace</a></li>
+<li><a href="#creating-a-submission-for-autograding">Creating a Submission for Autograding</a></li>
+<li><a href="#final-notes">Final Notes</a></li>
+</ul>
+</</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="codespaces-when-software-setup-or-computers-fail">CodeSpaces when Software Setup or Computers Fail</h2>
+<p>If Software Setup is failing on a laptop or a computer has failed, is off for replacement or repair, and you want to avoid a loss of continuity to work, it is possible to continue work thanks to GitHub Codespaces, a closely related feature to VSCode DevContainers.</p>
+<h2 id="setting-up-a-codespace">Setting up a Codespace</h2>
+<p>Your workspace must be setup and at least one successful “backup push” to GitHub is made. Please be sure you have completed the software installation and workspace installation up to the point of steps 1 through 5 in <a href="/resources/setup/workspace.html">Workspace Repository Setup</a>.</p>
+<h2 id="open-your-github-repository">Open your GitHub Repository</h2>
+<p>In GitHub, navigate to your personal repository for backing up your workspace. It should have a URL that is of the format:</p>
+<p><code>https://github.com/comp110-24s-003/comp110-24s-workspace-KrisJordan</code> (except instead of <code>KrisJordan</code> you will see your GitHub username)</p>
+<h2 id="create-a-codespace">Create a Codespace</h2>
+<ol type="1">
+<li>Click the Green ‘Code’ Button. Click “Create Codespace on Main”.</li>
+<li>This will open up a Github Codespace that is very similar to a VSCode Dev Container. It will take about a minute to start up. Please wait for any “working” badges in the sidebar and bottom status bar to complete before continuing.</li>
+<li>After it has started up successfully, you should be able to start Trailhead in the manner shown in class / exercises, however, there will be a difference in how you access it. You will need to switch to the “Ports” tab at the bottom (or use command palette to View Ports) and find port 1110 listed (it will take a second to complete setup the first time, wait until the “No forwarded ports.” message disappears). Hover over the “Forwarded Address” for this row and click the globe icon. This will open up a tab to the location you can use to access Trailhead (this is the key difference versus a DevContainer).</li>
+<li>You can now use the CodeSpace just the same as VSCode with two important, additional differences: saving/backing up your work and stopping a working session. Please continue to learn how these work.</li>
+</ol>
+<h2 id="backing-up-your-work">Backing Up Your Work</h2>
+<p>Because a CodeSpace is stored in the GitHub Cloud, your changes are not stored on your computer. You should frequently back up your work, just like we show in exercises: after changes you’d like to save are made, go to the Source Code View (sidebar icon with three circles connected by lines), hover over the files you’d like to back up, enter a message in the message box, then click the Commit Button. Finally, click the elipses button at the top of the sidebar, select “Push” to back your work up.</p>
+<h2 id="stopping-work">Stopping Work</h2>
+<p>When your Codespace is active, you are making use of a computer in the cloud that is running to keep your workspace available. When you are done, please Stop the Codespace by clicking in the lower left hand corner of the screen and selecting “Stop Codespace” (also possible via the command palette).</p>
+<h2 id="coming-back-to-a-codespace">Coming Back to a Codespace</h2>
+<p>When you are ready to resume work, navigate back to your GitHub backup repository (above). Click the Green code button, under the Codespaces tab you will see the random name given to your prior code space under “on current branch”. Click this link and your Codespace will reopen (you may need to click the button “Restart Codespace”.) Reopening a code space is faster than setting one up for the first time.</p>
+<h2 id="creating-a-submission-for-autograding">Creating a Submission for Autograding</h2>
+<p>You can follow an exercises’ instructions for autograding purposes. After you generate a submission file, though, you will need to download it from your Codespace. This is one extra step versus a standard Dev Container. Once you have generated a submission, go back to your File Explorer tab in your Codespace. Find the zip file generated. Right click on it and select “Download…” and you will now have a zip file in your Downloads directory that can be uploaded to Gradescope for autograding.</p>
+<h2 id="final-notes">Final Notes</h2>
+<p>We strongly encourage continuing to try and get Docker + Dev Containers successfully running on your laptop. Continue working with the UTAs and Kris to make it happen. In the interim, GitHub Codespaces will allow you to stay on track for the course using 99.9% the same tools in Dev Containers, with a few minor differences and extra steps for various tasks.</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+    </div>
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>
