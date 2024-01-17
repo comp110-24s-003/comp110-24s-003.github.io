@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1705421808.7786481">
+  <link rel="stylesheet" href="/static/styles.css?v=1705506089.4597778">
 </head>
 
 <body>
@@ -105,7 +105,7 @@
 <p>Open the <code>ex00_hello_world.py</code> file in VSCode and type the following:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
 <p>Save the file again, by pressing <code>Ctrl+S</code> (or <code>Cmd+S</code> on Mac). In Trailhead, you should see the message “Hello, world!” now appear as output. This should happen automatically upon saving, but you can also manually run the program again with the green “Run Again” or “Rerun” button.</p>
-<p>Congratulations! You have written your first program in Python! For over fifty years, it’s been a writ of passage for new programmers’ first program to print “Hello, world!” to the screen. Wooo! You’ve taken your first step on the trail to becoming a programmer!</p>
+<p>Congratulations! You have written your first program in Python! For over fifty years, it’s been a rite of passage for new programmers’ first program to print “Hello, world!” to the screen. Wooo! You’ve taken your first step on the trail to becoming a programmer!</p>
 <h2 id="writing-your-first-function">4. Writing Your First Function</h2>
 <p>Functions are the most fundamental building block of programming. They exemplify the <em>fundamental pattern</em> of taking one or more input values, processing them in an “algorithm”, and returning a result. You will be learning <em>a lot</em> about functions this week and building upon this knowledge throughout the course. For now, let’s write a function that takes a name as an input <strong>parameter</strong> and <strong>return</strong>s a string that greets the person by name.</p>
 <p>In VSCode, go ahead and delete the previous <em>print statement</em> that printed “Hello, world!” to output. Add the following function definition to your <code>ex00_hello_world.py</code> file. Note that the second and third lines are indented, this formatting is important.</p>
@@ -152,7 +152,7 @@
 <img src="/static/exercises/ex00/function-call-syntax.png" alt="" /><figcaption><code>greet</code> Function Call Expression</figcaption>
 </figure>
 <p>If defining a function is like writing down a recipe for biscuits, <em>calling a function is like baking the biscuits</em>. Mmm… let’s bake some biscuits!</p>
-<p>As a reminder from the reading on <em>expressions</em>, a function call is an expression like any other expresion: it evaluates to a value of a specific type. In the REPL, you wrote a a function call expression, then pressed enter, which caused the expression to evaluate, and finally you were presented with the value and type the function call expression evaluated to.</p>
+<p>As a reminder from the reading on <em>expressions</em>, a function call is an expression like any other expresion: it evaluates to a value of a specific type. In the REPL, you wrote a function call expression, then pressed enter, which caused the expression to evaluate, and finally you were presented with the value and type the function call expression evaluated to.</p>
 <ol type="1">
 <li><p>A <strong>function call expression</strong> begins with an <em>identifier</em> which is the <em>name</em> of the function you are calling. Extremely importantly in a <strong>function call</strong>, the name of the function is followed by a pair of matching parentheses <code>()</code>. This is how Python knows you are <em>calling</em> a function and <em>not</em> just referring to the function by its name. (To illustrate this, try just typing <code>greet</code> into the REPL and pressing enter. You will see the parameters and return type display because that is the function definition the name <code>greet</code> refers to.)</p></li>
 <li><p><strong>Argument(s)</strong> are specified inside of the parentheses. Here we are using a special kind of argument, called a <em>keyword argument</em>, that specifies the name of the parameter we are providing an input value for, followed by the <code>=</code> symbol, followed by the value the parameter will be assigned. Argument values are <em>expressions</em>.</p></li>
