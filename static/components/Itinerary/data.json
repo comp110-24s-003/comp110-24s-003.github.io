@@ -90,7 +90,9 @@
             "date": "2024-01-16",
             "deadline": "None",
             "links": {
-                "": "https://youtube.com/live/qa6vNNilFpw"
+                "Recording": "https://youtube.com/live/qa6vNNilFpw",
+                "Slides": "/static/slides/cl02_functions.pdf",
+                "Diagram Rules v0": "/static/slides/env_diagrams_v0.pdf"
             }
         }
     ],
