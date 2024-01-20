@@ -82,12 +82,15 @@
                 "Lecture Recording": "https://youtube.com/live/Py_t9DChqmM",
                 "Slides": "/static/slides/cl01_types_expressions_functions.pdf"
             }
-        },
+        }
+    ],
+    "2024-01-17": [],
+    "2024-01-18": [
         {
             "kind": "CL",
             "n": 2,
             "title": "Practice with Functions",
-            "date": "2024-01-16",
+            "date": "2024-01-18",
             "deadline": "None",
             "links": {
                 "Recording": "https://youtube.com/live/qa6vNNilFpw",
@@ -96,9 +99,28 @@
             }
         }
     ],
-    "2024-01-17": [],
-    "2024-01-18": [],
-    "2024-01-19": [],
+    "2024-01-19": [
+        {
+            "kind": "LS",
+            "n": 4,
+            "title": "EX00 Reflection (Due Monday 1/22)",
+            "date": "2024-01-19",
+            "deadline": "2024-01-22",
+            "links": {
+                "": "https://www.gradescope.com/"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 5,
+            "title": "Environment Diagram Practice (Due Monday 1/22)",
+            "date": "2024-01-19",
+            "deadline": "2024-01-22",
+            "links": {
+                "": "https://www.gradescope.com/"
+            }
+        }
+    ],
     "2024-01-20": [],
     "2024-01-21": [],
     "2024-01-22": [],

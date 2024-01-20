@@ -70,5 +70,18 @@
             }
         }
     ],
-    "2024-01-15": []
+    "2024-01-15": [],
+    "2024-01-16": [
+        {
+            "kind": "CL",
+            "n": 1,
+            "title": "Practice Types & Expressions. Intro to Functions.",
+            "date": "2024-01-16",
+            "deadline": "None",
+            "links": {
+                "Lecture Recording": "https://youtube.com/live/Py_t9DChqmM",
+                "Slides": "/static/slides/cl01_types_expressions_functions.pdf"
+            }
+        }
+    ]
 }
