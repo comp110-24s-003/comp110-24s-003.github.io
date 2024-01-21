@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1705862785.8936367">
+  <link rel="stylesheet" href="/static/styles.css?v=1705865145.6337292">
 </head>
 
 <body>
@@ -194,7 +194,7 @@
 <h2 id="making-the-program-runnable">5. Making the Program Runnable</h2>
 <p>Now that you have defined all of your functions, you can make your program runnable. Once again, we will use the same idiom from EX00 to make our Python module runnable. These lines need to come a few lines <em>after all function definitions</em>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    main_planner(guests<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;How many guests are attending your tea party? &quot;</span>))</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    main_planner(guests<span class="op">=</span><span class="bu">int</span>(<span class="bu">input</span>(<span class="st">&quot;How many guests are attending your tea party? &quot;</span>)))</span></code></pre></div>
 <p>After adding these lines to the end of your program, you should now be able to go to the “Run” tab of your program, be prompted for a guests count, and see the output of your program.</p>
 <p>Congrats! You can now plan a cozy tea party with your woodland CAMP110 friends!</p>
 <div class="fox-talk">
