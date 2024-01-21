@@ -84,5 +84,19 @@
             }
         }
     ],
-    "2024-01-17": []
+    "2024-01-17": [],
+    "2024-01-18": [
+        {
+            "kind": "CL",
+            "n": 2,
+            "title": "Practice with Functions",
+            "date": "2024-01-18",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/iuE1EGhRyHg",
+                "Slides": "/static/slides/cl02_functions.pdf",
+                "Diagram Rules v0": "/static/slides/env_diagrams_v0.pdf"
+            }
+        }
+    ]
 }

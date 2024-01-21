@@ -1,18 +1,4 @@
 {
-    "2024-01-18": [
-        {
-            "kind": "CL",
-            "n": 2,
-            "title": "Practice with Functions",
-            "date": "2024-01-18",
-            "deadline": "None",
-            "links": {
-                "Recording": "https://youtube.com/live/iuE1EGhRyHg",
-                "Slides": "/static/slides/cl02_functions.pdf",
-                "Diagram Rules v0": "/static/slides/env_diagrams_v0.pdf"
-            }
-        }
-    ],
     "2024-01-19": [
         {
             "kind": "LS",
@@ -36,7 +22,18 @@
         }
     ],
     "2024-01-20": [],
-    "2024-01-21": [],
+    "2024-01-21": [
+        {
+            "kind": "EX",
+            "n": 1,
+            "title": "Tea Party Planner (Due Monday 1/29)",
+            "date": "2024-01-21",
+            "deadline": "2024-01-29",
+            "links": {
+                "": "/exercises/ex01_tea_party_planner.html"
+            }
+        }
+    ],
     "2024-01-22": [],
     "2024-01-23": [],
     "2024-01-24": [],
