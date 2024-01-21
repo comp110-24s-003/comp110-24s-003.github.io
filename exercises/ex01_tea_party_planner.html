@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX01 - Tea Party Planner - COMP110 - 23F</title>
+  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1705862638.1532776">
+</head>
+
+<body>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand">COMP 110</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus.html" class="nav-link">syllabus</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cloud-container">
+    <div id="cloud-intro">
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX01 - Tea Party Planner</h1>
+      </div>
+    </div>
+    
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div>
+                <div class="sun"></div>
+                <div id="menu-overview" class="link-page-overview horizon-box">
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <div id="overview-links">
+                        <div id="TOC" role="doc-toc">
+                            <ul class="overview-item"><ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#getting-started">0. Getting Started</a></li>
+<li><a href="#defining-the-tea_bags-function">1. Defining the <code>tea_bags</code> Function</a></li>
+<li><a href="#defining-the-treats-function">2. Defining the <code>treats</code> Function</a></li>
+<li><a href="#defining-the-cost-function">3. Defining the <code>cost</code> Function</a></li>
+<li><a href="#defining-the-main_planner-function">4. Defining the <code>main_planner</code> Function</a></li>
+<li><a href="#making-the-program-runnable">5. Making the Program Runnable</a></li>
+<li><a href="#submitting-your-work-to-gradescope">6. Submitting Your Work to Gradescope</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#congratulations">8. Congratulations!</a></li>
+</ul>
+</</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><figure>
+<img src="/static/exercises/ex01/banner.png" alt="" /><figcaption>Example Run</figcaption>
+</figure>
+<h2 id="overview">Overview</h2>
+<p>In this exercise, you will write a program to help you plan a cozy tea party. The program will ultimately ask the user for the number of guests and you will calculate the quantity of tea bags needed, the number of treats to accompany the tea, and the expected cost of the party.</p>
+<p>Here’s an example of using the program if you imagine we are trying to throw a tea party for all 301 students in COMP110 and our 33 team members:</p>
+<figure>
+<img src="/static/exercises/ex01/example_run.png" alt="" /><figcaption>Example Run</figcaption>
+</figure>
+<p><em>Now we just need a donation for $1,085.50 to bring this dream to life!</em></p>
+<p>Since this is our first program in COMP110, we will specify the structural expectations and function designs for you to implement and it is important to follow these expectations closely. <em>This program is autograded and the only path toward achieving full credit is to achieve full credit via the autograder.</em></p>
+<p>The purpose of this exercise is to gain practice with the following concepts:</p>
+<ul>
+<li>Decomposing a larger program into small subprograms</li>
+<li>Writing multiple small functions that each solve a single problem</li>
+<li>Writing functions that call other functions</li>
+<li>Writing a “<code>main</code>” function that orchestrates the program’s execution</li>
+</ul>
+<p><strong>Students with prior programming experience: please note that in this exercise you should limit yourself to making use of only the concepts we have covered in lecture. The autograder has some checks in place to penalize the usage of concepts we have not yet covered. Limiting yourself to only what we have covered is good practice. Anything we have discussed in lecture is permitted.</strong></p>
+<h2 id="getting-started">0. Getting Started</h2>
+<p>Start your COMP110 DevContainer by first being sure Docker Desktop is running, then opening VS Code, then using the File &gt; Open Recent menu to select the “COMP110 Workspace” folder that has <code>[Dev Container]</code> following its the name. This will open a new VS Code window with the DevContainer running. Finally, go to the “Run and Debug” view to press the play button to begin Trailhead. Open Trailhead in a web browser tab and arrange your windows side-by-side. These are the steps we will generally get in the habbit of following as work begins on a project.</p>
+<p>Now, add a directory named <code>exercises</code> to your Workspace: go back to the “File Explorer” tab in VSCode. When you move your mouse over the word “Workspace” you will see the New Folder button (a folder with a plus symbol) appear. Click this button, then name the directory <code>exercises</code>.</p>
+<p>Next, right click on the <code>exercises</code> directory and select “New File”. Name the file <code>ex01_tea_party.py</code>. This is where you will write your program.</p>
+<p>Another good habit to get into is to add a Docstring and <code>__author__</code> attribution line to the tops of your exercise files. Go ahead and add a Docstring for this program to your <code>ex01_tea_party.py</code> file found in the <code>exercises</code> directory. Your Docstring should state the goal of this program, based on the overview above, in one sentence in your own words. Once you save this, you should be able to navigate to the <code>exercises</code> directory in Trailhead, see <code>ex01_tea_party</code> listed, and see the Docstring you added.</p>
+<p>Add two blank lines below the Docstring, then add the <code>__author__: str = "123456789"</code> line, substituting your UNC PID for the <code>123456789</code> value.</p>
+<p>Looking at the program output above, there are multiple computations that will need to be performed to produce the output. We can decompose the problem into simpler subproblems, such as:</p>
+<ol type="1">
+<li>A function to compute the number of tea bags needed based on number of guests</li>
+<li>A function to compute the number of treats needed based on the number of teas guests are expecting to drink</li>
+<li>A function to compute the cost of the tea bags and the treats combined</li>
+<li>Bringing these function together in a “main planner” function that calls each and produces printed output</li>
+<li>Making the program runnable and asking a user for input when they run the program</li>
+</ol>
+<p>Let’s start with the first subproblem.</p>
+<h2 id="defining-the-tea_bags-function">1. Defining the <code>tea_bags</code> Function</h2>
+<p>Start simple with adding a couple blank lines following your <code>__author__</code> line and then <strong>define a function</strong> with the following expectations:</p>
+<ul>
+<li>Name: <code>tea_bags</code></li>
+<li>Parameters:
+<ol type="1">
+<li><code>people</code> parameter of type: <code>int</code> - the number of guests attending the tea party</li>
+</ol></li>
+<li>Return Type: <code>int</code></li>
+<li>Add a Docstring describing the purpose of the function</li>
+</ul>
+<p>Assume everyone at the tea party will drink two cups of tea and, therefore, we should plan to have two tea bags for them. Implement the body of this function to satisfy this expectation and return the number of tea bags needed based on the number of people the function is called with.</p>
+<p>Once you have implemented your function definition, save your file, and test it out in the Trailhead Interact REPL. You should expect to be able to make calls and see their return values like below:</p>
+<figure>
+<img src="/static/exercises/ex01/tea_bags_repl.png" alt="" /><figcaption><code>tea_bags</code> REPL Examples</figcaption>
+</figure>
+<p>Try a few additional function calls to be sure your function is working as you expect!</p>
+<h2 id="defining-the-treats-function">2. Defining the <code>treats</code> Function</h2>
+<p>Now let’s implement a function to compute the number of treats needed based on the number of teas guests are expecting to drink. Add a couple blank lines following your <code>tea_bags</code> function and then <strong>define a function</strong> with the following expectations:</p>
+<ul>
+<li>Name: <code>treats</code></li>
+<li>Parameters:
+<ol type="1">
+<li><code>people</code> parameter of type: <code>int</code> - the number of guests attending the tea party</li>
+</ol></li>
+<li>Return Type: <code>int</code></li>
+<li>Add a Docstring describing the purpose of the function</li>
+</ul>
+<p>The <code>treats</code> function will assume <em>for each tea a guest drinks, they will, on average, want 1.5 treats to accompany it</em>.</p>
+<p>Notice that this function is given <code>people</code> as a parameter, not the number of teas. In the <em>return statement</em> of your <code>treats</code> function, you <strong>must make a call to your <code>tea_bags</code> function</strong> in order to compute the number of teas. Then, you can use that value to compute the number of treats. This function call to <code>tea_bags</code> must use <em>keyword argument</em> for full credit. <strong>The autograder will grade based on these expectations!</strong></p>
+<p>You want to be careful of the <em>data type</em> returned by your <code>treats</code> function. You will need to convert the result of your computation to an <code>int</code> before returning it.</p>
+<p>Once you have implemented your function definition, save your file, and test it out in the Trailhead Interact REPL. You should expect to be able to make calls and see their return values like below:</p>
+<figure>
+<img src="/static/exercises/ex01/treats_repl.png" alt="" /><figcaption><code>treats</code> REPL Examples</figcaption>
+</figure>
+<p>Try a few additional function calls to be sure your function is working as you expect!</p>
+<div class="fox-talk">
+<figure>
+<img src="/static/camp110/cozy-fox.png" title="fig:" alt="Fox Talk" />
+</figure>
+<div class="message">
+<p><strong>Fern the Philosophical Fox</strong></p>
+<p>Why do you think we are making use of a call to the <code>tea_bags</code> function when implementing the <code>treats</code> function? Could you imagine implementing <code>treats</code> without calling <code>tea_bags</code>? If so, suppose you later discovered your guests drank 3 teas each instead of 2. How many places in your program would you need to update to account for this change?</p>
+</div>
+</div>
+<h2 id="defining-the-cost-function">3. Defining the <code>cost</code> Function</h2>
+<p>Now let’s implement a function to compute the cost of the tea bags and the treats combined. Add a couple blank lines following your <code>treats</code> function and then <strong>define a function</strong> with the following expectations:</p>
+<ul>
+<li>Name: <code>cost</code></li>
+<li>Parameters:
+<ol type="1">
+<li><code>tea_count</code> parameter of type: <code>int</code> - the number of tea bags needed</li>
+<li><code>treat_count</code> parameter of type: <code>int</code> - the number of treats needed</li>
+</ol></li>
+<li>Return Type: <code>float</code></li>
+<li>Add a Docstring describing the purpose of the function</li>
+</ul>
+<p>The <code>cost</code> function will assume <em>each tea bag costs $0.50 and each treat costs $0.75</em>. The function should return the total cost of the tea bags and treats combined.</p>
+<p>Once you have implemented your function definition, save your file, and test it out in the Trailhead Interact REPL. You should expect to be able to make calls and see their return values like below:</p>
+<figure>
+<img src="/static/exercises/ex01/cost_repl.png" alt="" /><figcaption><code>cost</code> REPL Examples</figcaption>
+</figure>
+<h2 id="defining-the-main_planner-function">4. Defining the <code>main_planner</code> Function</h2>
+<p>Now let’s implement a function to bring all of these functions together in a “main planner” function that calls each and produces printed output.</p>
+<p>It is conventional to write “main” functions as the first function definition in a program. Rather than adding this function definition <em>after</em> your <code>cost</code> function, try defining this function <em>above</em> your <code>tea_bags</code> function. This is a convention that helps you read your program kind of like a newspaper article: the big picture of the program is at the top and the details follow.</p>
+<p>Add a couple extra lines below your <code>__author__</code> line and then <strong>define a function</strong> with the following expectations:</p>
+<ul>
+<li>Name: <code>main_planner</code></li>
+<li>Parameters:
+<ol type="1">
+<li><code>guests</code> parameter of type: <code>int</code> - the number of guests attending the tea party</li>
+</ol></li>
+<li>Return Type: <code>None</code></li>
+<li>Add a Docstring describing the purpose of the function to be the entrypoint of your program</li>
+</ul>
+<p>There is something new and different about this function than the others you have written so far: it does not return a value. Instead, it will print output to the screen. This is a common pattern for “main” functions: they orchestrate the execution of a program and produce output, but they do not return a value. Anothe special feature of a function that returns <code>None</code> is that it does not need a <code>return</code> statement. The function will return <code>None</code> by default. However, you are welcome to include a final line of <code>return None</code> in its body.</p>
+<p>This function body will have multiple lines following the Docstring. Each line will be a <code>print</code> statement with a string literal concatenated with the results of <strong>calling your function definitions</strong>. The string literals should be formatted to match the exact output of the uses shown below:</p>
+<figure>
+<img src="/static/exercises/ex01/main_planner_repl.png" alt="" /><figcaption><code>main_planner</code> REPL Examples</figcaption>
+</figure>
+<p><strong>You should not be performing any arithmetic computations in <code>main_planner</code>, all of the arithmetic is handled in your functions <code>tea_bags</code>, <code>treats</code>, and <code>cost</code>. Your <code>main_planner</code> function must call the other function definitions you have written to perform these calculations.</strong></p>
+<h2 id="making-the-program-runnable">5. Making the Program Runnable</h2>
+<p>Now that you have defined all of your functions, you can make your program runnable. Once again, we will use the same idiom from EX00 to make our Python module runnable. These lines need to come a few lines <em>after all function definitions</em>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    main_planner(guests<span class="op">=</span><span class="bu">input</span>(<span class="st">&quot;How many guests are attending your tea party? &quot;</span>))</span></code></pre></div>
+<p>After adding these lines to the end of your program, you should now be able to go to the “Run” tab of your program, be prompted for a guests count, and see the output of your program.</p>
+<p>Congrats! You can now plan a cozy tea party with your woodland CAMP110 friends!</p>
+<div class="fox-talk">
+<figure>
+<img src="/static/camp110/cozy-fox.png" title="fig:" alt="Fox Talk" />
+</figure>
+<div class="message">
+<p><strong>Fern the Philosophical Fox</strong></p>
+<p>Why do you think you cannot place the lines <code>if __name__ == "__main__":</code> followed by <code>meal_planner(...)</code> at the top of your program? What happens if you try? Hint: Think about the rules of your environment diagram. What rules apply when the call to <code>meal_planner</code> are made? Specifically: what happens when following the Name Resolution rules?</p>
+</div>
+</div>
+<h2 id="submitting-your-work-to-gradescope">6. Submitting Your Work to Gradescope</h2>
+<p>Now is a good time to submit your work to the autograder!</p>
+<p>In VSCode, open a new integrated Terminal with `Ctrl+Shift+``, or going to the Terminal menu and selecting “New Terminal”. We will learn more about what the terminal is and gain experience with “command line interfaces” later in the course. For now, enter the following command into the terminal and press enter:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">python</span> -m tools.submission exercises/ex01_tea_party.py</span></code></pre></div>
+<p>You will notice a file appeared in your workspace named <code>24.01.dd-hh.mm.ss-ex01_tea_party.py.zip</code>. You will see numbers for the current day of the month in place of <code>dd</code>, 24-hour digits in place of <code>hh</code>, minutes in place of <code>mm</code>, and so on. This “zip” file contains your work and is what you will submit to the autograder.</p>
+<p>In Gradescope, open assignment “EX01 - Tea Party Planner”. You should see an area to upload a zip file. Click this area and browse to your course’s workspace directory on your computer. You should see the zip file you just created. Select it and upload it to Gradescope. Autograding should complete within about a minute and you should see a score of 100%, or more if you are submitting early. If you see less than 100%, try to understand the feedback and the points that were taken off and resubmit. If you are still having trouble, please come see us in office hours!</p>
+<h2 id="make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</h2>
+<p>Now that your first program is complete, let’s practice making a backup. Visual Studio Code has built-in support for <code>git</code> source control management (SCM). SCM tools are made to help create versioned checkpoints of a project’s source code (your program is source code!) amont other uses. The current de facto SCM is called <code>git</code>. As one more piece of terminology, a checkpointed version in git is called a <code>commit</code>. Once your work is in a <code>commit</code> checkpoint, you can always return back to your project at that point in time without the risk of losing work. We encourage committing work to backup <em>at least</em> each time you submit a project for grading or are finishing out a working session for the day. Commits are free to make and can only help you avoid losing work; use them liberally!</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Finished Exercise 01!” will suffice.</li>
+<li>Press the Commit button to make a <em>Commit</em> (a version) of your work.</li>
+<li>In the Terminal, type the command <code>git push backup main</code>. If your terminal was closed, go to the Terminal menu and select “New Terminal”. This command “pushed” your changes to your backup repository on GitHub.</li>
+</ol>
+<p>To see your commit on Github, in a web browser, navigate to <code>https://github.com/comp110-24s-003/comp110-24s-workspace-USERNAME</code> and substitute <code>USERNAME</code> with your GitHub username. You should see your work in <code>exercises/ex1_tea_party.py</code> backed up to GitHub. Notice above the file’s content’s you’ll see your commit message.</p>
+<h2 id="congratulations">8. Congratulations!</h2>
+<div class="owl-talk">
+<figure>
+<img src="/static/camp110/cozy-owl.png" title="fig:" alt="Owl Talk" />
+</figure>
+<div class="message">
+<p>Hi, I’m <strong>Owlivia the Observant</strong>!</p>
+<p>HOO! You have completed your first <em>real</em> exercise in the course! In this exercise, you experienced many big ideas you will encounter frequently on the trails ahead:</p>
+<ul>
+<li>Defining a Function with a one <em>or more</em> parameters, return type, doc string, and return statement</li>
+<li>Defining a function and testing it in the REPL</li>
+<li>Defining a function that calls another function</li>
+<li>Defining a “main” function that produces output and “delegates” its primary logic to other simpler functions</li>
+<li>Defining a function that returns <code>None</code> and produces output (a “side-effect”!)</li>
+</ul>
+</div>
+</div>
+</div>
+
+       
+
+    </div> 
+    </div>
+    </div>
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>
