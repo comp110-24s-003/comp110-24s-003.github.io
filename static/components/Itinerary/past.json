@@ -98,5 +98,28 @@
                 "Diagram Rules v0": "/static/slides/env_diagrams_v0.pdf"
             }
         }
-    ]
+    ],
+    "2024-01-19": [
+        {
+            "kind": "LS",
+            "n": 4,
+            "title": "EX00 Reflection (Due Monday 1/22)",
+            "date": "2024-01-19",
+            "deadline": "2024-01-22",
+            "links": {
+                "": "https://www.gradescope.com/"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 5,
+            "title": "Environment Diagram Practice (Due Monday 1/22)",
+            "date": "2024-01-19",
+            "deadline": "2024-01-22",
+            "links": {
+                "": "https://www.gradescope.com/"
+            }
+        }
+    ],
+    "2024-01-20": []
 }
