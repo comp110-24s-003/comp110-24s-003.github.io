@@ -157,7 +157,11 @@
             "title": "Quiz 0",
             "date": "2024-01-25",
             "deadline": "2024-01-25",
-            "links": {}
+            "links": {
+                "Quiz Expectations": "/resources/quiz-expectations.html",
+                "Practice Quiz": "/static/practice/qz00-practice.pdf",
+                "Practice Quiz (Key)": "/static/practice/qz00-practice-key.pdf"
+            }
         }
     ],
     "2024-01-26": [],
