@@ -177,7 +177,18 @@
             "deadline": "None",
             "links": {
                 "Recording": "https://youtube.com/live/l8KnGXchq9c?feature=share",
-                "Slides": ""
+                "Slides": "/static/slides/cl04_logic_and_conditionals.pdf"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 6,
+            "title": "LS06 - Unicode, Emoji, Escape Sequences, and f-Strings Reading (Due Wednesday 1/31)",
+            "date": "2024-01-30",
+            "deadline": "2024-01-31",
+            "links": {
+                "Text": "/lessons/strings.html",
+                "Questions": "https://www.gradescope.com/"
             }
         }
     ],
