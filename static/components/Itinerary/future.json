@@ -1,51 +1,19 @@
 {
-    "2024-01-21": [
-        {
-            "kind": "EX",
-            "n": 1,
-            "title": "Tea Party Planner (Due Monday 1/29)",
-            "date": "2024-01-21",
-            "deadline": "2024-01-29",
-            "links": {
-                "": "/exercises/ex01_tea_party_planner.html"
-            }
-        }
-    ],
-    "2024-01-22": [],
-    "2024-01-23": [
-        {
-            "kind": "CL",
-            "n": 3,
-            "title": "Practice with Diagrams",
-            "date": "2024-01-23",
-            "deadline": "None",
-            "links": {
-                "Recording": "https://youtube.com/live/zYZ8hR-K1ss?feature=share",
-                "Slides": "/static/slides/cl03_diagram_practice.pdf",
-                "Quiz 0 Expectations": "/resources/quiz-expectations.html"
-            }
-        }
-    ],
-    "2024-01-24": [],
-    "2024-01-25": [
-        {
-            "kind": "QZ",
-            "n": 0,
-            "title": "Quiz 0",
-            "date": "2024-01-25",
-            "deadline": "2024-01-25",
-            "links": {
-                "Quiz Expectations": "/resources/quiz-expectations.html",
-                "Practice Quiz": "/static/practice/qz00-practice.pdf",
-                "Practice Quiz (Key)": "/static/practice/qz00-practice-key.pdf"
-            }
-        }
-    ],
-    "2024-01-26": [],
-    "2024-01-27": [],
     "2024-01-28": [],
     "2024-01-29": [],
-    "2024-01-30": [],
+    "2024-01-30": [
+        {
+            "kind": "CL",
+            "n": 4,
+            "title": "Practice with Diagrams",
+            "date": "2024-01-30",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/l8KnGXchq9c?feature=share",
+                "Slides": ""
+            }
+        }
+    ],
     "2024-01-31": [],
     "2024-02-01": [],
     "2024-02-02": [],
