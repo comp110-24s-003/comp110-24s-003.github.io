@@ -4,21 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Class 12 - List Diagram Practice - COMP110 - 23F</title>
-  <link rel="icon" type="image/png" href="/static/tabbrand.png" />
+  <title> Class 12 - List Diagram Practice - COMP110 - 24S</title>
+  <link rel="icon" type="image/png" href="/static/cottage_logo.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1706621285.7009723">
+  <link rel="stylesheet" href="/static/styles.css?v=1706651391.228869">
 </head>
 
-<body>
+
+<body id="body" class="absolute-page">
+    <script>
+        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add(localStorage.getItem('mode'));
+    </script>
   <script src="/static/scripts/nav-menu-esc.js"></script> 
-  
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
     <div class="container">
-      <a href="/" class="navbar-brand">COMP 110</a>
+      <a class="navbar-brand" href="/"><img class="lightmode-element-only img-fluid logo" src="/static/assets/cottagecore_nav.png"
+        alt="COMP110 - Spring - 2024"><img class="darkmode-element-only img-fluid logo" src="/static/cottagebrand_dark.png"
+        alt="COMP110 - Spring - 2024"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,6 +42,25 @@
           </li>
         </ul>
       </div>
+      <div id='mode-switch' class="ms-auto form-check form-switch mode switches">
+              <div class="switches">
+                  <input type="checkbox" id="1" onclick="
+                      if (localStorage.getItem('mode') === 'dark-mode') {
+                          localStorage.setItem('userPref', 'light-mode');
+                          localStorage.setItem('mode', 'light-mode');
+                      } else {
+                          localStorage.setItem('userPref', 'dark-mode');
+                          localStorage.setItem('mode', 'dark-mode');
+                      }
+                      location.reload();">
+                  <label for="1">
+                      <span id="mode-label">Dark Mode</span>
+                      <span></span>
+                  </label>
+                  <script>if(localStorage.getItem('mode') === 'dark-mode'){document.getElementById("1").checked = true}</script>
+                  <script>if(localStorage.getItem('userPref') === null) {setTimeout(function(){location.reload();}, (timer * 3600000));}</script>
+              </div>
+          </div>
     </div>
   </nav>
 
@@ -53,9 +79,8 @@
     <div class="row px-4">
         <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
             <div>
-                <div class="sun"></div>
                 <div id="menu-overview" class="link-page-overview horizon-box">
-                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()">Overview  <img id="button-img" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()" >Overview  <img id="button-img" alt="Overview" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
                     <div id="overview-links">
                         <div id="TOC" role="doc-toc">
                             <ul class="overview-item"><ul>

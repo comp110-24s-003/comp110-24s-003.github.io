@@ -7,9 +7,8 @@ warning:
 title: Introduction to Programming
 author:
 - Kris Jordan
-- Ezri White
-- Claire Helms
 - Jessica Bring
+- Madeleine Genova
 page: home
 template: home
 ---
@@ -21,8 +20,9 @@ template: home
 <!-- Horizon Box/Column -->
 
 <div class="col-lg-4 col-md-12 col-md-1 order-lg-3 pt-5"> 
-    <div class="sun-container">
-        <div id="sun"></div>
+    <div>
+        {# <div class="moon"></div> #}
+        <div class="sun"></div>
         <div class="horizon-box mb-3">
             <h3 class="header text-center pt-2">On The Horizon</h3>
             {%- if horizoninfo|length > 0 -%}
@@ -45,10 +45,10 @@ template: home
     </div>
     {# Button to bring page to the past section of itinerary #}
     <div class="past-link">
-        <a href="#past">
-            <div class="past-btn">
-                <div class="text-center align-middle past-text">Past Lectures <span class="down-arrow">&darr;</span></div>
-            </div>
+        <div class="past-btn">
+            <a href="#past">
+        <div class="text-center align-middle past-text">Past Lectures <span class="down-arrow">&darr;</span></div>
+        </div>
         </a>
     </div>
 </div>
