@@ -1,6 +1,4 @@
 {
-    "2024-01-28": [],
-    "2024-01-29": [],
     "2024-01-30": [
         {
             "kind": "CL",
@@ -26,7 +24,19 @@
         }
     ],
     "2024-01-31": [],
-    "2024-02-01": [],
+    "2024-02-01": [
+        {
+            "kind": "CL",
+            "n": 5,
+            "title": "Practice with Conditionals",
+            "date": "2024-02-01",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/DGIrKdirmNY?feature=share",
+                "Slides": "/static/slides/cl05_conditionals.pdf"
+            }
+        }
+    ],
     "2024-02-02": [],
     "2024-02-03": [],
     "2024-02-04": [],
