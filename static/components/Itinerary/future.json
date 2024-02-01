@@ -35,6 +35,16 @@
                 "Recording": "https://youtube.com/live/DGIrKdirmNY?feature=share",
                 "Slides": "/static/slides/cl05_conditionals.pdf"
             }
+        },
+        {
+            "kind": "LS",
+            "n": 7,
+            "title": "Practice Diagrams (Due Sunday 2/4)",
+            "date": "2024-02-01",
+            "deadline": "2024-02-04",
+            "links": {
+                "": "https://www.gradescope.com"
+            }
         }
     ],
     "2024-02-02": [],
