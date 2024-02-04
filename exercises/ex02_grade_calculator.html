@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX02 - Grade Calculator - COMP110 - 24S</title>
+  <link rel="icon" type="image/png" href="/static/cottage_logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1707064213.3518622">
+</head>
+
+
+<body id="body" class="absolute-page">
+    <script>
+        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add(localStorage.getItem('mode'));
+    </script>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img class="lightmode-element-only img-fluid logo" src="/static/assets/cottagecore_nav.png"
+        alt="COMP110 - Spring - 2024"><img class="darkmode-element-only img-fluid logo" src="/static/cottagebrand_dark.png"
+        alt="COMP110 - Spring - 2024"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources/syllabus.html" class="nav-link">syllabus</a>
+          </li>
+        </ul>
+      </div>
+      <div id='mode-switch' class="ms-auto form-check form-switch mode switches">
+              <div class="switches">
+                  <input type="checkbox" id="1" onclick="
+                      if (localStorage.getItem('mode') === 'dark-mode') {
+                          localStorage.setItem('userPref', 'light-mode');
+                          localStorage.setItem('mode', 'light-mode');
+                      } else {
+                          localStorage.setItem('userPref', 'dark-mode');
+                          localStorage.setItem('mode', 'dark-mode');
+                      }
+                      location.reload();">
+                  <label for="1">
+                      <span id="mode-label">Dark Mode</span>
+                      <span></span>
+                  </label>
+                  <script>if(localStorage.getItem('mode') === 'dark-mode'){document.getElementById("1").checked = true}</script>
+                  <script>if(localStorage.getItem('userPref') === null) {setTimeout(function(){location.reload();}, (timer * 3600000));}</script>
+              </div>
+          </div>
+    </div>
+  </nav>
+
+  <div class="cloud-container">
+    <div id="cloud-intro">
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX02 - Grade Calculator</h1>
+      </div>
+    </div>
+    
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div>
+                <div id="menu-overview" class="link-page-overview horizon-box">
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()" >Overview  <img id="button-img" alt="Overview" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <div id="overview-links">
+                        <div id="TOC" role="doc-toc">
+                            <ul class="overview-item"><ul>
+<li><a href="#part-0.-getting-started">Part 0. Getting Started</a></li>
+<li><a href="#part-1.-establishing-input-grade-data">Part 1. Establishing Input Grade Data</a></li>
+<li><a href="#part-2.-calculating-the-average-of-a-component">Part 2. Calculating the <code>average</code> of a Component</a></li>
+<li><a href="#part-3.-calculating-the-ppp_components-total">Part 3. Calculating the <code>ppp_components</code> Total</a></li>
+</ul>
+</</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Final grade calculations for COMP110 include some conditional logic, including:</p>
+<ul>
+<li><p>If you miss a quiz due to absence, or take all four quizzes and have a low score below your final exam score, then your final exam weight will take the place of one quiz’ weight.</p></li>
+<li><p>To pass COMP110, you must take at least three quizzes, score a 40% or greater on the final exam, and have a passing grade in the course.</p></li>
+</ul>
+<p>Additionally, the final grade letter is determined by logic around ranges of values, such as a 93 or better being an A, and rules around fractional grades rounding up or down.</p>
+<p>In this exercise, you will be guided through breaking down the problem of calculating your final grade in a Python program. There are many, many ways this program could be written, so we will provide some high-level structure to help guide the process and practice breaking down problems into smaller, simpler functions.</p>
+<p>In this exercise, you will gain practice with the following concepts:</p>
+<ul>
+<li>Composing larger programs from small functions</li>
+<li>Using tuples to store many values (LS grades, EX grades, etc)</li>
+<li>Using built-in functions, <code>min</code>, <code>sum</code> with tuples</li>
+<li>Using named constants to put names to “magic numbers”</li>
+</ul>
+<p>Ultimately, you will produce a program that generates a final grade calculation:</p>
+<p><img src="/static/exercises/ex02/grade_calculator.png" /></p>
+<p><strong>Please know that in this exercise you will need to limit yourself to making use of only the concepts we have covered in lecture. The autograder has some checks in place to penalize the usage of concepts we have not yet covered. Limiting yourself to only what we have covered is good practice. Anything we have discussed in lecture is permitted.</strong> If you show up in office hours with code beyond the scope of what we have covered in class, we will ask to remove it and start from what has been covered.</p>
+<h2 id="part-0.-getting-started">Part 0. Getting Started</h2>
+<p>Start your COMP110 DevContainer by first being sure Docker Desktop is running, then opening VS Code, then using the File &gt; Open Recent menu to select the “COMP110 Workspace” folder that has <code>[Dev Container]</code> following its the name. This will open a new VS Code window with the DevContainer running. Finally, go to the “Run and Debug” view to press the play button to begin Trailhead. Open Trailhead in a web browser tab and arrange your windows side-by-side. These are the steps we will generally get in the habbit of following as work begins on a project.</p>
+<p>In the <code>exercises</code> directory of your project workspace, create a new Python program file named <code>ex02_grade_calculator.py</code>.</p>
+<p>As with all exercises, you will need to add a Docstring and <code>__author__</code> attribution line to the top of your exercise file. Go ahead and add a Docstring for this program. Your Docstring should state the goal of this program, based on the overview above, in one sentence in your own words. Once you save this, you should be able to navigate to the <code>exercises</code> directory in Trailhead, see <code>ex02_grade_calculator</code> listed, and see the Docstring you added.</p>
+<p>Add two blank lines below the Docstring, then add the <code>__author__: str = "123456789"</code> line, substituting your UNC PID for the <code>123456789</code> value.</p>
+<h2 id="part-1.-establishing-input-grade-data">Part 1. Establishing Input Grade Data</h2>
+<p>As discussed in class, a <code>tuple</code> value provides the ability to store a sequence of values. We will use a <code>tuple</code> for each of the grade components in this course, exercise scores, reading scores, lesson scores, and so on. In order to simplify our program, rather than representing scores as point values, we will represent scores as float percentages where 1.0 is 100% credit.</p>
+<p><strong>New Concept: Type Alias</strong> - because a type such as <code>tuple[float, ...]</code> is both long to type and ambiguous as to meaning of the values in the <code>tuple</code> (e.g. it could be a tuple of temperatures, or a player’s time in a game, or bank account balances), it is common to <em>alias</em> a data type. A <em>type alias</em> simply provides an alternate name for the data type that is more meaningful <em>for humans</em> reading and writing the program. Go ahead and establish a type alias named <code>Scores</code> (with a capital <code>S</code>) that is equivalent to a <code>tuple[float, ...]</code> as shown in the following snippet:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>Scores <span class="op">=</span> <span class="bu">tuple</span>[<span class="bu">float</span>, ...]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;Scores is a tuple of floats representing percent credit from 0.0 to 1.0.&quot;&quot;&quot;</span></span></code></pre></div>
+<p>After this type alias is established in the global frame, it can be used throughout the rest of our module. Notice the Docstring for a type alias follows its declaration. It is additionally worth noting “user” (you are the user here!) defined types, such as <code>Scores</code>, conventionally begin with capital letters to distinguish themselves from built-in types (such as <code>int</code> and <code>bool</code>) and parameter names.</p>
+<p>Next, we need to score data to compute a grade with! Later in the course we will learn how to read data into our programs from files, but for now we will “hard code” some data into our program. This has the upside of simplicity, but the downside that to compute new grades you will need to update the data in this program as the course continues.</p>
+<p><strong>New Concept: Named Constants</strong> - To prevent a program from having lots of “magical numbers” floating around, which are literal values without names associated with them, we can establish <em>Named Constants</em> to reference the values by a meaningful name. This concept is <em>related to</em> a type alias, but subtly different: a type alias gives a <em>type</em> another name, a named constant gives a <em>value</em> a name. Named constants given name <em>identifiers</em> that are <code>ALL_CAPS_LETTERS</code> with words separated by underscores. This convention is true across many programming languages and helps visually differentiate them from types, parameters, function names, and so on.</p>
+<p>Let’s define a global named constant for exercise scores, whose type is <code>Scores</code> (remember: this is only an alias for <code>float[tuple, ...]</code>!) and is assigned a <em>tuple literal</em>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>EX: Scores <span class="op">=</span> (<span class="fl">83.0</span> <span class="op">/</span> <span class="fl">100.0</span>, <span class="fl">105.0</span> <span class="op">/</span> <span class="fl">100.0</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;Exercise scores&quot;&quot;&quot;</span></span></code></pre></div>
+<p>You should replace the <code>EX</code> tuple item’s values with <em>your</em> exercise scores to be more meaningful. Notice, here, each item is specified as an expression which is points earned over points possible. If you wanted to go ahead and simplify your expression values, you could have written the tuple as <code>(0.83, 1.05)</code>, instead. The item <em>values</em> of a tuple literal are themselves <em>expressions</em>, so as long as each value evaluates to the correct.</p>
+<p>In Trailhead, you can go to the “Interact” REPL and see that these expressions are simplified to singular values at runtime:</p>
+<p><img src="/static/exercises/ex02/constant_repl.png" /></p>
+<p>Go ahead and establish global, named constants for <code>RD</code> (readings), <code>LS</code> (lessons), and <code>CL</code> (class/lecture) Scores and enter your grades with two warnings:</p>
+<ol type="1">
+<li>For a component where there are no scores yet, such as readings, you can express an empty tuple literal as <code>()</code></li>
+<li>To write a <em>single-item tuple literal</em> a trailing comma is required, to differentiate it from normal parentheses, for example: <code>(1.0,)</code></li>
+</ol>
+<p>We will worry about quiz and final exam scores later. For now, let’s focus on calculating the preparation, practice, and participation component of the final grade.</p>
+<h2 id="part-2.-calculating-the-average-of-a-component">Part 2. Calculating the <code>average</code> of a Component</h2>
+<p>Define a function named <code>average</code> with a parameter of type <code>Scores</code>, whose name is yours to choose but should be meaningful, and returns a <code>float</code>.</p>
+<p>This function has two important cases to care about and requires a conditional <code>if-else</code> statement to successfully implement. When the <code>Scores</code> parameter <em>is not empty</em>, it should return the <em>average</em> of the parameter’s values. Remember, you can use the built-in <code>sum</code> and <code>len</code> functions to compute the average of <code>Scores</code>! The second case to concern yourself with: what happens when the <code>Scores</code> parameter is empty? Division by zero is an important “edge case” that will crash a program. In this edge case, which is opposite the expected case of a non-empty tuple, return <code>0.0</code> instead. Use an <code>if-else</code> statement to implement this logic.</p>
+<p>Once implemented, you should test out <code>average</code> function calls in the REPL and use the named constants established in Part 1 as <em>arguments</em> to test your implementation.</p>
+<p>As with all functions, you should add a Docstring that describes the purpose of the function definition.</p>
+<h2 id="part-3.-calculating-the-ppp_components-total">Part 3. Calculating the <code>ppp_components</code> Total</h2>
+<p>In the <a href="/resources/syllabus.html">syllabus</a>, 40% of the final course grade is driven by “Preparation, Practice, and Participation” which we are abbreviating <code>ppp</code> here. These are the <code>EX</code>, <code>RD</code>, <code>LS</code>, and <code>CL</code> grades combined, each with its respective weight.</p>
+<p>Define a function named <code>ppp_components</code>, that defines four parameters: <code>ex</code>, <code>rd</code>, <code>ls</code>, and <code>cl</code> all of type <code>Scores</code>. This function should return a <code>float</code> value which will ultimately range between 0.0 and 0.4 and represent the total PPP weight earned.</p>
+<p>Inside the function definition, define four <em>local named constants</em>. We call these “local” because they are “local” to a function definition and only resolvable using name resolution from within the current frame and <em>not</em> the globals frame. Name these constants: <code>EX_WEIGHT</code>, <code>RD_WEIGHT</code>, <code>LS_WEIGHT</code>, and <code>CL_WEIGHT</code> with values corresponding to their percentage weights defined in the syllabus (remember 25% is represented as <code>0.25</code> as a <code>float</code>).</p>
+<p>This function should calculate the <code>average</code> of each parameter grade component (using the function you wrote in Part 2), scale (multiply) this average by the component’s weight (defined in the constants aboved) and add them up. Written as a mathematical expression:</p>
+<p><br /><span class="math display">(<em>e</em><em>x</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>E</em><em>X</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>) + (<em>r</em><em>d</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>R</em><em>D</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>) + (<em>l</em><em>s</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>L</em><em>S</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>) + (<em>c</em><em>l</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>C</em><em>L</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>)</span><br /></p>
+<p>You should try calling your defined function in the REPL and confirming the value returned is less than <code>0.4</code>:</p>
+<p><img src="/static/exercises/ex02/ppp_components.png" /></p>
+<p>For grade projection purposes, you can go ahead and give yourself an <code>RD</code> grade of <code>1.0</code> so that your reading component does not project 0% credit.</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+    </div>
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>
