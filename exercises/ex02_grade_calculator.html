@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1707108752.3610108">
+  <link rel="stylesheet" href="/static/styles.css?v=1707148625.177056">
 </head>
 
 
@@ -96,7 +96,7 @@
 <li><a href="#part-9.-the-calculate_grade-function">Part 9. The <code>calculate_grade</code> Function</a></li>
 <li><a href="#part-10.-making-the-program-runnable">Part 10. Making the program runnable</a></li>
 <li><a href="#submitting-your-work-to-gradescope">Submitting Your Work to Gradescope</a></li>
-<li><a href="#make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</a></li>
 </ul>
 </</ul>
                         </div>
@@ -106,7 +106,7 @@
         </div>
         <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Final grade calculations for COMP110 include some conditional logic, including:</p>
 <ul>
-<li><p>If you miss a quiz due to absence, or take all four quizzes and have a low score below your final exam score, then your final exam weight will take the place of one quiz’ weight.</p></li>
+<li><p>If you miss a quiz due to absence, or take all four quizzes and have a low score below your final exam score, then your final exam weight will take the place of one quiz’s weight.</p></li>
 <li><p>To pass COMP110, you must take at least three quizzes, score a 40% or greater on the final exam, and have a passing grade in the course.</p></li>
 </ul>
 <p>Additionally, the final grade letter is determined by logic around ranges of values, such as a 93 or better being an A, and rules around fractional grades rounding up or down.</p>
@@ -122,7 +122,7 @@
 <p><img src="/static/exercises/ex02/grade_calculator.png" /></p>
 <p><strong>Please know that in this exercise you will need to limit yourself to making use of only the concepts we have covered in lecture. The autograder has some checks in place to penalize the usage of concepts we have not yet covered. Limiting yourself to only what we have covered is good practice. Anything we have discussed in lecture is permitted.</strong> If you show up in office hours with code beyond the scope of what we have covered in class, we will ask to remove it and start from what has been covered.</p>
 <h2 id="part-0.-getting-started">Part 0. Getting Started</h2>
-<p>Start your COMP110 DevContainer by first being sure Docker Desktop is running, then opening VS Code, then using the File &gt; Open Recent menu to select the “COMP110 Workspace” folder that has <code>[Dev Container]</code> following its the name. This will open a new VS Code window with the DevContainer running. Finally, go to the “Run and Debug” view to press the play button to begin Trailhead. Open Trailhead in a web browser tab and arrange your windows side-by-side. These are the steps we will generally get in the habbit of following as work begins on a project.</p>
+<p>Start your COMP110 DevContainer by first being sure Docker Desktop is running, then opening VS Code, then using the File &gt; Open Recent menu to select the “COMP110 Workspace” folder that has <code>[Dev Container]</code> following its the name. This will open a new VS Code window with the DevContainer running. Finally, go to the “Run and Debug” view to press the play button to begin Trailhead. Open Trailhead in a web browser tab and arrange your windows side-by-side. These are the steps we will generally get in the habit of following as work begins on a project.</p>
 <p>In the <code>exercises</code> directory of your project workspace, create a new Python program file named <code>ex02_grade_calculator.py</code>.</p>
 <p>As with all exercises, you will need to add a Docstring and <code>__author__</code> attribution line to the top of your exercise file. Go ahead and add a Docstring for this program. Your Docstring should state the goal of this program, based on the overview above, in one sentence in your own words. Once you save this, you should be able to navigate to the <code>exercises</code> directory in Trailhead, see <code>ex02_grade_calculator</code> listed, and see the Docstring you added.</p>
 <p>Add two blank lines below the Docstring, then add the <code>__author__: str = "123456789"</code> line, substituting your UNC PID for the <code>123456789</code> value.</p>
@@ -133,11 +133,11 @@
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;Scores is a tuple of floats representing percent credit from 0.0 to 1.0.&quot;&quot;&quot;</span></span></code></pre></div>
 <p>After this type alias is established in the global frame, it can be used throughout the rest of our module. Notice the Docstring for a type alias follows its declaration. It is additionally worth noting “user” (you are the user here!) defined types, such as <code>Scores</code>, conventionally begin with capital letters to distinguish themselves from built-in types (such as <code>int</code> and <code>bool</code>) and parameter names.</p>
 <p>Next, we need to score data to compute a grade with! Later in the course we will learn how to read data into our programs from files, but for now we will “hard code” some data into our program. This has the upside of simplicity, but the downside that to compute new grades you will need to update the data in this program as the course continues.</p>
-<p><strong>New Concept: Named Constants</strong> - To prevent a program from having lots of “magical numbers” floating around, which are literal values without names associated with them, we can establish <em>Named Constants</em> to reference the values by a meaningful name. This concept is <em>related to</em> a type alias, but subtly different: a type alias gives a <em>type</em> another name, a named constant gives a <em>value</em> a name. Named constants given name <em>identifiers</em> that are <code>ALL_CAPS_LETTERS</code> with words separated by underscores. This convention is true across many programming languages and helps visually differentiate them from types, parameters, function names, and so on.</p>
+<p><strong>New Concept: Named Constants</strong> - To prevent a program from having lots of “magical numbers” floating around, which are literal values without names associated with them, we can establish <em>Named Constants</em> to reference the values by a meaningful name. This concept is <em>related to</em> a type alias, but subtly different: a type alias gives a <em>type</em> another name, a named constant gives a <em>value</em> a name. Named constants are given name <em>identifiers</em> that are <code>ALL_CAPS_LETTERS</code> with words separated by underscores. This convention is true across many programming languages and helps visually differentiate them from types, parameters, function names, and so on.</p>
 <p>Let’s define a global named constant for exercise scores, whose type is <code>Scores</code> (remember: this is only an alias for <code>float[tuple, ...]</code>!) and is assigned a <em>tuple literal</em>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>EX: Scores <span class="op">=</span> (<span class="fl">83.0</span> <span class="op">/</span> <span class="fl">100.0</span>, <span class="fl">105.0</span> <span class="op">/</span> <span class="fl">100.0</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">&quot;&quot;&quot;Exercise scores&quot;&quot;&quot;</span></span></code></pre></div>
-<p>You should replace the <code>EX</code> tuple item’s values with <em>your</em> exercise scores to be more meaningful. Notice, here, each item is specified as an expression which is points earned over points possible. If you wanted to go ahead and simplify your expression values, you could have written the tuple as <code>(0.83, 1.05)</code>, instead. The item <em>values</em> of a tuple literal are themselves <em>expressions</em>, so as long as each value evaluates to the correct.</p>
+<p>You should replace the <code>EX</code> tuple item’s values with <em>your</em> exercise scores to be more meaningful. Notice, here, each item is specified as an expression which is points earned over points possible. If you wanted to go ahead and simplify your expression values, you could have written the tuple as <code>(0.83, 1.05)</code>, instead. The item <em>values</em> of a tuple literal are themselves <em>expressions</em>, so as long as each value evaluates to the correct .</p>
 <p>In Trailhead, you can go to the “Interact” REPL and see that these expressions are simplified to singular values at runtime:</p>
 <p><img src="/static/exercises/ex02/constant_repl.png" /></p>
 <p>Go ahead and establish global, named constants for <code>RD</code> (readings), <code>LS</code> (lessons), and <code>CL</code> (class/lecture) Scores and enter your grades with two warnings:</p>
@@ -168,7 +168,7 @@
 <p>In the event no quiz <code>Scores</code> are in the tuple parameter, <code>quiz_average</code> should result in the final exam score parameter. Otherwise, return the greater of the quiz average <em>or</em> the average of quiz scores when the final exam replaces the low quiz score. <strong>This description is intentionally vague and you should think about how to most logically and simply approach this logical decision. Hint: the <code>min</code> function will tell you the lowest value in a sequence, such as a tuple of float values.</strong></p>
 <h2 id="part-5.-calculating-the-mastery_components-total">Part 5. Calculating the <code>mastery_components</code> Total</h2>
 <p>In COMP110, mastery demonstrated on quizzes and the final exam accounts for 60% of your final course grade. This function calculates the total weight of the two mastery components.</p>
-<p>Define a function named <code>mastery_components</code> with a parameter of type <code>Scores</code> for quiz scores and a parameter of type <code>float</code> for final exam score. Like with <code>ppp_components</code>, you should define local named constants for the weights of quizzes and the final exam.</p>
+<p>Define a function named <code>mastery_components</code> with a parameter of type <code>Scores</code> for quiz scores and a parameter of type <code>float</code> for the final exam score. Like with <code>ppp_components</code>, you should define local named constants for the weights of quizzes and the final exam.</p>
 <p>Using the <code>quiz_average</code> function you wrote previously, which handles the logic for replacing a low quiz score with the final exam score, compute the total mastery score in this function. When testing, you can expect to see values in the range of 0.0 to 0.6 being returned by this function.</p>
 <h2 id="part-6.-counting-zeros-in-quiz-scores-with-count_zeros">Part 6. Counting Zeros in Quiz Scores with <code>count_zeros</code></h2>
 <p>We will ultimately need to be sure at least 3 of 4 quizzes were taken. When a quiz is not taken, it will be listed as a <code>0.0</code> in the <code>QZ</code> <code>Scores</code> tuple. The function <code>count_zeros</code> will be implemented as a recursive algorithm similar to those traced in lecture, with a simple twist.</p>
@@ -197,7 +197,7 @@
 <p>Test your implementation in the REPL. You should try other variations of values, but at least the following sample tests should return the expected count of zeros:</p>
 <p><img src="/static/exercises/ex02/count_zeros.png" /></p>
 <h2 id="part-7.-the-has_min_mastery-function">Part 7. The <code>has_min_mastery</code> Function</h2>
-<p>The next function you will define is <code>has_min_mastery</code> which will be used to check if a student has met the minimum mastery requirements to pass the course. This function will be used to determine if at least 3 quizzes were taken the final exam score is at least 40%.</p>
+<p>The next function you will define is <code>has_min_mastery</code> which will be used to check if a student has met the minimum mastery requirements to pass the course. This function will be used to determine if at least 3 quizzes were taken and the final exam score is at least 40%.</p>
 <p>Define a function named <code>has_min_mastery</code> with the following parameters:</p>
 <ol type="1">
 <li>Name <code>qz</code>, type <code>Scores</code> - this represents a tuple of floats of quiz scores</li>
@@ -228,12 +228,12 @@
 <p>After adding this to the end of your program, you should now be able to use the “Run” tab to see the final output. Wow, lots of code to compute a single string! As the semester continues on, you are encouraged to update the <code>EX</code>, <code>RD</code>, <code>LS</code>, <code>CL</code>, <code>QZ</code>, and <code>FN</code> named constants to reflect your actual grades as the course progresses. For the <code>QZ</code> and <code>FN</code> named constants, you can project your hopeful scores to see how it will affect your final grade.</p>
 <h2 id="submitting-your-work-to-gradescope">Submitting Your Work to Gradescope</h2>
 <p>Now is a good time to submit your work to the autograder!</p>
-<p>In VSCode, open a new integrated Terminal with `Ctrl+Shift+``, or going to the Terminal menu and selecting “New Terminal”. We will learn more about what the terminal is and gain experience with “command line interfaces” later in the course. For now, enter the following command into the terminal and press enter:</p>
+<p>In VSCode, open a new integrated Terminal with `Ctrl+Shift+``, or going to the Terminal menu and selecting “New Terminal.” We will learn more about what the terminal is and gain experience with “command line interfaces” later in the course. For now, enter the following command into the terminal and press enter:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">python</span> -m tools.submission exercises/ex02_grade_calculator.py</span></code></pre></div>
 <p>You will notice a file appeared in your workspace named <code>24.02.dd-hh.mm.ss-ex02_grade_calculator.py.zip</code>. You will see numbers for the current day of the month in place of <code>dd</code>, 24-hour digits in place of <code>hh</code>, minutes in place of <code>mm</code>, and so on. This “zip” file contains your work and is what you will submit to the autograder.</p>
 <p>In Gradescope, open assignment “EX02 - Grade Calculator”. You should see an area to upload a zip file. Click this area and browse to your course’s workspace directory on your computer. You should see the zip file you just created. Select it and upload it to Gradescope. Autograding should complete within about a minute and you should see a score of 100%, or more if you are submitting early. If you see less than 100%, try to understand the feedback and the points that were taken off and resubmit. If you are still having trouble, please come see us in office hours!</p>
-<h2 id="make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</h2>
-<p>Now that your first program is complete, let’s practice making a backup. Visual Studio Code has built-in support for <code>git</code> source control management (SCM). SCM tools are made to help create versioned checkpoints of a project’s source code (your program is source code!) amont other uses. The current de facto SCM is called <code>git</code>. As one more piece of terminology, a checkpointed version in git is called a <code>commit</code>. Once your work is in a <code>commit</code> checkpoint, you can always return back to your project at that point in time without the risk of losing work. We encourage committing work to backup <em>at least</em> each time you submit a project for grading or are finishing out a working session for the day. Commits are free to make and can only help you avoid losing work; use them liberally!</p>
+<h2 id="make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</h2>
+<p>Now that your first program is complete, let’s practice making a backup. Visual Studio Code has built-in support for <code>git</code> source control management (SCM). SCM tools are made to help create versioned checkpoints of a project’s source code (your program is source code!) among other uses. The current de facto SCM is called <code>git</code>. As one more piece of terminology, a checkpointed version in git is called a <code>commit</code>. Once your work is in a <code>commit</code> checkpoint, you can always return back to your project at that point in time without the risk of losing work. We encourage committing work to backup <em>at least</em> each time you submit a project for grading or are finishing out a working session for the day. Commits are free to make and can only help you avoid losing work; use them liberally!</p>
 <ol type="1">
 <li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
 <li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
@@ -245,7 +245,7 @@
 <li>Press the Commit button to make a <em>Commit</em> (a version) of your work.</li>
 <li>In the Terminal, type the command <code>git push backup main</code>. If your terminal was closed, go to the Terminal menu and select “New Terminal”. This command “pushed” your changes to your backup repository on GitHub.</li>
 </ol>
-<p>To see your commit on Github, in a web browser, navigate to <code>https://github.com/comp110-24s-003/comp110-24s-workspace-USERNAME</code> and substitute <code>USERNAME</code> with your GitHub username. You should see your work in <code>exercises/ex02_grade_calculator.py</code> backed up to GitHub. Notice above the file’s content’s you’ll see your commit message.</p>
+<p>To see your commit on Github, in a web browser, navigate to <code>https://github.com/comp110-24s-003/comp110-24s-workspace-USERNAME</code> and substitute <code>USERNAME</code> with your GitHub username. You should see your work in <code>exercises/ex02_grade_calculator.py</code> backed up to GitHub. Notice above the file’s contents you’ll see your commit message.</p>
 </div>
 
        
