@@ -167,5 +167,53 @@
     "2024-01-26": [],
     "2024-01-27": [],
     "2024-01-28": [],
-    "2024-01-29": []
+    "2024-01-29": [],
+    "2024-01-30": [
+        {
+            "kind": "CL",
+            "n": 4,
+            "title": "Relational, Logical Operators and Conditional Control Flow",
+            "date": "2024-01-30",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/l8KnGXchq9c?feature=share",
+                "Slides": "/static/slides/cl04_logic_and_conditionals.pdf"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 6,
+            "title": "LS06 - Unicode, Emoji, Escape Sequences, and f-Strings Reading (Due Wednesday 1/31)",
+            "date": "2024-01-30",
+            "deadline": "2024-01-31",
+            "links": {
+                "Text": "/lessons/strings.html",
+                "Questions": "https://www.gradescope.com/"
+            }
+        }
+    ],
+    "2024-01-31": [],
+    "2024-02-01": [
+        {
+            "kind": "CL",
+            "n": 5,
+            "title": "Practice with Conditionals",
+            "date": "2024-02-01",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/DGIrKdirmNY?feature=share",
+                "Slides": "/static/slides/cl05_conditionals.pdf"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 7,
+            "title": "Practice Diagrams (Due Sunday 2/4)",
+            "date": "2024-02-01",
+            "deadline": "2024-02-04",
+            "links": {
+                "": "https://www.gradescope.com"
+            }
+        }
+    ]
 }
