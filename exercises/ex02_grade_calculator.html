@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1707096917.6218581">
+  <link rel="stylesheet" href="/static/styles.css?v=1707102842.0897796">
 </head>
 
 
@@ -92,6 +92,11 @@
 <li><a href="#part-5.-calculating-the-mastery_components-total">Part 5. Calculating the <code>mastery_components</code> Total</a></li>
 <li><a href="#part-6.-counting-zeros-in-quiz-scores-with-count_zeros">Part 6. Counting Zeros in Quiz Scores with <code>count_zeros</code></a></li>
 <li><a href="#part-7.-the-has_min_mastery-function">Part 7. The <code>has_min_mastery</code> Function</a></li>
+<li><a href="#part-8.-the-letter_grade-function">Part 8. The <code>letter_grade</code> Function</a></li>
+<li><a href="#part-9.-the-calculate_grade-function">Part 9. The <code>calculate_grade</code> Function</a></li>
+<li><a href="#part-10.-making-the-program-runnable">Part 10. Making the program runnable</a></li>
+<li><a href="#submitting-your-work-to-gradescope">Submitting Your Work to Gradescope</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</a></li>
 </ul>
 </</ul>
                         </div>
@@ -192,6 +197,55 @@
 <p>Test your implementation in the REPL. You should try other variations of values, but at least the following sample tests should return the expected count of zeros:</p>
 <p><img src="/static/exercises/ex02/count_zeros.png" /></p>
 <h2 id="part-7.-the-has_min_mastery-function">Part 7. The <code>has_min_mastery</code> Function</h2>
+<p>The next function you will define is <code>has_min_mastery</code> which will be used to check if a student has met the minimum mastery requirements to pass the course. This function will be used to determine if at least 3 quizzes were taken the final exam score is at least 40%.</p>
+<p>Define a function named <code>has_min_mastery</code> with the following parameters:</p>
+<ol type="1">
+<li>Name <code>qz</code>, type <code>Scores</code> - this represents a tuple of floats of quiz scores</li>
+<li>Name <code>fn</code>, type <code>float</code> - this represents the final exam score</li>
+</ol>
+<p>This function should return a <code>bool</code> value.</p>
+<p>The function should return <code>True</code> if there are at least 4 items in the <code>qz</code> parameter <em>and</em> the number of zeros quiz scores is no more than <code>1</code> <em>and</em> the final exam score is at least 40%. Otherwise, the function should return <code>False</code>. You should make use of the <code>count_zeros</code> function you wrote in Part 6 to implement this function.</p>
+<p>For full credit, this function <em>should not</em> use an <code>if-then-else</code> statement and should instead return a compound boolean expression. This is a good opportunity to practice using the <code>and</code> operator to combine multiple boolean expressions into a single result.</p>
+<h2 id="part-8.-the-letter_grade-function">Part 8. The <code>letter_grade</code> Function</h2>
+<p>The only remaining helper function needed is to convert a numerical grade into a letter grade.</p>
+<p>Define a function named <code>letter_grade</code> with the following parameters:</p>
+<ol type="1">
+<li>Name: <code>total</code>, type <code>float</code> - this represents the final grade, all grade components added together with their weights, as a percentage where 1.0 is 100%</li>
+<li>Name: <code>has_min_mastery</code>, type: <code>bool</code> - this represents whether the student has met the minimum mastery requirements to pass the course</li>
+</ol>
+<p>This function should return a string value, representing the letter grade for the course, from <code>A</code> through <code>F</code>. You can find the <a href="https://24s.comp110.com/resources/syllabus.html#grading-scale-breakdown">grading scale breakdown here</a>. Pay close attention to the rounding cut-offs for each letter grade: 0.5% to 0.9999…% rounds up.</p>
+<p>If <code>has_min_mastery</code> is not <code>True</code>, then the function should automatically return an <code>"F"</code>. Otherwise, the function should return the correct letter grade as specified in the syllabus.</p>
+<h2 id="part-9.-the-calculate_grade-function">Part 9. The <code>calculate_grade</code> Function</h2>
+<p>Finally, to bring your program together, define a function named <code>calculate_grade</code>. This function’s signature will look like:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">def</span> calculate_grade(ex: Scores, rd: Scores, ls: Scores, cl: Scores, qz: Scores, fn: <span class="bu">float</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span></code></pre></div>
+<p>The purpose of this function is to produce a final grade calculation by making use of many of the helper functions you wrote above, including <code>ppp_components</code>, <code>mastery_components</code>, <code>has_min_mastery</code>, and <code>letter_grade</code>. Ultimately, the total final grade score is computed by adding <code>ppp_components</code> to <code>mastery_components</code>. The <code>has_min_mastery</code> function is needed to check for satisfying the minimum requirements to pass. Finally, the <code>letter_grade</code> function produces the final letter grade. You are encouraged to use <em>local named constants</em> to store the results of these function calls since they are used in multiple places in the function. Finally, this function should return a string in the format:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="co">&quot;Final Grade: A (96%)&quot;</span></span></code></pre></div>
+<p>You should use a format-string to produce the returned string. Additionally, you should use the <code>round</code> function, with some arithmetic, to round the final grade to the nearest whole number percentage.</p>
+<h2 id="part-10.-making-the-program-runnable">Part 10. Making the program runnable</h2>
+<p>Add the following idiomatic python code to the bottom of your program to make it runnable:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    <span class="bu">print</span>(calculate_grade(ex<span class="op">=</span>EX, rd<span class="op">=</span>RD, ls<span class="op">=</span>LS, cl<span class="op">=</span>CL, qz<span class="op">=</span>QZ, fn<span class="op">=</span>FN))</span></code></pre></div>
+<p>After adding this to the end of your program, you should now be able to use the “Run” tab to see the final output. Wow, lots of code to compute a single string! As the semester continues on, you are encouraged to update the <code>EX</code>, <code>RD</code>, <code>LS</code>, <code>CL</code>, <code>QZ</code>, and <code>FN</code> named constants to reflect your actual grades as the course progresses. For the <code>QZ</code> and <code>FN</code> named constants, you can project your hopeful scores to see how it will affect your final grade.</p>
+<h2 id="submitting-your-work-to-gradescope">Submitting Your Work to Gradescope</h2>
+<p>Now is a good time to submit your work to the autograder!</p>
+<p>In VSCode, open a new integrated Terminal with `Ctrl+Shift+``, or going to the Terminal menu and selecting “New Terminal”. We will learn more about what the terminal is and gain experience with “command line interfaces” later in the course. For now, enter the following command into the terminal and press enter:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">python</span> -m tools.submission exercises/ex02_grade_calculator.py</span></code></pre></div>
+<p>You will notice a file appeared in your workspace named <code>24.02.dd-hh.mm.ss-ex02_grade_calculator.py.zip</code>. You will see numbers for the current day of the month in place of <code>dd</code>, 24-hour digits in place of <code>hh</code>, minutes in place of <code>mm</code>, and so on. This “zip” file contains your work and is what you will submit to the autograder.</p>
+<p>In Gradescope, open assignment “EX02 - Grade Calculator”. You should see an area to upload a zip file. Click this area and browse to your course’s workspace directory on your computer. You should see the zip file you just created. Select it and upload it to Gradescope. Autograding should complete within about a minute and you should see a score of 100%, or more if you are submitting early. If you see less than 100%, try to understand the feedback and the points that were taken off and resubmit. If you are still having trouble, please come see us in office hours!</p>
+<h2 id="make-a-backup-checkpoint-commit">7. Make a Backup Checkpoint “Commit”</h2>
+<p>Now that your first program is complete, let’s practice making a backup. Visual Studio Code has built-in support for <code>git</code> source control management (SCM). SCM tools are made to help create versioned checkpoints of a project’s source code (your program is source code!) amont other uses. The current de facto SCM is called <code>git</code>. As one more piece of terminology, a checkpointed version in git is called a <code>commit</code>. Once your work is in a <code>commit</code> checkpoint, you can always return back to your project at that point in time without the risk of losing work. We encourage committing work to backup <em>at least</em> each time you submit a project for grading or are finishing out a working session for the day. Commits are free to make and can only help you avoid losing work; use them liberally!</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Finished Exercise 02!” will suffice.</li>
+<li>Press the Commit button to make a <em>Commit</em> (a version) of your work.</li>
+<li>In the Terminal, type the command <code>git push backup main</code>. If your terminal was closed, go to the Terminal menu and select “New Terminal”. This command “pushed” your changes to your backup repository on GitHub.</li>
+</ol>
+<p>To see your commit on Github, in a web browser, navigate to <code>https://github.com/comp110-24s-003/comp110-24s-workspace-USERNAME</code> and substitute <code>USERNAME</code> with your GitHub username. You should see your work in <code>exercises/ex02_grade_calculator.py</code> backed up to GitHub. Notice above the file’s content’s you’ll see your commit message.</p>
 </div>
 
        
