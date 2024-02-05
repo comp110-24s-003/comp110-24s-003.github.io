@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1707064213.3518622">
+  <link rel="stylesheet" href="/static/styles.css?v=1707096024.1592786">
 </head>
 
 
@@ -88,6 +88,10 @@
 <li><a href="#part-1.-establishing-input-grade-data">Part 1. Establishing Input Grade Data</a></li>
 <li><a href="#part-2.-calculating-the-average-of-a-component">Part 2. Calculating the <code>average</code> of a Component</a></li>
 <li><a href="#part-3.-calculating-the-ppp_components-total">Part 3. Calculating the <code>ppp_components</code> Total</a></li>
+<li><a href="#part-4.-calculating-the-quiz_average">Part 4. Calculating the <code>quiz_average</code></a></li>
+<li><a href="#part-5.-calculating-the-mastery_components-total">Part 5. Calculating the <code>mastery_components</code> Total</a></li>
+<li><a href="#part-6.-counting-zeros-in-quiz-scores-with-count_zeros">Part 6. Counting Zeros in Quiz Scores with <code>count_zeros</code></a></li>
+<li><a href="#part-7.-the-has_min_mastery-function">Part 7. The <code>has_min_mastery</code> Function</a></li>
 </ul>
 </</ul>
                         </div>
@@ -144,13 +148,50 @@
 <p>As with all functions, you should add a Docstring that describes the purpose of the function definition.</p>
 <h2 id="part-3.-calculating-the-ppp_components-total">Part 3. Calculating the <code>ppp_components</code> Total</h2>
 <p>In the <a href="/resources/syllabus.html">syllabus</a>, 40% of the final course grade is driven by “Preparation, Practice, and Participation” which we are abbreviating <code>ppp</code> here. These are the <code>EX</code>, <code>RD</code>, <code>LS</code>, and <code>CL</code> grades combined, each with its respective weight.</p>
-<p>Define a function named <code>ppp_components</code>, that defines four parameters: <code>ex</code>, <code>rd</code>, <code>ls</code>, and <code>cl</code> all of type <code>Scores</code>. This function should return a <code>float</code> value which will ultimately range between 0.0 and 0.4 and represent the total PPP weight earned.</p>
+<p>Define a function named <code>ppp_components</code>, that defines four parameters: <code>ex</code>, <code>rd</code>, <code>ls</code>, and <code>cl</code> all of type <code>Scores</code>. This function should return a <code>float</code> value which will ultimately range between 0.0 and just above 0.4 (thanks to up to 5% extra credit for early exercise hand-in) and represent the total PPP weight earned.</p>
 <p>Inside the function definition, define four <em>local named constants</em>. We call these “local” because they are “local” to a function definition and only resolvable using name resolution from within the current frame and <em>not</em> the globals frame. Name these constants: <code>EX_WEIGHT</code>, <code>RD_WEIGHT</code>, <code>LS_WEIGHT</code>, and <code>CL_WEIGHT</code> with values corresponding to their percentage weights defined in the syllabus (remember 25% is represented as <code>0.25</code> as a <code>float</code>).</p>
 <p>This function should calculate the <code>average</code> of each parameter grade component (using the function you wrote in Part 2), scale (multiply) this average by the component’s weight (defined in the constants aboved) and add them up. Written as a mathematical expression:</p>
 <p><br /><span class="math display">(<em>e</em><em>x</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>E</em><em>X</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>) + (<em>r</em><em>d</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>R</em><em>D</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>) + (<em>l</em><em>s</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>L</em><em>S</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>) + (<em>c</em><em>l</em><sub><em>a</em><em>v</em><em>g</em></sub> × <em>C</em><em>L</em>_<em>W</em><em>E</em><em>I</em><em>G</em><em>H</em><em>T</em>)</span><br /></p>
-<p>You should try calling your defined function in the REPL and confirming the value returned is less than <code>0.4</code>:</p>
+<p>You should try calling your defined function in the REPL and confirming the value returned is as expected:</p>
 <p><img src="/static/exercises/ex02/ppp_components.png" /></p>
 <p>For grade projection purposes, you can go ahead and give yourself an <code>RD</code> grade of <code>1.0</code> so that your reading component does not project 0% credit.</p>
+<h2 id="part-4.-calculating-the-quiz_average">Part 4. Calculating the <code>quiz_average</code></h2>
+<p>This function calculates a quiz average <em>with the final exam replacing the lowest quiz score, <strong>if</strong> it improves the quiz average</em>.</p>
+<p>Technically, there are four quizzes in our section of COMP110, but this function should work with <em>any number of quizzes</em>. (In a later function we will check to be sure at least 3 of 4 quizzes were taken.)</p>
+<p>In the part of your program where you have <em>global named constants</em> declared for <code>EX</code>, <code>RD</code>, and so on, go ahead and declare two more globally named constants: (1) <code>QZ</code> of type <code>Scores</code> with a tuple of float percentages for quiz scores and (2) <code>FN</code> of type <code>float</code> (not a tuple!) with your hopeful, projected final exam score out of <code>1.0</code>.</p>
+<p>Delare a function named <code>quiz_average</code> with two parameters: a parameter of type <code>Scores</code> for quiz scores and a parameter of type <code>float</code> for the final exam score. The function will return a <code>float</code>. Add a Docstring which describes the function’s purpose.</p>
+<p>In the event no quiz <code>Scores</code> are in the tuple parameter, <code>quiz_average</code> should result in the final exam score parameter. Otherwise, return the greater of the quiz average <em>or</em> the average of quiz scores when the final exam replaces the low quiz score. <strong>This description is intentionally vague and you should think about how to most logically and simply approach this logical decision. Hint: the <code>min</code> function will tell you the lowest value in a sequence, such as a tuple of float values.</strong></p>
+<h2 id="part-5.-calculating-the-mastery_components-total">Part 5. Calculating the <code>mastery_components</code> Total</h2>
+<p>In COMP110, mastery demonstrated on quizzes and the final exam accounts for 60% of your final course grade. This function calculates the total weight of the two mastery components.</p>
+<p>Define a function named <code>mastery_components</code> with a parameter of type <code>Scores</code> for quiz scores and a parameter of type <code>float</code> for final exam score. Like with <code>ppp_components</code>, you should define local named constants for the weights of quizzes and the final exam.</p>
+<p>Using the <code>quiz_average</code> function you wrote previously, which handles the logic for replacing a low quiz score with the final exam score, compute the total mastery score in this function. When testing, you can expect to see values in the range of 0.0 to 0.6 being returned by this function.</p>
+<h2 id="part-6.-counting-zeros-in-quiz-scores-with-count_zeros">Part 6. Counting Zeros in Quiz Scores with <code>count_zeros</code></h2>
+<p>We will ultimately need to be sure at least 3 of 4 quizzes were taken. When a quiz is not taken, it will be listed as a <code>0.0</code> in the <code>QZ</code> <code>Scores</code> tuple. The function <code>count_zeros</code> will be implemented as a recursive algorithm similar to those traced in lecture, with a simple twist.</p>
+<p>Define a function named <code>count_zeros</code> with the following parameters:</p>
+<ol type="1">
+<li>Name <code>qz</code>, type <code>Scores</code> - this represents a tuple of floats of quiz scores</li>
+<li>Name <code>count</code>, type <code>int</code> - this is the number of zeros counted thus far in the algorithm</li>
+<li>Name <code>i</code>, type <code>int</code> - this is the current quiz index</li>
+</ol>
+<p>The function should return a data type appropriate for <em>counting</em> a whole number of values.</p>
+<p><strong>New concept: default parameter values.</strong> Sometimes it is useful to define functions whose parameters have default values assigned to them. These default values are used <em>only when</em> a function call <em>does not</em> provide a value for the parameter. In the context of this function, <code>count</code> and <code>i</code> should ideally both default to <code>0</code> because the count algorithm will start with having seen 0 zeros and focused on index 0. Thus, we would like to define <code>count_zeros</code> such that these two calls are equivalent to one another:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>count_zeros(qz<span class="op">=</span>QZ, count<span class="op">=</span><span class="dv">0</span>, i<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div>
+<p>Should be equivalent to:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>count_zeros(qz<span class="op">=</span>QZ)</span></code></pre></div>
+<p>To do so, you can utilize <em>default parameters</em> with the following syntax. Update your <em>function signature</em> for <code>count_zeros</code> to:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">def</span> count_zeros(qz: Scores, count: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span>, i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span></code></pre></div>
+<p>As we are still growing comfortable writing recursive algorithms, we will give you an English-like, “pseudo-code” description of the logic your function is expected to implement.</p>
+<ol type="1">
+<li>If <code>i</code> is greater than or equal to the number of quiz scores, return the <code>count</code> parameter</li>
+<li>Otherwise:
+<ol type="1">
+<li>If the quiz at index <code>i</code> (e.g. <code>qz[i]</code>) is equal to <code>0.0</code>, then return the result of recursively calling <code>count_zeros</code> with the same quiz tuple, the <code>count</code> argument increasing by <code>1</code> and the <code>i</code> argument increasing by <code>1</code>. Conceptually, this is saying “add one to the <code>count</code> tally and continue the counting algorithm with the next <code>i</code> index”.</li>
+<li>Otherwise, return the result of recursively calling <code>count_zeros</code> with the same quiz tuple, the same <code>count</code> argument value (because we did not count a zero!), and the <code>i</code> argument increasing by <code>1</code>. Conceptually, this is saying “keep counting without changing the <code>count</code> tally, but move on to the next index”.</li>
+</ol></li>
+</ol>
+<p>Test your implementation in the REPL. You should try other variations of values, but at least the following sample tests should return the expected count of zeros:</p>
+<p><img src="/static/exercises/ex02/count_zeros.png" /></p>
+<h2 id="part-7.-the-has_min_mastery-function">Part 7. The <code>has_min_mastery</code> Function</h2>
 </div>
 
        
