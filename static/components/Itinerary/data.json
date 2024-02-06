@@ -231,7 +231,19 @@
         }
     ],
     "2024-02-05": [],
-    "2024-02-06": [],
+    "2024-02-06": [
+        {
+            "kind": "CL",
+            "n": 6,
+            "title": "elif, Constants, Heap IDs, Positional Arguments, Default Parameters",
+            "date": "2024-02-06",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/Agzs3Y-0AXg?feature=share",
+                "Slides": "/static/slides/cl06_recursion.pdf"
+            }
+        }
+    ],
     "2024-02-07": [],
     "2024-02-08": [],
     "2024-02-09": [],
