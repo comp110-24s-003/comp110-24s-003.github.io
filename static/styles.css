@@ -384,7 +384,7 @@ code{
 }
 
 .past-text{
-  font-size: 1.1em;
+  font-size: large;
 }
 
 .down-ar{
@@ -889,12 +889,12 @@ h1{
 
 /* surface duo*/
 @media screen and (max-width: 749px) and (min-width: 451px) {
-  div .col-12 {margin-left: 5%}
-  .content {margin-left: 5%; margin-right: 5%}
-  h2 {font-size: 18px !important;}
+  /* div .col-12 {margin-left: 5%}
+  .content {margin-left: 5%; margin-right: 5%} */
+  h2 {font-size: 25px !important;}
   h4 {font-size: 16px !important}
-  .col-lg-4 {
-    padding-right: 10%}
+  /* .col-lg-4 {
+    padding-right: 10%} */
   .form-switch {padding-left: 0}
   #mode-label {display: none}
   .search {width: auto !important; margin: 8px}
@@ -903,14 +903,13 @@ h1{
 @media screen and (max-width: 1025px) and (min-width: 750px) {
   .absolute-page {padding-top: 1em}
   a.nav-link {font-size: 25px !important}
-  h2 {font-size: 18px !important;}
+  h2 {font-size: 30px !important;}
   h4 {font-size: 16px !important}
   .col-lg-4 {
     padding-right: 10%}
 } 
 
 .dark-mode .itinerary {
-  font-size: 1.15em;
   padding: 1.5rem 4rem;
   background:#061b3c79;
   border-radius: 0.25rem;
@@ -921,6 +920,9 @@ h1{
   
 }
 
+.past-btn a{
+  padding: 0;
+}
 
 .dark-mode .past-btn{
   background-color: rgba(162, 162, 162, 0.81);
@@ -1008,8 +1010,6 @@ h1{
     color: rgb(221, 240, 246);
     text-decoration: none;
     border-radius: 10px;
-    padding: 1px 2px;
-    font-size: smaller;
   }
 
   .itinerary a:hover {
@@ -1031,7 +1031,6 @@ h1{
 
   .date{
     font-weight: bold;
-    font-size: smaller;
     color: #ffffff;
   }
 
