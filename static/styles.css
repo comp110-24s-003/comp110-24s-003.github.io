@@ -148,6 +148,7 @@ code{
   color: #0e3812 !important;
   font-size: 25px;
   align-self: self-start;
+  padding-left: 20px !important;
 }
 
 .fixed-top{
@@ -637,7 +638,6 @@ text-decoration: none;}
 
 .container h1 {
   margin-top: 0.5em;
-  margin-left: 36px;
   font-weight: bold;
 }
 
@@ -713,7 +713,9 @@ text-decoration: none;}
 }
 
 h1{
-  color: rgb(13, 13, 61) !important;
+  color: rgb(255, 255, 255) !important;
+  text-shadow: 1px 1px 1px #000000;
+
 }
 
 .ms-auto{
@@ -1000,6 +1002,7 @@ h1{
 
 .dark-mode{
   background-color: #061b3c;;
+
   h1{
     color: white !important;
   }
@@ -1046,6 +1049,8 @@ h1{
     color: var(--camping-sage) !important;
   }
 
+
+
   #mode-label{
     color: var(--camping-sage) !important;
   }
@@ -1091,7 +1096,7 @@ h1{
   text-decoration: none;}
 
   a:hover {
-    text-shadow: .75px .75px .75px #030921;
+    text-shadow: .75px .75px .75px #ecedf1;
     color: rgb(255, 255, 255);
 
 
@@ -1101,9 +1106,10 @@ h1{
     color: white;
   }
 
-  .horizon-item{
-    font-size: larger;
+  figcaption{
+   -webkit-text-fill-color: white;
   }
+
 }
 
 
@@ -1125,3 +1131,5 @@ h1{
 .hide-mode-switch{
   display: none;
 }
+
+
