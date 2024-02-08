@@ -217,5 +217,18 @@
         }
     ],
     "2024-02-02": [],
-    "2024-02-03": []
+    "2024-02-03": [],
+    "2024-02-04": [
+        {
+            "kind": "EX",
+            "n": 2,
+            "title": "Grade Calculator (Due Wednesday 2/14)",
+            "date": "2024-02-04",
+            "deadline": "2024-02-14",
+            "links": {
+                "": "/exercises/ex02_grade_calculator.html"
+            }
+        }
+    ],
+    "2024-02-05": []
 }
