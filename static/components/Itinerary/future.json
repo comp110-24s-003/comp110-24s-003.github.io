@@ -1,5 +1,4 @@
 {
-    "2024-02-11": [],
     "2024-02-12": [],
     "2024-02-13": [],
     "2024-02-14": [],
@@ -11,7 +10,8 @@
             "date": "2024-02-15",
             "deadline": "2024-02-15",
             "links": {
-                "Practice Quiz": "/static/practice/qz01-practice.pdf"
+                "Practice Quiz": "/static/practice/qz01-practice.pdf",
+                "Practice Quiz - Key": "/static/practice/qz01-practice-key.pdf"
             }
         }
     ],
