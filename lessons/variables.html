@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Variables - COMP110 - 24S</title>
+  <link rel="icon" type="image/png" href="/static/cottage_logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1708349496.7688918">
+</head>
+
+
+<body id="body" class="absolute-page">
+    <script>
+        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add(localStorage.getItem('mode'));
+    </script>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img class="lightmode-element-only img-fluid logo" src="/static/assets/cottagecore_nav.png"
+        alt="COMP110 - Spring - 2024"><img class="darkmode-element-only img-fluid logo" src="/static/cottagebrand_dark.png"
+        alt="COMP110 - Spring - 2024"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+         
+          <li class="nav-item">
+            <a href="/resources/syllabus.html" class="nav-link">syllabus</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+         
+        </ul>
+      </div>
+      <div id='mode-switch' class="ms-auto form-check form-switch mode switches">
+              <div class="switches">
+                  <input type="checkbox" id="1" onclick="
+                      if (localStorage.getItem('mode') === 'dark-mode') {
+                          localStorage.setItem('userPref', 'light-mode');
+                          localStorage.setItem('mode', 'light-mode');
+                      } else {
+                          localStorage.setItem('userPref', 'dark-mode');
+                          localStorage.setItem('mode', 'dark-mode');
+                      }
+                      location.reload();">
+                  <label for="1">
+                      <span id="mode-label">Dark Mode</span>
+                      <span></span>
+                  </label>
+                  <script>if(localStorage.getItem('mode') === 'dark-mode'){document.getElementById("1").checked = true}</script>
+                  <script>if(localStorage.getItem('userPref') === null) {setTimeout(function(){location.reload();}, (timer * 3600000));}</script>
+              </div>
+          </div>
+    </div>
+  </nav>
+
+  <div class="cloud-container">
+    <div id="cloud-intro">
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>Variables</h1>
+      </div>
+    </div>
+    
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div>
+                <div id="menu-overview" class="link-page-overview horizon-box">
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()" >Overview  <img id="button-img" alt="Overview" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <div id="overview-links">
+                        <div id="TOC" role="doc-toc">
+                            <ul class="overview-item"><ul>
+<li><a href="#variables-are-named-storage-locations-for-the-data-state-of-a-program">Variables are Named Storage Locations for the Data / “State” of a Program</a></li>
+<li><a href="#introducing-variables">Introducing Variables</a>
+<ul>
+<li><a href="#variable-declaration-and-initialization">Variable Declaration and Initialization</a></li>
+<li><a href="#combined-declaration-and-initialization">Combined Declaration and Initialization</a></li>
+<li><a href="#terminology">Terminology</a></li>
+</ul></li>
+<li><a href="#why-variables-part-0">Why variables? (Part 0)</a></li>
+</ul>
+</</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><h2 id="variables-are-named-storage-locations-for-the-data-state-of-a-program">Variables are Named Storage Locations for the Data / “State” of a Program</h2>
+<p>In this lesson you will learn about <em>variables</em>. As it turns out, you have already seen one special kind of <em>variable</em>, a function <em>parameter</em>, <strong>but</strong> we have thus far approached parameters in a way that treats them more like <em>constants</em> within a function definition rather than <em>variables</em> whose stored values can be changed, or <em>mutated</em>.</p>
+<p>First, let’s start with what we know: parameters and arguments. These give us a conceptual model for introducing variables. Consider a simple function, as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="kw">def</span> f(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>   <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span></span></code></pre></div>
+<p>Here, we see the <em>declaration</em> of a <em>parameter</em> named <code>x</code> whose type is <code>int</code>. In example <em>calls</em> to this function, using a <em>keyword argument</em>, we can see how an <em>argument</em> value is <em>assigned</em> to the <em>parameter</em> in the function call context:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">print</span>(f(x<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">print</span>(f(x<span class="op">=</span><span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="bu">print</span>(f(x<span class="op">=</span>f(<span class="dv">1</span>)))</span></code></pre></div>
+<p>There is an important, fundamental connection between a function call’s argument and a function definition’s parameter: in a function call, the argument value is an <em>expression</em> which must evaluate to the same <em>type</em> as the parameter’s <em>declaration</em>. Then, in establishing the <em>stack frame</em> to evaluate the function call, the argument <em>value</em> is <em>assigned</em> or <em>“bound”</em> to the <em>parameter</em> name in the context of the function call.</p>
+<p>Let’s make this concrete with a quick example and corresponding memory diagram:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">def</span> f(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>   <span class="cf">return</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="bu">print</span>(f(x<span class="op">=</span><span class="dv">5</span>))</span></code></pre></div>
+<figure>
+<img src="/static/lessons/variables/ls-vars-diagram.png" alt="" /><figcaption>Environment Diagram for Above</figcaption>
+</figure>
+<p>Notice the function call’s argument, <code>5</code>, is bound to the <em>parameter</em> <code>x</code> in the frame evaluating the call. The <strong>important</strong> impact this has is in this frame of execution, whenever the identifier <code>x</code> is used, such as in the <code>return</code> statement’s expression <code>x * 2</code>, we use <em>name resolution rules</em> to lookup or <em>access</em> <code>x</code>’s value to understand that it is bound to a value of <code>5</code>.</p>
+<p>If multiple function calls were made in a program to the function <code>f</code>, then multiple frames would be evaluated on the stack each with its own value for <code>x</code>.</p>
+<h2 id="introducing-variables">Introducing Variables</h2>
+<p>A <em>variable</em> is an <em>identifier</em> or <em>name</em> bound to a <em>value</em> held in memory.</p>
+<p>A <em>parameter</em> is a special kind of <em>variable</em>. What makes it special are the argument assignment steps you now know and were reviewed above. Great news, though, it turns out this is much <em>more nuanced</em> than plain-old variables! Let’s take a look.</p>
+<h3 id="variable-declaration-and-initialization">Variable Declaration and Initialization</h3>
+<p>Variable declaration syntax echoes parameter declaration syntax thanks to their deep relationship:</p>
+<div class="sourceCode" id="cb4" data-startFrom="1"><pre class="sourceCode numberSource python numberLines"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">def</span> double(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb4-2"><a href="#cb4-2"></a>   <span class="co">&quot;&quot;&quot;A silly function that doubles its argument.&quot;&quot;&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>   y: <span class="bu">int</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>   y <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>   <span class="bu">print</span>(<span class="ss">f&quot;double(</span><span class="sc">{x}</span><span class="ss">) is </span><span class="sc">{y}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6"></a>   <span class="cf">return</span> y</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="bu">print</span>(double(x<span class="op">=</span><span class="dv">3</span> <span class="op">*</span> <span class="dv">2</span>))</span></code></pre></div>
+<p>Notice the <em>variable declaration statement</em> <code>y: int</code> and how similarly it reads to the parameter declaration <code>x: int</code>. The primary difference between a <em>variable declaration</em> and a <em>parameter declaration</em> is the context in which it is defined. Parameter declarations are found in the parameter list of a function signature, whereas variable declarations are found <em>inside of function bodies</em> (and we will learn another place, as well).</p>
+<p>The <em>semantics</em> of a variable declaration, when evaluated, are that some space in memory is reserved to hold a value and later be referenced by the name, or <em>identifier</em>, declared.</p>
+<p>The following line, <code>y = x * 2</code> is an example of a <em>variable assignment statement</em>. Notice, this echoes the <em>keyword arguments</em> of <code>x=3 * 2</code>. In both, the <em>right-hand side</em> is an <em>expression</em> that must evaluate and then be <em>assigned</em> or <em>bound</em> to the variable on the <em>left-hand side</em> <strong>variable</strong> or <em>paramter</em>, respectively.</p>
+<p>Let’s diagram the above code listing for illustration purposes:</p>
+<figure>
+<img src="/static/lessons/variables/ls-vars-example.png" alt="" /><figcaption>Environment Diagram for Above</figcaption>
+</figure>
+<p>Notice the declaration of <code>y</code> leads to a new entry for <code>y</code> in the stack frame for a call to <code>double</code>. Following the evaluation of <code>y: int</code> this entry would be empty, however, the following <em>variable assignment statement</em> <code>y = x * 2</code> <strong>initializes</strong> the variable <code>y</code> to the evaluation of <code>x * 2</code>, which in this frame of execution, because <code>x</code> is assigned <code>6</code>, <code>y</code> is assigned <code>12</code>.</p>
+<h3 id="combined-declaration-and-initialization">Combined Declaration and Initialization</h3>
+<p>You will commonly want to declare and immediately initialize a variable following declaration. While this was broken down into two subsequent steps above to introduce these independent concepts, they are very often combined:</p>
+<pre class=".python"><code>def </code></pre>
+<h3 id="terminology">Terminology</h3>
+<p>There are four important pieces of terminology to know here:</p>
+<ol type="1">
+<li><strong>Variable Declaration</strong>: Establishes a variable name and its data type.</li>
+<li><strong>Variable Assignment Statement</strong>: A statement whose left-hand side is a variable name and right hand side is an expression that, after full evaluation, is the value bound to the variable name in memory. This value’s type must be in agreement with the variable’s declared type for a well-typed program.</li>
+<li><strong>Variable Initialization</strong>: The special name given to a variable’s first assignment. You must always <em>initialize</em> a variable before accessing or reading from it.</li>
+<li><strong>Variable Access</strong>: The usage of a variable’s identifier in an expression. When evaluated, name resolution rules will lookup the value the identifer is bound to in memory and substitute its current value.</li>
+</ol>
+<h2 id="why-variables-part-0">Why variables? (Part 0)</h2>
+<p>Variables are named locations in memory to store data. They give you the ability to store, or asssign, the result of a computed value, or value input by a user, or data loaded from an external source source. Once assigned, a variable can be accessed later in your program without the need to redo the computation, ask the user again, or reload data. One common use for this is breaking a complex expression down into simpler steps. For example, compare the following two function definitions:</p>
+<pre class=".python"><code>def distance(a: tuple[float, float], b: tuple[float, float]) -&gt; float:
+   &quot;&quot;&quot;Distance between two points.&quot;&quot;&quot;
+   return ((b[0] - a[0]) ** 2.0 + (b[1] - a[1]) ** 2.0) ** 0.5</code></pre>
+<p>This compound expression could be broken down into simpler pieces with intermediate values stored in variables:</p>
+<pre class=".python"><code>def distance(a: tuple[float, float], b: tuple[float, float]) -&gt; float:
+   &quot;&quot;&quot;Distance between two points.&quot;&quot;&quot;
+   x_delta: float = (b[0] - a[0]) ** 2.0
+   y_delta: float = (b[1] - a[1]) ** 2.0
+   return (x_delta + y_delta) ** 0.5</code></pre>
+<p>Additionally, consider the following example which asks the user for input and reuses the input multiple times over:</p>
+<pre class=".python"><code>def main() -&gt; None:
+   an_int: int = int(input(&quot;Provide a number: &quot;))
+
+   if an_int % 2 == 0:
+      print(f&quot;{an_int} is even&quot;)
+   else:
+      print(f&quot;{an_int} is odd&quot;)
+
+   if an_int == 0:
+      print(f&quot;{an_int} is zero&quot;)
+   elif an_int &gt; 0:
+      print(f&quot;{an_int} is positive&quot;)
+   else:
+      print(f&quot;{an_int} is negative&quot;)
+
+if __name__ == &quot;__main__&quot;:
+   main()</code></pre>
+<p>Notice the</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+    </div>
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s): Kris Jordan</span>
+    </div>
+
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>
