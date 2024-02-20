@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708349496.7688918">
+  <link rel="stylesheet" href="/static/styles.css?v=1708430600.8218377">
 </head>
 
 
@@ -99,9 +99,16 @@
 <ul>
 <li><a href="#variable-declaration-and-initialization">Variable Declaration and Initialization</a></li>
 <li><a href="#combined-declaration-and-initialization">Combined Declaration and Initialization</a></li>
+<li><a href="#order-of-initialization-and-access-matters">Order of Initialization and Access Matters</a></li>
 <li><a href="#terminology">Terminology</a></li>
 </ul></li>
-<li><a href="#why-variables-part-0">Why variables? (Part 0)</a></li>
+<li><a href="#why-variables-1.-storage-of-computed-values-and-input-data.">Why variables? 1. Storage of computed values and input data.</a></li>
+<li><a href="#why-variables-2.-the-ability-to-update-state-in-memory">Why Variables? 2. The ability to update “state” in memory</a></li>
+<li><a href="#intoducing-while-loop-statements">Intoducing <code>while</code> Loop Statements</a>
+<ul>
+<li><a href="#iterating-over-a-sequence">Iterating over a Sequence</a></li>
+<li><a href="#big-iterative-idea-space-efficient">Big Iterative Idea: Space Efficient</a></li>
+</ul></li>
 </ul>
 </</ul>
                         </div>
@@ -151,17 +158,40 @@
 </figure>
 <p>Notice the declaration of <code>y</code> leads to a new entry for <code>y</code> in the stack frame for a call to <code>double</code>. Following the evaluation of <code>y: int</code> this entry would be empty, however, the following <em>variable assignment statement</em> <code>y = x * 2</code> <strong>initializes</strong> the variable <code>y</code> to the evaluation of <code>x * 2</code>, which in this frame of execution, because <code>x</code> is assigned <code>6</code>, <code>y</code> is assigned <code>12</code>.</p>
 <h3 id="combined-declaration-and-initialization">Combined Declaration and Initialization</h3>
-<p>You will commonly want to declare and immediately initialize a variable following declaration. While this was broken down into two subsequent steps above to introduce these independent concepts, they are very often combined:</p>
-<pre class=".python"><code>def </code></pre>
+<p>You will commonly want to declare and immediately initialize a variable following declaration. While this was broken down into two sequential steps above to introduce these independent concepts, they are more often combined:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="kw">def</span> double(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>   <span class="co">&quot;&quot;&quot;A silly function that doubles its argument.&quot;&quot;&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>   y: <span class="bu">int</span> <span class="op">=</span> x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>   <span class="bu">print</span>(<span class="ss">f&quot;double(</span><span class="sc">{x}</span><span class="ss">) is </span><span class="sc">{y}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a>   <span class="cf">return</span> y</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true"></a><span class="bu">print</span>(double(x<span class="op">=</span><span class="dv">3</span> <span class="op">*</span> <span class="dv">2</span>))</span></code></pre></div>
+<h3 id="order-of-initialization-and-access-matters">Order of Initialization and Access Matters</h3>
+<p>Consider the following erroneous function:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="kw">def</span> f() <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>   <span class="bu">print</span>(x)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>   x: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>   <span class="cf">return</span> x</span></code></pre></div>
+<p>Here, we attempted to access <code>x</code> before it was initialized. If you were to write and call this function you would see the following error:</p>
+<pre><code>UnboundLocalError: cannot access local variable &#39;x&#39; where it is not associated with a value</code></pre>
+<p>Read the error closely. These are terms you know: “access” (use/read), “local” (inside of a function body), “variable”, “associated with a value” (assignment)! An <code>UnboundLocalError</code> occurs when you attempt to access a variable declared in a function before it is initialized.</p>
+<p>Similarly, if you attempt to reference a variable that has no declaration statement, you will see a <code>NameError</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="kw">def</span> f() <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>   x0: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>   <span class="bu">print</span>(x_0)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>   <span class="cf">return</span> x_0</span></code></pre></div>
+<p>Evaluating this function <code>f</code> will result in:</p>
+<pre><code>NameError: name &#39;x_0&#39; is not defined. Did you mean: &#39;x0&#39;?</code></pre>
+<p>Notice, Python is attempting to be very helpful here and sees the variable name you attempted to print and return is <em>close</em> to another variable name declared and initialized. Perhaps it was an accidental typo or a renaming of a variable that missed accesses anywhere: these are both common occurances in programming. In any case, a <code>NameError</code> occurs when accessing a variable, or identifier more precisely, that has not been defined.</p>
 <h3 id="terminology">Terminology</h3>
 <p>There are four important pieces of terminology to know here:</p>
 <ol type="1">
-<li><strong>Variable Declaration</strong>: Establishes a variable name and its data type.</li>
+<li><strong>Variable Declaration</strong>: Defines and establishes a variable name and its data type.</li>
 <li><strong>Variable Assignment Statement</strong>: A statement whose left-hand side is a variable name and right hand side is an expression that, after full evaluation, is the value bound to the variable name in memory. This value’s type must be in agreement with the variable’s declared type for a well-typed program.</li>
 <li><strong>Variable Initialization</strong>: The special name given to a variable’s first assignment. You must always <em>initialize</em> a variable before accessing or reading from it.</li>
 <li><strong>Variable Access</strong>: The usage of a variable’s identifier in an expression. When evaluated, name resolution rules will lookup the value the identifer is bound to in memory and substitute its current value.</li>
 </ol>
-<h2 id="why-variables-part-0">Why variables? (Part 0)</h2>
+<h2 id="why-variables-1.-storage-of-computed-values-and-input-data.">Why variables? 1. Storage of computed values and input data.</h2>
 <p>Variables are named locations in memory to store data. They give you the ability to store, or asssign, the result of a computed value, or value input by a user, or data loaded from an external source source. Once assigned, a variable can be accessed later in your program without the need to redo the computation, ask the user again, or reload data. One common use for this is breaking a complex expression down into simpler steps. For example, compare the following two function definitions:</p>
 <pre class=".python"><code>def distance(a: tuple[float, float], b: tuple[float, float]) -&gt; float:
    &quot;&quot;&quot;Distance between two points.&quot;&quot;&quot;
@@ -190,7 +220,68 @@
 
 if __name__ == &quot;__main__&quot;:
    main()</code></pre>
-<p>Notice the</p>
+<p>Notice the variable <code>an_int</code> is accessed in <em>many</em> different expressions following. If you were not able to <em>store</em> the user input in memory by binding the input value to a variable, you would need to ask the user for input many times over. This would be frustrating!</p>
+<h2 id="why-variables-2.-the-ability-to-update-state-in-memory">Why Variables? 2. The ability to update “state” in memory</h2>
+<p>Named constants are quite similar to variables, but there is a key difference: constants intend to stay constant whereas variables are able to <em>vary</em>, “change value”, or be <em>reassigned</em>.</p>
+<p>This feature of variables requires you to unlearn some expectations you learned in algebra about variables in an algebraic sense. Let’s take a look at an exampe:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="kw">def</span> increment(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>   y: <span class="bu">int</span> <span class="op">=</span> x</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>   y <span class="op">=</span> y <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>   <span class="bu">print</span>(<span class="ss">f&quot;x: </span><span class="sc">{x}</span><span class="ss">, y: </span><span class="sc">{y}</span><span class="ss">&quot;</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>   <span class="cf">return</span> y</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a><span class="bu">print</span>(increment(x<span class="op">=</span><span class="dv">1</span>))</span></code></pre></div>
+<p>Before continuing on, try reading this example and predicting its outputs without tracing in a memory diagram. Then, try tracing in a memory diagram. Finally, try comparing your memory diagram to below and checking to see if your intuitions were correct. <strong>It is OK if your intuition is not correct here! In fact, it is quite common!</strong> This breaks a mental model from mathematics and the memory diagram can help us understand why:</p>
+<figure>
+<img src="/static/lessons/variables/ls-vars-update.png" alt="" /><figcaption>Environment Diagram for Above</figcaption>
+</figure>
+<p>Let’s break down the important lines:</p>
+<ol type="1">
+<li><code>y: int = x</code> - Variable <code>y</code> is declared and initialized to be the current value of <code>x</code>. The right-hand side expression <code>x</code> uses name resolution to lookup <code>x</code> in the current frame of execution to see it is bound to <code>1</code>. Thus, <code>y</code> is initialized to a value of <code>1</code>.</li>
+<li><code>y = y + 1</code> - This kind of <em>variable assignment statement</em>, where the same variable name is used on both sides of the assignment operator, is the most surprising to first time programers on first glance! But you know how to break this down and recognize there is an important difference in meaning of the <code>y</code> on each side. It helps to read assignment statements in English: “<code>y</code> <strong>is assigned</strong> <code>y</code>’s current value plus <code>1</code>.” Try to develop a habit of reading the assignment operator, which is <code>=</code>, as “is assigned” or “takes the value of” or “is bound to” or “is associated with” and try your best <em><strong>not</strong> to read it as “is equal to.”</em></li>
+</ol>
+<p>Remember, in an <em>assignment statement</em> like <code>y = y + 1</code>, always focus your attention to the right hand side of the assignment operator <code>=</code> first. This is an expression. It must evaluate to a value of the same type as the variable’s declaration. In this case, the expression is <code>y + 1</code> which contains a <em>variable access</em> to <code>y</code> which is originally bound to a value of <code>1</code>. Then, <code>1 + 1</code> evaluates to <code>2</code>. Once the right-hand side evaluation completes, the value is then bound to the variable whose name is in the left-hand side, <code>y</code>, in the current frame of execution.</p>
+<p><strong>Important common misconception: using a variable in an expression which assigns to another variable does not create a relationship between variables, it merely copies the value it is bound to.</strong></p>
+<p>Notice in this example, where <code>y: int = x</code>, we <em>did not</em> write <code>x</code> into the stack frame. This is thanks to the evaluation rules described above: we lookup the value <code>x</code> is currently bound, which was <code>1</code>, to and then bind this value to <code>y</code>, as well. Therefore, when we later reassign a new value to <code>y</code> it has no impact on <code>x</code>. The same would be true, vice-versa, if we had reassigned a new value to <code>x</code>.</p>
+<p>In our memory diagrams, we cross out the existing value of a variable and write-in the newly assigned value. This gives us “proof of work” to understand how memory was updated. In reality, though, when a variable is reassigned, its old value is “clobbered” or fully replaced by the new value. When a variable is reassigned to be a new value, there is no retrieving the old value without recomputing it, somehow, or storing it in <em>another variable</em> as a “backup.”</p>
+<p><strong>Big idea:</strong> notice in <em>reassigning</em> a new value to a variable does not require new <em>space</em> in memory. We will come back to this feature soon.</p>
+<h2 id="intoducing-while-loop-statements">Intoducing <code>while</code> Loop Statements</h2>
+<p>Now that you understand what a variable is, it is time to learn a powerful new kind of statement: a <code>while</code> loop statement.</p>
+<p>A <code>while</code> statement, like an <code>if</code> statement, is related to the <em>control flow</em> of a program. <em>Control flow</em> refers to where “control” or <em>the next line of execution</em> continues to next. Like an <code>if</code> statement, it has a <em>boolean expression</em> test <strong>condition</strong> and a <em>body</em>. Unlike an <code>if</code> statement, when <em>control</em> finishes with the last line of the body, it <strong>jumps</strong> or <strong>loops</strong> back up to the <em>boolean test expression</em> again. Let’s take a look:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="kw">def</span> print_0_to_n(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>   counter: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>   <span class="cf">while</span> counter <span class="op">&lt;</span> n:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>      <span class="bu">print</span>(counter)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>      counter <span class="op">=</span> counter <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>   <span class="bu">print</span>(<span class="ss">f&quot;Final: </span><span class="sc">{</span>counter<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>   <span class="cf">return</span> counter</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a><span class="bu">print</span>(print_0_to_n(n<span class="op">=</span><span class="dv">4</span>))</span></code></pre></div>
+<figure>
+<img src="/static/lessons/variables/ls-while.png" alt="" /><figcaption>Environment Diagram for Above</figcaption>
+</figure>
+<p>Notice with a <code>while</code> loop, we are able to achieve <em>repeating pattern</em> similar to how we did with <em>recursion</em>, but with using only a single function call frame. This is possible thanks to the combination of the <code>counter</code> variable’s value being incremented by one each time the <code>while</code> body reaches the line <code>counter = counter + 1</code>, before jumping back to the test of <code>counter &lt; n</code> and repeating anew. Eventually, <code>counter</code>’s value is incremented to no longer be less than <code>n</code> and the loop completes. Control then jumps to the next line following the loop body, the <code>print</code> statement, and finally returns the current value of <code>counter</code>.</p>
+<h3 id="iterating-over-a-sequence">Iterating over a Sequence</h3>
+<p>Looping is more precisely called <em>iteration</em> when some value “iterates”, or makes small steps of progress, toward some goal. In the previous example, the <code>counter</code> variable iterated toward <code>n</code>.</p>
+<p>Another use of <em>iteration</em> is iterating through the indices of a sequence. Recall <code>tuple</code>s and <code>str</code>s are sequences with ordered items addressed by a 0-based index using subscription, <code>sequence[index]</code>, notation. Let’s try reversing a string by iterating through each of its characters and using concatenation:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="kw">def</span> reverse(a_str: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>   <span class="co">&quot;&quot;&quot;Reverse a string&quot;&quot;&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>   idx: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>   result: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>   <span class="cf">while</span> idx <span class="op">&lt;</span> <span class="bu">len</span>(a_str):</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>      result <span class="op">=</span> a_str[idx] <span class="op">+</span> result</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>      idx <span class="op">=</span> idx <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>   </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>   <span class="cf">return</span> result</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a><span class="bu">print</span>(reverse(<span class="st">&quot;abc&quot;</span>))</span></code></pre></div>
+<figure>
+<img src="/static/lessons/variables/ls-reverse.png" alt="" /><figcaption>Environment Diagram for Above</figcaption>
+</figure>
+<p>Notice how these variables are declared ahead of the loops and each serves a unique purpose. The <code>idx</code> variable keeps track of the <em>index</em> at which the iterative process is working on. The <code>result</code> variable keeps track of the “work in progress” result and updates it in the process of each iteration. Inside the loop body, importantly, the <code>idx</code> variable is increasing and iterating its way toward being at least <code>len(a_str)</code>, which is the loop’s exit condition.</p>
+<h3 id="big-iterative-idea-space-efficient">Big Iterative Idea: Space Efficient</h3>
+<p>In contrast to the <em>recursive</em> algorithms that <em>accumulated</em> a value through recursive <em>function calls</em> where each call needed more space in memory on the <em>call stack</em>, with <em>variable reassignment</em> and <em>loops</em> we can write algorithms that make a more efficient use of space. There are no free lunches, though! Writing algorithms using these <em>iterative</em> techniques is generally more error prone and requires even more care and consideration to be done correctly. We will be looking strategies for writing correct looping algorithms next.</p>
 </div>
 
        
