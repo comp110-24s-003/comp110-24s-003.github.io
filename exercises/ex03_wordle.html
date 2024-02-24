@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708788777.4479597">
+  <link rel="stylesheet" href="/static/styles.css?v=1708789427.5620668">
 </head>
 
 
@@ -156,9 +156,10 @@
 <li>A docstring describing the purpose of the function in your own words</li>
 </ol>
 <p>Since the caller of this function can be expected to provide the correct arguments, specifically a second argument whose length is one, we will “assert” this assumption in our code such that an error is raised if it is not found to be true. As the first line of code in your function’s body, add the following assert statement and fill in the blank (<code>_____</code>) with your second parameter’s name:</p>
-<p><code>assert len(____) == 1, f"len('{letter}') is not 1"</code></p>
+<p><code>assert len(____) == 1, f"len('{_____}') is not 1"</code></p>
 <p>To implement this function, <em>iterate</em> over each index of the first parameter string to see if the character at that index is equal to the second parameter of the function. If so, <code>return True</code>. Otherwise, after searching all indices of the first parameter and not finding the character you were looking for, <code>return False</code>.</p>
-<p>Once you have your best first attempt to implement this function, you should try testing it out in the Trailhead REPL.</p>
+<p>Once you have your best first attempt to implement this function, you should try testing it out in the Trailhead REPL. Some example tests are below:</p>
+<p><img src="/static/exercises/ex03/contains_char.png" /></p>
 <h2 id="part-2.-emojified---20-points">Part 2. <code>emojified</code> - 20 points</h2>
 <p>Declare a function named <code>emojified</code>. Its purpose is given two strings of equal length, the first a guess and the second a secret, it will return a string of emoji whose color <em>codifies</em> the results of a guess using Wordle’s logic. You should use the following named constants for emoji:</p>
 <pre class="plaintext"><code>WHITE_BOX: str = &quot;\U00002B1C&quot;
