@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708788708.402306">
+  <link rel="stylesheet" href="/static/styles.css?v=1708788777.4479597">
 </head>
 
 
@@ -172,7 +172,7 @@ YELLOW_BOX: str = &quot;\U0001F7E8&quot;</code></pre>
 <p>Now you have a function that, given a guess and a secret of the same length, will Wordle emojify the results of the guess! Notice how your <code>emojified</code> function makes use of the simpler <code>contains_char</code> function to build up more complex behavior.</p>
 <p>Once your <code>emojified</code> function is working correctly, as shown above, continue on.</p>
 <h2 id="part-3.-input_guess-10-points">Part 3. <code>input_guess</code> – 10 Points</h2>
-<p>Declare a function named <code>input_guess</code>. Its purpose is given an integer “expected length” of a guess as a parameter, it will prompt the user for a guess and continue prompting them until they provide a guess of the expected length. This function must then return the user’s guess string of the correct length to the caller of <code>input_guess</code>.</p>
+<p>Declare a function named <code>input_guess</code>. Its purpose is given an integer “expected length” of a guess as a parameter, it will prompt the user for a guess and continue prompting them until they provide a guess of the expected length. The initial prompt should have the following format: <code>Enter a N character word:</code>, where N is the desired length. Then, use the following format to continue prompting the user: <code>That wasn't N chars! Try again:</code>. This function must then return the user’s guess string of the correct length to the caller of <code>input_guess</code>.</p>
 <p>Once you have implemented this function, try using it in the Trailhead REPL.</p>
 <h2 id="part-4.-main-30-points">Part 4. <code>main</code> – 30 Points</h2>
 <p>Now it’s time to pull together your functions, which are building blocks, into a <code>main</code> function that implements the high-level logic of the Wordle game loop. The purpose of the <code>main</code> function is to establish what the secret word is as a parameter to <code>main</code>, keep track of how many turns the user has spent, whether the user has won the game, and control the flow of the game.</p>
