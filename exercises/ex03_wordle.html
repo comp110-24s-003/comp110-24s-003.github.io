@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1708789629.7021744">
+  <link rel="stylesheet" href="/static/styles.css?v=1708790562.2359579">
 </head>
 
 
@@ -175,13 +175,15 @@ YELLOW_BOX: str = &quot;\U0001F7E8&quot;</code></pre>
 <h2 id="part-3.-input_guess-10-points">Part 3. <code>input_guess</code> – 10 Points</h2>
 <p>Declare a function named <code>input_guess</code>. Its purpose is given an integer “expected length” of a guess as a parameter, it will prompt the user for a guess and continue prompting them until they provide a guess of the expected length. The initial prompt should have the following format: <code>Enter a N character word:</code>, where N is the desired length. Then, use the following format to continue prompting the user: <code>That wasn't N chars! Try again:</code>. This function must then return the user’s guess string of the correct length to the caller of <code>input_guess</code>.</p>
 <p>Once you have implemented this function, try using it in the Trailhead REPL.</p>
+<p><img src="/static/exercises/ex03/input_guess.png" /></p>
 <h2 id="part-4.-main-30-points">Part 4. <code>main</code> – 30 Points</h2>
 <p>Now it’s time to pull together your functions, which are building blocks, into a <code>main</code> function that implements the high-level logic of the Wordle game loop. The purpose of the <code>main</code> function is to establish what the secret word is as a parameter to <code>main</code>, keep track of how many turns the user has spent, whether the user has won the game, and control the flow of the game.</p>
 <p>The declaration of your <code>main</code> function is unlike the functions above because it will return <code>None</code>. You can decare your main function as follows:</p>
 <pre class="plaintext"><code>def main(secret: str) -&gt; None:
     &quot;&quot;&quot;The entrypoint of the program and main game loop.&quot;&quot;&quot;
     # Your code will go here</code></pre>
-<p>Calling your <code>main</code> function with a <code>secret</code> will start the game with a given secret. For example <code>main("codes")</code> can be used for testing purposes in the Trailhead REPL.</p>
+<p>Calling your <code>main</code> function with a <code>secret</code> will start the game with a given secret. For example <code>main("codes")</code> can be used for testing purposes in the Trailhead REPL. Here is a successful run:</p>
+<p><img src="/static/exercises/ex03/main_success.png" /></p>
 <p>The “state” of a game refers to the variables you need to keep track of in memory in order to run the game. What variables do you need to keep track of? Define those inside of <code>main</code>’s body first.</p>
 <p>Then, begin the game loop <code>while</code> the user still has turns left to play <em>and</em> has not yet won, you will want to do the following:</p>
 <ol type="1">
@@ -192,10 +194,12 @@ YELLOW_BOX: str = &quot;\U0001F7E8&quot;</code></pre>
 <li>Otherwise, move on to the next turn.</li>
 </ol>
 <p>After the game loop, if the user won, print <code>You won in N/6 turns!</code> where N is replaced with the number of guesses it took to get the word. Otherwise, when the user does not guess the word in 6 or fewer guesses, print the following message: <code>X/6 - Sorry, try again tomorrow!</code> where <code>X</code> is literally the character <code>X</code>.</p>
+<p>Here is an example of a failed run of guesses:</p>
+<p><img src="/static/exercises/ex03/main_fail.png" /></p>
 <p>Once you have your <code>main</code> function and game loop working, there’s only one bit of icing left to add to your delicious code cake. We will fully explain what is going on in the following code snippet soon, but for now note that this is an idiom common to Python programs like the one you have written. We will learn it does two things: 1. it makes it possible to run your Python program as a module (if you tried <code>python -m exercises.ex03_wordle</code> right now you would see nothing happens), and 2. it makes it possible for other modules to <em>import</em> your functions and reuse them. Add the following snippet of code as the last 2 lines of your program (notice, there are two underscores <em>on both sides</em> of the words <code>name</code> and <code>main</code>):</p>
 <pre class="plaintex"><code>if __name__ == &quot;__main__&quot;:
     main(secret=&quot;codes&quot;)</code></pre>
-<p>Now you can try running your game as a module and it should work: <code>python -m exercises.ex03_wordle</code></p>
+<p>Now you can try running your game in the “Run” tab of Trailhead. You can also try playing your game as a module in the terminal of VSCode: <code>python -m exercises.ex03_wordle</code></p>
 <h2 id="part-5.-style-and-documentation-requirements-20-points-manually-graded">Part 5. Style and Documentation Requirements – 20 Points (Manually Graded)</h2>
 <p>We will manually grade your code and are looking for good choices of meaningful variable names. Your variable names should be descriptive of their purposes. (Loop indexing variables can be short, such as <code>i</code>, or <code>idx</code>.) You should also use the Python <code>snake_case</code> convention where variable names are all lowercase and new words are separated by underscores.</p>
 <p>You should add code comments in your own English words to describe what is happening at important stages of your program.</p>
