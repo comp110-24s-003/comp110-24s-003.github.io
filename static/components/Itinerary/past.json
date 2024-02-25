@@ -280,5 +280,52 @@
     "2024-02-16": [],
     "2024-02-17": [],
     "2024-02-18": [],
-    "2024-02-19": []
+    "2024-02-19": [],
+    "2024-02-20": [
+        {
+            "kind": "CL",
+            "n": 8,
+            "title": "Variables and while Loops",
+            "date": "2024-02-20",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/imdKkz271fs?feature=share",
+                "Slides": "/static/slides/cl08_variables_while.pdf"
+            }
+        },
+        {
+            "kind": "LS",
+            "n": 8,
+            "title": "Variables and While (Due Wednesday 2/21)",
+            "date": "2024-02-20",
+            "deadline": "2024-02-21",
+            "links": {
+                "": "/lessons/variables.html"
+            }
+        }
+    ],
+    "2024-02-21": [],
+    "2024-02-22": [
+        {
+            "kind": "CL",
+            "n": 9,
+            "title": "Practice with while Loops",
+            "date": "2024-02-22",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/aFkEo-3URyU?feature=share",
+                "Slides": "/static/slides/cl09_practice_while.pdf"
+            }
+        },
+        {
+            "kind": "EX",
+            "n": 3,
+            "title": "Wordle (Due Wednesday 3/6)",
+            "date": "2024-02-22",
+            "deadline": "2024-03-06",
+            "links": {
+                "": "/exercises/ex03_wordle.html"
+            }
+        }
+    ]
 }
