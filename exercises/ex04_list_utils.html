@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> EX04 - `list` Utility Functions - COMP110 - 24S</title>
+  <link rel="icon" type="image/png" href="/static/cottage_logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/styles.css?v=1709481836.7109454">
+</head>
+
+
+<body id="body" class="absolute-page">
+    <script>
+        document.body.classList.remove('light-mode');
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add(localStorage.getItem('mode'));
+    </script>
+  <script src="/static/scripts/nav-menu-esc.js"></script> 
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-1 fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/"><img class="lightmode-element-only img-fluid logo" src="/static/assets/cottagecore_nav.png"
+        alt="COMP110 - Spring - 2024"><img class="darkmode-element-only img-fluid logo" src="/static/cottagebrand_dark.png"
+        alt="COMP110 - Spring - 2024"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" onclick="esc_key()" data-bs-target="#navmenu" aria-label="Main Menu" aria-controls="#navmenu" role="navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link " href="/">agenda</a>
+          </li>
+          <li class="nav-item">
+            <a href="/resources" class="nav-link">resources</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/support" class="nav-link">support</a>
+          </li>
+         
+          <li class="nav-item">
+            <a href="/resources/syllabus.html" class="nav-link">syllabus</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/resources/team.html" class="nav-link">team110</a>
+          </li>
+         
+        </ul>
+      </div>
+      <div id='mode-switch' class="ms-auto form-check form-switch mode switches">
+              <div class="switches">
+                  <input type="checkbox" id="1" onclick="
+                      if (localStorage.getItem('mode') === 'dark-mode') {
+                          localStorage.setItem('userPref', 'light-mode');
+                          localStorage.setItem('mode', 'light-mode');
+                      } else {
+                          localStorage.setItem('userPref', 'dark-mode');
+                          localStorage.setItem('mode', 'dark-mode');
+                      }
+                      location.reload();">
+                  <label for="1">
+                      <span id="mode-label">Dark Mode</span>
+                      <span></span>
+                  </label>
+                  <script>if(localStorage.getItem('mode') === 'dark-mode'){document.getElementById("1").checked = true}</script>
+                  <script>if(localStorage.getItem('userPref') === null) {setTimeout(function(){location.reload();}, (timer * 3600000));}</script>
+              </div>
+          </div>
+    </div>
+  </nav>
+
+  <div class="cloud-container">
+    <div id="cloud-intro">
+  <div id="exercises-page" class="container">
+    <div class="row pt-4">
+      <div class="col-12">
+        <h1>EX04 - `list` Utility Functions</h1>
+      </div>
+    </div>
+    
+
+    <script src="/static/scripts/toggle-handler.js"></script>
+    
+    <div class="row px-4">
+        <div id="box" class="toc col-xl-3 col-lg-3 order-1 order-lg-2" role="doc-toc">
+            <div>
+                <div id="menu-overview" class="link-page-overview horizon-box">
+                    <button id="overview-button" class="btn btn-ov" onclick="hideshow()" >Overview  <img id="button-img" alt="Overview" class="filter-icon" src="/static/components/Itinerary/arrow-up.svg" style="height:15px; padding-left: 4px;"></button>
+                    <div id="overview-links">
+                        <div id="TOC" role="doc-toc">
+                            <ul class="overview-item"><ul>
+<li><a href="#assignment-outline">Assignment Outline</a></li>
+<li><a href="#upgrade-trailhead-to-0.1.15">0. Upgrade Trailhead to 0.1.15</a></li>
+<li><a href="#skeleton-code-and-testing-setup">1. Skeleton Code and Testing Setup</a></li>
+<li><a href="#unit-tests">Unit Tests</a></li>
+<li><a href="#only_evens-25-points">1. <code>only_evens</code> – 25 Points</a></li>
+<li><a href="#concat-25-points">2. <code>concat</code> – 25 Points</a></li>
+<li><a href="#sub-30-points">2. <code>sub</code> – 30 Points</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</a></li>
+</ul>
+</</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>This exercise has two deadlines. The first deadline is 3/9 for the <code>only_evens</code> function and its tests. The second deadline is 3/19 for all three functions and their tests.</p>
+<p>Art students intentionally reproduce great works of art to develop their own skills and techniques. The purpose isn’t to become an imitator, but to deepen an understanding of important work and styles developed before you.</p>
+<p>Reverse engineering algorithms and abstractions in computer science is of the same spirit! In this exercise you will implement algorithms to practice computational thinking. You will gain familiarity with the names and behaviors of commonly useful functions.</p>
+<p>Since the work you do is reproducing tried and true abstractions of the past, in the future you can and should use your language’s preferred functions, methods, and idioms instead.</p>
+<p>In this exercise, you will also gain practice writing unit tests for your functions which gives you confidence in their correctness and simplifies checking your work and progress. Your function implementations may only make use of the built-in <code>len</code> function, and a <code>list</code> object’s methods <code>append</code> and <code>pop</code>.</p>
+<p>Specifically off-limits in this exercise are the following capabilities. Making use of any of the following will result in no credit for the function you use them in:</p>
+<ul>
+<li>Cannot use other built-in function besides <code>len</code> - specifically not <code>max</code>, <code>min</code>, <code>slice</code></li>
+<li>Cannot use slice notation in conjunction with the subscription operator (we have not taught this in class)</li>
+<li>Cannot use the <code>in</code> operator of Python with lists (should only use <code>while</code> loops as a looping construct)</li>
+<li>Cannot use the <code>list</code> class’s <code>+</code> or <code>==</code> operators on an entire list (you can still use <code>+</code> with <code>int</code> and <code>str</code> types, though!) nor any other built-in <code>list</code> methods beyond <code>append</code> and <code>pop</code> (so, don’t use <code>copy</code> in this exercise!)
+<ul>
+<li>Note: You can use + and == for <em>individual items</em> and values, just not entire <code>list</code> objects.</li>
+</ul></li>
+</ul>
+<h3 id="assignment-outline">Assignment Outline</h3>
+<ul>
+<li><code>only_evens</code> – 25 Points Autograded
+<ul>
+<li>Unit Tests – 5 Points Autograded</li>
+</ul></li>
+<li><code>concat</code> – 25 Points Autograded
+<ul>
+<li>Unit Tests – 5 Points Autograded</li>
+</ul></li>
+<li><code>sub</code> – 30 Points Autograded
+<ul>
+<li>Unit Tests – 5 Points Autograded</li>
+</ul></li>
+<li>Style, Linting, Typing – 20 Points Autograded</li>
+</ul>
+<p>Note: Even if your functions are not 100% correct or finished, you can get full credit for the unit tests if you set up a function skeleton and write your tests assuming correct functionality.</p>
+<h2 id="upgrade-trailhead-to-0.1.15">0. Upgrade Trailhead to 0.1.15</h2>
+<p>Before starting work on this project you will need to upgrade Trailhead to version <code>0.1.15</code> using the following steps:</p>
+<ol type="1">
+<li>Open your course workspace in the VSCode DevContainer</li>
+<li>Open the file <code>.devcontainer/devcontainer.json</code> and look for line #11 that begins with <code>"image"</code></li>
+<li>Update the version number at the end of the string to be <code>0.1.15</code>. The line should read: <code>"image": "krisjordan/trailhead:0.1.15",</code></li>
+<li>Save this file and then, when prompted, click the “Rebuild” button that pops up. If you are not prompted, save the file again and then open the command pallete (View -&gt; Command Palette) and select Rebuild and Reopen in Container.</li>
+<li>It will take a few minutes for the upgrade to complete, but once done you should be back in Trailhead with the latest bug fixes and features in place. The newest feature is in the REPL you are now able to press the up arrow after running commands to reuse/reload a previous command run.</li>
+</ol>
+<h2 id="skeleton-code-and-testing-setup">1. Skeleton Code and Testing Setup</h2>
+<p>Create a new <strong>directory</strong> inside of the <code>exercises</code> directory named <code>ex04</code>.</p>
+<p>Inside the <code>exercises/ex04</code> directory, create a file named <code>utils.py</code>. Add a docstring and establish an <code>__author__</code> variable to be assigned a string with the digits of your PID. This is where you will implement your function skeletons and implementations below.</p>
+<h2 id="unit-tests">Unit Tests</h2>
+<p>Also inside the <code>exercises/ex04</code> directory, create a file named <code>utils_test.py</code>. Add a docstring and establish an <code>__author__</code> in this file as well.</p>
+<p>For each function from below (<code>only_evens</code>, <code>sub</code>, <code>concat</code>), you will need to define at least <strong>3x unit test</strong> functions. Remember that a unit test function starts with <code>test_</code> in its name and must have a unique, descriptive function name.</p>
+<p>The 3 unit tests should consist of:</p>
+<ul>
+<li>One edge case</li>
+<li>Two use cases</li>
+</ul>
+<p>Include descriptive function names and docstrings, so that it captures what is being tested.</p>
+<p>The command to run your tests is <code>pytest exercises/ex04</code> or you can run them using the beaker tab in VSCode, as shown in class.</p>
+<p>Once you’re ready to import and begin testing your skeleton function implementations, you can add the following import lines, one-by-one, corresponding to the functions you have defined.</p>
+<pre class="plaintext"><code>from exercises.ex04.utils import only_evens
+from exercises.ex04.utils import sub
+from exercises.ex04.utils import concat</code></pre>
+<p>Once you have completed all functions, you can reduce the three import lines down into a single one for less redundancy in your testing code:</p>
+<pre class="plaintext"><code>from exercises.ex04.utils import only_evens, sub, concat</code></pre>
+<p>If your screen is large enough, you are encouraged to open your <code>utils.py</code> and <code>utils_test.py</code> files side-by-side in VSCode by dragging the tab of one to the right side of VSCode so that it changes to a split pane view. Closing your file explorer can help give you additional horizontal space.</p>
+<h2 id="only_evens-25-points">1. <code>only_evens</code> – 25 Points</h2>
+<p>This is the first function you will write in <code>utils.py</code>. The other two functions will also be defined in this file.</p>
+<p>Given a <code>list</code> of <code>ints</code>, <code>only_evens</code> should return a new <code>list</code> containing only the elements of the input list that were even. The <code>only_evens</code> function must not modify the list it is given a reference to as a parameter. Example usage:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; only_evens([1, 2, 3])
+[2]
+&gt;&gt;&gt; only_evens([1, 5, 3])
+[]
+&gt;&gt;&gt; only_evens([4, 4, 4])
+[4, 4, 4]</code></pre>
+<p>Continue by defining a skeleton function with the following signature:</p>
+<ol type="1">
+<li>Name: <code>only_evens</code></li>
+<li>Arguments: A list of integers.</li>
+<li>Returns: A list of integers, containing only the even elements of the input parameter.</li>
+</ol>
+<p>Reminder: You must write at least 3 meaningful unit tests to “prove” or verify your <code>only_evens</code> function is implemented following these specifications, as described in Part 1.</p>
+<h2 id="concat-25-points">2. <code>concat</code> – 25 Points</h2>
+<p>In this exercise you will write a function named <code>concat</code>. Given two <code>Lists</code> of <code>ints</code>, <code>concat</code> should generate a new List which contains all of the elements of the first list followed by all of the elements of the second list. Your <code>concat</code> function may not mutate (“modify”) either of its list parameters.</p>
+<p>Define your function with the following signature.</p>
+<ol type="1">
+<li>Name: <code>concat</code></li>
+<li>Parameters: Two lists of ints.</li>
+<li>Returns: A <code>list</code> containing all elements of the first list, followed by all elements of the second list.</li>
+</ol>
+<p><code>concat</code> <em>must NOT</em> mutate (modify) either of the arguments passed to it.</p>
+<h2 id="sub-30-points">2. <code>sub</code> – 30 Points</h2>
+<p>In this exercise you will write a function named <code>sub</code>. Given a <code>list</code> of <code>ints</code>, a start index, and an end index (not inclusive), <code>sub</code> should generate a List which is a subset of the given list, between the specified start index and the end index - 1. This function should <em>not mutate</em> its input list.</p>
+<p>Example usage:</p>
+<pre class="plaintext"><code>&gt;&gt;&gt; a_list = [10, 20, 30, 40]
+&gt;&gt;&gt; sub(a_list, 1, 3)
+[20, 30]</code></pre>
+<p>Next, define a skeleton function with the following signature in <code>ex04/utils.py</code>:</p>
+<ol type="1">
+<li>Name: <code>sub</code></li>
+<li>Parameters: A list and two ints, where the first int serves as a start index and the second int serves as an end index (not inclusive).</li>
+<li>Returns: A List which is a subset of the given list, between the specified start index and the end index - 1.</li>
+</ol>
+<p>If the start index is negative, start from the beginning of the list. If the end index is greater than the length of the list, end with the end of the list.</p>
+<p>If the length of the list is 0, start is greater than the length of the list, or end is at most 0, return the empty list.</p>
+<h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
+<h2 id="submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</h2>
+<p>Login to Gradescope and select the assignment named “EX04 - List Utils and Unit Tests”. You’ll see an area to upload a zip file. To produce a zip file for autograding, return back to Visual Studio Code.</p>
+<p>If you <em>do not</em> see a Terminal at the bottom of your screen, open the Command Palette and search for “View: Toggle Integrated Terminal”.</p>
+<p>Type the following command (all on a single line):</p>
+<p><code>python -m tools.submission exercises/ex04</code></p>
+<p>In the file explorer pane, look to find the zip file named “yy.mm.dd-hh.mm-exercises-ex04.zip”. The “yy”, “mm”, “dd”, and so on, are timestamps with the current year, month, day, hour, minute. If you right click on this file and select “Reveal in File Explorer” on Windows or “Reveal in Finder” on Mac, the zip file’s location on your computer will open. Upload this file to Gradescope to submit your work for this exercise.</p>
+<p>Autograding will take a few moments to complete. If there are issues reported, you are encouraged to try and resolve them and resubmit. If for any reason you aren’t receiving full credit and aren’t sure what to try next, come give us a visit in office hours!</p>
+</div>
+
+       
+
+    </div> 
+    </div>
+    </div>
+    <div class="authors-box bg-dark mt-4 py-3 ps-4">
+      <span> Contributor(s):        Kaki Ryan,        Marlee Walls, Kris Jordan</span>
+    </div>
+
+  </div>
+  <div class='link-page mt-3 container'>
+    <footer>
+      <h3 class="text-center align-middle footer-text">&copy; 2024 <a href="https://krisjordan.com">Kris Jordan</a>
+        - <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSenaJ2uZ_n2FfAb2PWL6YPG4AUT-G2-xVJP6HIwMr6cd6nSYA/viewform?usp=sf_link">Feedback
+          Form</a>
+        - Made with 💛 in <a href="https://cs.unc.edu/">Chapel Hill</a></h3>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- Code Block Formatting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  
+</body>
+
+</html>
