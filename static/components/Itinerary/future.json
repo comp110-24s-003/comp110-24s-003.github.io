@@ -1,31 +1,4 @@
 {
-    "2024-02-27": [
-        {
-            "kind": "CL",
-            "n": 10,
-            "title": "Lists and Mutability",
-            "date": "2024-02-27",
-            "deadline": "None",
-            "links": {
-                "Recording": "https://youtube.com/live/DBg2UgiRJjo",
-                "Slides": "/static/slides/cl10_lists.pdf"
-            }
-        }
-    ],
-    "2024-02-28": [],
-    "2024-02-29": [
-        {
-            "kind": "CL",
-            "n": 11,
-            "title": "Tests",
-            "date": "2024-02-29",
-            "deadline": "None",
-            "links": {
-                "Recording": "https://youtube.com/live/hSLmn_tCOsQ",
-                "Slides": "/static/slides/cl11_testing.pdf"
-            }
-        }
-    ],
     "2024-03-01": [],
     "2024-03-02": [],
     "2024-03-03": [],

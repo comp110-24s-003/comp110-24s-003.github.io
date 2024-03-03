@@ -350,7 +350,7 @@
         {
             "kind": "CL",
             "n": 11,
-            "title": "Tests",
+            "title": "Writing Automated Tests for Functions",
             "date": "2024-02-29",
             "deadline": "None",
             "links": {
