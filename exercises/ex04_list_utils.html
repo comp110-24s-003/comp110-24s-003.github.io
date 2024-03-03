@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1709481836.7109454">
+  <link rel="stylesheet" href="/static/styles.css?v=1709487395.8259363">
 </head>
 
 
@@ -98,8 +98,8 @@
 <li><a href="#upgrade-trailhead-to-0.1.15">0. Upgrade Trailhead to 0.1.15</a></li>
 <li><a href="#skeleton-code-and-testing-setup">1. Skeleton Code and Testing Setup</a></li>
 <li><a href="#unit-tests">Unit Tests</a></li>
-<li><a href="#only_evens-25-points">1. <code>only_evens</code> – 25 Points</a></li>
-<li><a href="#concat-25-points">2. <code>concat</code> – 25 Points</a></li>
+<li><a href="#only_evens-30-points">1. <code>only_evens</code> – 30 Points</a></li>
+<li><a href="#concat-30-points">2. <code>concat</code> – 30 Points</a></li>
 <li><a href="#sub-30-points">2. <code>sub</code> – 30 Points</a></li>
 <li><a href="#make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</a></li>
 <li><a href="#submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</a></li>
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>This exercise has two deadlines. The first deadline is 3/9 for the <code>only_evens</code> function and its tests. The second deadline is 3/19 for all three functions and their tests.</p>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>This exercise has two deadlines. The first deadline is 3/8 for the <code>only_evens</code> function and its tests. The second deadline is 3/19 for all three functions and their tests.</p>
 <p>Art students intentionally reproduce great works of art to develop their own skills and techniques. The purpose isn’t to become an imitator, but to deepen an understanding of important work and styles developed before you.</p>
 <p>Reverse engineering algorithms and abstractions in computer science is of the same spirit! In this exercise you will implement algorithms to practice computational thinking. You will gain familiarity with the names and behaviors of commonly useful functions.</p>
 <p>Since the work you do is reproducing tried and true abstractions of the past, in the future you can and should use your language’s preferred functions, methods, and idioms instead.</p>
@@ -135,11 +135,11 @@
 <ul>
 <li>Unit Tests – 5 Points Autograded</li>
 </ul></li>
-<li><code>sub</code> – 30 Points Autograded
+<li><code>sub</code> – 25 Points Autograded
 <ul>
 <li>Unit Tests – 5 Points Autograded</li>
 </ul></li>
-<li>Style, Linting, Typing – 20 Points Autograded</li>
+<li>Style, Linting, Typing – 10 Points Autograded</li>
 </ul>
 <p>Note: Even if your functions are not 100% correct or finished, you can get full credit for the unit tests if you set up a function skeleton and write your tests assuming correct functionality.</p>
 <h2 id="upgrade-trailhead-to-0.1.15">0. Upgrade Trailhead to 0.1.15</h2>
@@ -171,7 +171,7 @@ from exercises.ex04.utils import concat</code></pre>
 <p>Once you have completed all functions, you can reduce the three import lines down into a single one for less redundancy in your testing code:</p>
 <pre class="plaintext"><code>from exercises.ex04.utils import only_evens, sub, concat</code></pre>
 <p>If your screen is large enough, you are encouraged to open your <code>utils.py</code> and <code>utils_test.py</code> files side-by-side in VSCode by dragging the tab of one to the right side of VSCode so that it changes to a split pane view. Closing your file explorer can help give you additional horizontal space.</p>
-<h2 id="only_evens-25-points">1. <code>only_evens</code> – 25 Points</h2>
+<h2 id="only_evens-30-points">1. <code>only_evens</code> – 30 Points</h2>
 <p>This is the first function you will write in <code>utils.py</code>. The other two functions will also be defined in this file.</p>
 <p>Given a <code>list</code> of <code>ints</code>, <code>only_evens</code> should return a new <code>list</code> containing only the elements of the input list that were even. The <code>only_evens</code> function must not modify the list it is given a reference to as a parameter. Example usage:</p>
 <pre class="plaintext"><code>&gt;&gt;&gt; only_evens([1, 2, 3])
@@ -187,7 +187,7 @@ from exercises.ex04.utils import concat</code></pre>
 <li>Returns: A list of integers, containing only the even elements of the input parameter.</li>
 </ol>
 <p>Reminder: You must write at least 3 meaningful unit tests to “prove” or verify your <code>only_evens</code> function is implemented following these specifications, as described in Part 1.</p>
-<h2 id="concat-25-points">2. <code>concat</code> – 25 Points</h2>
+<h2 id="concat-30-points">2. <code>concat</code> – 30 Points</h2>
 <p>In this exercise you will write a function named <code>concat</code>. Given two <code>Lists</code> of <code>ints</code>, <code>concat</code> should generate a new List which contains all of the elements of the first list followed by all of the elements of the second list. Your <code>concat</code> function may not mutate (“modify”) either of its list parameters.</p>
 <p>Define your function with the following signature.</p>
 <ol type="1">
