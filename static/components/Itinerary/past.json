@@ -369,8 +369,22 @@
             "date": "2024-03-03",
             "deadline": "2024-03-08",
             "links": {
-                "only_evens due 3/8": "/exercises/ex04_list_utils.html",
+                "only_evens due 3/18": "/exercises/ex04_list_utils.html",
                 "concat and sub due 3/19": "/exercises/ex04_list_utils.html"
+            }
+        }
+    ],
+    "2024-03-04": [],
+    "2024-03-05": [
+        {
+            "kind": "CL",
+            "n": 12,
+            "title": "Nested Loops and Lists",
+            "date": "2024-03-05",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/Y78BqH3SmaA?feature=share",
+                "Slides": "/static/slides/cl12_nested_loops_lists.pdf"
             }
         }
     ]
