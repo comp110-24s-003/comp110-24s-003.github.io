@@ -416,18 +416,18 @@
         {
             "kind": "CL",
             "n": 13,
-            "title": "Dictionaries and Importing Modules",
+            "title": "Sets and Dictionaries",
             "date": "2024-03-19",
             "deadline": "None",
             "links": {
                 "Recording": "https://youtube.com/live/k103LxdtYio",
-                "Slides": "/static/slides/TODO"
+                "Slides": "/static/slides/cl13_sets_dicts.py"
             }
         },
         {
             "kind": "EX",
             "n": 5,
-            "title": "Dictionary Utils (Due Monday 3/25)",
+            "title": "Dictionary and Set Functions (Due Monday 3/25)",
             "date": "2024-03-19",
             "deadline": "2024-03-25",
             "links": {
