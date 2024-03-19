@@ -365,12 +365,11 @@
         {
             "kind": "EX",
             "n": 4,
-            "title": "List Utils Pt.1 - only_evens (Due Tuesday 3/19)",
+            "title": "List Utils (Due Tuesday 3/19)",
             "date": "2024-03-03",
             "deadline": "2024-03-19",
             "links": {
-                "only_evens due 3/18": "/exercises/ex04_list_utils.html",
-                "concat and sub due 3/19": "/exercises/ex04_list_utils.html"
+                "": "/exercises/ex04_list_utils.html"
             }
         }
     ],
@@ -413,7 +412,39 @@
     "2024-03-16": [],
     "2024-03-17": [],
     "2024-03-18": [],
-    "2024-03-19": [],
+    "2024-03-19": [
+        {
+            "kind": "CL",
+            "n": 13,
+            "title": "Dictionaries and Importing Modules",
+            "date": "2024-03-19",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/k103LxdtYio",
+                "Slides": "/static/slides/TODO"
+            }
+        },
+        {
+            "kind": "EX",
+            "n": 5,
+            "title": "Dictionary Utils (Due Monday 3/25)",
+            "date": "2024-03-19",
+            "deadline": "2024-03-25",
+            "links": {
+                "": "/exercises/ex05_dict_functions.html"
+            }
+        },
+        {
+            "kind": "RD",
+            "n": 0,
+            "title": "Reading: Ethical Algorithms (Due Friday 3/29)",
+            "date": "2024-03-19",
+            "deadline": "2024-03-29",
+            "links": {
+                "See Gradescope": "https://gradescope.com"
+            }
+        }
+    ],
     "2024-03-20": [],
     "2024-03-21": [],
     "2024-03-22": [],

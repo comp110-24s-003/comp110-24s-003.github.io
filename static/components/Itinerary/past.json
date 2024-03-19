@@ -365,12 +365,11 @@
         {
             "kind": "EX",
             "n": 4,
-            "title": "List Utils Pt.1 - only_evens (Due Tuesday 3/19)",
+            "title": "List Utils (Due Tuesday 3/19)",
             "date": "2024-03-03",
             "deadline": "2024-03-19",
             "links": {
-                "only_evens due 3/18": "/exercises/ex04_list_utils.html",
-                "concat and sub due 3/19": "/exercises/ex04_list_utils.html"
+                "": "/exercises/ex04_list_utils.html"
             }
         }
     ],
@@ -387,5 +386,27 @@
                 "Slides": "/static/slides/cl12_nested_loops_lists.pdf"
             }
         }
-    ]
+    ],
+    "2024-03-06": [],
+    "2024-03-07": [
+        {
+            "kind": "QZ",
+            "n": 2,
+            "title": "Quiz 2",
+            "date": "2024-03-07",
+            "deadline": "2024-03-07",
+            "links": {
+                "Practice Quiz": "/static/practice/qz02-practice.pdf",
+                "Practice Quiz Key": "/static/practice/qz02-practice-key.pdf"
+            }
+        }
+    ],
+    "2024-03-08": [],
+    "2024-03-09": [],
+    "2024-03-10": [],
+    "2024-03-11": [],
+    "2024-03-12": [],
+    "2024-03-13": [],
+    "2024-03-14": [],
+    "2024-03-15": []
 }
