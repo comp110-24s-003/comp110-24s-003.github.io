@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1710820878.6339571">
+  <link rel="stylesheet" href="/static/styles.css?v=1710846766.209826">
 </head>
 
 
@@ -96,8 +96,9 @@
                             <ul class="overview-item"><ul>
 <li><a href="#setup">0. Setup</a></li>
 <li><a href="#invert">1. <code>invert</code></a></li>
-<li><a href="#favorite-colors">2. <code>favorite colors</code></a></li>
-<li><a href="#count">3. <code>count</code></a></li>
+<li><a href="#count">2. <code>count</code></a></li>
+<li><a href="#favorite_color">3. <code>favorite_color</code></a></li>
+<li><a href="#bin_len">4. <code>bin_len</code></a></li>
 <li><a href="#make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</a></li>
 <li><a href="#submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</a></li>
 </ul>
@@ -114,15 +115,19 @@
 <ul>
 <li>Unit Tests – 5 Points Autograded</li>
 </ul></li>
-<li><code>count</code> – 30 Points Autograded
+<li><code>count</code> – 20 Points Autograded
 <ul>
 <li>Unit Tests – 5 Points Autograded</li>
 </ul></li>
-<li><code>favorite_colors</code> – 30 Points Autograded
+<li><code>favorite_colors</code> – 25 Points Autograded
 <ul>
 <li>Unit Tests – 5 Points Autograded</li>
 </ul></li>
-<li>Style, Linting, Typing – 20 Points Autograded</li>
+<li><code>bin_len</code> – 25 Points Autograded
+<ul>
+<li>Unit Tests – 5 Points Autograded</li>
+</ul></li>
+<li>Typing – 10 Points Autograded</li>
 </ul>
 <p>Note: Even if your functions are not 100% correct or finished, you can get full credit for the unit tests if you set up a function skeleton and write your tests assuming correct functionality.</p>
 <h2 id="setup">0. Setup</h2>
@@ -130,7 +135,7 @@
 <p>Inside the <code>exercises/ex05</code> directory, create a file named <code>dictionary.py</code>. Add a docstring and establish an <code>__author__</code> variable to be assigned a string with the digits of your PID. This is where you will implement your function skeletons and implementations below.</p>
 <p>Unit Tests</p>
 <p>Also inside the <code>exercises/ex05</code> directory, create a file named <code>dictionary_test.py</code>. Add a docstring and establish an <code>__author__</code> in this file as well.</p>
-<p>For each function from below (<code>invert</code>, <code>favorite_color</code>, <code>count</code>), you are to define at least <strong>3x unit test</strong> functions. Remember that a unit test function starts with <code>test_</code>.</p>
+<p>For each function from below (<code>invert</code>, <code>count</code>, <code>favorite_color</code>, <code>bin_len</code>), you are to define at least <strong>3x unit test</strong> functions. Remember that a unit test function starts with <code>test_</code>.</p>
 <p>The 3 unit tests should consist of:</p>
 <ul>
 <li>One edge case</li>
@@ -160,22 +165,7 @@ KeyError</code></pre>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>    <span class="cf">with</span> pytest.raises(<span class="pp">KeyError</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>        my_dictionary <span class="op">=</span> {<span class="st">&#39;kris&#39;</span>: <span class="st">&#39;jordan&#39;</span>, <span class="st">&#39;michael&#39;</span>: <span class="st">&#39;jordan&#39;</span>}</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>        invert(my_dictionary)</span></code></pre></div>
-<h2 id="favorite-colors">2. <code>favorite colors</code></h2>
-<p>Create a function in your <code>dictionary.py</code> file called <code>favorite_color</code>. It has the following specifications:</p>
-<ol type="1">
-<li>It has one parameter, of type <code>dict[str, str]</code> of names and favorite colors.</li>
-<li>It returns a <code>str</code> which is the color that appears most frequently.
-<ol type="1">
-<li>If there is a tie for most popular color, return the color that appeared in the dictionary first.</li>
-</ol></li>
-</ol>
-<p>You can also check the correctness of your <code>favorite_color</code> function by calling it in <code>main</code>, printing the result, then running the program with the same command from above.</p>
-<p>An example:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>    <span class="bu">print</span>(favorite_color({<span class="st">&quot;Marc&quot;</span>: <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;Ezri&quot;</span>: <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;Kris&quot;</span>: <span class="st">&quot;blue&quot;</span>}))</span></code></pre></div>
-<p>The results of which would look like:</p>
-<pre class="plaintext"><code>$ python -m exercises.ex05.favorite_color
-blue</code></pre>
-<h2 id="count">3. <code>count</code></h2>
+<h2 id="count">2. <code>count</code></h2>
 <p>Given a <code>list[str]</code>, this function will produce a <code>dict[str, int]</code> where each key is a unique value in the given list and each value associated is the <em>count</em> of the number of times that value appeared in the input list.</p>
 <ul>
 <li>Function name: <code>count</code></li>
@@ -193,6 +183,23 @@ blue</code></pre>
 </ol></li>
 <li>Return the resulting dictionary.</li>
 </ol>
+<h2 id="favorite_color">3. <code>favorite_color</code></h2>
+<p>Create a function in your <code>dictionary.py</code> file called <code>favorite_color</code>. It has the following specifications:</p>
+<ol type="1">
+<li>It has one parameter, of type <code>dict[str, str]</code> of names and favorite colors.</li>
+<li>It returns a <code>str</code> which is the color that appears most frequently.
+<ol type="1">
+<li>If there is a tie for most popular color, return.</li>
+</ol></li>
+</ol>
+<p>You should consider whether you can make use of your correctly implemented <code>count</code> function in the implementation of this function and challenge yourself to try to.</p>
+<p>You can check the correctness of your <code>favorite_color</code> function by writing and running tests for it first.</p>
+<h2 id="bin_len">4. <code>bin_len</code></h2>
+<p>Write a function named <code>bin_len</code> that “bins” a list of strings into a dictionary where the key is an <code>int</code> length of a given string and the associated values are lists of strings of the key’s length found in the original list, with duplicates expected.</p>
+<p>For example:</p>
+<pre class="plaintext"><code>assert bin_len([&quot;the&quot;, &quot;quick&quot;, &quot;fox&quot;]) == {3: [&quot;the&quot;, &quot;fox&quot;], 5: [&quot;quick&quot;]}
+assert bin_len([&quot;the&quot;, &quot;the&quot;, &quot;fox&quot;]) == {3: [&quot;the&quot;, &quot;the&quot;, &quot;fox&quot;]}</code></pre>
+<p>You should write your skeleton function implementation and runnable tests before continuing on. It is a challenge left to you to define the correct parameter type and return type based on the problem description.</p>
 <h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
 <p>As you make progress on this exercise, making backups is encouraged.</p>
 <ol type="1">
