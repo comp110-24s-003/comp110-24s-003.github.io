@@ -88,8 +88,8 @@ button:focus{
   height: 100%;
   min-height: 600px;
   background: 
-              url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 300px,
-              url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 250px;
+            url(assets/cloud_small.png) 0 300px,
+              url(assets/cloud_blurr.png) 900px 250px;
 	animation: wind 200s linear infinite;
   animation-direction: alternate;
 }
