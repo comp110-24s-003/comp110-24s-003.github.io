@@ -1,38 +1,4 @@
 {
-    "2024-03-19": [
-        {
-            "kind": "CL",
-            "n": 13,
-            "title": "Sets and Dictionaries",
-            "date": "2024-03-19",
-            "deadline": "None",
-            "links": {
-                "Recording": "https://youtube.com/live/k103LxdtYio",
-                "Slides": "/static/slides/cl13_sets_dicts.pdf"
-            }
-        },
-        {
-            "kind": "EX",
-            "n": 5,
-            "title": "Dictionary and Set Functions (Due Monday 3/25)",
-            "date": "2024-03-19",
-            "deadline": "2024-03-25",
-            "links": {
-                "": "/exercises/ex05_dict_functions.html"
-            }
-        },
-        {
-            "kind": "RD",
-            "n": 0,
-            "title": "Reading: Ethical Algorithms (Due Friday 3/29)",
-            "date": "2024-03-19",
-            "deadline": "2024-03-29",
-            "links": {
-                "See Gradescope": "https://gradescope.com"
-            }
-        }
-    ],
-    "2024-03-20": [],
     "2024-03-21": [],
     "2024-03-22": [],
     "2024-03-23": [],

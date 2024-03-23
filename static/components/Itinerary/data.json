@@ -427,9 +427,9 @@
         {
             "kind": "EX",
             "n": 5,
-            "title": "Dictionary and Set Functions (Due Monday 3/25)",
+            "title": "Dictionary and Set Functions (Due Tuesday 3/26)",
             "date": "2024-03-19",
-            "deadline": "2024-03-25",
+            "deadline": "2024-03-26",
             "links": {
                 "": "/exercises/ex05_dict_functions.html"
             }
