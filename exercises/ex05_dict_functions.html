@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1711051853.1964054">
+  <link rel="stylesheet" href="/static/styles.css?v=1711223911.145331">
 </head>
 
 
@@ -195,10 +195,10 @@ KeyError</code></pre>
 <p>You should consider whether you can make use of your correctly implemented <code>count</code> function in the implementation of this function and challenge yourself to try to.</p>
 <p>You can check the correctness of your <code>favorite_color</code> function by writing and running tests for it first.</p>
 <h2 id="bin_len">4. <code>bin_len</code></h2>
-<p>Write a function named <code>bin_len</code> that “bins” a list of strings into a dictionary where the key is an <code>int</code> length of a given string and the associated values are a set of strings of the key’s length found in the original list.</p>
+<p>Write a function named <code>bin_len</code> that “bins” a list of strings into a dictionary where the key is an <code>int</code> length of a given string and the associated values are a <code>set</code> of strings of the key’s length found in the original list.</p>
 <p>For example:</p>
-<pre class="plaintext"><code>assert bin_len([&quot;the&quot;, &quot;quick&quot;, &quot;fox&quot;]) == {3: [&quot;the&quot;, &quot;fox&quot;], 5: [&quot;quick&quot;]}
-assert bin_len([&quot;the&quot;, &quot;the&quot;, &quot;fox&quot;]) == {3: [&quot;the&quot;, &quot;fox&quot;]}</code></pre>
+<pre class="plaintext"><code>assert bin_len([&quot;the&quot;, &quot;quick&quot;, &quot;fox&quot;]) == {3: {&quot;the&quot;, &quot;fox&quot;}, 5: {&quot;quick&quot;}}
+assert bin_len([&quot;the&quot;, &quot;the&quot;, &quot;fox&quot;]) == {3: {&quot;the&quot;, &quot;fox&quot;}}</code></pre>
 <p>You should write your skeleton function implementation and runnable tests before continuing on. It is a challenge left to you to define the correct parameter type and return type based on the problem description.</p>
 <h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
 <p>As you make progress on this exercise, making backups is encouraged.</p>
