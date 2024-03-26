@@ -470,7 +470,19 @@
     "2024-03-30": [],
     "2024-03-31": [],
     "2024-04-01": [],
-    "2024-04-02": [],
+    "2024-04-02": [
+        {
+            "kind": "CL",
+            "n": 15,
+            "title": "Callable Function Type and Higher-order Functions",
+            "date": "2024-04-02",
+            "deadline": "None",
+            "links": {
+                "Recording": "https://youtube.com/live/48KRXtf3GiY?feature=share",
+                "Slides": ""
+            }
+        }
+    ],
     "2024-04-03": [],
     "2024-04-04": [],
     "2024-04-05": [],
