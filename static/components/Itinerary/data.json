@@ -495,6 +495,16 @@
                 "Recording": "https://youtube.com/live/MbG3dkwKEN4?feature=share",
                 "Slides": "/static/slides/cl16_generic_types_filter.pdf"
             }
+        },
+        {
+            "kind": "RD",
+            "n": 1,
+            "title": "Reading: Weapons of Math Destruction (Due Sunday 4/21)",
+            "date": "2024-04-04",
+            "deadline": "2024-04-21",
+            "links": {
+                "See Gradescope": "https://gradescope.com"
+            }
         }
     ],
     "2024-04-05": [],
