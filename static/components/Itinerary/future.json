@@ -1,26 +1,10 @@
 {
-    "2024-03-31": [],
-    "2024-04-01": [],
     "2024-04-02": [
-        {
-            "kind": "CL",
-            "n": 15,
-            "title": "Callable Function Type and Higher-order Functions",
-            "date": "2024-04-02",
-            "deadline": "None",
-            "links": {
-                "Recording": "https://youtube.com/live/48KRXtf3GiY?feature=share",
-                "Slides": "/static/slides/cl15_function_types.pdf"
-            }
-        }
-    ],
-    "2024-04-03": [],
-    "2024-04-04": [
         {
             "kind": "CL",
             "n": 16,
             "title": "Generic Types and Filter",
-            "date": "2024-04-04",
+            "date": "2024-04-02",
             "deadline": "None",
             "links": {
                 "Recording": "https://youtube.com/live/MbG3dkwKEN4?feature=share",
@@ -30,11 +14,24 @@
         {
             "kind": "RD",
             "n": 1,
-            "title": "Reading: Weapons of Math Destruction (Due Sunday 4/21)",
-            "date": "2024-04-04",
-            "deadline": "2024-04-21",
+            "title": "Reading: Weapons of Math Destruction (Due Friday 4/19)",
+            "date": "2024-04-02",
+            "deadline": "2024-04-19",
             "links": {
                 "See Gradescope": "https://gradescope.com"
+            }
+        }
+    ],
+    "2024-04-03": [],
+    "2024-04-04": [
+        {
+            "kind": "CL",
+            "n": 17,
+            "title": "The Reduce Algorithm (Async, Remote, NOT in-person) (Due Saturday 4/6)",
+            "date": "2024-04-04",
+            "deadline": "2024-04-06",
+            "links": {
+                "Assignment on Gradescope": "https://www.gradescope.com"
             }
         }
     ],
