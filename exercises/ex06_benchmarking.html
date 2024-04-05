@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1712320654.4416766">
+  <link rel="stylesheet" href="/static/styles.css?v=1712320923.2367752">
 </head>
 
 
@@ -108,13 +108,13 @@
                 </div>
             </div>
         </div>
-        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In this unit we are focused on a few new data structures (such as <code>set</code> and <code>dict</code>), and their fundamental “cost” differences from the <code>list</code> data structure. We discussed operations on each, such as the <code>in</code> operator which tests whether an element is contained in the data structure, have different characteristics in <em>how expensive</em> each is to carry out with the respective data structure. This “expense” can be thought of in two dimensions:</p>
+        <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>Complete Lesson 09 on Jupyter Notebooks before beginning this exercise. <a href="https://www.youtube.com/watch?v=HJgX1WWC26A">Watch the video here</a> and respond to the questions on Gradescope.</p>
+<p>In this unit we are focused on a few new data structures (such as <code>set</code> and <code>dict</code>), and some fundamental “cost” differences from the <code>list</code> data structure. We discussed operations on each, such as the <code>in</code> operator which tests whether an element is contained in the data structure, have different characteristics in <em>how expensive</em> each is to carry out with the respective data structure. This “expense” can be thought of in two dimensions:</p>
 <ol type="1">
 <li><p>Time Complexity - How <em>long</em> does an algorithm take to complete as the size of its data grows? This is analogous to how much “work”, or how many statements and loop iterations, an algorithm takes to complete.</p></li>
 <li><p>Space Complexity - How much <em>memory</em> is required for an algorithm or data structure as the size of its memory grows? This is a question you will learn more about in the next course in computer science: <em>data structures</em>.</p></li>
 </ol>
 <p>In this exercise, you will develop a <em>benchmark</em> to empirically investigate and compare the <strong>time complexity</strong> of the same operation on two data structures, as well as two different implementations of the same fundamental algorithm. To <em>benchmark</em> a subject, we will time how long the operation subject takes to complete after a number of experimental runs.</p>
-<p>Finally, you will use <em>higher-order functions</em> to simplify this benchmarking experiment and produce graphs in a new programming tool called a <em>Jupyter Notebook</em>.</p>
 <h2 id="setup">0. Setup</h2>
 <p>Create a new <strong>directory</strong> in <code>exercises</code> named <code>ex06</code>.</p>
 <p>Inside the <code>exercises/ex06</code> directory, create a file named <code>workbench.py</code>. Add a docstring and establish an <code>__author__</code> variable to be assigned a string with the digits of your PID. This is where you will implement your function skeletons and implementations below.</p>
