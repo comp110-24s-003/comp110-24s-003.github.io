@@ -516,6 +516,17 @@
             "links": {
                 "Assignment on Gradescope": "https://www.gradescope.com"
             }
+        },
+        {
+            "kind": "LS",
+            "n": 9,
+            "title": "Jupyter Notebooks 101 (Due Sunday 4/7)",
+            "date": "2024-04-04",
+            "deadline": "2024-04-07",
+            "links": {
+                "Lesson": "https://www.youtube.com/watch?v=HJgX1WWC26A",
+                "Responses on Gradescope": "https://www.gradescope.com"
+            }
         }
     ],
     "2024-04-05": [],
