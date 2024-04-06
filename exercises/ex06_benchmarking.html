@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1712327618.7795575">
+  <link rel="stylesheet" href="/static/styles.css?v=1712425764.555577">
 </head>
 
 
@@ -97,12 +97,15 @@
 <li><a href="#setup">0. Setup</a></li>
 <li><a href="#establishing-our-benchmark-subjects">1. Establishing our benchmark “Subjects”</a></li>
 <li><a href="#check-the-expected-behavior-of-these-subjects-in-the-jupyter-notebook">2. Check the expected behavior of these subjects in the Jupyter Notebook</a></li>
-<li><a href="#establishing-random-data-generator-functions">3. Establishing Random Data Generator Functions</a></li>
-<li><a href="#invert">1. <code>invert</code></a></li>
-<li><a href="#count">2. <code>count</code></a></li>
-<li><a href="#favorite_color">3. <code>favorite_color</code></a></li>
-<li><a href="#bin_len">4. <code>bin_len</code></a></li>
-<li><a href="#make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</a></li>
+<li><a href="#establishing-random-data-producer-functions">3. Establishing Random Data Producer Functions</a></li>
+<li><a href="#check-the-expected-behavior-of-these-producers-in-the-jupyter-notebook">4. Check the expected behavior of these producers in the Jupyter Notebook</a></li>
+<li><a href="#writing-microbenchmark-functions">5. Writing microbenchmark functions</a></li>
+<li><a href="#testing-the-microbenchmark-functions">6. Testing the Microbenchmark Functions</a></li>
+<li><a href="#writing-a-higher-order-generic-microbenchmark-function">7. Writing a higher-order, generic microbenchmark function</a></li>
+<li><a href="#testing-your-microbenchmark-function-in-the-jupyter-notebook">8. Testing your <code>microbenchmark</code> function in the Jupyter Notebook</a></li>
+<li><a href="#computing-the-average-cost-of-a-subject-function">9. Computing the average cost of a subject function</a></li>
+<li><a href="#section">10.</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</a></li>
 <li><a href="#submit-to-gradescope-for-grading">5. Submit to Gradescope for Grading</a></li>
 </ul>
 </</ul>
@@ -159,97 +162,137 @@
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Subject function assertions passed!&quot;</span>)</span></code></pre></div>
 <p>Notice here we’re importing the two functions from the <code>workbench.py</code> module and added a few basic assertions. This is a more hand-waving approach to testing than we saw in <em>unit testing</em>, but it achieves something similar: it gives us confidence our functions are correcltly defined for some basic inputs. In this notebook, it also gives the reader a sense of what the subject functions are expected to do.</p>
 <p>When you evaluate this function, the assertions should silently pass and the final statement will print. If an assertion fails, you will see an error, and should go back and check your work.</p>
-<h2 id="establishing-random-data-generator-functions">3. Establishing Random Data Generator Functions</h2>
+<h2 id="establishing-random-data-producer-functions">3. Establishing Random Data Producer Functions</h2>
 <p>Before we can benchmark these subject functions, we need some test data to feed into each as an argument. Generally, to test the “average” cost of a subject like this, we come up with randomized input data of a given length. For this part, we are going to provide you with one of the two functions you will need, leaving the second for you to complete the implementation of.</p>
 <p>Before adding these functions to <code>workbench.py</code>, be sure to add the following import statement to import the <code>random()</code> function, which generates a random <code>float</code> value each time it is called, at the top of your workbench.py file, beneath your docstring:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="im">from</span> random <span class="im">import</span> random</span></code></pre></div>
 <p>After your workbench subject definitions, add the following definitions to <code>workbench.py</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># Data Generators</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="co"># Data Producers</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="kw">def</span> random_list_data(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">float</span>]:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Generate a list of random floats of size n.&quot;&quot;&quot;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="kw">def</span> list_producer(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">float</span>]:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Produce a list of random floats of size n.&quot;&quot;&quot;</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>    result: <span class="bu">list</span>[<span class="bu">float</span>] <span class="op">=</span> []</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>    <span class="cf">while</span> <span class="bu">len</span>(result) <span class="op">&lt;</span> n:</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>        result.append(random())</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>    <span class="cf">return</span> result</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="kw">def</span> random_set_data(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">set</span>[<span class="bu">float</span>]:</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Generate a set of random floats of size n.&quot;&quot;&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="kw">def</span> set_producer(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">set</span>[<span class="bu">float</span>]:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Produce a set of random floats of size n.&quot;&quot;&quot;</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Finish implementing this function</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true"></a>    ...</span></code></pre></div>
-<p>Notice <code>random_list_data</code> establishes an empty <code>list</code> and then continues appending <code>random</code> numbers to it until its size is equal to the parameter <code>n</code>. This gives us a function where we give it an <code>n</code> and it returns to us a list of length <code>n</code> random <code>float</code> values: perfect for our benchmarking purposes!</p>
-<p>Your task in this part is to complete the implementation of <code>random_set_data</code> such that it returns a <code>set</code> of length <code>n</code> random numbers.</p>
-<p><strong>Check for understanding: although the odds for generating two identically random <code>float</code> values n <code>random_list_data</code> is infinitesimally small, it is still possible. Given this possibility, why shouldn’t you implement <code>random_set_data</code> by just returning <code>set(random_list_data(n))</code>?</strong></p>
-<p>To the check for understanding question above, the reason why is because lists can contain duplicates and sets do not. Your <code>random_set_data</code> function</p>
-<p>Unit Tests</p>
-<p>Also inside the <code>exercises/ex05</code> directory, create a file named <code>dictionary_test.py</code>. Add a docstring and establish an <code>__author__</code> in this file as well.</p>
-<p>For each function from below (<code>invert</code>, <code>count</code>, <code>favorite_color</code>, <code>bin_len</code>), you are to define at least <strong>3x unit test</strong> functions. Remember that a unit test function starts with <code>test_</code>.</p>
-<p>The 3 unit tests should consist of:</p>
-<ul>
-<li>One edge case</li>
-<li>Two use cases</li>
-</ul>
-<p>Include descriptive function names and docstrings, so that it captures what is being tested.</p>
-<p>The command to run your tests is <code>python -m pytest exercises/ex05</code> or you can run them using the beaker tab in VSCode if it is working (do note the VSCode testing feature tends to be a bit flaky).</p>
-<p>Just like in <code>ex04</code>, you will need to import your functions in your tests file.</p>
-<p>If your screen is large enough, you are encouraged to open these files side-by-side in VSCode by dragging the tab of one to the right side of VSCode so that it changes to a split pane view. Closing your file explorer can help give you additional horizontal space.</p>
-<h2 id="invert">1. <code>invert</code></h2>
-<p>This is the first function you will write in <code>dictionary.py</code>. The other two functions will also be defined in this file.</p>
-<p>Given a <code>dictionary</code> of <code>[str, str]</code>, <code>invert</code> should return a <code>dict[str, str]</code> that inverts the keys and the values. The keys of the input list becomes the values of the output list and vice versa.</p>
-<p>Remember that <strong>keys in a dictionary are unique.</strong> If you encounter more than one of the same key when trying to invert your dictionary, i.e., raise a <code>KeyError</code>. Example usage:</p>
-<pre class="plaintext"><code>&gt;&gt;&gt; invert({&#39;a&#39;: &#39;z&#39;, &#39;b&#39; : &#39;y&#39;, &#39;c&#39;: &#39;x&#39;})
-{&#39;z&#39;: &#39;a&#39;, &#39;y&#39;: &#39;b&#39;, &#39;x&#39;: &#39;c&#39;}
-&gt;&gt;&gt; invert({&#39;apple&#39;: &#39;cat&#39;})
-{&#39;cat&#39;: &#39;apple&#39;}
-&gt;&gt;&gt; invert({&#39;kris&#39;: &#39;jordan&#39;, &#39;michael&#39;: &#39;jordan&#39;})
-KeyError</code></pre>
-<p>The syntax for raising a <code>KeyError</code> is: `raise KeyError(“error message of your choice here!”)</p>
-<h4 id="testing-for-keyerror"><em>Testing for KeyError:</em></h4>
-<p>You may optionally add a test for the invert function to check if the KeyError is being raised. Testing errors requires different syntax than testing normal outputs. If an error is raised then the function never actually returned anything, so we are unable to <code>assert</code> a return value. Instead try the following:</p>
+<p>Notice <code>list_producer</code> establishes an empty <code>list</code> and then continues appending <code>random</code> numbers to it until its size is equal to the parameter <code>n</code>. This gives us a function where we give it an <code>n</code> and it returns to us a list of length <code>n</code> random <code>float</code> values: perfect for our benchmarking purposes!</p>
+<p>Your task in this part is to complete the implementation of <code>set_producer</code> such that it returns a <code>set</code> of length <code>n</code> random numbers. Remember, to create an empty set use the <code>set()</code> constructor.</p>
+<p><strong>Check for understanding: although the odds for generating two identically random <code>float</code> values n <code>list_producer</code> is infinitesimally small, it is still possible. Given this possibility, why shouldn’t you implement <code>set_producer</code> by just returning <code>set(list_producer(n))</code>?</strong></p>
+<p>To the check for understanding question above, the reason why is because lists can contain duplicates and sets do not. Your <code>set_producer</code> function would not be able to guarantee the set has <code>n</code> elements.</p>
+<h2 id="check-the-expected-behavior-of-these-producers-in-the-jupyter-notebook">4. Check the expected behavior of these producers in the Jupyter Notebook</h2>
+<p>Back in the Jupyter Notebook file, add an additional Markdown cell with the following (feel encouraged to rewrite this in your own words, to aid understanding, but it is not required):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">## Testing our Data Producers</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>The functions <span class="in">`list_producer`</span> and <span class="in">`set_producer`</span> will each produce a <span class="in">`list`</span> and <span class="in">`set`</span>, respectively, with argument <span class="in">`n`</span> random <span class="in">`float`</span> elements.</span></code></pre></div>
+<p>Next, add the following Python code cell beneath the markdown cell and **replate the TODO comment with two or more assertions demonstrating the correct implementation of your <code>set_producer</code> function.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="im">from</span> workbench <span class="im">import</span> list_producer, set_producer</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a><span class="cf">assert</span> <span class="bu">len</span>(list_producer(n<span class="op">=</span><span class="dv">10</span>)) <span class="op">==</span> <span class="dv">10</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="cf">assert</span> <span class="bu">len</span>(list_producer(n<span class="op">=</span><span class="dv">100</span>)) <span class="op">==</span> <span class="dv">100</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add two or more assertions to prove correctnes of set_producer</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Producer assertions passed! Sample output:&quot;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="bu">print</span>(<span class="ss">f&quot;list_producer(n=4) -&gt; </span><span class="sc">{</span>list_producer(n<span class="op">=</span><span class="dv">4</span>)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="bu">print</span>(<span class="ss">f&quot;set_producer(n=4) -&gt; </span><span class="sc">{</span>set_producer(n<span class="op">=</span><span class="dv">4</span>)<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h2 id="writing-microbenchmark-functions">5. Writing microbenchmark functions</h2>
+<p>Next, we will write two functions to benchmark each of our subject functions with their respective data producers. The first function for microbenchmarking <code>set_in</code> is given to you, the second for <code>list_in</code> is up to you to implement.</p>
+<p>The big idea behind a microbenchmark is we will import and call a function that gives us a highly precise clock counter which returns to us an integer time in nanoseconds. A nanosecond is one billionth of a second. This denotes our “start” time. Then we will call the subject function we are microbenchmarking. After it completes, we will once again ask for the current time in nanoseconds and call it our “end” time. By subtracting start time from end time we will have a measure of the number of elapsed nanoseconds that it took to complete the call to our subject function. This gives us its cost in time.</p>
+<p>Back in <code>workbench.py</code>, add the following <code>import</code> statement below your docstring:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="im">from</span> time <span class="im">import</span> perf_counter_ns</span></code></pre></div>
+<p>The <code>perf_counter_ns</code> function, when called, gives us a precise time in <code>int</code> nanoseconds. You can see its use in the <code>set_in</code> microbenchmark function below:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="kw">def</span> microbenchmark_set_in(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Time (ns) required to check if a set of size n contains a value.&quot;&quot;&quot;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>    needle: <span class="bu">float</span> <span class="op">=</span> random()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>    haystack: <span class="bu">set</span>[<span class="bu">float</span>] <span class="op">=</span> set_producer(n)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>    start_time: <span class="bu">int</span> <span class="op">=</span> perf_counter_ns()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>    set_in(needle, haystack)  <span class="co"># Our subject function being microbenchmarked</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>    end_time: <span class="bu">int</span> <span class="op">=</span> perf_counter_ns()</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>    <span class="cf">return</span> end_time <span class="op">-</span> start_time</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true"></a><span class="kw">def</span> microbenchmark_list_in(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Time (ns) required to check if a list of size n contains a value.&quot;&quot;&quot;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: Implement a **very** similar microbenchmark for the `list_in` subject</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true"></a>    <span class="co"># Be sure your haystack is the correct _type_ and calls the correct _producer_</span></span></code></pre></div>
+<h2 id="testing-the-microbenchmark-functions">6. Testing the Microbenchmark Functions</h2>
+<p>Now that you have implemented <code>microbenchmark_list_in</code>, let’s try utilizing these functions back in the notebook. Add a markdown cell explaining what we are about to do next:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">## Microbenchmarking without Higher-order Functions</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>Next we will microbenchmark the time, in nanoseconds, each of our subject functions takes to complete using plain-old functions. Later, we will improve upon these two functions.</span></code></pre></div>
+<p>Following the markdown cell, add a Python code cell:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="im">from</span> workbench <span class="im">import</span> microbenchmark_set_in, microbenchmark_list_in</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a><span class="bu">print</span>(<span class="ss">f&quot;set_in(n=100) cost </span><span class="sc">{</span>microbenchmark_set_in(n<span class="op">=</span><span class="dv">100</span>)<span class="sc">}</span><span class="ss"> nanoseconds&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="bu">print</span>(<span class="ss">f&quot;list_in(n=100) cost </span><span class="sc">{</span>microbenchmark_list_in(n<span class="op">=</span><span class="dv">100</span>)<span class="sc">}</span><span class="ss"> nanoseconds&quot;</span>)</span></code></pre></div>
+<p>Try running this cell a few times and observing the results. Each number, individually, will change each run within some reasonable margin. Why? Your computer is also carrying out many, many other tasks, so the speed in which an individual task (such as evaluating a function call) completes is slightly non-deterministic.</p>
+<p><strong>Important:</strong> Notice that, more often than not, the <code>set_in</code> operator is faster than <code>list_in</code> with <code>100</code> elements. Exactly how many nanoseconds and the multiplier in speedup will depend on your computer.</p>
+<p><strong>An interesting question we will soon explore more rigorously: how does this performance difference change as the number of elements in our set and list changes? Try tinkering with the <code>n</code> argument by an order of magnitude or two to get an intuitive feel for this.</strong></p>
+<h2 id="writing-a-higher-order-generic-microbenchmark-function">7. Writing a higher-order, generic microbenchmark function</h2>
+<p>Look back at your function definitions for <code>microbenchmark_set_in</code> and <code>microbenchmark_list_in</code>. You should see a pattern to their structure with two differences around generating data and calling our subject function. Seeing patterns like this across two or more functions is a strong indicator you can <em>abstract</em> out a <em>higher-order function</em> in its place. Our goal is to write an additional function, named <code>microbenchmark</code>, that is a higher-order function that is given a <em>subject</em> function, a data <em>producer</em> function, and an <code>n</code> argument that leads to benchmarking a data set of size <code>n</code>.</p>
+<p>To help you get started on writing this function, we need to define our <code>Callable</code> function types for <code>Producer</code> and <code>Subject</code>. These will need to be <em>generic</em> types. Why? Notice your producers and subjects have the same shape but are operating on different types: <code>list[float]</code> versus <code>set[float]</code>. Add the following import to the top of your <code>workbench.py</code> file with your other imports:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="im">from</span> typing <span class="im">import</span> Callable, TypeVar</span></code></pre></div>
+<p>Next, add the following three definitions below your imports:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>T <span class="op">=</span> TypeVar(<span class="st">&quot;T&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>Producer <span class="op">=</span> Callable[[<span class="bu">int</span>], T]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>Subject <span class="op">=</span> Callable[[<span class="bu">float</span>, T], <span class="va">None</span>]</span></code></pre></div>
+<p><strong>Check for understanding:</strong> Are <code>set_in</code> and <code>list_in</code> examples of type <code>Subject</code>? If so, for each, what is type <code>T</code>? Similarly, are <code>list_producer</code> and <code>set_producer</code> examples of type <code>Producer</code>? If so, for each, what is type <code>T</code>?</p>
+<p>Answers: Yes, <code>set_in</code> and <code>list_in</code> are valid <code>Subject</code> type functions. Their generic type <code>T</code> is concretely <code>set[float]</code> and <code>list[float]</code>, respectively. Similarly, <code>list_producer</code> and <code>set_producer</code> functions of type <code>Producer</code>.</p>
+<p>Below your earlier functions, write a new function named <code>microbenchmark</code> with the following structure. It is your task to replace the blanks/comments with valid function calls. :</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="kw">def</span> microbenchmark(subject: Subject[T], producer: Producer[T], n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Time (ns) cost of subject with a produced collection of size n.&quot;&quot;&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>    needle: <span class="bu">float</span> <span class="op">=</span> random()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>    haystack: T <span class="op">=</span> _________ <span class="co"># </span><span class="al">TODO</span><span class="co">: Call the Producer Function with n</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>    start_time: <span class="bu">int</span> <span class="op">=</span> perf_counter_ns()</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>    __________ <span class="co"># </span><span class="al">TODO</span><span class="co">: Call the Subject Function</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>    end_time: <span class="bu">int</span> <span class="op">=</span> perf_counter_ns()</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>    <span class="cf">return</span> end_time <span class="op">-</span> start_time</span></code></pre></div>
+<p>Notice the relationship between this function and the earlier, simpler microbenchmark functions that were less flexible. Here, we have a single <code>microbenchmark</code> function we can reuse with any other <code>Subject[T]</code> and <code>Producer[T]</code> functions we define without having to copy/reimplement this same functionality again.</p>
+<h2 id="testing-your-microbenchmark-function-in-the-jupyter-notebook">8. Testing your <code>microbenchmark</code> function in the Jupyter Notebook</h2>
+<p>Add the following Markdown cell to your <code>notebook.ipynb</code> file:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="fu">## Microbenchmarking with Higher-order Function</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a>Now that we have abstracted a single <span class="in">`microbenchmark`</span> function, which can be reused with different subjects and producers, let&#39;s try the above examples again and make use of it.</span></code></pre></div>
+<p>Then, add a Python code cell below the markdown, with the following tests of your <code>microbenchmark</code> function. Your task is to replace the <code>PRODUCER_FUNCTION</code> with the correct name of a <code>Producer</code> function you imported earlier in your notebook and defined in <code>workbench.py</code>, given the context. Similarly, replace <code>SUBJECT_FUNCTION</code> with the correct name of a <code>Subject</code> function you imported earlier in your notebook and defined in <code>workbench.py</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="im">from</span> workbench <span class="im">import</span> microbenchmark</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="bu">print</span>(<span class="ss">f&quot;set_in(n=1000) cost </span><span class="sc">{</span>microbenchmark(set_in, PRODUCER_FUNCTION, <span class="dv">1000</span>)<span class="sc">}</span><span class="ss"> nanoseconds&quot;</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a><span class="bu">print</span>(<span class="ss">f&quot;list_in(n=1000) cost </span><span class="sc">{</span>microbenchmark(SUBJECT_FUNCTION, list_producer, <span class="dv">1000</span>)<span class="sc">}</span><span class="ss"> nanoseconds&quot;</span>)</span></code></pre></div>
+<h2 id="computing-the-average-cost-of-a-subject-function">9. Computing the average cost of a subject function</h2>
+<p>Next, we would like to more accurately measure the time cost of each subject. To do so, we’d like to measure the average cost of running the subject function many, many (say 1,000) times over. We will give you this function since it uses some interesting concepts related to what we have explored in class. Add the following function to your <code>workbench.py</code> file:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="kw">def</span> microbenchmark_avg(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>    subject: Subject[T], producer: Producer[T], n: <span class="bu">int</span>, runs: <span class="bu">int</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Compute the average time cost (ns) of a microbenchmark over # runs.&quot;&quot;&quot;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a>    <span class="co"># 1. Define an &quot;internal&quot; helper function for an individual run</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a>    <span class="kw">def</span> run_once(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true"></a>        <span class="co">&quot;&quot;&quot;Given an n, run one microbenchmark of subject/producer.&quot;&quot;&quot;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true"></a>        <span class="cf">return</span> microbenchmark(subject, producer, n)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true"></a>    <span class="co"># 2. n_runs is a list where each element is n repeated (length=runs)</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true"></a>    n_runs: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [n] <span class="op">*</span> runs</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true"></a>    <span class="co"># 3. Use the built-in map function to call run_once on each n</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true"></a>    time_costs: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(run_once, n_runs))</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true"></a>    <span class="co"># 4. Compute the average time cost of the runs</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true"></a>    <span class="cf">return</span> <span class="bu">sum</span>(time_costs) <span class="op">//</span> runs</span></code></pre></div>
+<p>Let’s break down the important steps here:</p>
 <ol type="1">
-<li>Make sure to <code>import pytest</code></li>
-<li>Use the following code as an example:</li>
+<li>We’ll return back to this function at step 3.</li>
+<li>When you multiply a <code>list</code> by an <code>int</code>, the list repeats. Thus, <code>[100] * 3</code> would evaluate to <code>[100, 100, 100]</code>, for example. Here, we’re repeating the <code>n</code> (size of our produced data set for benchmark purposes) <code>runs</code> number of times. So if <code>n</code> is <code>100</code> and <code>runs</code> is <code>1000</code>, <code>n_runs</code> would be a <code>list</code> that looks like <code>[100, 100, ..., 100]</code> with <code>100</code> repeated <code>1000</code> times in the resulting <code>list</code>.</li>
+<li>We learned the <code>map</code> higher-order function in lecture! This line makes use of Python’s built-in <code>map</code>. Notice we are mapping the function <code>run_once</code> over the <code>n_runs</code> list. Thanks to step #2, this means we’re repeatedly calling <code>run_once</code> with the given <code>n</code> for a total of <code>runs</code> times. The resulting time cost from the microbenchmark is stored in the <code>time_costs</code> list. Notice that the <code>run_once</code> function is defined with a single parameter <code>n</code>, in order to make it satisfy the <code>map</code> function’s semantics. We are able to read <code>subject</code> and <code>producer</code> thanks to this function being defined <em>inside</em> of the <code>microbenchmark_avg</code>’s function definition.</li>
+<li>Here we sum the individual costs of each run and divide by the number of runs to compute an average.</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>    <span class="cf">with</span> pytest.raises(<span class="pp">KeyError</span>):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>        my_dictionary <span class="op">=</span> {<span class="st">&#39;kris&#39;</span>: <span class="st">&#39;jordan&#39;</span>, <span class="st">&#39;michael&#39;</span>: <span class="st">&#39;jordan&#39;</span>}</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>        invert(my_dictionary)</span></code></pre></div>
-<h2 id="count">2. <code>count</code></h2>
-<p>Given a <code>list[str]</code>, this function will produce a <code>dict[str, int]</code> where each key is a unique value in the given list and each value associated is the <em>count</em> of the number of times that value appeared in the input list.</p>
-<ul>
-<li>Function name: <code>count</code></li>
-<li>Parameter: <code>list[str]</code> - list of values to count the frequencies of</li>
-<li>Return Type: <code>dict[str, int]</code> - a dictionary of the counts of each of the items in the input list</li>
-</ul>
-<p>Implementation strategy:</p>
-<ol type="1">
-<li>Establish an empty dictionary to store your built-up result in</li>
-<li>Loop through each item in the input list
-<ol type="1">
-<li>Check to see if that item has already been established as a key in your dictionary. Try the following boolean conditional: <code>if &lt;item&gt; in &lt;dict&gt;:</code> – replacing <code>&lt;item&gt;</code> with the variable name of the current value and <code>&lt;dict&gt;</code> with the name of your result dictionary.</li>
-<li>If the item is found in the dict, that means there is already a key/value pair where the item is a key. Increase the value associated with that key by 1 (counting it!)</li>
-<li>If the item is not found in the dict, that means this is the first time you are encountering the value and should assign an initial count of <code>1</code> to that key in the result dictionary.</li>
-</ol></li>
-<li>Return the resulting dictionary.</li>
-</ol>
-<h2 id="favorite_color">3. <code>favorite_color</code></h2>
-<p>Create a function in your <code>dictionary.py</code> file called <code>favorite_color</code>. It has the following specifications:</p>
-<ol type="1">
-<li>It has one parameter, of type <code>dict[str, str]</code> of names and favorite colors.</li>
-<li>It returns a <code>str</code> which is the color that appears most frequently.
-<ol type="1">
-<li>If there is a tie for most popular color, return the first color encountered.</li>
-</ol></li>
-</ol>
-<p>You should consider whether you can make use of your correctly implemented <code>count</code> function in the implementation of this function and challenge yourself to try to.</p>
-<p>You can check the correctness of your <code>favorite_color</code> function by writing and running tests for it first.</p>
-<h2 id="bin_len">4. <code>bin_len</code></h2>
-<p>Write a function named <code>bin_len</code> that “bins” a list of strings into a dictionary where the key is an <code>int</code> length of a given string and the associated values are a <code>set</code> of strings of the key’s length found in the original list.</p>
-<p>For example:</p>
-<pre class="plaintext"><code>assert bin_len([&quot;the&quot;, &quot;quick&quot;, &quot;fox&quot;]) == {3: {&quot;the&quot;, &quot;fox&quot;}, 5: {&quot;quick&quot;}}
-assert bin_len([&quot;the&quot;, &quot;the&quot;, &quot;fox&quot;]) == {3: {&quot;the&quot;, &quot;fox&quot;}}</code></pre>
-<p>You should write your skeleton function implementation and runnable tests before continuing on. It is a challenge left to you to define the correct parameter type and return type based on the problem description.</p>
-<h2 id="make-a-backup-checkpoint-commit">4. Make a Backup Checkpoint “Commit”</h2>
+<h2 id="section">10.</h2>
+<h2 id="make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</h2>
 <p>As you make progress on this exercise, making backups is encouraged.</p>
 <ol type="1">
 <li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
