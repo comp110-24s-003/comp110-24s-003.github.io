@@ -544,7 +544,19 @@
     ],
     "2024-04-07": [],
     "2024-04-08": [],
-    "2024-04-09": [],
+    "2024-04-09": [
+        {
+            "kind": "CL",
+            "n": 18,
+            "title": "Higher-order Practice and Iterables / for..in Loops (Due Thursday 4/11)",
+            "date": "2024-04-09",
+            "deadline": "2024-04-11",
+            "links": {
+                "Stream / Recording": "https://youtube.com/live/5ANcDlK7GAU?feature=share",
+                "Slides": "/static/slides/cl18_iterator_for_in.pdf"
+            }
+        }
+    ],
     "2024-04-10": [],
     "2024-04-11": [
         {
