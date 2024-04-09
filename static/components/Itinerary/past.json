@@ -396,7 +396,8 @@
             "date": "2024-03-07",
             "deadline": "2024-03-07",
             "links": {
-                "Practice Quiz": "/static/practice/qz03-practice.pdf"
+                "Practice Quiz": "/static/practice/qz02-practice.pdf",
+                "Practice Quiz Key": "/static/practice/qz02-practice-key.pdf"
             }
         }
     ],
