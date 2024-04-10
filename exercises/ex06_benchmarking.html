@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1712692115.971181">
+  <link rel="stylesheet" href="/static/styles.css?v=1712715715.6212258">
 </head>
 
 
@@ -243,7 +243,7 @@
 <p>Next, add the following three definitions below your imports:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a>T <span class="op">=</span> TypeVar(<span class="st">&quot;T&quot;</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>Producer <span class="op">=</span> Callable[[<span class="bu">int</span>], T]</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>Subject <span class="op">=</span> Callable[[<span class="bu">float</span>, T], <span class="va">None</span>]</span></code></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>Subject <span class="op">=</span> Callable[[<span class="bu">float</span>, T], <span class="bu">bool</span>]</span></code></pre></div>
 <p><strong>Check for understanding:</strong> Are <code>set_in</code> and <code>list_in</code> examples of type <code>Subject</code>? If so, for each, what is type <code>T</code>? Similarly, are <code>list_producer</code> and <code>set_producer</code> examples of type <code>Producer</code>? If so, for each, what is type <code>T</code>?</p>
 <p>Answers: Yes, <code>set_in</code> and <code>list_in</code> are valid <code>Subject</code> type functions. Their generic type <code>T</code> is concretely <code>set[float]</code> and <code>list[float]</code>, respectively. Similarly, <code>list_producer</code> and <code>set_producer</code> functions of type <code>Producer</code>.</p>
 <p>Below your earlier functions, write a new function named <code>microbenchmark</code> with the following structure. It is your task to replace the blanks/comments with valid function calls. :</p>
