@@ -10,7 +10,7 @@
             "deadline": "None",
             "links": {
                 "Stream / Recording": "https://youtube.com/live/dRNXDtccSOQ?feature=share",
-                "Slides": ""
+                "Slides": "/static/slides/cl19_oop.pdf"
             }
         }
     ],
