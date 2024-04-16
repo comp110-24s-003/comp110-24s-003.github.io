@@ -534,9 +534,9 @@
         {
             "kind": "EX",
             "n": 6,
-            "title": "Benchmarking Time Complexity (Due Monday 4/15)",
+            "title": "Benchmarking Time Complexity",
             "date": "2024-04-06",
-            "deadline": "2024-04-15",
+            "deadline": "None",
             "links": {
                 "": "/exercises/ex06_benchmarking.html"
             }
@@ -575,7 +575,19 @@
     "2024-04-13": [],
     "2024-04-14": [],
     "2024-04-15": [],
-    "2024-04-16": [],
+    "2024-04-16": [
+        {
+            "kind": "CL",
+            "n": 19,
+            "title": "Object-oriented Programmign 101",
+            "date": "2024-04-16",
+            "deadline": "None",
+            "links": {
+                "Stream / Recording": "https://youtube.com/live/dRNXDtccSOQ?feature=share",
+                "Slides": ""
+            }
+        }
+    ],
     "2024-04-17": [],
     "2024-04-18": [],
     "2024-04-19": [],
