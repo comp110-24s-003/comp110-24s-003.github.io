@@ -1,6 +1,4 @@
 {
-    "2024-04-14": [],
-    "2024-04-15": [],
     "2024-04-16": [
         {
             "kind": "CL",
@@ -20,7 +18,19 @@
     "2024-04-20": [],
     "2024-04-21": [],
     "2024-04-22": [],
-    "2024-04-23": [],
+    "2024-04-23": [
+        {
+            "kind": "CL",
+            "n": 20,
+            "title": "Constructors and Magic Methods",
+            "date": "2024-04-23",
+            "deadline": "None",
+            "links": {
+                "Stream / Recording": "https://youtube.com/live/htLwX-TXcAs?feature=share",
+                "Slides": "/static/slides/cl20_constructors.pdf"
+            }
+        }
+    ],
     "2024-04-24": [],
     "2024-04-25": [],
     "2024-04-26": [],
