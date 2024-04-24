@@ -589,17 +589,12 @@
         }
     ],
     "2024-04-17": [],
-    "2024-04-18": [],
-    "2024-04-19": [],
-    "2024-04-20": [],
-    "2024-04-21": [],
-    "2024-04-22": [],
-    "2024-04-23": [
+    "2024-04-18": [
         {
             "kind": "CL",
             "n": 20,
             "title": "Constructors and Magic Methods",
-            "date": "2024-04-23",
+            "date": "2024-04-18",
             "deadline": "None",
             "links": {
                 "Stream / Recording": "https://youtube.com/live/htLwX-TXcAs?feature=share",
@@ -607,19 +602,34 @@
             }
         }
     ],
-    "2024-04-24": [],
-    "2024-04-25": [
+    "2024-04-19": [],
+    "2024-04-20": [],
+    "2024-04-21": [],
+    "2024-04-22": [],
+    "2024-04-23": [
         {
             "kind": "CL",
             "n": 21,
             "title": "Protocols and Composition",
-            "date": "2024-04-25",
+            "date": "2024-04-23",
             "deadline": "None",
             "links": {
                 "Stream / Recording": "https://youtube.com/live/RhsZWAk46Y0?feature=share"
             }
+        },
+        {
+            "kind": "EX",
+            "n": 7,
+            "title": "Compstagram (Due Tuesday 4/30)",
+            "date": "2024-04-23",
+            "deadline": "2024-04-30",
+            "links": {
+                "": "/exercises/ex07_compstagram.html"
+            }
         }
     ],
+    "2024-04-24": [],
+    "2024-04-25": [],
     "2024-04-26": [],
     "2024-04-27": [],
     "2024-04-28": [],
