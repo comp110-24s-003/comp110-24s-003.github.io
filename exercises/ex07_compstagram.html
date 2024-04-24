@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1713933016.2132225">
+  <link rel="stylesheet" href="/static/styles.css?v=1713933379.011671">
 </head>
 
 
@@ -104,8 +104,11 @@
 <li><a href="#brightness-filter">3.2 Brightness Filter</a></li>
 <li><a href="#saturation-filter">3.3 Saturation Filter</a></li>
 </ul></li>
+<li><a href="#stacking-composing-filters">4. Stacking / Composing Filters</a>
+<ul>
 <li><a href="#challenge-edition---invent-your-own-filters">Challenge Edition - Invent Your Own Filters</a></li>
 <li><a href="#submissions-on-gradescope-open-up-soon">Submissions on Gradescope Open up Soon!</a></li>
+</ul></li>
 </ul>
 </</ul>
                         </div>
@@ -304,6 +307,8 @@
 <p><br /><span class="math display"><em>f</em><em>a</em><em>c</em><em>t</em><em>o</em><em>r</em><sub><em>s</em><em>a</em><em>t</em><em>u</em><em>r</em><em>a</em><em>t</em><em>i</em><em>o</em><em>n</em></sub> = (0.5 − <em>f</em><em>i</em><em>l</em><em>t</em><em>e</em><em>r</em><sub><em>a</em><em>m</em><em>o</em><em>u</em><em>n</em><em>t</em></sub>) * 2.0</span><br /></p>
 <p>In <code>SaturationFilter</code> you will need to use <code>factor</code> instead of <code>amount</code> when finding the delta for a given color component. Spend a minute reasoning through what impact this should have on varying component values.</p>
 <p><br /><span class="math display"><em>d</em><em>e</em><em>l</em><em>t</em><em>a</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub> = (<em>t</em><em>a</em><em>r</em><em>g</em><em>e</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub> − <em>i</em><em>n</em><em>p</em><em>u</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub>) * <em>f</em><em>a</em><em>c</em><em>t</em><em>o</em><em>r</em></span><br /></p>
+<h1 id="stacking-composing-filters">4. Stacking / Composing Filters</h1>
+<p>In the <code>main</code> function, you will notice only <em>one</em> Filter will ever process an image, even if you add multiple filters to your request from the frontend. Your task in this section is to replace the <code>if</code> statement and <code>TODO</code> in <code>main</code> with a loop that will apply the <code>process</code> method of <em>all</em> filters in the <code>request</code> object to the <code>image</code>. Once you’ve successfully done this, you will be able to add multiple filters on top of one another, processed sequentially.</p>
 <h2 id="challenge-edition---invent-your-own-filters">Challenge Edition - Invent Your Own Filters</h2>
 <p>These ideas are 100% optional if you are looking for more fun programming challenges.</p>
 <p>Looking for a challenge beyond the 3 required filters? Here are some ideas!</p>
