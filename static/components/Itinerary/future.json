@@ -7,7 +7,8 @@
             "date": "2024-04-23",
             "deadline": "None",
             "links": {
-                "Stream / Recording": "https://youtube.com/live/RhsZWAk46Y0?feature=share"
+                "Stream / Recording": "https://youtube.com/live/RhsZWAk46Y0?feature=share",
+                "Slides": "/static/slides/cl21_protocols_composition.pdf"
             }
         },
         {
@@ -31,7 +32,7 @@
             "deadline": "None",
             "links": {
                 "Stream / Recording": "https://youtube.com/live/J1jqRug4FP8?feature=share",
-                "Slides": ""
+                "Slides": "/static/slides/cl22_oop_practice.pdf"
             }
         }
     ],
