@@ -1,5 +1,4 @@
 {
-    "2024-04-22": [],
     "2024-04-23": [
         {
             "kind": "CL",
@@ -23,7 +22,19 @@
         }
     ],
     "2024-04-24": [],
-    "2024-04-25": [],
+    "2024-04-25": [
+        {
+            "kind": "CL",
+            "n": 22,
+            "title": "OOP Practice",
+            "date": "2024-04-25",
+            "deadline": "None",
+            "links": {
+                "Stream / Recording": "https://youtube.com/live/J1jqRug4FP8?feature=share",
+                "Slides": ""
+            }
+        }
+    ],
     "2024-04-26": [],
     "2024-04-27": [],
     "2024-04-28": [],
