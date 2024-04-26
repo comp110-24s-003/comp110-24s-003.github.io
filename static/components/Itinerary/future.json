@@ -1,27 +1,4 @@
 {
-    "2024-04-23": [
-        {
-            "kind": "CL",
-            "n": 21,
-            "title": "Protocols and Composition",
-            "date": "2024-04-23",
-            "deadline": "None",
-            "links": {
-                "Stream / Recording": "https://youtube.com/live/RhsZWAk46Y0?feature=share",
-                "Slides": "/static/slides/cl21_protocols_composition.pdf"
-            }
-        },
-        {
-            "kind": "EX",
-            "n": 7,
-            "title": "Compstagram (Due Tuesday 4/30)",
-            "date": "2024-04-23",
-            "deadline": "2024-04-30",
-            "links": {
-                "": "/exercises/ex07_compstagram.html"
-            }
-        }
-    ],
     "2024-04-24": [],
     "2024-04-25": [
         {
