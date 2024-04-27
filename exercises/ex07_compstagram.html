@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="/static/styles.css?v=1714158108.2770522">
+  <link rel="stylesheet" href="/static/styles.css?v=1714237584.1946557">
 </head>
 
 
@@ -96,17 +96,18 @@
                             <ul class="overview-item"><ul>
 <li><a href="#introduction">0. Introduction</a></li>
 <li><a href="#setup">1. Setup</a></li>
-<li><a href="#undersatnding-the-support-code-in-support.py">2. Undersatnding the Support Code in <code>support.py</code></a></li>
+<li><a href="#understanding-the-support-code-in-support.py">2. Understanding the Support Code in <code>support.py</code></a></li>
 <li><a href="#getting-started-with-compstagram.py">3. Getting Started with <code>compstagram.py</code></a>
 <ul>
 <li><a href="#invert-filter-freebie">3.1 Invert Filter (Freebie)</a></li>
 <li><a href="#borderfilter">3.2 BorderFilter</a></li>
-<li><a href="#brightness-filter">3.2 Brightness Filter</a></li>
-<li><a href="#saturation-filter">3.3 Saturation Filter</a></li>
+<li><a href="#brightness-filter">3.3 Brightness Filter</a></li>
+<li><a href="#saturation-filter">3.4 Saturation Filter</a></li>
 </ul></li>
 <li><a href="#stacking-composing-filters">4. Stacking / Composing Filters</a>
 <ul>
 <li><a href="#challenge-edition---invent-your-own-filters">Challenge Edition - Invent Your Own Filters</a></li>
+<li><a href="#make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</a></li>
 <li><a href="#submissions-on-gradescope-open-up-soon">Submissions on Gradescope Open up Soon!</a></li>
 </ul></li>
 </ul>
@@ -119,10 +120,10 @@
         <div id="content" class="content box col-xl-9 col-lg-9 order-2 order-lg-1 pt-3"><p>In this problem set you will learn how digital image filters work by implementing a few classics, like border, brightness, and saturation, yourself! These same techniques are used in apps like Instagram and Snapchat to change the overall look of an image.</p>
 <p>Browser Compatibility Warning: This problem set recommends working in the Chrome web browser or Safari. Using Edge or Firefox may result in a buggy experience, if it even works at all.</p>
 <h2 id="introduction">0. Introduction</h2>
-<p>Digital Colors are traditionally represented with 3 components: red, green, and blue. If you were to hold a magnifying glass up to your laptop’s screen, you would likely see each dot, or “pixel”, is actually 3 smaller dots whose colors are red, green, and blue.</p>
+<p>Digital Colors are traditionally represented with 3 components: red, green, and blue. If you were to hold a magnifying glass up to your laptop’s screen, you would likely see each dot, or “pixel,” is actually 3 smaller dots whose colors are red, green, and blue.</p>
 <p>By varying the intensity of these red, green, and blue dots, from 0 to 255, your display can output the entire range of colors you see on your screen. All three components at 0 is black, all three at 127 is the mid-range gray, all three at 255 is white. Carolina Blue, for example, is red 75, green 156, blue 211.</p>
 <p>In our code, we will represent each component with an <code>int</code> value between <code>0</code> and <code>255</code>.</p>
-<p>Digital Images, then, are 2D <code>list</code>s of <code>Color</code> values. We will call such an image a <code>Bitmap</code>. The size of the <code>Bitmap</code>’s 2D <code>list</code> depends on the quality of the picture. A modern smart phone, like the one in your pocket, captures pictures with anywhere between 4 to 16 million color dots, called pixels. The <code>Bitmap</code> class in this exercise lets us store and manipulate hundreds of thousands of Color elements in a 2D <code>list</code>!</p>
+<p>Digital Images, then, are 2D <code>list</code>s of <code>Color</code> values. We will call such an image a <code>Bitmap</code>. The size of the <code>Bitmap</code>’s 2D <code>list</code> depends on the quality of the picture. A modern smart phone, like the one in your pocket, captures pictures with anywhere between 4 to 16 million color dots, called pixels. The <code>Bitmap</code> class in this exercise lets us store and manipulate hundreds of thousands of <code>Color</code> elements in a 2D <code>list</code>!</p>
 <p>Digital photo <code>Filter</code>s are algorithms that receive an input <code>Bitmap</code>, process each <code>Color</code> “pixel” in it element-by-element, and return an output <code>Bitmap</code> that has been processed.</p>
 <p>In this assignment you will implement a few <code>Filter</code> classes, each with one specific purpose that can be applied in a varying amount. For example, a <code>BorderFilter</code>’s goal is to draw a colored border around the <code>Bitmap</code> and the border’s thickness is a variable amount. Another example is a <code>BrightnessFilter</code> whose goal is to brighten or darken an image by some amount.</p>
 <h2 id="setup">1. Setup</h2>
@@ -136,16 +137,16 @@
 <li><p>Add a file to <code>ex07_compstagram</code> named <code>support.py</code> - this file contains support code that you will not need to modify, but should read through. You can find the contents of this file to copy here: <a href="https://raw.githubusercontent.com/comp110-24s-003/comp110-24s-workspace/main/starter/ex07/support.py" class="uri">https://raw.githubusercontent.com/comp110-24s-003/comp110-24s-workspace/main/starter/ex07/support.py</a></p></li>
 <li><p>Add another file to <code>ex07_compstagram</code> named <code>compstagram.py</code> - this is the file your work will be completed in. We provide a sample <code>InvertFilter</code> for your perusal. Find the contents of this file to copy here: <a href="https://raw.githubusercontent.com/comp110-24s-003/comp110-24s-workspace/main/starter/ex07/compstagram.py" class="uri">https://raw.githubusercontent.com/comp110-24s-003/comp110-24s-workspace/main/starter/ex07/compstagram.py</a></p></li>
 </ol>
-<h2 id="undersatnding-the-support-code-in-support.py">2. Undersatnding the Support Code in <code>support.py</code></h2>
+<h2 id="understanding-the-support-code-in-support.py">2. Understanding the Support Code in <code>support.py</code></h2>
 <p>Let’s start with <code>support.py</code>. You should not need to make any changes to this supporting code, but you will need to understand a few key classes defined in it.</p>
-<p>The <code>Color</code> class represents a single, digital color made up of three component colors (attributes) which are: <code>red</code>, <code>green</code>, and <code>blue</code>. Your filters will manipulate Color objects, so you should read and familiarize yourself with the Color class in <code>support.py</code>.</p>
-<p>The <code>Bitmap</code> class represents a digital image via a 2D “list of lists” of Color “pixels”. Its 2D list is organized in a row-major order, meaning the outer list’s index represents the “rows” of the image and the inner lists’ indices represent the “columns” of the image. Your filters will each apply an algorithm to every pixel in the array. You should read and familiarize yourself with the <code>Bitmap</code> class.</p>
+<p>The <code>Color</code> class represents a single, digital color made up of three component colors (attributes) which are: <code>red</code>, <code>green</code>, and <code>blue</code>. Your filters will manipulate <code>Color</code> objects, so you should read and familiarize yourself with the <code>Color</code> class in <code>support.py</code>.</p>
+<p>The <code>Bitmap</code> class represents a digital image via a 2D “list of lists” of <code>Color</code> “pixels.” Its 2D list is organized in a row-major order, meaning the outer list’s index represents the “rows” of the image and the inner lists’ indices represent the “columns” of the image. Your filters will each apply an algorithm to every pixel in the array. You should read and familiarize yourself with the <code>Bitmap</code> class.</p>
 <p>The <code>Filter</code> <code>Protocol</code> declares the method signatures each <code>Filter</code> needs in order to be considered <code>Filter</code>. An image <em>filter</em> is an algorithm that processes a Bitmap and modifies it in some way. For example, in any mobile phone image editing software you’re likely to encounter brightness, saturation, border, and other image filters. You should read and familiarize yourself with the <code>Filter</code> protocol in <code>support.py</code>.</p>
 <p>The only other class to concern yourself with is the <code>Request</code> class. Instances of this class will be <em>given</em> to your code in <code>compstagram.py</code> when the user takes action in the frontend. You will notice it is made of a <code>Bitmap</code> (image) and list of <code>Filter</code> object implementations. This captures a user’s request to apply one, or more, filters to an image.</p>
 <p>The other class and functions in this file are a bit beyond your concerns in COMP110, but if you are curious feel free to read through.</p>
 <h2 id="getting-started-with-compstagram.py">3. Getting Started with <code>compstagram.py</code></h2>
 <p>Go ahead and replace the <code>__author__</code> variable with your 9-digit PID.</p>
-<p>In this assignment, you will implement filters that manipulate Bitmap and Color data. The graphical user interface (GUI) for interacting with your filters is provided in support code. From it you can:</p>
+<p>In this assignment, you will implement filters that manipulate <code>Bitmap</code> and <code>Color</code> data. The graphical user interface (GUI) for interacting with your filters is provided in support code. From it you can:</p>
 <ol type="1">
 <li><p>Load a different image than the default Old Well image.</p></li>
 <li><p>Select the filter(s) you are applying to the image.</p></li>
@@ -156,12 +157,12 @@
 <p>If you run the app you’ll notice only the <code>InvertFilter</code> is enabled. This is intentional! Try pressing the add button to add the InvertFilter to the app and click the amount slider around with your mouse.</p>
 <p>The class InvertFilter is given to you in its entirety with narrative code comments. This is meant to serve as an example for how a Filter class is structured and how a processing algorithm is implemented. You should read the source code of <code>InvertFilter</code> for understanding and tinker around with its amount slider in the GUI before writing your own.</p>
 <h3 id="borderfilter">3.2 BorderFilter</h3>
-<p>The first Filter for you to implement is <code>BorderFilter</code>. To get started, in <code>compstagram.py</code>, find the <code>TODO</code> comment in the <code>get_filter_types</code> function. Delete it and uncomment the line that constructs the <code>FilterSettings</code> object for <code>BorderFilter</code>. Safe your file and you should see “BorderFilter” show up in the GUI’s Filter drop-down now. The front-end GUI calls this function to know which Filters are available to select and what their default amount is. When you add additional filters, you’ll add their settings here, as well. You’ll notice no border is added and if you try changing the “Amount” slider, nothing happens! Your work begins…</p>
+<p>The first Filter for you to implement is <code>BorderFilter</code>. To get started, in <code>compstagram.py</code>, find the <code>TODO</code> comment in the <code>get_filter_types</code> function. Delete it and uncomment the line that constructs the <code>FilterSettings</code> object for <code>BorderFilter</code>. Save your file and you should see “BorderFilter” show up in the GUI’s Filter drop-down now. The front-end GUI calls this function to know which Filters are available to select and what their default amount is. When you add additional filters, you’ll add their settings here, as well. You’ll notice no border is added and if you try changing the “Amount” slider, nothing happens! Your work begins…</p>
 <p>Scrolling down in <code>compstagram.py</code> around line 120, you’ll find the <code>BorderFilter</code> class defined with . The goal of <code>BorderFilter</code> is to add a border around your input Bitmap whose <br /><span class="math display"><em>b</em><em>o</em><em>r</em><em>d</em><em>e</em><em>r</em><sub><em>t</em><em>h</em><em>i</em><em>c</em><em>k</em><em>n</em><em>e</em><em>s</em><em>s</em></sub></span><br /> is controlled using the <em>amount</em> attribute. The user interface’s <em>amount</em> slider will set this value between 0.0 (no border) and 1.0 (entirely border). Here are some examples:</p>
 <table>
 <thead>
 <tr class="header">
-<th>amount</th>
+<th>Amount</th>
 <th>/ Example</th>
 </tr>
 </thead>
@@ -222,16 +223,16 @@
 </table>
 <p>If you are in a border area, the <code>Color</code> you will set each border pixel to is stored in this <code>BorderFilter</code>’s attribute named <code>color</code>. You’ll assign this to the bitmap pixel at row/column, instead.</p>
 <p>It’s a good idea to start with trying to draw one of your border sides first and then add the others one-by-one.</p>
-<h3 id="brightness-filter">3.2 Brightness Filter</h3>
+<h3 id="brightness-filter">3.3 Brightness Filter</h3>
 <p>Let’s make it possible to add lightness or darkness to your Bitmaps!</p>
-<p>Now that you’ve been around the block with the <code>BorderFilter</code>, you’ll take on modifying pixels by their <code>red</code>, <code>green</code>, and <code>blue</code> component values. At the bottom of <code>compstagram.py</code>, where a related comment appears, define your <code>BrightnessFilter</code>. Be sure it confors to the <code>Filter</code> protocol in <code>support.py</code>. It will take a similar shape to <code>BorderFilter</code>, but without a <code>color</code> attribute. Again, you’re tasked with implementing the <code>process</code> method’s algorithm.</p>
+<p>Now that you’ve been around the block with the <code>BorderFilter</code>, you’ll take on modifying pixels by their <code>red</code>, <code>green</code>, and <code>blue</code> component values. At the bottom of <code>compstagram.py</code>, where a related comment appears, define your <code>BrightnessFilter</code>. Be sure it conforms to the <code>Filter</code> protocol in <code>support.py</code>. It will take a similar shape to <code>BorderFilter</code>, but without a <code>color</code> attribute. Again, you’re tasked with implementing the <code>process</code> method’s algorithm.</p>
 <p>For the <code>BrightnessFilter</code> to show up in the filter select menu in the GUI, go to the <code>get_filter_types</code> function and add a new entry to the returned list that constructs a <code>FilterSettings</code> object with name <code>"BrightnessFilter"</code> and amount <code>0.5</code>. After saving the file <code>BrightnessFilter</code> should now be a filter you can select in the GUI. Notice that the order of filters in the GUI is the same as defined in <code>get_filter_types</code>. Feel free to rearrange these <code>FilterSettings</code> so that the one you are working on is at the top of the list and initially selected without extra clicking.</p>
 <p>For <code>BrightnessFilter</code>, and the filters that follow, we will not walk through the steps to process it via for loops and return the processed image. Refer to those steps from <code>BorderFilter</code> or <code>InvertFilter</code>.</p>
-<p>With <code>BrightnessFilter</code>, you want an amount of <code>0.5</code> to result in no change in brightness to your image, <code>0.0</code> to be <code>100%</code> darker than the input, and <code>1.0</code> to be <code>100%</code> lighter than input. Remember, as each red/green/blue component of a Color decreases toward 0.0 it becomes darker. As each increases toward 1.0 it becomes lighter.</p>
+<p>With <code>BrightnessFilter</code>, you want an amount of <code>0.5</code> to result in no change in brightness to your image, <code>0.0</code> to be <code>100%</code> darker than the input, and <code>1.0</code> to be <code>100%</code> lighter than input. Remember, as each red/green/blue component of a <code>Color</code> decreases toward 0.0 it becomes darker. As each increases toward 1.0 it becomes lighter.</p>
 <table>
 <thead>
 <tr class="header">
-<th>amount</th>
+<th>Amount</th>
 <th>/ Example</th>
 </tr>
 </thead>
@@ -263,16 +264,16 @@
 <p>Take a minute to think about what your brightness factor will be if your filter’s amount is any of 0.0, 0.5, and 1.0. Essentially, you’re “translating” amount to between -0.5 and 0.5 and then “scaling” it by 2.0 so that your possible factor domain is between -1.0 and 1.0.</p>
 <p>Now that you have that stored in a local variable, you need to manipulate each of pixel’s three components (the red, green, and blue properties) with the following formula:</p>
 <p><br /><span class="math display"><em>o</em><em>u</em><em>t</em><em>p</em><em>u</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub> = <em>i</em><em>n</em><em>p</em><em>u</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub> + (<em>f</em><em>a</em><em>c</em><em>t</em><em>o</em><em>r</em><sub><em>b</em><em>r</em><em>i</em><em>g</em><em>h</em><em>t</em><em>n</em><em>e</em><em>s</em><em>s</em></sub> * <em>i</em><em>n</em><em>p</em><em>u</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub>)</span><br /></p>
-<p>To modify each pixel’s components, you’ll first need to access the Color pixel from your bitmaps’s pixels array, then manipulate each of its component values. For an example of working with components like this, refer to <code>InvertFilter</code>’s <code>process</code> method.</p>
-<h3 id="saturation-filter">3.3 Saturation Filter</h3>
-<p>At the bottom of <code>compstagram.py</code>, where a related comment appears, define your <code>SaturationFilter</code>. Be sure it confors to the <code>Filter</code> protocol in <code>support.py</code>. It will take a similar shape to <code>BrightnessFilter</code>, but without a <code>color</code> attribute. Again, you’re tasked with implementing the <code>process</code> method’s algorithm.</p>
+<p>To modify each pixel’s components, you’ll first need to access the <code>Color</code> pixel from your bitmaps’s pixels array, then manipulate each of its component values. For an example of working with components like this, refer to <code>InvertFilter</code>’s <code>process</code> method.</p>
+<h3 id="saturation-filter">3.4 Saturation Filter</h3>
+<p>At the bottom of <code>compstagram.py</code>, where a related comment appears, define your <code>SaturationFilter</code>. Be sure it conforms to the <code>Filter</code> protocol in <code>support.py</code>. It will take a similar shape to <code>BrightnessFilter</code>, but without a <code>color</code> attribute. Again, you’re tasked with implementing the <code>process</code> method’s algorithm.</p>
 <p>For the <code>SaturationFilter</code> to show up in the filter select menu in the GUI, once again go to the <code>get_filter_types</code> function and add a new entry to the returned list that constructs a <code>FilterSettings</code> object with name <code>"SaturationFilter"</code> and amount <code>0.0</code>. After saving the file <code>SaturationFilter</code> should now be a filter you can select in the GUI.</p>
-<p>You can think of Saturation as the intensity of non-gray Colors in an Image. A completely desaturated Image can be thought of as a grayscale or “black and white” Image. “Black and white” photos are actually many shades of gray. An interesting property of pure black, grays, and white is that each of their three component values are exactly the same. White is (255, 255, 255), grays vary from (254, 254, 254) to (127, 127, 127) to (1, 1, 1) and black is (0, 0, 0). Grayscale implies the red, green, and blue components of each Color are equal to one another.</p>
-<p>How can you convert any Color to be grayscale? Spend a minute to think about this.</p>
+<p>You can think of Saturation as the intensity of non-gray <code>Color</code>s in an Image. A completely desaturated Image can be thought of as a grayscale or “black and white” Image. “Black and white” photos are actually many shades of gray. An interesting property of pure black, grays, and white is that each of their three component values are exactly the same. White is (255, 255, 255), grays vary from (254, 254, 254) to (127, 127, 127) to (1, 1, 1) and black is (0, 0, 0). Grayscale implies the red, green, and blue components of each <code>Color</code> are equal to one another.</p>
+<p>How can you convert any <code>Color</code> to be grayscale? Spend a minute to think about this.</p>
 <table>
 <thead>
 <tr class="header">
-<th>amount</th>
+<th>Amount</th>
 <th>/ Example</th>
 </tr>
 </thead>
@@ -299,13 +300,13 @@
 </tr>
 </tbody>
 </table>
-<p>It turns out there are many ways to convert a non-gray Color to grayscale. (You can read a lot on the internet about it!) For this assignment, you’ll use a simple hack: take the average of each component and use that (don’t forget to convert back to an integer!).</p>
+<p>It turns out there are many ways to convert a non-gray <code>Color</code> to grayscale. (You can read a lot on the internet about it!) For this assignment, you’ll use a simple hack: take the average of each component and use that (don’t forget to convert back to an integer!).</p>
 <p><br /><span class="math display"><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em><sub><em>a</em><em>v</em><em>e</em><em>r</em><em>a</em><em>g</em><em>e</em></sub> = (<em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em><sub><em>r</em><em>e</em><em>d</em></sub> + <em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em><sub><em>g</em><em>r</em><em>e</em><em>e</em><em>n</em></sub> + <em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em><sub><em>b</em><em>l</em><em>u</em><em>e</em></sub>)/3</span><br /></p>
-<p>You’ll construct a new Color using that average value for each of its red, green, and blue components. This will be your target grayscale Color.</p>
-<p>Each pixel you process, then, has a different target Color.</p>
+<p>You’ll construct a new <code>Color</code> using that average value for each of its red, green, and blue components. This will be your target grayscale <code>Color</code>.</p>
+<p>Each pixel you process, then, has a different target <code>Color</code>.</p>
 <p>In <code>BrightnessFilter</code>, you did some arithmetic with <code>amount</code> to come up with a <code>factor</code> whose domain is between <code>-1.0</code> and <code>1.0</code>. With <code>SaturationFilter</code> you’ll do something similar except flip the signs by subtracting from <code>0.5</code>. The rationale for this is as you decrease saturation you want to move closer to your grayscale average.</p>
 <p><br /><span class="math display"><em>f</em><em>a</em><em>c</em><em>t</em><em>o</em><em>r</em><sub><em>s</em><em>a</em><em>t</em><em>u</em><em>r</em><em>a</em><em>t</em><em>i</em><em>o</em><em>n</em></sub> = (0.5 − <em>f</em><em>i</em><em>l</em><em>t</em><em>e</em><em>r</em><sub><em>a</em><em>m</em><em>o</em><em>u</em><em>n</em><em>t</em></sub>) * 2.0</span><br /></p>
-<p>In <code>SaturationFilter</code> you will need to use <code>factor</code> instead of <code>amount</code> when finding the delta for a given color component. Spend a minute reasoning through what impact this should have on varying component values.</p>
+<p>In <code>SaturationFilter</code> you will need to use <code>factor</code> instead of <code>amount</code> when finding the delta for a given <code>color</code> component. Spend a minute reasoning through what impact this should have on varying component values.</p>
 <p><br /><span class="math display"><em>d</em><em>e</em><em>l</em><em>t</em><em>a</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub> = (<em>t</em><em>a</em><em>r</em><em>g</em><em>e</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub> − <em>i</em><em>n</em><em>p</em><em>u</em><em>t</em><sub><em>c</em><em>o</em><em>m</em><em>p</em><em>o</em><em>n</em><em>e</em><em>n</em><em>t</em></sub>) * <em>f</em><em>a</em><em>c</em><em>t</em><em>o</em><em>r</em></span><br /></p>
 <h1 id="stacking-composing-filters">4. Stacking / Composing Filters</h1>
 <p>In the <code>main</code> function, you will notice only <em>one</em> Filter will ever process an image, even if you add multiple filters to your request from the frontend. Your task in this section is to replace the <code>if</code> statement and <code>TODO</code> in <code>main</code> with a loop that will apply the <code>process</code> method of <em>all</em> filters in the <code>request</code> object to the <code>image</code>. Once you’ve successfully done this, you will be able to add multiple filters on top of one another, processed sequentially.</p>
@@ -324,6 +325,19 @@
 <li><p>Pride Stripes</p></li>
 <li><p>Swirl</p></li>
 </ul>
+<h2 id="make-a-backup-checkpoint-commit">Make a Backup Checkpoint “Commit”</h2>
+<p>As you make progress on this exercise, making backups is encouraged.</p>
+<ol type="1">
+<li>Open the Source Control panel (Command Palette: “Show SCM” or click the icon with three circles and lines on the activity panel).</li>
+<li>Notice the files listed under Changes. These are files you’ve made modifications to since your last backup.</li>
+<li>Move your mouse’s cursor over the word <em>Changes</em> and notice the + symbol that appears. Click that plus symbol to add all changes to the next backup. You will now see the files listed under “Staged Changes”.
+<ul>
+<li>If you do not want to backup <em>all</em> changed files, you can select them individually. For this course you’re encouraged to back everything up.</li>
+</ul></li>
+<li>In the Message box, give a brief description of what you’ve changed and are backing up. This will help you find a specific backup (called a “commit”) if needed. In this case a message such as, “Progress on Exercise” will suffice.</li>
+<li>Press the Check icon to make a <em>Commit</em> (a version) of your work.</li>
+<li>Finally, press the Ellipses icon (…), look for “Pull/Push” submenu, and select “Push to…”, and in the dropdown select your backup repository.</li>
+</ol>
 <h2 id="submissions-on-gradescope-open-up-soon">Submissions on Gradescope Open up Soon!</h2>
 </div>
 
