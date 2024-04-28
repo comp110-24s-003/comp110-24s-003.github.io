@@ -628,5 +628,20 @@
                 "": "/exercises/ex07_compstagram.html"
             }
         }
+    ],
+    "2024-04-24": [],
+    "2024-04-25": [
+        {
+            "kind": "CL",
+            "n": 22,
+            "title": "OOP Practice",
+            "date": "2024-04-25",
+            "deadline": "None",
+            "links": {
+                "Lecture Recording (1st half)": "https://youtube.com/live/J1jqRug4FP8?feature=share",
+                "Cut-off Lecture (2nd half)": "https://youtu.be/Kb8jDGkUOMU",
+                "Slides": "/static/slides/cl22_oop_practice.pdf"
+            }
+        }
     ]
 }
