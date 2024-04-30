@@ -1,9 +1,20 @@
 {
-    "2024-04-26": [],
     "2024-04-27": [],
     "2024-04-28": [],
     "2024-04-29": [],
-    "2024-04-30": [],
+    "2024-04-30": [
+        {
+            "kind": "CL",
+            "n": 23,
+            "title": "The Joy of Programming",
+            "date": "2024-04-30",
+            "deadline": "None",
+            "links": {
+                "Lecture Recording": "https://youtube.com/live/j1g0SIGURpE?feature=share",
+                "Slides": ""
+            }
+        }
+    ],
     "2024-05-03": [
         {
             "kind": "FN",
