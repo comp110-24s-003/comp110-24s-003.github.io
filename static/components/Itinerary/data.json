@@ -657,7 +657,7 @@
             "deadline": "None",
             "links": {
                 "Lecture Recording": "https://youtube.com/live/j1g0SIGURpE?feature=share",
-                "Slides": ""
+                "Slides": "/static/slides/cl23_joy.pdf"
             }
         }
     ],

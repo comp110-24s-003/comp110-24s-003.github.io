@@ -1,5 +1,4 @@
 {
-    "2024-04-27": [],
     "2024-04-28": [],
     "2024-04-29": [],
     "2024-04-30": [
@@ -11,7 +10,7 @@
             "deadline": "None",
             "links": {
                 "Lecture Recording": "https://youtube.com/live/j1g0SIGURpE?feature=share",
-                "Slides": ""
+                "Slides": "/static/slides/cl23_joy.pdf"
             }
         }
     ],
