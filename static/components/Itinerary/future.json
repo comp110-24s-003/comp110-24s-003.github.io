@@ -1,5 +1,4 @@
 {
-    "2024-04-28": [],
     "2024-04-29": [],
     "2024-04-30": [
         {
@@ -21,7 +20,18 @@
             "title": "Final @ 8:00AM",
             "date": "2024-05-03",
             "deadline": "None",
-            "links": {}
+            "links": {
+                "QZ00 Practice": "/static/practice/qz00-practice.pdf",
+                "QZ00 Practice (Key)": "/static/practice/qz00-practice-key.pdf",
+                "QZ01 Practice": "/static/practice/qz01-practice.pdf",
+                "QZ01 Practice (Key)": "/static/practice/qz01-practice-key.pdf",
+                "QZ02 Practice": "/static/practice/qz02-practice.pdf",
+                "QZ02 Practice (Key)": "/static/practice/qz02-practice-key.pdf",
+                "QZ03 Practice": "/static/practice/qz03-practice.pdf",
+                "QZ03 Practice (Key)": "/static/practice/qz03-practice-key.pdf",
+                "Final Supplement Practice": "/static/practice/fn00-practice.pdf",
+                "Final Supplement Practice (Key)": "/static/practice/fn00-practice-key.pdf"
+            }
         }
     ]
 }
